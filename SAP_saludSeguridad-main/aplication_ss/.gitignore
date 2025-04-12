@@ -1,0 +1,34 @@
+# Archivos y carpetas generados automáticamente
+/mta_archives/
+/node_modules/
+/resources/
+/dist/
+/tmp/
+/coverage/
+
+# Archivos de configuración local
+*.env
+*.local
+*.bak
+*.tmp
+
+# Archivos de construcción
+package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuración del editor
+.vscode/
+.idea/
+*.swp
+
+# Archivos de pruebas
+*.test.js
+*.spec.js
+*.test.ts
+*.spec.ts

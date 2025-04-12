@@ -1,0 +1,276 @@
+<mvc:View controllerName="appss.aplicationss.controller.vEditarEpp" 
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:tab="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns="sap.m">
+    <Page title="Editar reserva Epp" binding="{path : 'myParam>/selectReservaTemp'}"  showNavButton="true" navButtonPress=".onPageBack" class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer">
+		<headerContent>
+			<Button text="Guardar" icon="sap-icon://paper-plane" type="Emphasized" press="guardarReservasEpp" />
+            <Button text="Cancelar" icon="sap-icon://decline" press="onPageBack" /> 
+		</headerContent> 
+        <content >
+            <!-- <Panel width="auto" >
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="Datos conplementario"/>
+                        <ToolbarSpacer />
+                        <Button text="Guardar" icon="sap-icon://save" type="Emphasized" press="newIncidente" /> 
+                    </OverflowToolbar>
+                </headerToolbar> -->
+                <f:Form id="form01" editable="true"  width="auto" > 
+                    <f:layout>
+                        <f:ResponsiveGridLayout id="FormTab1IdaG"
+                            labelSpanXL="4"
+                            labelSpanL="4"
+                            labelSpanM="12"
+                            labelSpanS="12"
+                            adjustLabelSpan="false"
+                            emptySpanXL="0"
+                            emptySpanL="0"
+                            emptySpanM="0"
+                            emptySpanS="0"
+                            columnsXL="2"
+                            columnsL="2"
+                            columnsM="2"
+                            singleContainerFullSize="false"  />
+                    </f:layout>
+                    <f:formContainers >
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement label="N° reserva">
+                                    <f:fields>
+                                        <Input id="rEpp_nroReq" value="{myParam>ZID_RESERVA}" editable="false"/> 
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="Fecha reserva">
+                                    <f:fields> 
+                                        <DatePicker id="rEpp_fechaReq" value="{myParam>BDTER}" editable="false" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/>
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="Centro">
+                                    <f:fields> 
+                                        <Input id="rEpp_centro" value="{myParam>WERKS}" editable="false" /> 
+                                    </f:fields>
+                                </f:FormElement>  
+                                <f:FormElement label="Almacén">
+                                    <f:fields> 
+                                        <Input id="rEpp_almacen" value="{myParam>LGORT}" editable="false" /> 
+                                    </f:fields>
+                                </f:FormElement>  
+                                <!-- <f:FormElement label="Almacén destino">
+                                    <f:fields> 
+                                        <Input id="rEpp_almacenDestino" value="0301" /> 
+                                    </f:fields>
+                                </f:FormElement>   -->
+                            </f:formElements>
+                        </f:FormContainer> 
+                        <f:FormContainer>
+                            <f:toolbar>
+                                <Toolbar>
+                                    <Title text="Datos del trabajador"/>
+                                    <ToolbarSpacer />
+                                    <Button text="Buscar" icon="sap-icon://employee-lookup" type="Emphasized" press="buscarTrabajador" />
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:formElements>
+                                <f:FormElement label="Codigo de trabajador" >
+                                    <f:fields>
+                                        <Input id="rEpp_codTrab" value="{myParam>ZID_COD_TRABAJADOR}" /> 
+                                    </f:fields>
+                                </f:FormElement> 
+                                <f:FormElement label="Nombres" >
+                                    <f:fields>
+                                        <Input id="rEpp_nombres" value="" editable="false" /> 
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="Apellidos" >
+                                    <f:fields>
+                                        <Input id="rEpp_apellido" value="" editable="false" />  
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="DNI" >
+                                    <f:fields>
+                                        <Input id="rEpp_dni" value="" editable="false" />  
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="Cargo" >
+                                    <f:fields>
+                                        <Input id="rEpp_cargo" value="" editable="false" />  
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement label="Area de Trabajo" >
+                                    <f:fields>
+                                        <Input id="rEpp_areaTrb" value="" editable="false" />  
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer> 
+                    </f:formContainers> 
+                </f:Form> 
+
+                <Panel id="panelEpp" expandable="true" expanded="true" visible="false" headerText="Añadir" width="auto" class="sapUiResponsiveMargin">
+                    <headerToolbar>
+                        <OverflowToolbar style="Clear">
+                            <Title text="Registrar material" />
+                            <ToolbarSpacer />
+                            <Button icon="sap-icon://save" press="saveEpp" text="Guardar" type="Emphasized" /> 
+                            <Button icon="sap-icon://decline" press="cancelAddEpp" text="Cancelar" type="Emphasized" /> 
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <content>
+                        <f:Form editable="true"> 
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="4"
+                                    labelSpanL="3"
+                                    labelSpanM="4"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="4"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer > 
+                                    <f:formElements>
+                                        <f:FormElement label="Codigo de material">
+                                            <f:fields>  
+                                                <Input id="epp_codMaterial" type="Text" value="" placeholder="Seleccione.." valueHelpRequest="changeEpps" showSuggestion="true" showValueHelp="true"/>
+                                            </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Descripcion">
+                                            <f:fields> <Input value="" id="epp_descripcion" editable="false"/>  </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Cantidad">
+                                            <f:fields> <Input value="" id="epp_cantidad"/>  </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Cambio">
+                                            <f:fields> 
+                                                 <Select forceSelection="true" id="epp_cambio" showSecondaryValues= "true" > 
+                                                    <core:Item key="N" text="No" />  
+                                                    <core:Item key="S" text="Si" />  
+                                                </Select> 
+                                            </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Fecha de entrega">
+                                            <f:fields> <DatePicker id="epp_fechaEntrega"  displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" change="handleChange" value="" />    </f:fields>
+                                        </f:FormElement> 
+                                    </f:formElements>
+                                </f:FormContainer> 
+                            </f:formContainers>
+                        </f:Form> 
+                    </content>
+                </Panel>
+                <Panel id="panelEppEdit" binding="{path : 'myParam>/temEditMaterial'}" expandable="true" expanded="true" visible="false" headerText="Añadir" width="auto" class="sapUiResponsiveMargin">
+                    <headerToolbar>
+                        <OverflowToolbar style="Clear">
+                            <Title text="Editar material" />
+                            <ToolbarSpacer />
+                            <Button icon="sap-icon://save" press="saveEditEpp" text="Guardar" type="Emphasized" /> 
+                            <Button icon="sap-icon://decline" press="cancelAddEpp" text="Cancelar" type="Emphasized" /> 
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <content>
+                        <f:Form editable="true"> 
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="4"
+                                    labelSpanL="3"
+                                    labelSpanM="4"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="4"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer > 
+                                    <f:formElements>
+                                        <f:FormElement label="Codigo de material">
+                                            <f:fields>  
+                                                <Input id="edit_epp_codMaterial" editable="{myParam>/materialEdit}" type="Text" value="{myParam>MATNR}" placeholder="Seleccione.." valueHelpRequest="changeEppsEdit" showSuggestion="true" showValueHelp="true"/>
+                                            </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Descripcion">
+                                            <f:fields> <Input  value="{myParam>MAKTX}"   id="edit_epp_descripcion" editable="false" />  </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Cantidad">
+                                            <f:fields> <Input  value="{myParam>BDMNG}"   id="edit_epp_cantidad"/>  </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Cambio">
+                                            <f:fields> 
+                                                 <Select forceSelection="false" selectedKey="{myParam>ZIND_CAMBIO}" id="edit_epp_cambio" showSecondaryValues= "true" > 
+                                                    <core:Item key="S" text="Si" />  
+                                                    <core:Item key="N" text="No" />  
+                                                </Select> 
+                                            </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Fecha de entrega">
+                                            <f:fields> <DatePicker id="edit_epp_fechaEntrega" value="{myParam>BDTER}" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" />    </f:fields>
+                                        </f:FormElement> 
+                                    </f:formElements>
+                                </f:FormContainer> 
+                            </f:formContainers>
+                        </f:Form> 
+                    </content>
+                </Panel>
+                <!-- tabla  -->
+                <!-- <tab:Table id="idTableMateriales" rows="{  path: 'myParam>/materialesSelectReservaTemp' }" selectionMode="Single"  visibleRowCount="5" ariaLabelledBy="title"> -->
+                <tab:Table id="idTableMateriales" rows="{  path: 'myParam>/materialesSelectReservaTemp' }" selectionMode="Single"  visibleRowCount="5" ariaLabelledBy="title">
+                    <tab:extension>
+                        <OverflowToolbar >
+                            <!-- <Title text="Documentos"/> -->
+                            <ToolbarSpacer />  
+                            <Button text="Adicionar" type="Emphasized" icon="sap-icon://add" press="addEpp" /> 
+                            <Button text="Editar" icon="sap-icon://edit" press="editEpp" />  
+                            <Button text="Eliminar" icon="sap-icon://delete" press="deleteEpp" />  
+                            <!-- <Button text="Liberación total " icon="sap-icon://sort-ascending" press="liberarTotalEpp" />  
+                            <Button text="Liberar" icon="sap-icon://outbox" press="liberarEpp" />  -->
+                        </OverflowToolbar>
+                    </tab:extension>
+                    <tab:columns>
+                        <tab:Column  >
+                            <Label textAlign="Center" wrapping ="true"  text="Fecha entrega" />
+                            <tab:template> <Text text="{myParam>BDTER}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column >
+                            <Label textAlign="Center" wrapping ="true"  text="Código de material" />
+                            <tab:template> <Text  text="{myParam>MATNR}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column>
+                            <Label textAlign="Center" wrapping ="true"  text="Descripción" />
+                            <tab:template> <Text text="{myParam>MAKTX}" wrapping="false" /> </tab:template>
+                        </tab:Column>     
+                        <tab:Column>
+                            <Label textAlign="Center" wrapping ="true"  text="Cantidad" />
+                            <tab:template> <Text text="{myParam>BDMNG}" wrapping="false" /> </tab:template>
+                        </tab:Column>     
+                        <tab:Column>
+                            <Label textAlign="Center" wrapping ="true"  text="Cambio" />
+                            <tab:template> <Text text="{myParam>ZIND_CAMBIO}" wrapping="false" /> </tab:template>
+                        </tab:Column>     
+                        <tab:Column>
+                            <Label textAlign="Center" wrapping ="true"  text="Estado" />
+                            <tab:template> <Text text="{myParam>ZSTATUS}" wrapping="false" /> </tab:template>
+                        </tab:Column>     
+                        <tab:Column>
+                            <Label textAlign="Center" wrapping ="true"  text="Estado de liberación" />
+                            <tab:template> <Text text="{myParam>ZSTAT_LIBER}" wrapping="false" /> </tab:template>
+                        </tab:Column>        
+                    </tab:columns>
+                </tab:Table>   
+        </content> 
+    </Page>
+</mvc:View>

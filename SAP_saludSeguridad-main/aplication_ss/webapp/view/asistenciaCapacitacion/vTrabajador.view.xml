@@ -1,0 +1,525 @@
+<mvc:View controllerName="appss.aplicationss.controller.vTrabajador" 
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:tab="sap.ui.table"
+    xmlns:u="sap.ui.unified"
+    xmlns="sap.m">
+    <Page title="Trabajador" showNavButton="true" navButtonPress=".onPageBack" class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer">
+		<headerContent>
+			<Button icon="sap-icon://save" text="Guardar" type="Emphasized" press="saveTrabajador" />
+		</headerContent> 
+		<content>  
+            <!-- TABLA DE  LSUTA DE INDUCCIONES  -->
+            <VBox class="sapUiSmallMargin">
+                <tab:Table  cellClick="onSelectTab" rows="{  path: 'myParam>/ListPersonalInduccion' }" selectionMode="None"  visibleRowCount="5" ariaLabelledBy="title">
+                    <tab:extension>
+                        <OverflowToolbar > <Title text="Inducciones"/>  </OverflowToolbar>
+                    </tab:extension>
+                    <tab:columns>
+                        <tab:Column  >
+                            <Label textAlign="Center" wrapping ="true"  text="Cod. inducción" />
+                            <tab:template> <Text text="{myParam>ZINDUCCION}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column >
+                            <Label textAlign="Center" wrapping ="true"  text="Titulo" />
+                            <tab:template> <Text  text="{myParam>ZTITULO}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column>
+                            <Label textAlign="Center" wrapping ="true"  text="Descripción" />
+                            <tab:template> <Text text="{myParam>ZDESCRIPCION}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column >
+                            <Label textAlign="Center" wrapping ="true"  text="Nota" />
+                            <tab:template> <Text text="{myParam>ZNOTA}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column >
+                            <Label textAlign="Center" wrapping ="true"  text="Fecha" />
+                            <tab:template> <Text text="{myParam>ZFEC_INDUCCION}" wrapping="false" /> </tab:template>
+                        </tab:Column> 
+                        <tab:Column>
+                            <Label textAlign="Center" wrapping ="true"  text="Fecha de vencimiento" />
+                            <tab:template> <Text text="{myParam>ZFEC_VENCIMIENTO}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column >
+                            <Label textAlign="Center" wrapping ="true"  text="Anexo" />
+                            <tab:template> <Text  text="{myParam>ZANEXO}" wrapping="false" /> </tab:template>
+                        </tab:Column>              
+                    </tab:columns>
+                </tab:Table> 
+            </VBox>
+            <!-- TABLA DE LISTA DE REGISTROS MEDICOS -->
+            <VBox class="sapUiSmallMargin">
+                <Panel id="panelRegistroMedico" expandable="true" expanded="true" visible="false" headerText="Añadir" width="auto" class="sapUiResponsiveMargin">
+                    <headerToolbar>
+                        <OverflowToolbar style="Clear">
+                            <Title text="Agregar registro médico" />
+                            <ToolbarSpacer />
+                            <Button icon="sap-icon://save" press="saveRMedico" text="Guardar" type="Emphasized" /> 
+                            <Button icon="sap-icon://decline" press="cancelRMedico" text="Cancelar" type="Emphasized" /> 
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <content>
+                        <f:Form editable="true"> 
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="4"
+                                    labelSpanL="3"
+                                    labelSpanM="4"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="4"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer > 
+                                    <f:formElements>
+                                        <f:FormElement label="Fecha">
+                                            <f:fields>  <DatePicker id="RMedico_fecha" value=""  displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Observaciones">
+                                            <f:fields> <Input value="" id="RMedico_obs"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Estado">
+                                            <f:fields> 
+                                                <Select forceSelection="false" id="RMedico_estado" showSecondaryValues= "true" > 
+                                                    <core:Item key="A" text="Vigente" />
+                                                    <core:Item key="V" text="Vencido" />   
+                                                </Select> 
+                                            </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Fecha de vencimiento">
+                                            <f:fields> <DatePicker id="RMedico_fechaVenc" value=""  displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                                        </f:FormElement>   
+                                    </f:formElements>
+                                </f:FormContainer> 
+                            </f:formContainers>
+                        </f:Form> 
+                    </content>
+                </Panel>
+                <Panel id="panelRegistroMedicoEdit" binding="{path : 'myParam>/temEditRMedico'}" expandable="true" expanded="true" visible="false" headerText="Añadir" width="auto" class="sapUiResponsiveMargin">
+                    <headerToolbar>
+                        <OverflowToolbar style="Clear">
+                            <Title text="Editar registro médico" />
+                            <ToolbarSpacer />
+                            <Button icon="sap-icon://save" press="saveEditRMedico" text="Guardar" type="Emphasized" /> 
+                            <Button icon="sap-icon://decline" press="cancelRMedico" text="Cancelar" type="Emphasized" /> 
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <content>
+                        <f:Form editable="true"> 
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="4"
+                                    labelSpanL="3"
+                                    labelSpanM="4"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="4"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer > 
+                                    <f:formElements>
+                                        <f:FormElement label="Fecha">
+                                            <f:fields>  <DatePicker id="edit_RMedico_fecha" value="{myParam>ZFEC_EMISION}"  displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Observaciones">
+                                            <f:fields> <Input value="{myParam>ZOBSERVACIONES}" id="edit_RMedico_obs"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Estado">
+                                            <f:fields> 
+                                                <Select forceSelection="false" selectedKey="{myParam>ZESTADO}" id="edit_RMedico_estado" showSecondaryValues= "true" > 
+                                                    <core:Item key="A" text="Vigente" />
+                                                    <core:Item key="V" text="Vencido" />   
+                                                </Select> 
+                                            </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Fecha de vencimiento">
+                                            <f:fields> <DatePicker id="edit_RMedico_fechaVenc" value="{myParam>ZFEC_VENCIMIENTO}"  displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                                        </f:FormElement>   
+                                    </f:formElements>
+                                </f:FormContainer> 
+                            </f:formContainers>
+                        </f:Form> 
+                    </content>
+                </Panel>
+                <tab:Table id="tableRegistroMedico" cellClick="onSelectTab" rows="{  path: 'myParam>/ListRegistroMedico' }" selectionMode="Single"  visibleRowCount="5" ariaLabelledBy="title">
+                    <tab:extension>
+                        <OverflowToolbar > 
+                            <Title text="Registro médico"/> 
+                            <ToolbarSpacer />
+                            <Button icon="sap-icon://add-employee" text="Agregar" press="addRMedico"/>
+                            <Button icon="sap-icon://edit" text="Editar" press="editRMedico"/>
+                            <Button icon="sap-icon://delete" text="Eliminar" press="deleteRMedico"/>
+                        </OverflowToolbar>
+                    </tab:extension>
+                    <tab:columns>
+                        <tab:Column>
+                            <Label textAlign="Center" wrapping ="true"  text="Fecha" />
+                            <tab:template> <Text text="{myParam>ZFEC_EMISION}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column >
+                            <Label textAlign="Center" wrapping ="true"  text="Observaciones" />
+                            <tab:template> <Text  text="{myParam>ZOBSERVACIONES}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column>
+                            <Label textAlign="Center" wrapping ="true"  text="Estado" />
+                            <tab:template> <Text text="{myParam>ZESTADO}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column >
+                            <Label textAlign="Center" wrapping ="true"  text="Fecha de vencimiento" />
+                            <tab:template> <Text text="{myParam>ZFEC_VENCIMIENTO}" wrapping="false" /> </tab:template>
+                        </tab:Column>      
+                    </tab:columns>
+                </tab:Table> 
+            </VBox>
+            <!-- TABLA DE LISTA DE RESGISTROS SCTR -->
+            <VBox class="sapUiSmallMargin">
+                <Panel id="panelRegistroSCTR" expandable="true" expanded="true" visible="false" headerText="Añadir" width="auto" class="sapUiResponsiveMargin">
+                    <headerToolbar>
+                        <OverflowToolbar style="Clear">
+                            <Title text="Agregar SCTR" />
+                            <ToolbarSpacer />
+                            <Button icon="sap-icon://save" press="saveSCTR" text="Guardar" type="Emphasized" /> 
+                            <Button icon="sap-icon://decline" press="cancelSCTR" text="Cancelar" type="Emphasized" /> 
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <content>
+                        <f:Form editable="true"> 
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="4"
+                                    labelSpanL="3"
+                                    labelSpanM="4"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="4"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer > 
+                                    <f:formElements>
+                                        <f:FormElement label="Fecha">
+                                            <f:fields>  <DatePicker id="SCTR_fecha" value=""  displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Observaciones">
+                                            <f:fields> <Input value="" id="SCTR_obs"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Estado">
+                                            <f:fields> 
+                                                <Select forceSelection="false" id="SCTR_estado" showSecondaryValues= "true" > 
+                                                    <core:Item key="A" text="Vigente " /> 
+                                                    <core:Item key="V" text="Vencido" />   
+                                                </Select> 
+                                            </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Fecha de vencimiento">
+                                            <f:fields> <DatePicker id="SCTR_fechaVenc" value=""  displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                                        </f:FormElement>   
+                                    </f:formElements>
+                                </f:FormContainer> 
+                            </f:formContainers>
+                        </f:Form> 
+                    </content>
+                </Panel>
+                <Panel id="panelRegistroSCTREdit"  binding="{path : 'myParam>/temEditSCTR'}" expandable="true" expanded="true" visible="false" headerText="Añadir" width="auto" class="sapUiResponsiveMargin">
+                    <headerToolbar>
+                        <OverflowToolbar style="Clear">
+                            <Title text="Editar SCTR" />
+                            <ToolbarSpacer />
+                            <Button icon="sap-icon://save" press="saveEditSCTR" text="Guardar" type="Emphasized" /> 
+                            <Button icon="sap-icon://decline" press="cancelSCTR" text="Cancelar" type="Emphasized" /> 
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <content>
+                        <f:Form editable="true"> 
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="4"
+                                    labelSpanL="3"
+                                    labelSpanM="4"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="4"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer > 
+                                    <f:formElements>
+                                        <f:FormElement label="Fecha">
+                                            <f:fields>  <DatePicker id="edit_SCTR_fecha" value="{myParam>ZFEC_EMISION}"  displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Observaciones">
+                                            <f:fields> <Input value="{myParam>ZOBSERVACIONES}" id="edit_SCTR_obs"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Estado">
+                                            <f:fields> 
+                                                <Select forceSelection="false" selectedKey="{myParam>ZESTADO}" id="edit_SCTR_estado" showSecondaryValues= "true" > 
+                                                    <core:Item key="A" text="Vigente " /> 
+                                                    <core:Item key="V" text="Vencido" />  
+                                                </Select> 
+                                            </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Fecha de vencimiento">
+                                            <f:fields> <DatePicker id="edit_SCTR_fechaVenc" value="{myParam>ZFEC_VENCIMIENTO}"  displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                                        </f:FormElement>   
+                                    </f:formElements>
+                                </f:FormContainer> 
+                            </f:formContainers>
+                        </f:Form> 
+                    </content>
+                </Panel>
+                <tab:Table id="tableSCTR" cellClick="onSelectTab" rows="{  path: 'myParam>/ListRegistroSCTR' }" selectionMode="Single"  visibleRowCount="5" ariaLabelledBy="title">
+                    <tab:extension>
+                        <OverflowToolbar > 
+                            <Title text="SCTR"/> 
+                            <ToolbarSpacer />
+                            <Button icon="sap-icon://add-employee" text="Agregar" press="addSCTR"/>
+                            <Button icon="sap-icon://edit" text="Editar" press="editSCTR"/>
+                            <Button icon="sap-icon://delete" text="Eliminar" press="deleteSCTR"/>
+                        </OverflowToolbar>
+                    </tab:extension>
+                    <tab:columns>
+                        <tab:Column  >
+                            <Label textAlign="Center" wrapping ="true"  text="Fecha" />
+                            <tab:template> <Text text="{myParam>ZFEC_EMISION}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column >
+                            <Label textAlign="Center" wrapping ="true"  text="Observaciones" />
+                            <tab:template> <Text  text="{myParam>ZOBSERVACIONES}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column>
+                            <Label textAlign="Center" wrapping ="true"  text="Estado" />
+                            <tab:template> <Text text="{myParam>ZESTADO}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column >
+                            <Label textAlign="Center" wrapping ="true"  text="Fecha de vencimiento" />
+                            <tab:template> <Text text="{myParam>ZFEC_VENCIMIENTO}" wrapping="false" /> </tab:template>
+                        </tab:Column>      
+                    </tab:columns>
+                </tab:Table> 
+            </VBox>
+            <!-- lista de documentos necesarios -->
+            <VBox class="sapUiSmallMargin">  
+                <!-- <tab:Table id="idtableListDocNecesarios" rows="{  path: 'myParam>/listaDocumentoTrabajador' }" selectionMode="Single"  visibleRowCount="5" ariaLabelledBy="title"> -->
+                <tab:Table id="idtableListDocNecesarios" rows="{  path: 'myParam>/ListDocumentosNecesario' }" selectionMode="Single"  visibleRowCount="5" ariaLabelledBy="title">
+                    <tab:extension>
+                        <OverflowToolbar > 
+                            <Title text="Documentos a cumplir"/>
+                            <ToolbarSpacer />   
+                            <Button text="Revisar" icon="sap-icon://check-availability" press="revisarRDocsNecesario" />  
+                        </OverflowToolbar>
+                    </tab:extension>
+                    <tab:columns>
+                        <tab:Column  >
+                            <Label textAlign="Center" wrapping ="true"  text="Codigo" />
+                            <tab:template> <Text text="{myParam>ZID_DOCUMENTO}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column  >
+                            <Label textAlign="Center" wrapping ="true"  text="Descripcion" />
+                            <tab:template> <Text text="{myParam>ZDOCUMENTO}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column >
+                            <Label textAlign="Center" wrapping ="true"  text="¿Obligatorio?" />
+                            <tab:template> <Text  text="{myParam>ZOBLIGATORIO}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column>
+                            <Label textAlign="Center" wrapping ="true"  text="Formato" />
+                            <tab:template> <Text text="{myParam>ZFORMATO}" wrapping="false" /> </tab:template>
+                        </tab:Column> 
+                    </tab:columns>
+                </tab:Table> 
+            </VBox>
+            <!-- TABLA DE LISTA DE  RESGISTROS DOCUMENTOS POR VERSION  -->
+            <VBox class="sapUiSmallMargin"> 
+                <Panel id="panelRDocs" expandable="true" expanded="true" visible="false" headerText="Añadir" width="auto" class="sapUiResponsiveMargin">
+                    <headerToolbar>
+                        <OverflowToolbar style="Clear">
+                            <Title text="Agregar documento" />
+                            <ToolbarSpacer />
+                            <Button icon="sap-icon://save" press="saveRDocs" text="Guardar" type="Emphasized" /> 
+                            <Button icon="sap-icon://decline" press="cancelRDocs" text="Cancelar" type="Emphasized" /> 
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <content>
+                        <f:Form editable="true"> 
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="4"
+                                    labelSpanL="3"
+                                    labelSpanM="4"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="4"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer > 
+                                    <f:formElements> 
+                                        <f:FormElement label="Documento">
+                                            <f:fields> <u:FileUploader id="RDocs_doc" name="myFileUpload" uploadUrl="upload/" tooltip="Subir archivo" change="onFileSelected"/> </f:fields>
+                                        </f:FormElement>  
+                                    </f:formElements>
+                                </f:FormContainer> 
+                            </f:formContainers>
+                        </f:Form> 
+                    </content>
+                </Panel>
+                <Panel id="panelRDocsEdit" binding="{path : 'myParam>/temSelectDoc'}" expandable="true" expanded="true" visible="false" headerText="Añadir" width="auto" class="sapUiResponsiveMargin">
+                    <headerToolbar>
+                        <OverflowToolbar style="Clear">
+                            <Title text="Agregar documento" />
+                            <ToolbarSpacer />
+                            <Button icon="sap-icon://save" press="saveEditRDocs" text="Guardar" type="Emphasized" /> 
+                            <Button icon="sap-icon://decline" press="cancelRDocs" text="Cancelar" type="Emphasized" /> 
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <content>
+                        <f:Form editable="true"> 
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="4"
+                                    labelSpanL="3"
+                                    labelSpanM="4"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="4"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer > 
+                                    <f:formElements> 
+                                        <f:FormElement label="Codigo de categoria del documento">
+                                            <f:fields><Input value="{myParam>ZID_DOCUMENTO}" id="doc" editable="false"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Nombre del documento">
+                                            <f:fields><Input value="{myParam>ZNOMBRE_DOC}" id="codPersonal" editable="false"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Estado">
+                                            <f:fields> 
+                                                <Select forceSelection="false" selectedKey="{myParam>ZESTADO}" id="RDocs_estado" showSecondaryValues= "true" > 
+                                                    <core:Item key="A" text="Aprobado" />
+                                                    <core:Item key="E" text="En Revisión" />
+                                                    <core:Item key="R" text="Rechazado" /> 
+                                                </Select> 
+                                            </f:fields>
+                                        </f:FormElement>  
+                                         <f:FormElement label="Observacion">
+                                            <f:fields> 
+                                                 <Input value="{myParam>ZOBSERVACION}" id="RDocs_observacion"/>
+                                            </f:fields>
+                                        </f:FormElement> 
+                                    </f:formElements>
+                                </f:FormContainer> 
+                            </f:formContainers>
+                        </f:Form> 
+                    </content>
+                </Panel>
+                <tab:Table id="tableRegistroDocs" visible="false" cellClick="onSelectTab" rows="{  path: 'myParam>/versionesDocSelect' }" selectionMode="Single"  visibleRowCount="5" ariaLabelledBy="title">
+                    <tab:extension>
+                        <OverflowToolbar > 
+                            <Title text="Documentos a subir"/>
+                            <ToolbarSpacer />  
+                            <Button icon="sap-icon://add-employee" text="Agregar" press="addRDocs"/>
+                            <Button icon="sap-icon://edit" text="Validar" press="editRDocs"/>
+                            <Button icon="sap-icon://delete" text="Eliminar" press="deleteRDocs"/>
+                            <!-- <Button text="Revisar" icon="sap-icon://delete" press="revisarRDocs" />   -->
+                        </OverflowToolbar>
+                    </tab:extension>
+                    <tab:columns>
+                        <tab:Column  >
+                            <Label textAlign="Center" wrapping ="true"  text="Documento" />
+                            <tab:template> <Text text="{myParam>ZID_DOCUMENTO}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column  >
+                            <Label textAlign="Center" wrapping ="true"  text="Nombre de documento" />                       
+                            <tab:template> <Link text="{myParam>ZNOMBRE_DOC}" press="handleLinkPress" />  </tab:template>
+                        </tab:Column>
+                        <tab:Column >
+                            <Label textAlign="Center" wrapping ="true"  text="Version" />
+                            <tab:template> <Text  text="{myParam>ZVERSION}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column>
+                            <Label textAlign="Center" wrapping ="true"  text="Observación" />
+                            <tab:template> <Text text="{myParam>ZOBSERVACION}" wrapping="false" /> </tab:template>
+                        </tab:Column> 
+                        <tab:Column>
+                            <Label textAlign="Center" wrapping ="true"  text="Codigo Personal" />
+                            <tab:template> <Text text="{myParam>ZID_PERSONA}" wrapping="false" /> </tab:template>
+                        </tab:Column> 
+                        <tab:Column>
+                            <Label textAlign="Center" wrapping ="true"  text="Estado" />
+                            <tab:template> <Text text="{myParam>ZESTADO}" wrapping="false" /> </tab:template>
+                        </tab:Column> 
+                    </tab:columns>
+                </tab:Table> 
+            </VBox>
+            <!-- <VBox class="sapUiSmallMargin">
+                <tab:Table id="detalleTableDocs" visible="false" cellClick="onSelectTab" rows="{  path: 'myParam>/dataTab' }" selectionMode="Single"  visibleRowCount="5" ariaLabelledBy="title">
+                    <tab:extension>
+                        <OverflowToolbar > 
+                            <Title text="Versiones de documentos"/>
+                            <ToolbarSpacer />  
+                            <Button text="Cancelar" icon="sap-icon://delete" press="deleteDocIncidente" />  
+                        </OverflowToolbar>
+                    </tab:extension>
+                    <tab:columns>
+                        <tab:Column  >
+                            <Label textAlign="Center" wrapping ="true"  text="Nombre de documento" />                  
+                            <tab:template> <Link text="{myParam>ZDOCUMENTO}" press="handleLinkPress" />  </tab:template>
+                        </tab:Column>
+                        <tab:Column >
+                            <Label textAlign="Center" wrapping ="true"  text="Versión" />
+                            <tab:template> <Text  text="{myParam>tipolabor}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column>
+                            <Label textAlign="Center" wrapping ="true"  text="Status" />
+                            <tab:template> <Text text="{myParam>name}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column >
+                            <Label textAlign="Center" wrapping ="true"  text="Observación" />
+                            <tab:template> <Text text="{myParam>ffin}" wrapping="false" /> </tab:template>
+                        </tab:Column>      
+                    </tab:columns>
+                </tab:Table> 
+            </VBox> -->
+		</content>
+	</Page>
+</mvc:View>
