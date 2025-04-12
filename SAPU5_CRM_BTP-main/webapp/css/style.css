@@ -1,0 +1,94 @@
+/* alinear contenido home  */
+.homecenter {
+    align-items: center;
+    padding: 25px !important;
+}
+.cuerpo{
+    height: 94vh;
+}
+/* Enter your custom styles here */
+.sapMBarTitleAlignAuto .sapMBarPH {
+    justify-content: center !important;
+}
+.sapTntToolHeader.sapMTB {
+    background-color: #3d5873 !important;
+}
+.sapMBarContainer {
+    background: #354a5f !important;
+}
+.sapMIBar.sapMHeader-CTX {
+    background-color: #354a5f !important;
+}
+.sapMIBar>.sapMBarLeft>.sapMBarChild:last-child, .sapMIBar .sapMBarPH>.sapMBarChild:last-child {
+    color: white;
+}
+
+/*fondo oscuro falta important*/
+.sapTntNavLIItem {
+    background-color: #354a5f !important;
+}
+
+.sapTntNavLIItem  {
+    background: #354a5f !important;
+}
+
+.sapMSplitContainerMaster {
+    border-right: .0625rem solid #354a5f !important;
+}
+html.sap-desktop:not(.sapUiNativeScrollbars) ::-webkit-scrollbar {
+    background-color: #d6d6d6 !important;
+}
+html.sap-desktop .sapMIBar.sapMFooter-CTX {
+    background-color: #354a5f !important;
+    border-top: 1px solid #354a5f !important;
+}
+
+
+.sapMPageBgList {
+    background-color: #354a5f !important;
+}
+
+.sapMSplitContainerMaster .sapMPageHeader {
+    box-shadow: inset 0 -1px #354a5f !important;
+}
+
+.sapTntNavLIGroup {
+    border-bottom: 1px solid #526477 !important;
+}
+
+
+/*letras blancas */
+.sapTntNavLIItem .sapMText {
+    color: white;
+}
+.sapTntNavLIText {
+    color: white !important;
+}
+.sapTntNavLIItem .sapUiIcon {
+    color: white !important;
+}
+
+/*hover */
+.sapTntNavLIItemSelected:not(.sapTntNavLIItemDisabled) {
+    border-bottom: 1px solid #5b7084;
+}
+.sapTntNavLIItem:not(.sapTntNavLIItemDisabled):hover {
+    background-color: #14649d !important;
+}
+
+.sapTntNavLI .sapTntNavLIGroup.sapTntNavLIItem:not(.sapTntNavLIItemDisabled):active, .sapTntNavLI .sapTntNavLIGroupItem.sapTntNavLIItem:not(.sapTntNavLIItemDisabled):active {
+    background-color: #5b7084 !important;
+}
+
+.sapTntNavLIItemSelected.sapTntNavLIItem, .sapTntNavLIItemSelected .sapTntNavLIGroup, .sapTntNavLIItemSelected.sapTntNavLIGroupItem.sapTntNavLIGroupItem {
+    background-color: #3d5873 !important;
+}
+
+.sapMTB-Transparent-CTX .sapMLabel.crumbArrow {
+	margin-right: 0 !important;
+}
+
+.sapMTB-Transparent-CTX .sapMText.crumbLast {
+	font-size: 0.875rem !important;
+	text-shadow: none !important;
+}

@@ -1,0 +1,25 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Build artifacts
+dist/
+tmp/
+coverage/
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+
+# SAPUI5 specific
+*.dbg.js
+*.dbg.controller.js
+*.dbg.view.js
+*.dbg.fragment.js
+*.dbg.css
+*.dbg.json
+*.dbg.xml
+*.dbg.html
+*.dbg.properties
