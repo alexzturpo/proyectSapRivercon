@@ -1,0 +1,33 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" >
+   <Dialog
+      id="helloCarrito"
+      title="Productos por comprar">
+        
+        <List
+            id="list"
+            mode="Delete"
+            delete="handleDelete"
+            enableBusyIndicator="true" 
+            growing="true"
+            items="{
+                path: '/list_cart/'
+            }" >
+            <StandardListItem
+                title="{ProductName}"
+                description="{type}    |    {Medida}"
+                icon="{imagen1}"
+                info="{Price}"
+                iconDensityAware="false"
+                iconInset="false" 
+                />
+        </List>
+      <content>
+         <Button class="sapUiTinyMargin" text="Generacion proforma" press=".onCloseDialog"/>
+         <Button class="sapUiTinyMargin" text="Generacion nota de venta" press=".onCloseDialog"/>
+         <Button class="sapUiTinyMargin" text="Generacion cotización" press=".onCloseDialog"/>
+         <Button class="sapUiTinyMargin" icon="sap-icon://decline" text="Seguir seleccionando" press=".onCloseDialog"/>
+      </content>
+   </Dialog>
+</core:FragmentDefinition>

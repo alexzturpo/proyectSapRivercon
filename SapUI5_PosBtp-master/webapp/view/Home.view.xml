@@ -1,0 +1,259 @@
+
+<mvc:View
+    controllerName="posbtp.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.unified"
+    xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+    displayBlock="false"
+    xmlns="sap.m" 
+    xmlns:tnt="sap.tnt"
+    xmlns:l="sap.ui.layout"
+    xmlns:tab="sap.ui.table"
+
+    xmlns:ff="sap.f"
+    xmlns:card="sap.f.cards"
+    
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:commons="sap.ui.commons">
+
+<Shell id="shell">
+	<App id="app">
+    <Page id="page" title="SmartRetail - REDONDOS S.A.C." showHeader="false">
+        
+            <tnt:ToolHeader >
+                <Button icon="sap-icon://menu2" press="handleToggleSecondaryContent" />
+				<!-- <Button  icon="sap-icon://synchronize" press="handleSwitchOrientation"/> -->
+                <Image src="test-resources/sap/tnt/images/SAP_Logo.png" />
+                <Text text="POS BTP" wrapping="false" /> 
+                <ToolbarSpacer/>
+                <SearchField width="40%" placeholder="Qué estás buscando"/>
+                <ToolbarSpacer/>
+                <Button class="sapUiTinyMarginBeginEnd" size="2rem" icon="sap-icon://cart"
+                    text="Pedidos" press="opencarrito" >
+                </Button>
+                <Button icon="sap-icon://search" type="Transparent" />
+                <Button icon="sap-icon://history" type="Transparent" />
+                <Button icon="sap-icon://bell" type="Transparent" />
+                <Avatar src="test-resources/sap/tnt/images/Woman_avatar_01.png" displaySize="XS" press=".onAvatarPressed" />
+                
+            </tnt:ToolHeader>
+    <u:SplitContainer
+			id="mySplitContainer"
+			showSecondaryContent="false">
+			<u:secondaryContent>
+				<tnt:NavigationList
+                        id="navigationList2"
+                        width="100%"
+                        selectedKey="subItem3">
+                        <tnt:NavigationListItem text="Home"  icon="sap-icon://home"  select="tohome">
+                        </tnt:NavigationListItem> 
+                        <tnt:NavigationListItem text="Productos"  icon="sap-icon://product"  select="tohome">
+                        </tnt:NavigationListItem> 
+                        <tnt:NavigationListItem text="Catalogo"  icon="sap-icon://education"  select="tohome">
+                        </tnt:NavigationListItem> 
+                        <tnt:NavigationListItem text="Reportes"  icon="sap-icon://trip-report"  select="tohome">
+                        </tnt:NavigationListItem> 
+                        <tnt:NavigationListItem text="Cotizar"  icon="sap-icon://batch-payments"  select="tohome">
+                        </tnt:NavigationListItem> 
+                        <tnt:NavigationListItem text="Utilitarios"  icon="sap-icon://provision"  select="tohome">
+                        </tnt:NavigationListItem> 
+                        <tnt:NavigationListItem text="Cerrar sesión " icon="sap-icon://employee-rejections"  select="tohome">
+                        </tnt:NavigationListItem> 
+                    
+                    </tnt:NavigationList>
+			</u:secondaryContent>
+			<u:content>
+				
+                <SplitContainer
+                    id="SplitContDemo"
+                    initialDetail="detail"
+                    initialMaster="master"
+                    class="cuerpo">    
+                    <detailPages>
+                        <Page id="HomeDetail"
+                            title="Home"
+                            backgroundDesign= "Solid"
+                            showNavButton="{= !${device>/system/desktop} }"
+                            navButtonPress=".onPressDetailBack">
+
+                            <FlexBox class="sapUiSmallMargin homecenter"
+                            width="100%"
+                            direction="Column">
+                                <items>
+                                    <Title level="H2" titleStyle="H2" text="Bienvenidos a tu portal CRM!"  textAlign="Center"/>
+                                    <Image src="../img/homefondo.jpg" width="auto" height="30rem" />
+                                </items>
+                            </FlexBox>
+                                        
+                        </Page>  
+
+                        <Page id="ProductosDetail"
+                            title="Productos"
+                            backgroundDesign= "Solid"
+                            showNavButton="{= !${device>/system/desktop} }"
+                            navButtonPress=".onPressDetailBack">  
+                            
+                            <Toolbar height="auto">
+                                <Button type="Back" tooltip="Back" press="backtoclientes"/>  
+                                <VBox class="sapUiSmallMargin">
+                                    <Label text="Ordenar por" design="Bold" />
+                                    <Select
+                                        forceSelection="false"
+                                        selectedKey="1"
+                                        items="{
+                                            path: '/list_ordenar',
+                                            sorter: { path: 'name' }
+                                        }">
+                                        <core:Item key="{listId}" text="{name}" />
+                                    </Select>
+                                </VBox>
+                                <VBox class="sapUiSmallMargin">
+                                    <Label text="Ambiente" design="Bold" />
+                                    <Select
+                                        forceSelection="false"
+                                        selectedKey="5"
+                                        items="{
+                                            path: '/list_ambiente',
+                                            sorter: { path: 'name' }
+                                        }">
+                                        <core:Item key="{listId}" text="{name}" />
+                                    </Select>
+                                </VBox>
+                                <ToolbarSpacer/>
+                                <HBox>
+                                    <Button icon="sap-icon://slim-arrow-left" type="Transparent" />
+                                    <Button text="1" type="Transparent" />
+                                    <Button text="2" type="Transparent" />
+                                    <Button text="3" type="Transparent" />
+                                    <Button icon="sap-icon://slim-arrow-right" type="Transparent" />
+                                </HBox>
+                            </Toolbar>
+
+                            <FlexBox class="estiloWrap" 
+                            items="{/list_produc}" >
+                                <VBox width="330px" class="sapUiSmallMargin itemproducto">
+                                    <Image src="{imagen1}" width="100%" /> 
+                                    <VBox class="sapUiContentPadding">
+                                        <Label  wrapping="true" text= "{ProductName}"/> 
+                                    <FlexBox width="100%" justifyContent="SpaceBetween" class="sapUiSmallMarginTop">
+                                        <Label class="sap-icon://product" text=" En stock: {Quantity}" />
+                                        <Title  level="H3" titleStyle="H3" text="{Price} BOB" />
+                                    </FlexBox> 
+                                    <Button width="100%" text="LO QUIERO!" icon="sap-icon://cart-4" type="Transparent"  press="todetalleproducto"/>
+                                    </VBox>
+                                </VBox>
+                            </FlexBox>
+                                        
+                        </Page> 
+
+                        <Page id="ProductsInfoDetail"
+                            title="Producto selecionado"
+                            backgroundDesign= "Solid"
+                            showNavButton="{= !${device>/system/desktop} }"
+                            navButtonPress=".onPressDetailBack">  
+                            <HBox height="90%" alignItems="Center" justifyContent="Center" >
+                                <VBox width="60%" >
+                                    <Carousel class="sapUiContentPadding" loop="true">
+                                        <pages>
+                                            <Image src="{/list_select_produc/imagen1}" alt="Example picture of speakers"/> 
+                                            <Image src="{/list_select_produc/imagen2}" alt="Example picture of speakers"/>  
+                                        </pages>
+                                    </Carousel>
+                                </VBox>
+                                <VBox width="35%" class="sapUiMediumMargin"> 
+                                    <VBox  class="sapUiTinyMarginTopBottom" > 
+                                        <Label  wrapping="true" text= "{/list_select_produc/ProductName}"/> 
+                                    </VBox>
+                                    <Label text= "{/list_select_produc/Medida}"/> 
+                                    <Label text= "{/list_select_produc/type}"/> 
+                                    <Label text= "Cod: {/list_select_produc/Cod}"/> 
+                                    <Label icon="sap-icon://accept" text= "EN STOCK"/> 
+                                    <HBox  width="100%" class="sapUiMediumMarginTop" alignItems="Center" justifyContent="SpaceBetween">
+                                        <Title  level="H2" titleStyle="H2" text="{/list_select_produc/Price} BOB" />
+                                        <Button text="AÑADIR CARRITO!" icon="sap-icon://cart-4" type="Transparent"  press="aniadircarrito"/>
+                                    </HBox>
+                                </VBox>
+                                
+                            </HBox>
+                                        
+                        </Page> 
+
+                    </detailPages>
+                    <masterPages>
+                        <Page
+                            id="master"
+                            backgroundDesign= "List">
+                            <tnt:NavigationList id="navigationList" width="300px">
+                                <tnt:NavigationListItem text="Todos los productos" select="toproductos" />
+                                <tnt:NavigationListItem expanded="false" text="TIPOS DE PRODUCTOS" >
+                                    <tnt:NavigationListItem text="PORCELANATO" select="toproductos" />
+                                    <tnt:NavigationListItem text="CERÁMICO" select="toproductos" />
+                                </tnt:NavigationListItem>
+                                <tnt:NavigationListItem expanded="false" text="MARCAS" >
+                                    <tnt:NavigationListItem text="PEDROSS" select="toproductos" />
+                                    <tnt:NavigationListItem text="KLIPEN" select="toproductos" />
+                                    <tnt:NavigationListItem text="NEFUSAC" select="toproductos" />
+                                    <tnt:NavigationListItem text="PORTOBELLO" select="toproductos" />
+                                </tnt:NavigationListItem>
+                                <tnt:NavigationListItem expanded="false" text="AMBIENTE" >
+                                    <tnt:NavigationListItem text="DORMITORIO" select="toproductos" />
+                                    <tnt:NavigationListItem text="BAÑO" select="toproductos" />
+                                    <tnt:NavigationListItem text="COCINA" select="toproductos" />
+                                    <tnt:NavigationListItem text="COMEDOR" select="toproductos" />
+                                    <tnt:NavigationListItem text="SALA" select="toproductos" />
+                                </tnt:NavigationListItem>
+                                <tnt:NavigationListItem expanded="false" text="PRECIOS" >
+                                    <tnt:NavigationListItem text="S/50-S/199.99" select="toproductos" />
+                                    <tnt:NavigationListItem text="S/200-S/499.99" select="toproductos" />
+                                </tnt:NavigationListItem>
+                                <tnt:NavigationListItem expanded="false" text="TIPOLOGÍA" >
+                                    <tnt:NavigationListItem text="LOOK MADERA" select="toproductos" />
+                                    <tnt:NavigationListItem text="LOOK PIEDRA" select="toproductos" />
+                                    <tnt:NavigationListItem text="DECORADO" select="toproductos" />
+                                    <tnt:NavigationListItem text="BRICK" select="toproductos" />
+                                    <tnt:NavigationListItem text="COLOR ENTERO" select="toproductos" />
+                                </tnt:NavigationListItem>
+                                <tnt:NavigationListItem expanded="false" text="GAMA DE COLOR" >
+                                    <tnt:NavigationListItem text="MARRÓN" select="toproductos" />
+                                    <tnt:NavigationListItem text="GRIS" select="toproductos" />
+                                    <tnt:NavigationListItem text="GRIS CÁLIDO" select="toproductos" />
+                                    <tnt:NavigationListItem text="BLANCO" select="toproductos" />
+                                    <tnt:NavigationListItem text="BEIGE" select="toproductos" />
+                                </tnt:NavigationListItem>
+                                <tnt:NavigationListItem expanded="false" text="FORMATO COMERCIAL" >
+                                    <tnt:NavigationListItem text="20X120 CM" select="toproductos" />
+                                    <tnt:NavigationListItem text="60X120 CM" select="toproductos" />
+                                    <tnt:NavigationListItem text="25X80 CM" select="toproductos" />
+                                    <tnt:NavigationListItem text="30X90 CM" select="toproductos" />
+                                    <tnt:NavigationListItem text="20X20 CM" select="toproductos" />
+                                </tnt:NavigationListItem>
+                                <tnt:NavigationListItem expanded="false" text="BORDE" >
+                                    <tnt:NavigationListItem text="RECTIFICADO" select="toproductos" />
+                                    <tnt:NavigationListItem text="NO RECTIFICADO" select="toproductos" />
+                                </tnt:NavigationListItem>
+                                <tnt:NavigationListItem expanded="false" text="USO" >
+                                    <tnt:NavigationListItem text="PISO/PARED" select="toproductos" />
+                                    <tnt:NavigationListItem text="PARED" select="toproductos" />
+                                </tnt:NavigationListItem>
+                                <tnt:NavigationListItem expanded="false" text="JUNTA MÍNIMA" >
+                                    <tnt:NavigationListItem text="2.0 MM" select="toproductos" />
+                                    <tnt:NavigationListItem text="3.0 MM" select="toproductos" />
+                                    <tnt:NavigationListItem text="4.0 MM" select="toproductos" />
+                                </tnt:NavigationListItem>
+                                
+                            </tnt:NavigationList>
+                    
+                        </Page>
+                    </masterPages>
+                    
+                </SplitContainer>
+			</u:content>
+	</u:SplitContainer>
+    
+        
+        
+    </Page>
+	</App>
+</Shell>
+</mvc:View>
