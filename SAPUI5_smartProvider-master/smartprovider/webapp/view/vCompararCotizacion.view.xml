@@ -1,0 +1,192 @@
+<mvc:View controllerName="appsp.smartprovider.controller.vCompararCotizacion"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:layout="sap.ui.layout"   
+    xmlns:core="sap.ui.core"  
+    xmlns:tab="sap.ui.table" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:uxap="sap.uxap"
+    >
+    <Page id="page" title="Criterios" showHeader="false" showNavButton="true"  navButtonPress=".onApp" >
+        <content> 
+            <tnt:ToolHeader id="th1">  
+                <!-- <Button id="idNavMenu2" icon="sap-icon://nav-back" press="onApp"/>   -->
+                <Image id="img001" class="sapUiTinyMargin" src="test-resources/sap/tnt/images/SAP_Logo.png" />
+                <ToolbarSpacer id="space1"/>  
+                    <Title id="tituloid3" level="H3" text="SMART PROVIDER" /> 
+                <ToolbarSpacer id="space2"/>  
+                <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
+            </tnt:ToolHeader>
+            <Page id="pageCabecera001" titleLevel="H2"  class="altura"
+                title="" navButtonPress=".onApp" showNavButton="true" >
+                <headerContent> 
+                    <HBox id="vccId001">
+                        <Label id="vmainId013" class="sapUiMediumMargin"  textAlign="Center" wrapping ="true"  text="RFQ: " />
+                        <Input  id="vccIdRFQ01" value="70000823" placeholder="Ingrese RFQ" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                    </HBox> 
+                    <!-- <Button id="btn" text="Comleto" press="onAppRealcionadas"/>    -->
+                </headerContent> 
+                <uxap:ObjectPageLayout id="conOpl" upperCaseAnchorBar="false">
+                    <uxap:headerTitle>
+                        <uxap:ObjectPageHeader id="conOp" 
+                                        objectTitle="RFQ - 70000823"
+                                        objectSubtitle="Resumen"  >
+                            <!-- <uxap:actions>
+                                <uxap:ObjectPageHeaderActionButton icon="sap-icon://edit" text="Editar" importance="Medium" tooltip="Editar"/>
+                                <uxap:ObjectPageHeaderActionButton icon="sap-icon://save" text="Publicar" tooltip="save" press="onPublicar"/> 
+                                <uxap:ObjectPageHeaderActionButton icon="sap-icon://action" text="action" importance="Low" tooltip="action" press="on01"/> 
+                            </uxap:actions>  -->
+                        </uxap:ObjectPageHeader>
+                    </uxap:headerTitle>
+                    <uxap:headerContent>
+                        <layout:VerticalLayout id="conVl01" >
+                            <ObjectStatus id="conVl01Os01" title="Creado por" text="Mendoza"/>
+                            <ObjectStatus id="conVl01Os02" title="Creado en" text="19/05/2022"/>
+                            <ObjectStatus id="conVl01Os03" title="Fecha de publicación" text="19/05/2022"/>
+                            <ObjectStatus id="conVl01Os04" title="Tipo RFQ" text="Solicitud de abastecimiento Interno"/>
+                        </layout:VerticalLayout>
+                        <layout:VerticalLayout id="conVl02" >
+                            <Title id="conVl02t1" level="H3" text="Estado" />
+                            <Label id="conVl02l1" text="Publicado"/>
+                        </layout:VerticalLayout>
+                        <layout:VerticalLayout id="conVl03" >
+                            <Title id="conVl03t1" level="H3" text="Fecha límite de cotización" />
+                            <Label id="conVl03l1" text="31/012022"/>
+                        </layout:VerticalLayout>
+                        <layout:VerticalLayout id="conVl04" >
+                            <Title id="conVl04t1" level="H3" text="Número de licitadores invitados" />
+                            <HBox id="conVl04Hb">
+                                <!-- <core:Icon src="sap-icon://circle-task-2"  color="{parts: [{path: 'myParam>ZPLAN'},{path: 'myParam>ZREAL'}], formatter: '.formatTipoSemaforo'}"/> -->
+                                <core:Icon id="conVl04l0" size="40px" src="sap-icon://circle-task-2"  color="#286902"/>
+                                <Label class="sapUiTinyMargin" id="conVl04l1" text="2"/>
+                            </HBox>
+                        </layout:VerticalLayout> 
+                        <layout:VerticalLayout id="conVl05"> 
+                            <Text id="conVl05t1" text="Valor objetivo" /> 
+                            <ProgressIndicator id="conVl05l1" percentValue="100" displayValue="100 k USD" showValue="true" state="Information" displayOnly="true" /> 
+                            <Text id="conVl05t2" text="Mejor cotización" />  
+                            <ProgressIndicator id="conVl05l2" percentValue="75" displayValue="75 K USD" showValue="true" state="Success" displayOnly="true" /> 
+                        </layout:VerticalLayout>
+                    </uxap:headerContent> 
+                    <uxap:sections>
+                        <uxap:ObjectPageSection id="Op01" titleUppercase="false" title="2" showTitle="false">
+                            <uxap:subSections>
+                                <uxap:ObjectPageSubSection id="Op02" titleUppercase="false">
+                                    <uxap:blocks> 
+                                        <!-- <tab:Table id="table01comparar"
+                                            showNoData="true"
+                                            selectionMode="Single"
+                                            selectionBehavior="RowOnly"
+                                            visibleRowCount="7"
+                                            enableSelectAll="false" 
+                                            rows="{  path: 'myParam>/tbl_T_VISTA_MOVI' }" 
+                                            ariaLabelledBy="title" 
+                                            cellClick="rowSelectionChangeMovimiento">
+                                            <tab:extension>
+                                                <OverflowToolbar id="tab01Id006" style="Clear">
+                                                    <Title id="title" text="Cotizaciones "/>
+                                                    <ToolbarSpacer id="tab01Id007" /> 
+                                                    <Button id="tab01Id0011" icon="sap-icon://compare" text="Comparar" tooltip="Visualizar Compararción" press="onCompararC"/>  
+                                                    <Button id="tab01Id0012" icon="sap-icon://competitor" text="Conceder" tooltip="Conceder cotización" press="onPremiar"/>  
+                                                </OverflowToolbar>
+                                            </tab:extension>
+                                            <tab:columns>
+                                                <tab:Column id="table01Id001" sortProperty="DOC_MOVIMIENTO" filterProperty="DOC_MOVIMIENTO" autoResizable="true" width="auto">
+                                                    <Label id="table01Id001l" textAlign="Center" wrapping ="true"  text="Cita de proveedor" />
+                                                    <tab:template>  <Text id="table01Id001li" text="{myParam>DOC_MOVIMIENTO}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id002" sortProperty="GJAHR" filterProperty="GJAHR" autoResizable="true" width="auto">
+                                                    <Label id="table01Id002l" textAlign="Center" wrapping ="true"  text="Proveedor" />
+                                                    <tab:template> <Text id="table01Id002i" text="{myParam>GJAHR}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id003" sortProperty="FECHA_MOVIMIENTO" filterProperty="FECHA_MOVIMIENTO" autoResizable="true" width="auto">
+                                                    <Label id="table01Id003l" textAlign="Center" wrapping ="true"  text="Dirección" />
+                                                    <tab:template>  <Text id="table01Id003i" text="{myParam>FECHA_MOVIMIENTO}"  wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id004" sortProperty="ANLN1" filterProperty="ANLN1" autoResizable="true" width="auto">
+                                                    <Label id="table01Id004l" textAlign="Center" wrapping ="true"  text="Estado" />
+                                                    <tab:template>  <Text id="table01Id004i" text="{myParam>ANLN1}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id005" sortProperty="ANLN2" filterProperty="ANLN2" autoResizable="true" width="auto">
+                                                    <Label id="table01Id005l" textAlign="Center" wrapping ="true"  text="Valor neto de cotización total" />
+                                                    <tab:template> <Input id="table01Id005i" value="{myParam>ANLN2}"  /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id006" sortProperty="TXT50" filterProperty="TXT50" autoResizable="true" width="auto">
+                                                    <Label id="table01Id006l" textAlign="Center" wrapping ="true"  text="Fecha de cotización" />
+                                                    <tab:template> <Text id="table01Id006i" text="{myParam>TXT50}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="table01Id007" sortProperty="DESCRIPCION_SOCIEDAD" filterProperty="DESCRIPCION_SOCIEDAD" autoResizable="true" width="auto">
+                                                    <Label id="table01Id007l" textAlign="Center" wrapping ="true"  text="Artículos totalmente citados" />
+                                                    <tab:template> <Text id="table01Id007i" text="{myParam>BUKRS}" wrapping="false" /> </tab:template>
+                                                </tab:Column> 
+                                                <tab:Column id="table01Id008" sortProperty="DESCRIPCION_SOCIEDAD" filterProperty="DESCRIPCION_SOCIEDAD" autoResizable="true" width="auto">
+                                                    <Label id="table01Id008l" textAlign="Center" wrapping ="true"  text="Artículos de mejor precio" />
+                                                    <tab:template> <Text id="table01Id008i" text="{myParam>BUKRS}" wrapping="false" /> </tab:template>
+                                                </tab:Column> 
+                                            </tab:columns>
+                                        </tab:Table> -->
+                                        <Table id="idtab02"
+                                            selectionChange="onSelection"
+                                            mode="MultiSelect"
+                                            inset="false"
+                                            items="{ path: '/dataComparar'  }">
+                                            <headerToolbar>
+                                                <Toolbar  id="tab02Id005">
+                                                    <Title  id="tab02Id006" text="Cotizaciones" level="H2" />
+                                                    <ToolbarSpacer id="tab02Id007" /> 
+                                                    <Button id="tab02Id0011" icon="sap-icon://compare" text="Comparar" tooltip="Visualizar Compararción" press="onCompararC"/>  
+                                                    <Button id="tab02Id0012" icon="sap-icon://competitor" text="Conceder" tooltip="Conceder cotización" press="onPremiar"/>
+                                                </Toolbar>
+                                            </headerToolbar>
+                                            <columns>
+                                                <Column  id="tab02Id008">
+                                                    <Text  id="tab02Id008i" text="Cotización de proveedor" />
+                                                </Column>
+                                                <Column  id="tab02Id009" hAlign="Center"  minScreenWidth="Tablet"  demandPopin="true">
+                                                    <Text  id="tab02Id009i" text="Proveedor" />
+                                                </Column>
+                                                <Column  id="tab02Id010" minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                                                    <Text  id="tab02Id010i" text="Dirección" />
+                                                </Column>
+                                                <Column id="tab02Id011"  minScreenWidth="Tablet"  demandPopin="true" hAlign="Center">
+                                                    <Text id="tab02Id011i" text="Estado" />
+                                                </Column>
+                                                <Column id="tab02Id012" minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                                                    <Text id="tab02Id012i" text="Valor neto de cotización total" />
+                                                </Column>
+                                                <Column  id="tab02Id013" minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                                                    <Text  id="tab02Id013i" text="Fecha de cotización" />
+                                                </Column>
+                                                <Column  id="tab02Id014" minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                                                    <Text  id="tab02Id014i" text="Artículos totales de cotización" />
+                                                </Column>
+                                                <Column  id="tab02Id015" hAlign="End">
+                                                    <Text  id="tab02Id015i" text="Artículos de mejor precio " />
+                                                </Column>
+                                            </columns>
+                                            <items>
+                                                <ColumnListItem  id="tab02Id016" vAlign="Middle" type="Inactive">
+                                                    <cells>
+                                                        <Text  id="tab02Id017" text="{citaProv}" /> 
+                                                        <Text  id="tab02Id018" text="{provedor}" /> 
+                                                        <Text  id="tab02Id019" text="{direccion}" /> 
+                                                        <Text  id="tab02Id020" text="{estado}" /> 
+                                                        <ObjectStatus id="tab02Id021" text="{valorTotal} USD" state="Success" /> 
+                                                        <Text  id="tab02Id022" text="{fechaCot}" /> 
+                                                        <Text  id="tab02Id023" text="{totalArt}" /> 
+                                                        <Text  id="tab02Id034" text="{precioArt} USD" />  
+                                                    </cells>
+                                                </ColumnListItem>
+                                            </items>
+                                        </Table>
+                                    </uxap:blocks>
+                                </uxap:ObjectPageSubSection>
+                            </uxap:subSections>
+                        </uxap:ObjectPageSection>
+                    </uxap:sections> 
+                </uxap:ObjectPageLayout>
+            </Page>  
+        </content>
+    </Page>
+</mvc:View>

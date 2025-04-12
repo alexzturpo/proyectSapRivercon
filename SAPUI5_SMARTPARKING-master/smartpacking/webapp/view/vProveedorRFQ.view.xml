@@ -1,0 +1,106 @@
+ <mvc:View controllerName="sp.smartpacking.controller.vProveedorRFQ"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:layout="sap.ui.layout"   
+    xmlns:core="sap.ui.core"  
+    xmlns:tab="sap.ui.table" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:uxap="sap.uxap"
+    xmlns:fb="sap.ui.comp.filterbar"
+    >
+    <Page id="page" title="Criterios" showHeader="false" showNavButton="true" class="bg_imagen_blur"  navButtonPress=".onApp" >
+        <content>
+            <FlexBox id="flex_box_title" alignItems="Center" justifyContent="SpaceBetween" class="fondo_celeste">
+                <ImageContent src="../img/sap-logo.svg" class="sapUiSmallMarginBottom"/>
+
+                <ImageContent src="../img/smart_packing_logo.png" class="sapUiSmallMarginBottom"/>
+
+                <ToolbarSpacer /> 
+
+                <!-- <MenuButton icon="sap-icon://customer" id="menu_but_panel_title" text="Bienvenido" class="texto_blanco opacidad_transparente sapUiSmallMarginEnd">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                    <Menu>
+                        <MenuItem text="Log out" icon="sap-icon://log" press="onPress_logout" />
+                    </Menu>
+                </MenuButton> -->
+            </FlexBox>
+
+            <FlexBox class="blanco" alignItems="Center" justifyContent="Start">
+                    <Button id="back_itle" icon="sap-icon://nav-back" press=".onApp"/>  
+                    <Label class="title_negrita sapUiSmallMargin" text="REGISTRO DE PRODUCTO TERMINADO" />
+            </FlexBox>
+            <Panel width="100%" class="sapUiNoContentPadding opacidad_transparente">
+                <VBox class="opacidad_transparente">
+                    <tab:Table id="table01comparar"
+                    showNoData="true"
+                    selectionMode="Single"
+                    selectionBehavior="RowOnly"
+                    visibleRowCount="15"
+                    enableSelectAll="false" 
+                    rows="{  path: 'Model_Table_Registro_ProduccionPT>/value' }" 
+                    ariaLabelledBy="title" 
+                    cellClick="rowSelectionChangeMovimiento">
+                        <tab:extension>
+                            <OverflowToolbar>
+                                <!-- <SearchField width="10rem" class="sapUiSmallMargin" /> -->
+                                <DatePicker id="pickerTb1" width="10rem" placeholder="Ingrese" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy"/> 
+                                <ComboBox id="idAlmacentb" items="{ path: 'myParam>/Model_cmb_almacen'}" placeholder="- Almacen -" required="true"  class="opacidad_transparente">
+                                    <core:Item key="{myParam>LGORT}" text="{myParam>LGORT} - {myParam>LGOBE}"/>
+                                </ComboBox>
+                                <Button icon="sap-icon://search" text="Buscar" press="OnBuscarResgistroPT"/>   
+                                <ToolbarSpacer /> 
+                                <Button icon="sap-icon://compare" text="Nuevo Registro de Producto Terminado" press="onCompararC2"/>   
+                                <Button icon="sap-icon://download" text="Descargar tabla" press="onDownloadTable"/>   
+                            </OverflowToolbar>
+                        </tab:extension>
+                        <tab:columns>
+                            <tab:Column autoResizable="true" width="auto">
+                                <Label textAlign="Center" wrapping ="true"  text="MATERIAL" />
+                                <tab:template>  <Text text="{Model_Table_Registro_ProduccionPT>MATNR}" wrapping="false" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column autoResizable="true" width="auto">
+                                <Label textAlign="Center" wrapping ="true"  text="ALMACEN" />
+                                <tab:template> <Text text="{Model_Table_Registro_ProduccionPT>ZCOD_VOL}" wrapping="false" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column autoResizable="true" width="auto">
+                                <Label textAlign="Center" wrapping ="true"  text="CANTIDAD" />
+                                <tab:template>  <Text text="{Model_Table_Registro_ProduccionPT>MENGE}"  wrapping="false" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column autoResizable="true" width="auto">
+                                <Label textAlign="Center" wrapping ="true"  text="COD.PALLET" />
+                                <tab:template>  <Text text="{Model_Table_Registro_ProduccionPT>ZCOD_VOL}"  wrapping="false" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column autoResizable="true" width="auto">
+                                <Label textAlign="Center" wrapping ="true"  text="CLIENTE" />
+                                <tab:template>  <Text text="{Model_Table_Registro_ProduccionPT>WERKS}" wrapping="false" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column autoResizable="true" width="auto">
+                                <Label textAlign="Center" wrapping ="true"  text="ETIQUETA" />
+                                <tab:template> <Text text="{Model_Table_Registro_ProduccionPT>WERKS}" wrapping="false"/> </tab:template>
+                            </tab:Column>
+                            <tab:Column autoResizable="true" width="auto">
+                                <Label textAlign="Center" wrapping ="true"  text="PEDIDO" />
+                                <tab:template> <Text text="{Model_Table_Registro_ProduccionPT>WERKS}" wrapping="false" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column autoResizable="true" width="auto">
+                                <Label textAlign="Center" wrapping ="true"  text="LOTE DE PRD." />
+                                <tab:template> <Text text="{Model_Table_Registro_ProduccionPT>WERKS}" wrapping="false" /> </tab:template>
+                            </tab:Column>
+                        </tab:columns>
+                    </tab:Table>
+                </VBox>
+            </Panel>    
+            
+        </content>
+        <footer>
+			<OverflowToolbar>
+					<ToolbarSpacer />
+					<Button id="tab1" icon="sap-icon://save" text="Registrar" tooltip="Guardar" press=""/>  
+                    <Button id="tab2" icon="sap-icon://cancel" text="Cancelar" tooltip="Cancelar" press=""/>
+			</OverflowToolbar>
+		</footer>
+    </Page>
+</mvc:View>

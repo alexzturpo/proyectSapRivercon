@@ -1,0 +1,194 @@
+<mvc:View
+    controllerName="sm.ui5smartagri.controller.pCampo"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+
+    xmlns:tnt="sap.tnt" 
+    xmlns:core="sap.ui.core" 
+    xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}" showHeader="false">
+                    <content>
+                        <tnt:ToolHeader id="th1" height="50px">
+                            <Image id="img1" src="./img/logoP.png" height="40px"/>
+                            <ToolbarSpacer id="tb1"/> 
+                            <Button id="bnt1" icon="sap-icon://log" type="Transparent" press="logoff" tooltip="Cerrar sesión"/>
+                        </tnt:ToolHeader>
+                        <Toolbar id="toolbarid1" height="auto">
+                            <HBox id="hbox1">
+                                <Button id="btnBack" width="100%" icon="sap-icon://nav-back" press="pressback"/> 
+                            </HBox>
+                            <ToolbarSpacer id="espacio1"/><ToolbarSpacer id="espacio2"/>
+                        </Toolbar>
+                        <VBox id="vb1"  class="sapUiSmallMargin">
+                            
+                            <f:Form id="Form1" editable="true">
+                                <f:title>
+                                    <core:Title  id="title2" text="Parametro de seleccion" />
+                                </f:title>
+                                <f:layout>
+                                    <f:ResponsiveGridLayout id="grid3" 
+                                        labelSpanXL="3"
+                                        labelSpanL="3"
+                                        labelSpanM="3"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="4"
+                                        emptySpanL="4"
+                                        emptySpanM="4"
+                                        emptySpanS="0"
+                                        columnsXL="1"
+                                        columnsL="1"
+                                        columnsM="1"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer id="formcontainer" >
+                                        <f:formElements>
+                                            <f:FormElement id="forme1" label="Sociedad">
+                                                <f:fields>
+                                                    <Input value="8410" id="name"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement id="forme2" label="Campo">
+                                                <f:fields>
+                                                    <Input id="imp1" value="P01-05-1008-01" /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement id="forme3" label="Ciclo">
+                                                <f:fields> 
+                                                    <Input id="imp2" value="0201" />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement id="forme4" label="Version">
+                                                <f:fields> 
+                                                    <Input id="imp3" value="" />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement id="forme5" label="Fecha actual (Desde)">
+                                                <f:fields>
+                                                    <DatePicker id="fechainicial" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy" placeholder="Ingresar fecha" required="true"/>  
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement id="forme6" label="Fecha actual (Hasta)">
+                                                <f:fields> 
+                                                    <DatePicker id="fechafinal" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy" placeholder="Ingresar fecha" required="true"/> 
+                                                </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                </f:formContainers>
+                            </f:Form>
+                            <f:Form id="Form2" editable="true">
+                                <f:title>
+                                    <core:Title id="title3" text="Parametro de carga masiva" />
+                                </f:title>
+                                <f:layout>
+                                    <f:ResponsiveGridLayout id="grid2" 
+                                        labelSpanXL="3"
+                                        labelSpanL="3"
+                                        labelSpanM="3"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="4"
+                                        emptySpanL="4"
+                                        emptySpanM="4"
+                                        emptySpanS="0"
+                                        columnsXL="1"
+                                        columnsL="1"
+                                        columnsM="1"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer id="formcont5">
+                                        <f:formElements>
+                                            <f:FormElement id="formel2" >
+                                                <f:fields>
+                                                    <CheckBox id="check2" text="Carga masiva" />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement id="formel3"  label="Ruta elementos PEP(Cab.)">
+                                                <f:fields>
+                                                    <Input value="C:\" id="form2"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                             
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                </f:formContainers>
+                            </f:Form>
+                            <f:Form id="Form3" editable="true">
+                                <f:title>
+                                    <core:Title id="title5" text="Parametro de actualización masiva" />
+                                </f:title>
+                                <f:layout>
+                                    <f:ResponsiveGridLayout id="gridl2"
+                                        labelSpanXL="3"
+                                        labelSpanL="3"
+                                        labelSpanM="3"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="4"
+                                        emptySpanL="4"
+                                        emptySpanM="4"
+                                        emptySpanS="0"
+                                        columnsXL="1"
+                                        columnsL="1"
+                                        columnsM="1"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer id="fcontainer3">
+                                        <f:formElements>
+                                            <f:FormElement id="felem2">
+                                                <f:fields>
+                                                    <CheckBox id="check6" text="Actualización de precio" />
+                                                </f:fields>
+                                            </f:FormElement>  
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                </f:formContainers>
+                            </f:Form>
+                            <f:Form id="Form4" > 
+                                <f:layout>
+                                    <f:ResponsiveGridLayout id="grid5"
+                                        labelSpanXL="3"
+                                        labelSpanL="3"
+                                        labelSpanM="3"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="4"
+                                        emptySpanL="4"
+                                        emptySpanM="4"
+                                        emptySpanS="0"
+                                        columnsXL="1"
+                                        columnsL="1"
+                                        columnsM="1"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer id="cont3">
+                                        <f:formElements>
+                                            <f:FormElement id="felem4">
+                                                <f:fields>
+                                                    	<Button id="btn" icon="sap-icon://shortcut" text="Ir"  press="pressIr" /> 
+                                                </f:fields>
+                                            </f:FormElement>  
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                </f:formContainers>
+                            </f:Form>
+                        </VBox>
+                         
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

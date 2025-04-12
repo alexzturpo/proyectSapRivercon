@@ -1,0 +1,199 @@
+<mvc:View controllerName="appsp.smartprovider.controller.vAdministrarC"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:layout="sap.ui.layout"   
+    xmlns:core="sap.ui.core"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:tab="sap.ui.table" 
+    >
+    <Page id="page" title="Criterios" showHeader="false" showNavButton="true"  navButtonPress=".onApp" > 
+        <content> 
+            <tnt:ToolHeader id="th1">   
+                <Image id="img001" class="sapUiTinyMargin" src="test-resources/sap/tnt/images/SAP_Logo.png" />
+                <ToolbarSpacer id="space1"/>  
+                    <Title id="tituloid3" level="H3" text="SMART PROVIDER" /> 
+                <ToolbarSpacer id="space2"/>  
+                <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
+            </tnt:ToolHeader>
+
+            <Page id="pageCabecera001" titleLevel="H2"  class="altura"
+                title="Vista Administrativa de cotizaciones" navButtonPress=".onApp" showNavButton="true" >
+                <headerContent>  
+                    <Button id="btn5" icon="sap-icon://action-settings" type="Transparent"/> 
+                </headerContent>
+                <layout:VerticalLayout id="vmainId005" class="sapUiMediumMarginEnd" width="100%">
+                    <fb:FilterBar id="Fb01Id001" reset="onReset" search="onSearch" showRestoreButton="true" >
+                        <fb:filterGroupItems>
+                            <fb:FilterGroupItem id="Fbi01Id000" groupName="G0" name="A0" label="Estado de edición" partOfCurrentVariant="true" visibleInFilterBar="true">
+                                <fb:control> 
+                                    <SearchField id="Fbi01Id000i" width="100%" />
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem id="Fbi01Id001" groupName="G0" name="A" label="Estado de edición" partOfCurrentVariant="true" visibleInFilterBar="true">
+                                <fb:control>
+                                    <ComboBox id="Fbi01Id001i"  selectedKey="001">
+                                        <items>
+                                            <core:Item id="Fbi01Id001ik1"  key="001" text="All"/>
+                                            <core:Item id="Fbi01Id001ik2"  key="002" text="valor 1"/>
+                                            <core:Item id="Fbi01Id001ik3"  key="003" text="valor 2"/>
+                                        </items>
+                                    </ComboBox> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem id="Fbi01Id002" groupName="G0" name="B" label="Cotización del proveedor"   partOfCurrentVariant="true" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input  id="Fbi01Id002i" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem id="Fbi01Id003" groupName="G1" groupTitle="Group1" name="A1" label="RFQ" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input id="Fbi01Id003i" value="70000823" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem id="Fbi01Id004" groupName="G1" groupTitle="Group1" name="B1" label="Tipo RFQ" visibleInFilterBar="true">
+                                <fb:control>
+                                    <ComboBox id="Fbi01Id004i"  selectedKey="001">
+                                        <items>
+                                            <core:Item id="Fbi01Id004k1" key="001" text="Seleecione"/>
+                                            <core:Item id="Fbi01Id004k2" key="002" text="valor 1"/>
+                                            <core:Item id="Fbi01Id004k3" key="003" text="valor 2"/>
+                                        </items>
+                                    </ComboBox> 
+                                </fb:control>
+                            </fb:FilterGroupItem> 
+
+                            <fb:FilterGroupItem  id="Fbi01Id006" groupName="G2" groupTitle="Group2" name="A2" label="Proveedor" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input  id="Fbi01Id006i" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem  id="Fbi01Id007" groupName="G2" groupTitle="Group2" name="B2" label="Codigo de compañia" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input  id="Fbi01Id007i" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem  id="Fbi01Id005" groupName="G2" groupTitle="Group2" name="C2" label="Tipo de cotización" visibleInFilterBar="true">
+                                <fb:control>
+                                    <ComboBox  id="Fbi01Id005i" selectedKey="001">
+                                        <items>
+                                            <core:Item  id="Fbi01Id005k1" key="001" text="Seleecione"/>
+                                            <core:Item  id="Fbi01Id005k2" key="002" text="valor 1"/>
+                                            <core:Item  id="Fbi01Id005k3" key="003" text="valor 2"/>
+                                        </items>
+                                    </ComboBox> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem  id="Fbi01Id011" groupName="G2" groupTitle="Group2" name="D2" label="Estado" visibleInFilterBar="true">
+                                <fb:control>
+                                    <ComboBox  id="Fbi01Id011i" selectedKey="001">
+                                        <items>
+                                            <core:Item  id="Fbi01Id011k1" key="001" text="Seleecione"/>
+                                            <core:Item  id="Fbi01Id011k2" key="002" text="valor 1"/>
+                                            <core:Item  id="Fbi01Id011k3" key="003" text="valor 2"/>
+                                        </items>
+                                    </ComboBox> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+
+                            <fb:FilterGroupItem  id="Fbi01Id008" groupName="G2" groupTitle="Group2" name="E2" label="Organización de compras" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input  id="Fbi01Id008i" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem  id="Fbi01Id009" groupName="G2" groupTitle="Group2" name="F2" label="Compras de grupo" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input  id="Fbi01Id009i" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem  id="Fbi01Id010" groupName="G2" groupTitle="Group2" name="G2" label="Creado en" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input  id="Fbi01Id010i" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem  id="Fbi01Id012" groupName="G2" groupTitle="Group2" name="H2" label="Fecha de envío de cotización" visibleInFilterBar="true">
+                                <fb:control>
+                                    <Input  id="Fbi01Id012i" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                        </fb:filterGroupItems>
+
+                    </fb:FilterBar>
+                </layout:VerticalLayout> 
+                <tab:Table id="table01"
+                    showNoData="true"
+                    selectionMode="MultiToggle" 
+                    visibleRowCount="10"
+                    enableSelectAll="false" 
+                    rows="{  path: '/dataAdminCoti' }" 
+                    ariaLabelledBy="title" 
+                    cellClick="rowSelectionChangeMovimiento">
+                    <tab:extension>
+                        <OverflowToolbar id="vmainId006" style="Clear">
+                            <Title id="title" text="Cotizaciones de proveedores"/>
+                            <!-- <Button id="idVisualizarTodo" text="Visualizar todo"  width="auto" icon="sap-icon://refresh" press="refrescarTabla" type="Emphasized"/> -->
+                            <ToolbarSpacer id="vmainId007" />
+                            <Button id="vmainId006b" text="Crear orden de compra" press="onCrearOrden" enabled="true"/>   
+                            <Button id="vmainId007b" text="Borrar" press="excelDownload" enabled="false"/>   
+                            <Button id="vmainId008" text="Información" press="onIngresar" enabled="true"/> 
+                            <Button id="vmainId0011" icon="sap-icon://action-settings" tooltip="Visualizar tablas" press="AddFilterPress"/> 
+                            <Button id="vmainId0012" icon="sap-icon://excel-attachment" tooltip="Descarga en excel" press="excelDownload"/> 
+                        </OverflowToolbar>
+                    </tab:extension>
+                    <tab:columns>
+                        <tab:Column id="table01Id001" sortProperty="cotiP" filterProperty="cotiP" autoResizable="true" width="auto">
+                            <Label id="table01Id001l" textAlign="Center" wrapping ="true"  text="Cotizacion del proveedor" />
+                            <tab:template>  <Text id="table01Id001li" text="{cotiP}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="table01Id002" sortProperty="RFQ" filterProperty="RFQ" autoResizable="true" width="auto">
+                            <Label id="table01Id002l" textAlign="Center" wrapping ="true"  text="RFQ" />
+                            <tab:template> <Text id="table01Id002i" text="{RFQ}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="table01Id003" sortProperty="RFQdescrip" filterProperty="RFQdescrip" autoResizable="true" width="auto">
+                            <Label id="table01Id003l" textAlign="Center" wrapping ="true"  text="RFQ descripción" />
+                            <tab:template>  <Text id="table01Id003i" text="{RFQdescrip}"  wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="table01Id004" sortProperty="proveedor" filterProperty="proveedor" autoResizable="true" width="auto">
+                            <Label id="table01Id004l" textAlign="Center" wrapping ="true"  text="Proveedor" />
+                            <tab:template>  <Text id="table01Id004i" text="{proveedor}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="table01Id005" sortProperty="totalCoti" filterProperty="totalCoti" autoResizable="true" width="auto">
+                            <Label id="table01Id005l" textAlign="Center" wrapping ="true"  text="Valor neto total de cotización" />
+                            <tab:template> <Text id="table01Id005i" text="{totalCoti}"  /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="table01Id006" sortProperty="fechaCoti" filterProperty="fechaCoti" autoResizable="true" width="auto">
+                            <Label id="table01Id006l" textAlign="Center" wrapping ="true"  text="Fecha límite de cotización" />
+                            <tab:template> <Text id="table01Id006i" text="{fechaCoti}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="table01Id007" sortProperty="estado" filterProperty="estado" autoResizable="true" width="auto">
+                            <Label id="table01Id007l" textAlign="Center" wrapping ="true"  text="Estado" />
+                            <tab:template> <Text id="table01Id007i" text="{estado}" wrapping="false" /> </tab:template>
+                        </tab:Column> 
+                        <tab:Column id="table01Id011" sortProperty="fechaCotiLimite" filterProperty="fechaCotiLimite" autoResizable="true" width="auto">
+                            <Label id="table01Id011l" textAlign="Center" wrapping ="true"  text="Fecha de envío de cotización" />
+                            <tab:template> <Text id="table01Id011i" text="{fechaCotiLimite}" wrapping="false" /> </tab:template>
+                        </tab:Column> 
+                        <tab:Column id="table01Id008" sortProperty="validoDesde" filterProperty="validoDesde" autoResizable="true" width="auto">
+                            <Label id="table01Id008l" textAlign="Center" wrapping ="true"  text="Válido desde" />
+                            <tab:template> <Text id="table01Id008i" text="{validoDesde}" wrapping="false" /> </tab:template>
+                        </tab:Column> 
+                        <tab:Column id="table01Id009" sortProperty="validoHasta" filterProperty="validoHasta" autoResizable="true" width="auto">
+                            <Label id="table01Id009l" textAlign="Center" wrapping ="true"  text="Válido hasta" />
+                            <tab:template> <Text id="table01Id009i" text="{validoHasta}" wrapping="false" /> </tab:template>
+                        </tab:Column> 
+                        <tab:Column id="table01Id0010" sortProperty="valorObj" filterProperty="valorObj" autoResizable="true" width="auto">
+                            <Label id="table01Id0010l" textAlign="Center" wrapping ="true"  text="Valor objetivo" />
+                            <tab:template> <Text id="table01Id0010i" text="{valorObj}" wrapping="false" /> </tab:template>
+                        </tab:Column> 
+                    </tab:columns>
+                </tab:Table>
+            </Page> 
+             
+
+        </content>
+    </Page>
+</mvc:View>

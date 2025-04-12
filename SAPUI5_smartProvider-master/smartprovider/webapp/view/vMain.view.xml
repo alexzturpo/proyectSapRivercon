@@ -1,0 +1,58 @@
+<!-- <mvc:View controllerName="appsp.smartprovider.controller.vMain"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content />
+    </Page>
+</mvc:View> -->
+<mvc:View controllerName="appsp.smartprovider.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:layout="sap.ui.layout"
+    >
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}" showHeader="false">
+                    <content> 
+                        <tnt:ToolHeader id="th1">  
+                            <Image id="img001" class="sapUiTinyMargin" src="test-resources/sap/tnt/images/SAP_Logo.png" />
+                            <ToolbarSpacer id="space1"/>  
+                                <Title id="tituloid3" level="H3" text="SMART PROVIDER" /> 
+                            <ToolbarSpacer id="space2"/>  
+                            <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
+                        </tnt:ToolHeader>
+                        
+                        <layout:VerticalLayout id="id0001" class="sapUiResponsiveMargin">
+                            <layout:HorizontalLayout id="id0002" allowWrapping="true">  
+                                <GenericTile id="id0003" class="sapUiTinyMargin" header="Administrar (RFQ)" press="onVmain">
+                                    <TileContent id="id0004" > 
+                                        <ImageContent id="id0008" src="sap-icon://manager-insight"/>
+                                    </TileContent>
+                                </GenericTile> 
+                                <GenericTile id="id0003a" class="sapUiTinyMargin" header="Proveedor (RFQ) " press="onVproveedores">
+                                    <TileContent id="id0004a" > 
+                                        <ImageContent id="id0008a" src="sap-icon://customer-financial-fact-sheet"/>
+                                    </TileContent>
+                                </GenericTile> 
+                                <GenericTile id="id0005" class="sapUiTinyMargin" header="Comparar cotizaciones de proveedores" press="onComparar">
+                                    <TileContent id="id0006" >
+                                        <ImageContent id="id0007" src="sap-icon://compare-2"/>
+                                    </TileContent>
+                                </GenericTile> 
+                                <GenericTile id="id0008gt" class="sapUiTinyMargin" header="Administrar cotizaciones de proveedores" press="onAdministrarC">
+                                    <TileContent id="id0009" >
+                                        <ImageContent id="id00010" src="sap-icon://folder-2"/>
+                                    </TileContent>
+                                </GenericTile> 
+                            </layout:HorizontalLayout> 
+                        </layout:VerticalLayout>
+
+					</content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

@@ -1,0 +1,180 @@
+<mvc:View controllerName="appsp.smartprovider.controller.vProveedorRFQ"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:layout="sap.ui.layout"   
+    xmlns:core="sap.ui.core"  
+    xmlns:tab="sap.ui.table" 
+    xmlns:f="sap.ui.layout.form"
+    >
+    <Page id="page" title="Criterios" showHeader="false" showNavButton="true"  navButtonPress=".onApp" >
+        <headerContent>
+            <Button id="btn001" icon="sap-icon://action" tooltip="Share" />
+        </headerContent>
+        <content> 
+            <tnt:ToolHeader id="th1">  
+                <!-- <Button id="idNavMenu2" icon="sap-icon://nav-back" press="onApp"/>   -->
+                <Image id="img001" class="sapUiTinyMargin" src="test-resources/sap/tnt/images/SAP_Logo.png" />
+                <ToolbarSpacer id="space1"/>  
+                    <Title id="tituloid3" level="H3" text="SMART PROVIDER" /> 
+                <ToolbarSpacer id="space2"/>  
+                <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
+            </tnt:ToolHeader>
+            <Page id="pageCabecera001" titleLevel="H2"  class="altura"
+                title="Vista Proveedores RFQ" navButtonPress=".onApp" showNavButton="true" >
+                <headerContent>
+                    <Button id="btn" text="Comleto" press="onAppRealcionadas"/>  
+                    <Button id="btn1" text="Cancelar" press="onAppRealcionadas"/>  
+                    <Button id="btn2" text="Copiar" press="onAppRealcionadas"/>  
+                    <Button id="btn3" text="Hotorial" press="onAppRealcionadas"/>  
+                    <Button id="btn4" text="aplicaciones relacionadas" press="onAppRealcionadas"/>  
+                    <Button id="btn5" icon="sap-icon://action" type="Transparent"/> 
+                </headerContent>
+                <IconTabBar id="idIconTabBarInlineMode"
+                        headerMode="Inline"
+                        expanded="{device>/isNoPhone}"
+                        class="sapUiResponsiveContentPadding">
+                        <items>
+                            <IconTabFilter id="iconTabId010"
+                                text="Licitación"
+                                key="tab1" >
+                                <VBox id="vbox01" class="sapUiResponsiveMargin " >
+                                    <tab:Table id="vRFQ_table02"
+                                        showNoData="true"
+                                        selectionMode="MultiToggle" 
+                                        visibleRowCount="10"
+                                        enableSelectAll="false" 
+                                        rows="{  path: '/FRQpublicados2' }" 
+                                        ariaLabelledBy="title" 
+                                        cellClick="rowSelectionChangeMovimiento">
+                                        <tab:extension>
+                                            <OverflowToolbar id="tab02Id006" style="Clear">
+                                                <Title id="tab02title" text="Licitaciones"/>
+                                                <!-- <Button id="idVisualizarTodo" text="Visualizar todo"  width="auto" icon="sap-icon://refresh" press="refrescarTabla" type="Emphasized"/> -->
+                                                <ToolbarSpacer id="tab02Id007" />
+                                                <Button id="tab02Id010" text="Crear cotización" press="onCotizacion"/>   
+                                                <Button id="tab02Id011" icon="sap-icon://action-settings" type="Transparent" tooltip="Visualizar tablas" press="AddFilterPress"/>  
+                                            </OverflowToolbar>
+                                        </tab:extension> 
+                                        <tab:columns>
+                                            <tab:Column id="tab02Id013c" sortProperty="RFQ" filterProperty="RFQ" autoResizable="true" width="auto">
+                                                <Label id="tab02Id013" textAlign="Center" wrapping ="true"  text="RFQ" />
+                                                <tab:template>  <Text id="tab02Id013i" text="{RFQ}" wrapping="false" /> </tab:template>
+                                            </tab:Column>
+                                            <tab:Column id="tab02Id014c" sortProperty="RFQdesc" filterProperty="RFQdesc" autoResizable="true" width="auto">
+                                                <Label id="tab02Id014" textAlign="Center" wrapping ="true"  text="RFQ Descripción" />
+                                                <tab:template> <Text id="tab02Id014i" text="{RFQdesc}" wrapping="false" /> </tab:template>
+                                            </tab:Column>
+                                            <tab:Column id="tab02Id015c" sortProperty="codigoCompania" filterProperty="codigoCompania" autoResizable="true" width="auto">
+                                                <Label id="tab02Id015" textAlign="Center" wrapping ="true"  text="Codigo de compañia" />
+                                                <tab:template>  <Text id="tab02Id015i" text="{codigoCompania}"  wrapping="false" /> </tab:template>
+                                            </tab:Column>
+                                            <tab:Column id="tab02Id016c" sortProperty="oCompra" filterProperty="oCompra" autoResizable="true" width="auto">
+                                                <Label id="tab02Id016" textAlign="Center" wrapping ="true"  text="Organización de compras" />
+                                                <tab:template>  <Text id="tab02Id016i" text="{oCompra}" wrapping="false" /> </tab:template>
+                                            </tab:Column>
+                                            <tab:Column id="tab02Id017c" sortProperty="grupoCompra" filterProperty="grupoCompra" autoResizable="true" width="auto">
+                                                <Label id="tab02Id017" textAlign="Center" wrapping ="true"  text="Grupo de compras" />
+                                                <tab:template> <Text id="tab02Id017i" text="{grupoCompra}" wrapping="false" /> </tab:template>
+                                            </tab:Column> 
+                                            <tab:Column id="tab02Id019c" sortProperty="fechaLimite" filterProperty="fechaLimite" autoResizable="true" width="auto">
+                                                <Label id="tab02Id019" textAlign="Center" wrapping ="true"  text="Fecha límite de cotización" />
+                                                <tab:template> <Text id="tab02Id019i" text="{fechaLimite}" wrapping="false" /> </tab:template>
+                                            </tab:Column>
+                                            <tab:Column id="tab02Id020c" sortProperty="estado" filterProperty="estado" autoResizable="true" width="auto">
+                                                <Label id="tab02Id020" textAlign="Center" wrapping ="true"  text="Estado" />
+                                                <tab:template> <Text id="tab02Id020i" text="{estado}" wrapping="false" /> </tab:template>
+                                            </tab:Column> 
+                        </tab:columns>
+                                    </tab:Table>
+                                </VBox>
+                            </IconTabFilter>
+                            <IconTabFilter id="iconTabId011"
+                                text="Cotización"
+                                key="tab2" >
+                                <VBox id="vbox02" class="sapUiResponsiveMargin " >
+                                    <tab:Table id="vRFQ_table03"
+                                        showNoData="true"
+                                        selectionMode="Single"
+                                        selectionBehavior="RowOnly"
+                                        visibleRowCount="10"
+                                        enableSelectAll="false" 
+                                        rows="{  path: '/tbCotizacion' }" 
+                                        ariaLabelledBy="title" 
+                                        cellClick="rowSelectionChangeMovimiento">
+                                        <tab:extension>
+                                            <OverflowToolbar id="tab03Id006" style="Clear">
+                                                <Title id="tab03title" text="Licitaciones"/>
+                                                <!-- <Button id="idVisualizarTodo" text="Visualizar todo"  width="auto" icon="sap-icon://refresh" press="refrescarTabla" type="Emphasized"/> -->
+                                                <ToolbarSpacer id="tab03Id007" />
+                                                <!-- <Button id="tab03Id010" text="Crear cotización" press="onCotizacion"/>    -->
+                                                <Button id="tab03Id011" icon="sap-icon://action-settings" type="Transparent" tooltip="Visualizar tablas" press="AddFilterPress"/>  
+                                            </OverflowToolbar>
+                                        </tab:extension>
+                                        <tab:columns>
+                                            <tab:Column id="tab03Id01" sortProperty="citaProvT" filterProperty="citaProvT" autoResizable="true" width="10rem">
+                                                <Label id="tab03Id01l" textAlign="Center" wrapping ="true"  text="Cotización de proveedor" />
+                                                <tab:template>
+                                                    <ObjectIdentifier id="tab03Id001i" title="{citaProvT}" text="{citaProvC}" titleActive="true" titlePress="titleClicked"/>
+                                                </tab:template>
+                                            </tab:Column>
+                                            <tab:Column id="tab03Id02" sortProperty="citaT" filterProperty="citaT" autoResizable="true" width="10rem">
+                                                <Label id="tab03Id02l" textAlign="Center" wrapping ="true"  text="Cotización" />
+                                                <tab:template> 
+                                                    <ObjectIdentifier id="tab03Id002i" title="{citaT}" text="{citaC}" titleActive="true" titlePress="titleClicked"/> 
+                                                </tab:template>
+                                            </tab:Column>
+                                            <tab:Column id="tab03Id03" sortProperty="valorNeto" filterProperty="valorNeto" autoResizable="true" width="auto">
+                                                <Label id="tab03Id03l" textAlign="Center" wrapping ="true"  text="Valor Neto" />
+                                                <tab:template>  <Text id="tab03Id003i" text="{valorNeto}"  wrapping="false" /> </tab:template>
+                                            </tab:Column>
+                                            <tab:Column id="tab03Id04" sortProperty="estado" filterProperty="estado" autoResizable="true" width="auto">
+                                                <Label id="tab03Id04l" textAlign="Center" wrapping ="true"  text="Estado" />
+                                                <tab:template>  <Text id="tab03Id04i" text="{estado}" wrapping="false" /> </tab:template>
+                                            </tab:Column> 
+                                            <tab:Column id="tab03Id05" sortProperty="diaEntrega" filterProperty="diaEntrega" autoResizable="true" width="auto">
+                                                <Label id="tab03Id05l" textAlign="Center" wrapping ="true"  text="Día de entrega" />
+                                                <tab:template>  <Text id="tab03Id05i" text="{diaEntrega}" wrapping="false" /> </tab:template>
+                                            </tab:Column> 
+                                            <tab:Column id="tab03Id06" sortProperty="creadoPor" filterProperty="creadoPor" autoResizable="true" width="auto">
+                                                <Label id="tab03Id06l" textAlign="Center" wrapping ="true"  text="Creado por" />
+                                                <tab:template>  <Text id="tab03Id06i" text="{creadoPor}" wrapping="false" /> </tab:template>
+                                            </tab:Column> 
+                                            <tab:Column id="tab03Id07" sortProperty="finComer" filterProperty="finComer" autoResizable="true" width="auto">
+                                                <Label id="tab03Id07l" textAlign="Center" wrapping ="true"  text="Fines comerciales" />
+                                                <tab:template>  <Text id="tab03Id07i" text="{finComer}" wrapping="false" /> </tab:template>
+                                            </tab:Column> 
+                                            <tab:Column id="tab03Id08" sortProperty="nombreCreador" filterProperty="nombreCreador" autoResizable="true" width="auto">
+                                                <Label id="tab03Id08l" textAlign="Center" wrapping ="true"  text="Nombre del creador" />
+                                                <tab:template>  <Text id="tab03Id08i" text="{nombreCreador}" wrapping="false" /> </tab:template>
+                                            </tab:Column> 
+                                            <tab:Column id="tab03Id09" sortProperty="creadoEn" filterProperty="creadoEn" autoResizable="true" width="auto">
+                                                <Label id="tab03Id09l" textAlign="Center" wrapping ="true"  text="Creado en" />
+                                                <tab:template>  <Text id="tab03Id09i" text="{creadoEn}" wrapping="false" /> </tab:template>
+                                            </tab:Column> 
+                                            <tab:Column id="tab03Id10" sortProperty="pais" filterProperty="pais" autoResizable="true" width="auto">
+                                                <Label id="tab03Id10l" textAlign="Center" wrapping ="true"  text="Pais" />
+                                                <tab:template>  <Text id="tab03Id10i" text="{pais}" wrapping="false" /> </tab:template>
+                                            </tab:Column> 
+                                            <tab:Column id="tab03Id11" sortProperty="tipoDoc" filterProperty="tipoDoc" autoResizable="true" width="auto">
+                                                <Label id="tab03Id11l" textAlign="Center" wrapping ="true"  text="Tipo de documento" />
+                                                <tab:template>  <Text id="tab03Id11i" text="{tipoDoc}" wrapping="false" /> </tab:template>
+                                            </tab:Column> 
+                                            <tab:Column id="tab03Id12" sortProperty="nombre" filterProperty="nombre" autoResizable="true" width="auto">
+                                                <Label id="tab03Id112" textAlign="Center" wrapping ="true"  text="Nombre" />
+                                                <tab:template>  <Text id="tab03Id12i" text="{nombre}" wrapping="false" /> </tab:template>
+                                            </tab:Column> 
+                                            <tab:Column id="tab03Id13" sortProperty="RFQ" filterProperty="RFQ" autoResizable="true" width="auto">
+                                                <Label id="tab03Id113" textAlign="Center" wrapping ="true"  text="RFQ" />
+                                                <tab:template>  <Text id="tab03Id13i" text="{RFQ}" wrapping="false" /> </tab:template>
+                                            </tab:Column> 
+                                        </tab:columns>
+                                    </tab:Table>
+                                </VBox>
+                            </IconTabFilter>
+                        </items>
+                </IconTabBar> 
+            </Page>  
+        </content>
+    </Page>
+</mvc:View>

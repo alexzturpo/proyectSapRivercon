@@ -1,0 +1,197 @@
+{
+  "_version": "1.40.0",
+  "sap.app": {
+    "id": "sm.ui5smartagri",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.7.1",
+      "toolsId": "c9d52875-7e3f-4ded-9b09-437949a1c0f5"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.102.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "sm.ui5smartagri.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "sm.ui5smartagri.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RoutevMain",
+          "pattern": ":?query:",
+          "target": [  "TargetvMain" ]
+        },
+        {
+            "name": "parteDiario",
+            "pattern": "parteDiario",
+            "titleTarget": "parteDiario",
+            "target": "parteDiario"
+        } ,
+        {
+            "name": "pCampo",
+            "pattern": "pCampo",
+            "titleTarget": "pCampo",
+            "target": "pCampo"
+        },
+        {
+            "name": "pCampoCarga",
+            "pattern": "pCampoCarga",
+            "titleTarget": "pCampoCarga",
+            "target": "pCampoCarga"
+        },
+        {
+            "name": "pSemanal",
+            "pattern": "pSemanal",
+            "titleTarget": "pSemanal",
+            "target": "pSemanal"
+        },
+        {
+            "name": "pSemanalHome",
+            "pattern": "pSemanalHome",
+            "titleTarget": "pSemanalHome",
+            "target": "pSemanalHome"
+        },
+        {
+            "name": "lPep",
+            "pattern": "lPep",
+            "titleTarget": "lPep",
+            "target": "lPep"
+        }
+      ],
+      "targets": {
+        "TargetvMain": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vMainback",
+          "viewName": "vMain"
+        },
+        "parteDiario": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "parteDiario",
+            "viewName": "parteDiario"
+          },
+          "pCampo": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "pCampo",
+            "viewName": "pCampo"
+          },
+          "pCampoCarga": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "pCampoCarga",
+            "viewName": "pCampoCarga"
+          },
+          "pSemanal": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "pSemanal",
+            "viewName": "pSemanal"
+          },
+          "pSemanalHome": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "pSemanalHome",
+            "viewName": "pSemanalHome"
+          },
+          "lPep": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "lPep",
+            "viewName": "lPep"
+          }
+      }
+    },
+    "rootView": {
+      "viewName": "sm.ui5smartagri.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

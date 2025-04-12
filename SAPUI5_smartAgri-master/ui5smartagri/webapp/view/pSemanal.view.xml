@@ -1,0 +1,119 @@
+<mvc:View
+    controllerName="sm.ui5smartagri.controller.pSemanal"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+
+    xmlns:tnt="sap.tnt" 
+    xmlns:core="sap.ui.core" 
+    xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}" showHeader="false">
+                    <content>
+                        <tnt:ToolHeader id="th1" height="50px">
+                            <Image id="img1" src="./img/logoP.png" height="40px"/>
+                            <ToolbarSpacer id="tb1"/> 
+                            <Button id="bnt1" icon="sap-icon://log" type="Transparent" press="logoff" tooltip="Cerrar sesión"/>
+                        </tnt:ToolHeader>
+                        <Toolbar id="toolbarid1" height="auto">
+                            <HBox id="hbox1">
+                                <Button id="btnBack" width="100%" icon="sap-icon://nav-back" press="pressback"/> 
+                            </HBox>
+                            <ToolbarSpacer id="espacio1"/><ToolbarSpacer id="espacio2"/>
+                        </Toolbar>
+                        <VBox id="vb1" class="sapUiSmallMargin">
+                            
+                            <f:Form id="Form1" editable="true">
+                                <f:title>
+                                    <core:Title id="title1" text="Parametro de selección" />
+                                </f:title>
+                                <f:layout>
+                                    <f:ResponsiveGridLayout id="grid1"
+                                        labelSpanXL="3"
+                                        labelSpanL="3"
+                                        labelSpanM="3"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="4"
+                                        emptySpanL="4"
+                                        emptySpanM="4"
+                                        emptySpanS="0"
+                                        columnsXL="1"
+                                        columnsL="1"
+                                        columnsM="1"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer id="fromcont">
+                                        <f:formElements>
+                                            <f:FormElement id="fele1" label="Proyecto">
+                                                <f:fields>
+                                                    <Input value="p01" id="imp1"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement id="fele2" label="Administración">
+                                                <f:fields>
+                                                    <Input id="imp2" value="01" /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement id="fele3" label="Semana">
+                                                <f:fields> 
+                                                    <Input id="imp3" value="1" />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement id="fele4" label="Ejercicio">
+                                                <f:fields> 
+                                                    <DatePicker id="fi" value="2021" valueFormat="yyyy" displayFormat="yyyy" placeholder="Ingresar fecha" required="false"/> 
+                                                </f:fields>
+                                            </f:FormElement> 
+                                            <!-- <f:FormElement >
+                                                <f:fields>
+                                                    	<Button id="btn" icon="sap-icon://shortcut" text="Ir"  press="pressIr" /> 
+                                                </f:fields>
+                                            </f:FormElement>  -->
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                </f:formContainers>
+                            </f:Form> 
+                            <f:Form id="Form4" > 
+                                <f:layout>
+                                    <f:ResponsiveGridLayout id="grid2" 
+                                        labelSpanXL="3"
+                                        labelSpanL="3"
+                                        labelSpanM="3"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="4"
+                                        emptySpanL="4"
+                                        emptySpanM="4"
+                                        emptySpanS="0"
+                                        columnsXL="1"
+                                        columnsL="1"
+                                        columnsM="1"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer id="fromcont2" >
+                                        <f:formElements>
+                                            <f:FormElement id="fromele2"  >
+                                                <f:fields>
+                                                    	<Button id="btn" icon="sap-icon://shortcut" text="Ir"  press="pressIr" /> 
+                                                </f:fields>
+                                            </f:FormElement>  
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                </f:formContainers>
+                            </f:Form>
+                        </VBox>
+                         
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

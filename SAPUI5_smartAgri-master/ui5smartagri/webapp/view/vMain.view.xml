@@ -1,0 +1,143 @@
+<mvc:View controllerName="sm.ui5smartagri.controller.vMain"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    
+    xmlns:tnt="sap.tnt" 
+    xmlns:core="sap.ui.core" 
+    xmlns:layout="sap.ui.layout" 
+    xmlns:f="sap.f" 
+    xmlns:card="sap.f.cards"
+    xmlns:vbm="sap.ui.vbm" 
+    xmlns:vk="sap.ui.vk" 
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}" showHeader="false">
+                    <content>
+                        <tnt:ToolHeader id="th1" height="50px">
+                            <Image id="img1" src="./img/logoP.png" height="40px"/>
+                            <ToolbarSpacer id="tb1"/> 
+                            <Button id="bnt1" icon="sap-icon://log" type="Transparent" press="logoff" tooltip="Cerrar sesión"/>
+                        </tnt:ToolHeader>
+
+                        <VBox id="vbox1" class="sapUiResponsiveMargin">
+                            <HBox id="hbox1" wrap="Wrap"> 
+                                <SlideTile id="slide1" class="sapUiTinyMarginBegin sapUiTinyMarginTop">
+                                    <GenericTile id="ttle1" backgroundImage="./img/banner/imagen1.jpg" frameType="TwoByOne" press="pressOnTileOne">
+                                        <TileContent id="tcontent1" footer="Julio 13, 2021">
+                                            <NewsContent id="cont1" contentText="Utilice las opciones del inventario para iniciar con la contabilizacion de su inventario"/>
+                                        </TileContent>
+                                    </GenericTile>
+                                    <GenericTile id="ttle2" backgroundImage="./img/banner/imagen2.jpg" frameType="TwoByOne" press="pressOnTileTwo">
+                                        <TileContent id="tcontent2" footer="Agosto 15, 2021">
+                                            <NewsContent id="cont2" contentText="Utilice las opciones del inventario para iniciar con la contabilizacion de su inventario"/>
+                                        </TileContent>
+                                    </GenericTile>
+                                </SlideTile> 
+                                <GenericTile id="ttle3" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Plantilla de campo"  press="pressPcampo">
+                                    <TileContent  id="tcontent3" >
+                                        <NumericContent id="idNumericActivo1" icon="sap-icon://activity-2"/>
+                                    </TileContent>
+                                </GenericTile> 
+                                <GenericTile id="ttle4" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Programación semanal" press="pressPsemanal">
+                                    <TileContent  id="tcontent4" >
+                                        <ImageContent id="imgcont1" src="sap-icon://future"/>
+                                    </TileContent>
+                                </GenericTile>
+                                <GenericTile id="ttle5" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Liberación PEP" press="pressLpep">
+                                    <TileContent id="tcontent5" >
+                                        <ImageContent id="imgcont2" src="sap-icon://synchronize"/>
+                                    </TileContent>
+                                </GenericTile>
+                                <GenericTile id="ttle6" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Parte diario" press="pressPdiario">
+                                    <TileContent id="tcontent6" >
+                                        <ImageContent id="imgcont3" src="sap-icon://trip-report"/>
+                                    </TileContent>
+                                </GenericTile>
+                            </HBox>
+                            <HBox id="hbox2" wrap="Wrap">
+                                <!-- <f:Card id="card1" class="sapUiTinyMargin Tarjeta" height="330px">
+                                    <f:header>
+                                        <card:Header id="cardheader" title="Mapa de Activos" subtitle="Productos | PER"/>
+                                    </f:header>
+                                    <f:content>  
+                                        <Page id="pag1card" showHeader="false" showFooter="false" showSubHeader="false">
+                                            <layout:FixFlex id="fixid1" class="fixFlexVertical" fixFirst="true">
+                                                <layout:flexContent>
+                                                    <vk:MapContainer id="mapcontent1" >
+                                                        <vk:content>
+                                                            <vk:ContainerContent id="contentvk" title="GeoMap" icon="sap-icon://map">
+                                                                <vk:content>
+                                                                    <vbm:GeoMap height="100%" id="geoMap" initialZoom="6" initialPosition="-76.4783274;-10.0609634;-77.01861111111111" openWindow="onOpenDetail" closeWindow="onCloseDetail" click="onClickInsMap">
+                                                                        <vbm:vos>
+                                                                            <vbm:Spots items="{ path: 'myParam>/listDetallePunto'}">
+                                                                                <vbm:Spot id="SAPSpot3" position="{myParam>rSedeCoordenadaXY}" type="{myParam>rType}" text="{myParam>rText}" labelType="Default" labelText="{myParam>rSedeNombre} | Activos {myParam>cantActivo}" labelPos="5" click="onClickInsSpot" contextMenu="onContextMenuSpot"/>
+                                                                            </vbm:Spots>
+                                                                        </vbm:vos>
+                                                                    </vbm:GeoMap>
+                                                                </vk:content>
+                                                            </vk:ContainerContent>
+                                                        </vk:content>
+                                                    </vk:MapContainer>
+                                                </layout:flexContent>
+                                            </layout:FixFlex>
+                                        </Page>
+                                    </f:content>
+                                </f:Card> -->
+                                <f:Card id="card2" class="sapUiTinyMargin Tarjeta2" width="362px" height="330px" visible="false">
+                                        <f:header>
+                                            <card:Header id="cardheade2" title="Últimos Inventario Realizado"/>
+                                        </f:header>
+                                        <f:content>
+                                            <List id="list1card" backgroundDesign="Translucent" showSeparators="None">
+                                                <CustomListItem id="customlist1">
+                                                    <HBox id="idhbox2" alignItems="Center" justifyContent="SpaceBetween" class="sapUiSmallMarginTop">
+                                                        <VBox id="idvbox2">
+                                                            <Label id="idvmain1" class="sapUiSmallMarginBegin sapUiTinyMarginBottom" text="Inventario General" design="Bold"/>
+                                                            <Text id="idvmain2"  class="sapUiSmallMarginBegin sapUiTinyMarginBottom" text="Cod: 10002"/>
+                                                            <Label id="idvmain3"  class="sapUiSmallMarginBegin sapUiTinyMarginBottom" text="24/05/2021 17:30" wrappingType="Hyphenated"/>
+                                                        </VBox>
+                                                        <VBox id="idvbox3" alignContent="End" width="120px">
+                                                            <ObjectStatus id="idvmain4"  class="sapUiTinyMarginBottom sapUiSmallMarginRight" title="Con diferencia" icon="sap-icon://circle-task-2" state="Error"/>
+                                                            <ObjectStatus id="idvmain5"  class="sapUiTinyMarginBottom sapUiSmallMarginRight" text="Diferencia: -5" state="None"/>
+                                                            <ObjectStatus id="idvmain6"  class="sapUiTinyMarginBottom sapUiSmallMarginRight" text="Juan Morino" state="None"/>
+                                                        </VBox>
+                                                    </HBox>
+                                                    <HBox id="idhbox3" alignItems="Center" justifyContent="SpaceBetween">
+                                                        <VBox id="idvbox5" >
+                                                            <Label id="idvmain7"  class="sapUiSmallMarginBegin sapUiTinyMarginBottom" text="Inventario General" design="Bold"/>
+                                                            <Text id="idvmain8"  class="sapUiSmallMarginBegin sapUiTinyMarginBottom" text="Cod: 10001"/>
+                                                            <Label id="idvmain9"  class="sapUiSmallMarginBegin sapUiTinyMarginBottom" text="24/05/2021 17:30" wrappingType="Hyphenated"/>
+                                                        </VBox>
+                                                        <VBox  id="idvbox6" alignContent="End" width="120px">
+                                                            <ObjectStatus id="idvmain10"  class="sapUiTinyMarginBottom sapUiSmallMarginRight" title="Con diferencia" icon="sap-icon://circle-task-2" state="Error"/>
+                                                            <ObjectStatus id="idvmain11"  class="sapUiTinyMarginBottom sapUiSmallMarginRight" text="Diferencia: -5" state="None"/>
+                                                            <ObjectStatus id="idvmain12"  class="sapUiTinyMarginBottom sapUiSmallMarginRight" text="Juan Morino" state="None"/>
+                                                        </VBox>
+                                                    </HBox>
+                                                    <HBox id="idhbox4" alignItems="Center" justifyContent="SpaceBetween">
+                                                        <VBox id="idvbox7" >
+                                                            <Label id="idvmain13"  class="sapUiSmallMarginBegin sapUiTinyMarginBottom" text="Inventario General" design="Bold"/>
+                                                            <Text id="idvmain14"  class="sapUiSmallMarginBegin sapUiTinyMarginBottom" text="Cod: 10000"/>
+                                                            <Label id="idvmain15"  class="sapUiSmallMarginBegin sapUiTinyMarginBottom" text="24/05/2021 17:30" wrappingType="Hyphenated"/>
+                                                        </VBox>
+                                                        <VBox id="idvbox8" alignContent="End" width="120px">
+                                                            <ObjectStatus id="idvmain16"  class="sapUiTinyMarginBottom sapUiSmallMarginRight" title="Conforme" icon="sap-icon://circle-task-2" state="Success"/>
+                                                            <ObjectStatus id="idvmain17"  class="sapUiTinyMarginBottom sapUiSmallMarginRight" text="Diferencia: 0" state="None"/>
+                                                            <ObjectStatus id="idvmain18"  class="sapUiTinyMarginBottom sapUiSmallMarginRight" text="Juan Morino" state="None"/>
+                                                        </VBox>
+                                                    </HBox>
+                                                </CustomListItem>
+                                            </List>
+                                        </f:content>
+                                    </f:Card>
+                            </HBox>
+                        </VBox>
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

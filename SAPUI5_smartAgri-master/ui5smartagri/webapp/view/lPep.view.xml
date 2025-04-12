@@ -1,0 +1,279 @@
+<mvc:View
+    controllerName="sm.ui5smartagri.controller.lPep"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+
+    xmlns:tnt="sap.tnt" 
+    xmlns:core="sap.ui.core" 
+    xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+    xmlns:tab="sap.ui.table"  
+
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}" showHeader="false">
+                    <content>
+                        <tnt:ToolHeader id="th1" height="50px">
+                            <Image id="img1" src="./img/logoP.png" height="40px"/>
+                            <ToolbarSpacer id="tb1"/> 
+                            <Button id="bnt1" icon="sap-icon://log" type="Transparent" press="logoff" tooltip="Cerrar sesión"/>
+                        </tnt:ToolHeader>
+                        <Toolbar id="toolbarid1" height="auto">
+                            <HBox id="hbox1">
+                                <Button id="btnBack" width="100%" icon="sap-icon://nav-back" press="pressback"/> 
+                            </HBox>
+                            <ToolbarSpacer id="espacio1"/><ToolbarSpacer id="espacio2"/>
+                             
+                            
+                        </Toolbar>
+                        <VBox id="vbox2" class="sapUiSmallMargin">
+                            <!-- <VBox class="sapUiSmallMargin">
+                                <Button icon="sap-icon://search" text="Consultar"  tooltip="Grabar programacion" press="presSaveProgramcion"/> 
+                                <Button icon="sap-icon://flag" text="Liberar"  tooltip="Nueva labor" press="presNewLabor"/> 
+                            </VBox> -->
+                            <HBox  id="hbox2" wrap="Wrap">
+                                <VBox id="celda1"  > 
+                                    <CheckBox id="check1" text="Liberar Peps" selected="false" select="onCheckBoxSelect"/> 
+                                    <f:Form id="FormPep"  editable="true">
+                                        <!-- <f:title>
+                                            <core:Title text="Selección Peps" />
+                                        </f:title> -->
+                                        <f:layout>
+                                            <f:ColumnLayout  id="colum2" 
+                                                columnsM="2"
+                                                columnsL="3"
+                                                columnsXL="4"
+                                            />
+                                        </f:layout>
+                                        <f:formContainers>
+                                            <f:FormContainer  id="formcontariner1"  >
+                                                <f:formElements>
+                                                    <f:FormElement id="form1E0" label="Proyecto" visible="true">
+                                                        <f:fields>
+                                                            <Input value="" id="proyecto"/>
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement id="form1E1" label="Admin">
+                                                        <f:fields>
+                                                            <Input  id="imput1" value="" /> 
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement id="form1E2" label="Zona">
+                                                        <f:fields> 
+                                                            <Input  id="imput2"  value="" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement id="form1E3" label="Campo">
+                                                        <f:fields> 
+                                                            <Input id="imput3"  value="" />
+                                                        </f:fields>
+                                                    </f:FormElement> 
+                                                    <f:FormElement id="form1E4" label="Cultivo">
+                                                        <f:fields> 
+                                                            <Input  id="imput5" value="" />
+                                                        </f:fields>
+                                                    </f:FormElement> 
+                                                    <f:FormElement id="form1E5" label="Campaña">
+                                                        <f:fields> 
+                                                            <Input  id="imput6" value="" />
+                                                        </f:fields>
+                                                    </f:FormElement> 
+                                                    <f:FormElement id="form1E6" label="Etapa">
+                                                        <f:fields> 
+                                                            <Input  id="imput7" value="" />
+                                                        </f:fields>
+                                                    </f:FormElement> 
+                                                    <f:FormElement id="form1E7" label="Nivel" >
+                                                        <f:fields>  
+                                                            <CheckBox id="nivel1" text="Admin" selected="false"/> 
+                                                            <CheckBox id="nivel2" text="Zona" selected="false"/> 
+                                                            <CheckBox id="nivel3" text="Campo" selected="false"/> 
+                                                            <CheckBox id="nivel4" text="Cultivo" selected="false"/> 
+                                                        </f:fields>
+                                                    </f:FormElement>  
+                                                    <f:FormElement id="form1E8" >
+                                                        <f:fields>
+                                                                <Button  id="btn4"  icon="sap-icon://search" text="Consultar"  tooltip="Grabar" press="presConsultarForm1"/> 
+                                                        </f:fields>
+                                                    </f:FormElement> 
+                                                </f:formElements>
+                                            </f:FormContainer> 
+                                        </f:formContainers>
+                                    </f:Form> 
+                                </VBox>
+                                <VBox id="celda2"  > 
+                                    <CheckBox id="check2" text="Liberar Labores" selected="false" select="onCheckBoxSelect"/> 
+                                    <f:Form id="FormLabor"  editable="true">
+                                        <!-- <f:title>
+                                            <core:Title text="Selección Labores" />
+                                        </f:title> -->
+                                        <f:layout>
+                                            <f:ColumnLayout  id="comlun5" 
+                                                columnsM="2"
+                                                columnsL="3"
+                                                columnsXL="4"
+                                            />
+                                        </f:layout>
+                                        <f:formContainers>
+                                            <f:FormContainer  id="formcontainer3"  >
+                                                <f:formElements>
+                                                    <f:FormElement id="form2E0" label="Labor" visible="true">
+                                                        <f:fields>
+                                                            <Input value="2031" id="labor2"/>
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement id="form2E1" label="Ejercicio">
+                                                        <f:fields>
+                                                            <Input  id="f2imput1" value="2022" /> 
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement id="form2E2" label="Semana">
+                                                        <f:fields> 
+                                                            <Input  id="f2imput2" value="1" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement id="form2E3" label="Proyecto">
+                                                        <f:fields> 
+                                                            <Input  id="f2imput3" value="p01" />
+                                                        </f:fields>
+                                                    </f:FormElement> 
+                                                    <f:FormElement id="form2E4" label="Admin">
+                                                        <f:fields> 
+                                                            <Input  id="f2imput4" value="" />
+                                                        </f:fields>
+                                                    </f:FormElement> 
+                                                    <f:FormElement id="form2E5" label="Zona">
+                                                        <f:fields> 
+                                                            <Input  id="f2imput5" value="" />
+                                                        </f:fields>
+                                                    </f:FormElement> 
+                                                    <f:FormElement id="form2E6" label="Campo">
+                                                        <f:fields> 
+                                                            <Input  id="f2imput6" value="" />
+                                                        </f:fields>
+                                                    </f:FormElement>  
+                                                    <f:FormElement id="form2E7" label="Cultivo">
+                                                        <f:fields> 
+                                                            <Input  id="f2imput7" value="" />
+                                                        </f:fields>
+                                                    </f:FormElement>  
+                                                    <f:FormElement id="form2E8" label="Recurso" >
+                                                        <f:fields>  
+                                                            <CheckBox id="recurso1" text="Mano de obra" selected="true"/> 
+                                                            <CheckBox id="recurso2" text="Maquinaria" selected="true"/> 
+                                                            <CheckBox id="recurso3" text="Materiales" selected="false"/>  
+                                                        </f:fields>
+                                                    </f:FormElement> 
+                                                    <f:FormElement id="form2E9"  >
+                                                        <f:fields>  
+                                                            <CheckBox id="liberado" text="Liberados" selected="false"/>  
+                                                        </f:fields>
+                                                    </f:FormElement>  
+                                                    <f:FormElement id="form2E10">
+                                                        <f:fields>
+                                                                <Button  id="f2btn1" icon="sap-icon://search" text="Consultar"  tooltip="Grabar" press="presConsultarForm2"/> 
+                                                        </f:fields>
+                                                    </f:FormElement> 
+                                                </f:formElements>
+                                            </f:FormContainer> 
+                                        </f:formContainers>
+                                    </f:Form> 
+                                </VBox>
+                            </HBox>
+                            
+                            <tab:Table 
+                                id="tableLiberar" class="sapUiSizeCompact"
+                                selectionMode="MultiToggle" 
+                                visibleRowCount="0" 
+                                rows="{  path: 'myParam>/T_liberarPep' }" 
+                                ariaLabelledBy="title">
+                                <tab:extension>
+                                    <OverflowToolbar  id="flow1" style="Clear">
+                                        <Title id="title" text="Resultados de la consulta"/>
+                                        <SearchField  id="busqueda1"  width="40%" class="sapUiSmallMargin" /> 
+                                        <ToolbarSpacer  id="espacio6" />
+                                        <Button  id="bnt6"  icon="sap-icon://flag" text="Liberar"  tooltip="Liberar" press="presLiberar"/> 
+                                        
+                                    </OverflowToolbar>
+                                </tab:extension>
+                                <tab:columns>
+                                    <tab:Column id="idprog" width="5rem">
+                                        <Label  id="t_id1"  textAlign="Center" wrapping ="true"  text="Cod.Prog" />
+                                        <tab:template> <Text  id="t_id2"  text="{myParam>prog}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idlib" width="5rem">
+                                        <Label id="t_id3" textAlign="Center" wrapping ="true"  text="Lib." />
+                                        <tab:template> 
+                                        <!-- <Text id="t_id4" text="{myParam>lib}" wrapping="false" /> -->
+                                            <core:Icon id="icon1" src="{myParam>lib}"  color="#FF5733" >  </core:Icon>
+                                         </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idrecurso" width="5rem">
+                                        <Label id="t_id5" textAlign="Center" wrapping ="true"  text="Recurso" />
+                                        <tab:template> 
+                                        <!-- <Text id="t_id6" text="{myParam>recurso}" wrapping="false" />  -->
+                                        <core:Icon id="icon2" src="{myParam>recurso}"  color="#0199FF" >  </core:Icon>
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idorden" width="5rem">
+                                        <Label id="t_id7" textAlign="Center" wrapping ="true"  text="Orden" />
+                                        <tab:template> <Text id="t_id8" text="{myParam>orden}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idreserva" width="5rem">
+                                        <Label id="t_id9" textAlign="Center" wrapping ="true"  text="Reserva" />
+                                        <tab:template> <Text id="t_id10" text="{myParam>reserva}" wrapping="false" /> </tab:template>
+                                    </tab:Column> 
+                                    <tab:Column id="idadmin" width="5rem">
+                                        <Label id="t_id11" textAlign="Center" wrapping ="true"  text="Administracion" />
+                                        <tab:template> <Text id="t_id12" text="{myParam>admin}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idzona" width="5rem">
+                                        <Label id="t_id13" textAlign="Center" wrapping ="true"  text="Zona" />
+                                        <tab:template> <Text id="t_id14" text="{myParam>zona}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idcampo" width="5rem">
+                                        <Label id="t_id15" textAlign="Center" wrapping ="true"  text="Campo" />
+                                        <tab:template> <Text id="t_id16" text="{myParam>campo}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idquibre" width="5rem">
+                                        <Label id="t_id17" textAlign="Center" wrapping ="true"  text="Quibre" />
+                                        <tab:template> <Text id="t_id18" text="{myParam>quibre}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idcultivo" width="5rem">
+                                        <Label id="t_id19" textAlign="Center" wrapping ="true"  text="Cultivo" />
+                                        <tab:template> <Text id="t_id20" text="{myParam>cultivo}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idciclo" width="5rem">
+                                        <Label id="t_id21" textAlign="Center" wrapping ="true"  text="Cliclo/Corte" />
+                                        <tab:template> <Text id="t_id22" text="{myParam>ciclo}" wrapping="false" /> </tab:template>
+                                    </tab:Column> 
+                                    <tab:Column id="idetapa" width="5rem">
+                                        <Label id="t_id23"  textAlign="Center" wrapping ="true"  text="Etapa" />
+                                        <tab:template> <Text id="t_id24"  text="{myParam>etapa}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idfecha" width="5rem">
+                                        <Label id="t_id25" textAlign="Center" wrapping ="true"  text="Fecha" />
+                                        <tab:template> <Text id="t_id26" text="{myParam>fecha}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idlabor" width="5rem">
+                                        <Label id="t_id27" textAlign="Center" wrapping ="true"  text="Labor" />
+                                        <tab:template> <Text id="t_id28" text="{myParam>labor}" wrapping="false" /> </tab:template>
+                                    </tab:Column>                   
+                                    <tab:Column id="iddesc" width="5rem">
+                                        <Label id="t_id29" textAlign="Center" wrapping ="true"  text="Descripción" />
+                                        <tab:template> <Text id="t_id30" text="{myParam>desc}" wrapping="false" /> </tab:template>
+                                    </tab:Column>                   
+                                </tab:columns>
+                            </tab:Table> 
+                            
+                        </VBox>
+                         
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

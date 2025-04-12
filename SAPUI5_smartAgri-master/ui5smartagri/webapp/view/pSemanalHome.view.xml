@@ -1,0 +1,231 @@
+<mvc:View
+    controllerName="sm.ui5smartagri.controller.pSemanalHome"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+
+    xmlns:tnt="sap.tnt" 
+    xmlns:core="sap.ui.core" 
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.f" 
+    xmlns:form="sap.ui.layout.form"
+    xmlns:tab="sap.ui.table" 
+
+    xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:smartField="sap.ui.comp.smartfield"
+
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}" showHeader="false">
+                    <content>
+                        <tnt:ToolHeader id="th1" height="50px">
+                            <Image id="img1" src="./img/logoP.png" height="40px"/>
+                            <ToolbarSpacer id="tb1"/> 
+                            <Button id="bnt1" icon="sap-icon://log" type="Transparent" press="logoff" tooltip="Cerrar sesión"/>
+                        </tnt:ToolHeader>
+                        <Toolbar id="toolbarid1" height="auto">
+                            <HBox id="hbox1">
+                                <Button id="btnBack" width="100%" icon="sap-icon://nav-back" press="pressback"/> 
+                            </HBox>
+                            <ToolbarSpacer id="espacio1"/><ToolbarSpacer id="espacio2"/>
+                        </Toolbar> 
+                         
+                        <VBox id="vbox1"  class="sapUiTinyMargin " >
+                            <tab:Table    
+                                id="table2"
+                                showNoData="true"
+                                selectionMode="MultiToggle" 
+                                visibleRowCount="6" 
+                                rows="{  path: 'myParam>/T_semanaDataselec' }" 
+                                ariaLabelledBy="title" >
+                                <tab:extension>
+                                    <OverflowToolbar  id="flow1" style="Clear">
+                                        <!-- <Title id="title" text="Detalle de los Movimientos"/> -->
+                                        <!-- <SearchField width="40%" class="sapUiSmallMargin" /> --> 
+                                        <Button id="btn1" icon="sap-icon://save" text="Grabar programacion"  tooltip="Grabar programacion" press="presSaveProgramcion"/> 
+                                        <Button id="btn2" icon="sap-icon://document" text="Nueva labor"  tooltip="Nueva labor" press="presNewLabor"/> 
+                                        <Button id="btn3" icon="sap-icon://delete"  text="Eliminar" tooltip="Eliminar" press="pressEliminar"/> 
+                                        <Button id="btn4" icon="sap-icon://shipping-status" text="Agregar maquinaria"  tooltip="Agregar maquinaria" press="presAddMaquinaria"/> 
+                                        <Button id="btn5" icon="sap-icon://create-form" text="Adic. Mano de obra"  tooltip="Adic. Mano de obra" press="presAddObra"/> 
+                                        <Button id="btn6" icon="sap-icon://add-product" text="Adic. Material"  tooltip="Adic. Material" press="presAdicMaterial"/> 
+                                        <Button id="btn7" icon="sap-icon://it-host" text="Log"  tooltip="Log" press="presLog"/> 
+                                        <Button id="btn8" icon="sap-icon://duplicate" text="Copiar linea"  tooltip="Copiar linea" press="presCopiLinea"/> 
+                                        <Button id="btn9" icon="sap-icon://appointment" text="Crear Prog. Semanal"  tooltip="Crear Prog. Semanal" press="presProgSemanal"/> 
+                                    </OverflowToolbar>
+                                </tab:extension>
+                                <tab:columns>
+                                    <tab:Column id="idProgramacion" sortProperty="programacion" filterProperty="programacion" autoResizable="true" width="5rem">
+                                        <Label id="label1" textAlign="Center" wrapping ="true"  text="Programacion" /> 
+                                        <tab:template>  
+                                        <!-- <Text id="txt1" text="{myParam>programacion}" wrapping="false" />  -->
+                                        <Input id="tabimp1" value="{myParam>programacion}" />
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idPosProg"  width="6rem">
+                                        <Label id="label2" textAlign="Center" wrapping ="true"  text="Pos.Prog." /> 
+                                        <tab:template>
+                                         <!-- <Text id="txt2" text="{myParam>posprog}" wrapping="false" />  -->
+                                         <Input id="tabimp2" value="{myParam>posprog}" />
+                                         </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idindprog"    width="6rem">
+                                        <Label id="label3" textAlign="Center" wrapping ="true"  text="Ind. Prog" />
+                                        <tab:template>  
+                                            <!-- <Text id="txt3" text="{myParam>indprog}"  wrapping="false" />  -->
+                                            <!-- <Input id="tabimp4" value="{myParam>indprog}" /> -->
+                                            <core:Icon id="icon1" src="{myParam>indprog}" color="#0199FF">  </core:Icon>
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idlib"   width="6rem">
+                                        <Label id="label4" textAlign="Center" wrapping ="true"  text="Lib" />
+                                        <tab:template>  
+                                            <!-- <Text id="txt4" text="{myParam>lib}" wrapping="false" />  -->
+                                            <Input id="tabimp5" value="{myParam>lib}" />
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idestado" width="5rem">
+                                        <Label id="label5" textAlign="Center" wrapping ="true"  text="Estado" />
+                                        <tab:template> 
+                                            <!-- <Text id="txt6" text="{myParam>estado}" wrapping="false" />  -->
+                                            <core:Icon id="estadoicon" src="sap-icon://circle-task-2" color="{parts: [{path: 'myParam>colorEstado'}], formatter: '.f_get_color_by_name'}" />
+                                            <!-- <Input id="tabimp5a" value="{myParam>estado}" /> -->
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idadministracion" width="5rem">
+                                        <Label id="label7" textAlign="Center" wrapping ="true"  text="Administracion" />
+                                        <tab:template> 
+                                            <!-- <Text id="txt7" text="{myParam>administracion}" wrapping="false" />  -->
+                                            <Input id="tabimp6" value="{myParam>administracion}" />
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idzona" width="5rem">
+                                        <Label id="label8" textAlign="Center" wrapping ="true"  text="Zona" />
+                                        <tab:template> 
+                                            <!-- <Text id="txt8" text="{myParam>zona}" wrapping="false" />  -->
+                                            <Input id="tabimp7" value="{myParam>zona}" />
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idcampo" width="5rem">
+                                        <Label id="label9" textAlign="Center" wrapping ="true"  text="Campo" />
+                                        <tab:template> 
+                                            <!-- <Text id="txt9" text="{myParam>campo}" wrapping="false" /> -->
+                                            <Input id="tabimp8" value="{myParam>campo}" /> 
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idQuibre" width="5rem">
+                                        <Label id="label10" textAlign="Center" wrapping ="true"  text="Quibre" />
+                                        <tab:template> 
+                                            <!-- <Text id="txt10" text="{myParam>quibre}" wrapping="false" />  -->
+                                            <Input id="tabimp9" value="{myParam>quibre}" />
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idcultivo" width="5rem">
+                                        <Label id="label11" textAlign="Center" wrapping ="true"  text="Cultivo" />
+                                        <tab:template> 
+                                            <!-- <Text id="txt11" text="{myParam>cultivo}" wrapping="false" /> -->
+                                            <Input id="tabimp10" value="{myParam>cultivo}" />
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idetapa" width="5rem">
+                                        <Label id="label12" textAlign="Center" wrapping ="true"  text="Etapa" />
+                                        <tab:template> 
+                                            <!-- <Text id="txt12" text="{myParam>etapa}" wrapping="false" />  -->
+                                            <Input id="tabimp11" value="{myParam>etapa}" />
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idcampania" width="5rem">
+                                        <Label id="label13" textAlign="Center" wrapping ="true"  text="Campaña" />
+                                        <tab:template> 
+                                            <!-- <Text id="txt13" text="{myParam>campania}" wrapping="false" />  -->
+                                            <Input id="tabimp12" value="{myParam>campania}" />
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idtipocampo" width="5rem">
+                                        <Label id="label14" textAlign="Center" wrapping ="true"  text="Tipo de campo" />
+                                        <tab:template> 
+                                            <!-- <Text id="txt14" text="{myParam>tipocampo}" wrapping="false" />  -->
+                                            <Input id="tabimp13" value="{myParam>tipocampo}" />
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idpep" width="5rem">
+                                        <Label id="label15" textAlign="Center" wrapping ="true"  text="PEP" />
+                                        <tab:template> 
+                                            <!-- <Text id="txt15" text="{myParam>pep}" wrapping="false" />  -->
+                                            <Input id="tabimp14" value="{myParam>pep}" />
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idtipolabor" width="5rem">
+                                        <Label id="label16" textAlign="Center" wrapping ="true"  text="Tipo labor" />
+                                        <tab:template> 
+                                            <!-- <Text id="txt16" text="{myParam>tipolabor}" wrapping="false" />  -->
+                                            <Input id="tabimp15" value="{myParam>tipolabor}" />
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idnroapl" width="5rem">
+                                        <Label id="label17" textAlign="Center" wrapping ="true"  text="Nro. Apl" />
+                                        <tab:template> 
+                                            <!-- <Text id="txt17" text="{myParam>nroapl}" wrapping="false" />  -->
+                                            <Input id="tabimp16" value="{myParam>nroapl}" />
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idavance" width="5rem">
+                                        <Label id="label18" textAlign="Center" wrapping ="true"  text="Avance" />
+                                        <tab:template> 
+                                            <Input id="tabimp17" value="{myParam>avance}" />
+                                            <!-- <Text id="txt18" text="{myParam>avance}" wrapping="false" />  -->
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idunidad" width="5rem">
+                                        <Label id="label19" textAlign="Center" wrapping ="true"  text="unidad" />
+                                        <tab:template> 
+                                            <!-- <Text id="txt19" text="{myParam>unidad}" wrapping="false" /> -->
+                                            <Input id="tabimp18" value="{myParam>unidad}" /> 
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idfinicio" width="5rem">
+                                        <Label id="label20" textAlign="Center" wrapping ="true"  text="Fecha inicio" />
+                                        <tab:template> 
+                                            <DatePicker id="fechainicial" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy" placeholder="Ingresar fecha" required="true"/> 
+                                            <!-- <Text id="txt20" text="{myParam>finicio}" wrapping="false" />  -->
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idffin" width="5rem">
+                                        <Label id="label21" textAlign="Center" wrapping ="true"  text="Fecha fin" />
+                                        <tab:template> 
+                                            <DatePicker id="fechafinal" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy" placeholder="Ingresar fecha" required="true"/> 
+                                            <!-- <Text id="txt21" text="{myParam>ffin}" wrapping="false" />  -->
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idedad" width="5rem">
+                                        <Label id="label22" textAlign="Center" wrapping ="true"  text="Edad" />
+                                        <tab:template> 
+                                            <!-- <Text id="txt22" text="{myParam>edad}" wrapping="false" />  -->
+                                            <Input id="tabimp19" value="{myParam>edad}" /> 
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idobs" width="5rem">
+                                        <Label id="label23" textAlign="Center" wrapping ="true"  text="Observaciones" />
+                                        <tab:template> 
+                                            <Input id="tabimp20" value="" />
+                                        <!-- <Text id="txt23" text="{myParam>obs}" wrapping="false" />  -->
+                                        </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idduracion" width="5rem">
+                                        <Label id="label24" textAlign="Center" wrapping ="true"  text="Duracion" />
+                                        <tab:template> 
+                                            <!-- <Text id="txt24" text="{myParam>duracion}" wrapping="false" />  -->
+                                            <Input id="tabimp21" value="{myParam>duracion}" /> 
+                                        </tab:template>
+                                    </tab:Column>
+                                                                                
+                                </tab:columns>
+                            </tab:Table> 
+                        </VBox> 
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

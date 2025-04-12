@@ -1,0 +1,129 @@
+<mvc:View
+    controllerName="sm.ui5smartagri.controller.parteDiario"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m" 
+    
+    xmlns:tnt="sap.tnt" 
+    xmlns:semantic="sap.m.semantic"
+    xmlns:core="sap.ui.core"
+    xmlns:tab="sap.ui.table" 
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}" showHeader="false">
+                    <content>
+                        <tnt:ToolHeader id="th1" height="50px">
+                            <Image id="img1" src="./img/logoP.png" height="40px"/>
+                            <ToolbarSpacer id="tb1"/> 
+                            <Button id="bnt1" icon="sap-icon://log" type="Transparent" press="logoff" tooltip="Cerrar sesión"/>
+                        </tnt:ToolHeader> 
+                        <!-- <Toolbar id="toolbarid1" height="auto">
+                            <HBox id="hbox1">
+                                <Button id="btnBack" width="100%" icon="sap-icon://nav-back" press="pressback"/> 
+                            </HBox>
+                            <ToolbarSpacer id="espacio1"/><ToolbarSpacer id="espacio2"/>
+                        </Toolbar> -->
+                        <SplitContainer id="container1">
+                            <masterPages>
+                                <semantic:MasterPage id="master1" title="Número de parte"  showNavButton="true" navButtonPress=".pressback" >
+                                    
+                                    <OverflowToolbar id="tolbar1" >
+                                        <SearchField id="busqueda2" liveChange=".onSearch" width="100%" />
+                                    </OverflowToolbar> 
+                                    <List id="list1" 
+                                        selectionChange="listPress"
+                                        items="{/lista1}">
+                                        <ObjectListItem id="listitem1" 
+                                                icon="sap-icon://activity-2"
+                                                intro="{nparte}"
+                                                title="{title}"
+                                                type="Active"
+                                                press="onListItemPress" >
+                                            <ObjectAttribute id="atributo1" text="Centro: {centro}" />
+                                            <ObjectAttribute id="atributo2" text="Estado: {estado}" /> 
+                                            <ObjectAttribute id="atributo3" text="Elem. PEP:{descripcion}" /> 
+                                        </ObjectListItem>
+                                        
+                                    </List>
+                                </semantic:MasterPage>
+                            </masterPages>
+                            <detailPages>
+                                <semantic:DetailPage id="pagedetale1" 
+                                        title="Vista Parte Diario" >
+                                        <ObjectHeader id="obj"
+                                            icon="sap-icon://activity-2"
+                                            iconDensityAware="false" 
+                                            responsive="true"
+                                            title="Nº de parte:  {myParam>/nrParte}" 
+                                            class="sapUiResponsivePadding--header" > 
+                                        </ObjectHeader> 
+                                    <VBox id="vbox2" class="sapUiTinyMargin fondoblanco" >
+                                        <tab:Table 
+                                            id="tablediario" 
+                                            selectionMode="MultiToggle" 
+                                            visibleRowCount="10" 
+                                            rows="{  path: 'myParam>/tableDiarioSelec' }" 
+                                            ariaLabelledBy="title">
+                                            <tab:extension>
+                                                <OverflowToolbar id="tollbar3" style="Clear">
+                                                    <Title id="title" text="Detalle ({myParam>/tableDiarioSelec/length}) "/> 
+                                                    <ToolbarSpacer id="espacio3" />
+                                                    <Button id="btn1" icon="sap-icon://sys-add" text="Añadir item" tooltip="Añadir item" press="pressAdd"/> 
+                                                    <Button id="btn2" icon="sap-icon://delete" tooltip="Eliminar" press="pressDelete"/> 
+                                                </OverflowToolbar>
+                                            </tab:extension>
+                                            <tab:columns>
+                                                <tab:Column id="iditem" sortProperty="item" filterProperty="item" autoResizable="true" width="4rem">
+                                                    <Label id="tbl_id1" textAlign="Center" wrapping ="true"  text="Item" /> 
+                                                    <tab:template>  <Text id="tbl_id2" text="{myParam>item}" wrapping="false" /> </tab:template>
+                                                </tab:Column> 
+                                                <tab:Column id="cod" sortProperty="cod" filterProperty="cod" autoResizable="true" width="6rem">
+                                                    <Label id="tbl_id2a" textAlign="Center" wrapping ="true"  text="Cod. programacion" /> 
+                                                    <tab:template>  <Text id="tbl_id3" text="{myParam>cod}" wrapping="false" /> </tab:template>
+                                                </tab:Column> 
+                                                <tab:Column id="iddescripcion" autoResizable="true" width="9rem">
+                                                    <Label id="tbl_id4" textAlign="Center" wrapping ="true"  text="Descripcion" /> 
+                                                    <tab:template>  <Text id="tbl_id5" text="{myParam>descripcion}" wrapping="false" /> </tab:template>
+                                                </tab:Column> 
+                                                <tab:Column id="idcantidad" autoResizable="true" width="6rem">
+                                                    <Label id="tbl_id6" textAlign="Center" wrapping ="true"  text="Cantidad" /> 
+                                                    <tab:template>  <Text id="tbl_id7" text="{myParam>cantidad}" wrapping="false" /> </tab:template>
+                                                </tab:Column> 
+                                                <tab:Column id="idtrabajo" autoResizable="true" width="8rem">
+                                                    <Label id="tbl_id8" textAlign="Center" wrapping ="true"  text="Puesto de trabajo" /> 
+                                                    <tab:template>  <Text id="tbl_id9" text="{myParam>trabajo}" wrapping="false" /> </tab:template>
+                                                </tab:Column> 
+                                                <tab:Column id="idreserva" autoResizable="true" width="6rem">
+                                                    <Label id="tbl_id10" textAlign="Center" wrapping ="true"  text="Reserva" /> 
+                                                    <tab:template>  <Text id="tbl_id11" text="{myParam>reserva}" wrapping="false" /> </tab:template>
+                                                </tab:Column>  
+                                                <tab:Column id="idposreserva" autoResizable="true" width="6rem">
+                                                    <Label id="tbl_id10pos" textAlign="Center" wrapping ="true"  text="Pos Reserva" /> 
+                                                    <tab:template>  <Text id="tbl_id11pos" text="{myParam>posreserva}" wrapping="false" /> </tab:template>
+                                                </tab:Column>  
+                                                <tab:Column id="idmaterial" autoResizable="true" width="6rem">
+                                                    <Label id="tbl_id14" textAlign="Center" wrapping ="true"  text="Material" /> 
+                                                    <tab:template>  <Text id="tbl_id15" text="{myParam>material}" wrapping="false" /> </tab:template>
+                                                </tab:Column> 
+                                                <tab:Column id="idnecesario" autoResizable="true" width="6rem">
+                                                    <Label id="tbl_id16" textAlign="Center" wrapping ="true"  text="Cant. necesario" /> 
+                                                    <tab:template>  <Text id="tbl_id17" text="{myParam>necesario}" wrapping="false" /> </tab:template>
+                                                </tab:Column> 
+                                                
+                                            </tab:columns>
+                                        </tab:Table>
+                                    </VBox>
+
+                                </semantic:DetailPage>
+
+                            </detailPages>
+
+                        </SplitContainer>
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

@@ -1,0 +1,25 @@
+{
+    "welcomeFile": "/index.html",
+    "authenticationMethod": "route",
+    "routes": [
+      {
+        "source": "^/resources/(.*)$",
+        "target": "/smui5smartagri/resources/$1",
+        "authenticationType": "none",
+        "destination": "ui5"
+      },
+      {
+        "source": "^/test-resources/(.*)$",
+        "target": "/smui5smartagri/test-resources/$1",
+        "authenticationType": "none",
+        "destination": "ui5"
+      },
+      {
+        "source": "^(.*)$",
+        "target": "/smui5smartagri/$1",
+        "service": "html5-apps-repo-rt",
+        "authenticationType": "xsuaa"
+      }
+    ]
+  }
+  

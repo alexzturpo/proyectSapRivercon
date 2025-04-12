@@ -1,0 +1,71 @@
+<mvc:View controllerName="sp.smartpacking.controller.vRFQ"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:layout="sap.ui.layout"   
+    xmlns:core="sap.ui.core"  
+    xmlns:tab="sap.ui.table" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:uxap="sap.uxap"
+    xmlns:fb="sap.ui.comp.filterbar"
+    >
+    
+   <Page id="page" title="Criterios" showHeader="false" showNavButton="true" class="bg_imagen_blur" navButtonPress=".onApp"  > 
+        <content> 
+            <FlexBox id="flex_box_title" alignItems="Center" justifyContent="SpaceBetween" class="fondo_celeste">
+                <ImageContent src="../img/sap-logo.svg" class="sapUiSmallMarginBottom"/>
+                <ImageContent src="../img/smart_packing_logo.png" class="sapUiSmallMarginBottom"/>
+                <ToolbarSpacer /> 
+
+                <!-- <MenuButton icon="sap-icon://customer" id="menu_but_panel_title" text="Bienvenido" class="texto_blanco opacidad_transparente sapUiSmallMarginEnd">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                    <Menu>
+                        <MenuItem text="Log out" icon="sap-icon://log" press="onPress_logout" />
+                    </Menu>
+                </MenuButton> -->
+            </FlexBox>
+
+            
+            <FlexBox class="blanco" alignItems="Center" justifyContent="Start">
+                    <Button id="back_itle" icon="sap-icon://nav-back" press=".onApp"/>  
+                    <Label class="title_negrita sapUiSmallMargin" text="REPROCESO" />
+            </FlexBox>
+            <Panel width="100%" class="bg_imagen_blur sapUiNoContentPadding opacidad_transparente">
+                <layout:VerticalLayout width="100%">
+                    <fb:FilterBar reset="onReset" search="onSearch" showRestoreButton="true" >
+                        <fb:filterGroupItems>
+                            <fb:FilterGroupItem groupName="G1" name="A3" label="Fecha" visibleInFilterBar="true">
+                                <fb:control>
+                                    <DatePicker id="cmb_fecha_reproceso" placeholder="Ingrese" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy"/> 
+                                </fb:control>
+                            </fb:FilterGroupItem>
+                            <fb:FilterGroupItem groupName="G1" groupTitle="Group1" name="A1" label="Material" visibleInFilterBar="true">
+                                <fb:control>
+                                    <ComboBox id="cmb_material_reproceso" items="{/listMaterial}" placeholder="- Seleccione -" required="true" width="100%">
+                                        <core:Item key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                                    </ComboBox>
+                                </fb:control>
+                            </fb:FilterGroupItem>                          
+                            <fb:FilterGroupItem groupName="G0" name="B" label="Cod. Pallet" visibleInFilterBar="true">
+                                <fb:control>
+                                    <ComboBox id="cmb_cod_palet_reproceso" items="{/listMaterial}" placeholder="- Seleccione -" required="true" width="100%">
+                                        <core:Item key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                                    </ComboBox>
+                                </fb:control>
+                            </fb:FilterGroupItem>                            
+                            
+                        </fb:filterGroupItems>                        
+                    </fb:FilterBar>
+                </layout:VerticalLayout>
+            </Panel>		    
+    </content>
+    <footer>
+			<OverflowToolbar>
+					<ToolbarSpacer />
+					<Button text="Reproceso" type="Emphasized"/>
+			</OverflowToolbar>
+		</footer>
+    </Page>
+</mvc:View>

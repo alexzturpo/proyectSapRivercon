@@ -1,0 +1,240 @@
+<mvc:View
+    controllerName="sm.ui5smartagri.controller.pCampoCarga"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+
+    xmlns:tnt="sap.tnt" 
+    xmlns:core="sap.ui.core" 
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.f" 
+    xmlns:form="sap.ui.layout.form"
+    xmlns:tab="sap.ui.table" 
+
+    xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:smartField="sap.ui.comp.smartfield"
+
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}" showHeader="false">
+                    <content>
+                        <tnt:ToolHeader id="th1" height="50px">
+                            <Image id="img1" src="./img/logoP.png" height="40px"/>
+                            <ToolbarSpacer id="tb1"/> 
+                            <Button id="bnt1" icon="sap-icon://log" type="Transparent" press="logoff" tooltip="Cerrar sesión"/>
+                        </tnt:ToolHeader>
+                        <Toolbar id="toolbarid1" height="auto">
+                            <HBox id="hbox1">
+                                <Button id="btnBack" width="100%" icon="sap-icon://nav-back" press="pressback"/>  
+                            </HBox>
+                            <ToolbarSpacer id="espacio1"/><ToolbarSpacer id="espacio2"/>
+                            <Button id="btn11" text="Cargar plantilla" press=".onCargarPlantilla" type="Emphasized" />
+                        </Toolbar> 
+                        <ObjectHeader
+                            id="oh1"
+                            responsive="true" 
+                            title="Datos adicionales" 
+                            backgroundDesign="Translucent" 
+                            class="sapUiResponsivePadding--header" >
+                            <ObjectAttribute id="ohOa1"
+                                title="Administración"
+                                text="ADMINISTRACION"/>
+                            <ObjectAttribute id="ohOa2"
+                                title="Ciclo/Corte:"
+                                text="0202"/>
+                            <ObjectAttribute id="ohOa3"
+                                title="Has.Netas"
+                                text="4.420"/>
+                            <ObjectAttribute id="ohOa4"
+                                title="Frente de cosecha"
+                                text="AIP"/>
+                            <ObjectAttribute id="ohOa5"
+                                title="Zona"
+                                text="Zona Alpas"/>
+                            <ObjectAttribute id="ohOa6"
+                                title="Fecha de nacimiento"
+                                text="08/02/2019"/>
+                            <ObjectAttribute id="ohOa7"
+                                title="Has. totales"
+                                text="4.960"/> 
+                            <ObjectAttribute id="ohOa8"
+                                title="Plantilla"
+                                text="S3GRMA"/>  
+                        </ObjectHeader>
+                        <VBox id="vbox4" class="sapUiTinyMargin " >
+                            <tab:Table
+                                id="table2"
+                                showNoData="true"
+                                selectionMode="Single"
+                                selectionBehavior="RowOnly"
+                                visibleRowCount="0"
+                                enableSelectAll="false"
+                                threshold="15"
+                                rows="{  path: 'myParam>/tbl_campoCarga' }" 
+                                ariaLabelledBy="title"
+                                sort="sortDeliveryDate"
+                                cellClick="rowSelectionTable2">
+                                <tab:extension>
+                                    <OverflowToolbar id="tbar1" style="Clear">
+                                        <SearchField id="busqueda1" width="40%" class="sapUiSmallMargin" />
+                                        <!-- <Title id="title" text="Detalle de los Movimientos"/> -->
+                                        <!-- <Button id="idVisualizarTodo" text="Visualizar todo"  width="auto" icon="sap-icon://refresh" press="refrescarTabla" type="Emphasized"/> -->
+                                        <ToolbarSpacer id="espacio4"/>
+                                        <Button id="btn5" icon="sap-icon://shortcut" text="Agregar"  tooltip="Agregar" press="presAgregar"/> 
+                                        <Button id="btn6" icon="sap-icon://sys-minus"  text="Eliminar" tooltip="Eliminar" press="pressEliminar"/> 
+                                    </OverflowToolbar>
+                                </tab:extension>
+                                <tab:columns>
+                                    <tab:Column id="idOperacion" sortProperty="operacion" filterProperty="operacion" autoResizable="true" width="7rem">
+                                        <Label id="label1" textAlign="Center" wrapping ="true"  text="Operacion" /> 
+                                        <tab:template>  <Text id="2txt1" text="{myParam>operacion}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idOrdenam"  width="6rem">
+                                        <Label id="label2" textAlign="Center" wrapping ="true"  text="Ordenam. A" /> 
+                                        <tab:template> <Text id="2txt2" text="{myParam>ordenam}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idElemento"    width="12rem">
+                                        <Label id="label3" textAlign="Center" wrapping ="true"  text="Elemento PEP" />
+                                        <tab:template>  <Text id="2txt3" text="{myParam>elementopep}"  wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idCampo"   width="10rem">
+                                        <Label id="label4" textAlign="Center" wrapping ="true"  text="Des. Campo" />
+                                        <tab:template>  <Text id="2txt4" text="{myParam>campo}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idLabor" width="5rem">
+                                        <Label id="label5" textAlign="Center" wrapping ="true"  text="Labor" />
+                                        <tab:template> <Text id="2txt5" text="{myParam>labor}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idOrden" width="6rem">
+                                        <Label id="label6" textAlign="Center" wrapping ="true"  text="Orden" />
+                                        <tab:template> <Text id="2txt6" text="{myParam>orden}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idDesLabor" width="10rem">
+                                        <Label id="label7" textAlign="Center" wrapping ="true"  text="Desc. labor" />
+                                        <tab:template> <Text id="2txt7" text="{myParam>descLabor}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idAplic" width="5rem">
+                                        <Label id="label8" textAlign="Center" wrapping ="true"  text="Nro. Aplicaciones" />
+                                        <tab:template> <Text id="2txt8" text="{myParam>nAplicacion}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idoPrece" width="7rem">
+                                        <Label id="label9" textAlign="Center" wrapping ="true"  text="Op. Precesor Flag Prec." />
+                                        <tab:template> <Text id="2txt9" text="{myParam>precesor}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idRinicial" width="6rem">
+                                        <Label id="label10" textAlign="Center" wrapping ="true"  text="Rango inicial" />
+                                        <tab:template> <Text id="2txt10" text="{myParam>rangoi}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="idRfinal" width="6rem">
+                                        <Label id="label11" textAlign="Center" wrapping ="true"  text="Rango final" />
+                                        <tab:template> <Text id="2tx11" text="{myParam>rangof}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="iddias" width="6rem">
+                                        <Label id="label12" textAlign="Center" wrapping ="true"  text="Dias Prom." />
+                                        <tab:template> <Text id="2txt12" text="{myParam>dias}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                                                                
+                                </tab:columns>
+                            </tab:Table>
+                            <IconTabBar
+                                id="idIconTabBarInlineMode"
+                                headerMode="Inline"
+                                expanded="true">
+                                <items>
+                                    <IconTabFilter id="tabcontainer1"
+                                        icon="sap-icon://bus-public-transport"
+                                        text="Maquinaria"
+                                        key="Maquinaria">
+                                        <tab:Table
+                                            id="table3"
+                                            showNoData="true"
+                                            selectionMode="Single"
+                                            selectionBehavior="RowOnly"
+                                            visibleRowCount="0"
+                                            enableSelectAll="false"
+                                            threshold="15"
+                                            rows="{  path: 'myParam>/DatoSeleccionado' }" 
+                                            ariaLabelledBy="title"
+                                            sort="sortDeliveryDate"
+                                            cellClick="rowSelectionTable3">
+                                            <tab:extension>
+                                                <OverflowToolbar id="tbar3" style="Clear">
+                                                    <SearchField id="busqeueda3" width="40%" class="sapUiSmallMargin" />
+                                                    <ToolbarSpacer id="espacio5"/>
+                                                    <Button id="btntb1" icon="sap-icon://sys-add" text="Agregar maquinaria"  tooltip="Agregar maquinaria" press="presAddMaquinaria"/> 
+                                                    <Button id="btntb2" icon="sap-icon://sys-minus"  text="Eliminar maquinaria" tooltip="Eliminar maquinaria" press="pressEliminarMaquinaria"/> 
+                                                    <Button id="btntb3" icon="sap-icon://sys-add" text="Agregar implemento"  tooltip="Agregar implemento" press="presAddImplemento"/> 
+                                                </OverflowToolbar>
+                                            </tab:extension>
+                                            <tab:columns>
+                                                <tab:Column id="idtipoOpera" sortProperty="toperacion" filterProperty="toperacion" autoResizable="true" width="auto">
+                                                    <Label id="lb1" textAlign="Center" wrapping ="true"  text="Tipo de operacion" /> 
+                                                    <tab:template>  <Text id="text1" text="{myParam>toperacion}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="idOpera" sortProperty="operacion" filterProperty="operacion" autoResizable="true" width="auto">
+                                                    <Label id="lb2" textAlign="Center" wrapping ="true"  text="Operacion" /> 
+                                                    <tab:template>  <Text id="text2" text="{myParam>operacion}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="idposA"  width="auto">
+                                                    <Label id="lb3" textAlign="Center" wrapping ="true"  text="Pos. A" /> 
+                                                    <tab:template> <Text  id="text3" text="{myParam>pos}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="idFactor"    width="auto">
+                                                    <Label id="lb4" textAlign="Center" wrapping ="true"  text="Factor has" />
+                                                    <tab:template>  <Text id="text4" text="{myParam>has}"  wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="idnro"   width="auto">
+                                                    <Label id="lb5" textAlign="Center" wrapping ="true"  text="Nro. de aplicaciones" />
+                                                    <tab:template>  <Text id="text5" text="{myParam>nAplicacion}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="idcap" width="auto">
+                                                    <Label id="lb6" textAlign="Center" wrapping ="true"  text="Cap" />
+                                                    <tab:template> <Text  id="text6" text="{myParam>cap}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="idRatio" width="auto">
+                                                    <Label id="lb7" textAlign="Center" wrapping ="true"  text="Ratio" />
+                                                    <tab:template> <Text  id="text7" text="{myParam>ratio}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="idPuesto" width="auto">
+                                                    <Label id="lb8" textAlign="Center" wrapping ="true"  text="Puesto trabajo" />
+                                                    <tab:template> <Text id="text8" text="{myParam>descLabor}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="idcantidad" width="auto">
+                                                    <Label id="lb9" textAlign="Center" wrapping ="true"  text="Cantidad" />
+                                                    <tab:template> <Text id="text9" text="{myParam>cantidad}" wrapping="false" /> </tab:template>
+                                                </tab:Column> 
+                                                <tab:Column id="idum" width="auto">
+                                                    <Label id="lb10" textAlign="Center" wrapping ="true"  text="UM" />
+                                                    <tab:template> <Text id="text10" text="{myParam>um}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="idImport" width="auto">
+                                                    <Label id="lb11" textAlign="Center" wrapping ="true"  text="Importe" />
+                                                    <tab:template> <Text id="text11" text="{myParam>importe}" wrapping="false" /> </tab:template>
+                                                </tab:Column> 
+                                                                                        
+                                            </tab:columns>
+                                        </tab:Table>  
+                                    </IconTabFilter>
+                                    <IconTabFilter id="tabcontainer2"
+                                        icon="sap-icon://customer-and-supplier"
+                                        text="Mano de obra"
+                                        key="Mano de obra">
+                                        <Text id="textfilter1" text="contenido de manode obra ..." />
+                                    </IconTabFilter>
+                                    <IconTabFilter id="tabcontainer3"
+                                        icon="sap-icon://machine"
+                                        text="Material"
+                                        key="Material">
+                                        <Text id="textfilter2" text="contenido de material ..." />
+                                    </IconTabFilter> 
+                                </items>
+                            </IconTabBar> 
+                        </VBox> 
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

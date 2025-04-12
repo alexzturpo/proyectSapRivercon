@@ -1,0 +1,93 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core"
+   xmlns:mvc="sap.ui.core.mvc"  
+   xmlns:f="sap.f"
+   xmlns:l="sap.ui.layout"  
+   xmlns:cards="sap.f.cards"
+   >
+   <Dialog
+      id="d2CompararID" contentWidth="60rem"
+      title="Comparar Cotizaciones" draggable="true" showHeader="true">  
+      <Carousel
+        height="auto"
+        class="sapUiSmallMarginBottom"
+        id="carousel-expanded"
+        pageChanged="onPageChanged"
+        pageIndicatorPlacement="Top"
+        showPageIndicator="{= !${settings>/isDesktop} }"
+        pages="{  path: '/dataComparar' }">
+        <customLayout>
+            <CarouselLayout id="d2Id001" visiblePagesCount="2" />
+        </customLayout>
+
+        <f:Card id="d2Id002" class="sapUiTinyMarginTop">
+            <f:header>
+                <cards:Header id="d2Id003"
+                    title="{citaProv}"
+                    subtitle="Selecionado"
+                    iconSrc="{picIcon}"
+                    iconDisplayShape="Square" />
+            </f:header>
+            <f:content>
+                <l:VerticalLayout id="d2Id004" width="100%">
+                    <l:BlockLayout id="d2Id005">
+                        <l:BlockLayoutRow id="d2Id006">
+                            <l:BlockLayoutCell id="d2Id007">
+                                <HBox id="d2Id008">
+                                    <Label id="d2Id009" text="Proveedor:"/>
+                                </HBox>
+                                <HBox id="d2Id010" class="sapUiSmallMarginBottom">
+                                    <Text id="d2Id011" text="{nombreProv} ({provedor})" />
+                                </HBox>
+                                <HBox id="d2Id012">
+                                    <Label id="d2Id013" text="Valor Total:"/>
+                                </HBox>
+                                <HBox id="d2Id014" class="sapUiSmallMarginBottom">
+                                    <Text id="d2Id015" text="{valorTotal}" />
+                                </HBox>
+                                <HBox id="d2Id016">
+                                    <Label id="d2Id017" text="Dirección:"/>
+                                </HBox>
+                                <HBox id="d2Id018" class="sapUiSmallMarginBottom">
+                                    <Text id="d2Id019" text="{direccion}" />
+                                </HBox>
+                            </l:BlockLayoutCell>
+                            <l:BlockLayoutCell id="d2Id020">
+                                <HBox id="d2Id021">
+                                    <Label id="d2Id022" text="Ancho (cm)" />
+                                </HBox>
+                                <HBox id="d2Id023" class="sapUiSmallMarginBottom">
+                                    <Text id="d2Id024" text="{ancho}" />
+                                </HBox>
+                                <HBox id="d2Id025">
+                                     <Label id="d2Id026" text="Alto (cm)" />
+                                </HBox>
+                                <HBox id="d2Id027" class="sapUiSmallMarginBottom">
+                                    <Text id="d2Id028" text="{alto}" />
+                                </HBox>
+                                <HBox id="d2Id029">
+                                    <Label id="d2Id030" text="Peso (kg)" />
+                                </HBox>
+                                <HBox id="d2Id031" class="sapUiSmallMarginBottom">
+                                    <Text id="d2Id032" text="{peso}"/>
+                                </HBox>
+                                <!-- <HBox id="d2Id040" renderType="Bare" justifyContent="SpaceBetween"> 
+                                    <Button id="d2Id041" text="Apreobar" press=".onBookPress" type="Accept" class="sapUiTinyMarginBegin" />
+                                </HBox> -->
+                            </l:BlockLayoutCell>
+                        </l:BlockLayoutRow>
+                    </l:BlockLayout>
+                </l:VerticalLayout>
+                
+            </f:content>
+        </f:Card>
+    </Carousel>
+      <OverflowToolbar id="d2Footer">
+            <ToolbarSpacer id="Aidespacio"/>
+            <!-- <Button id="d2btn1" type="Accept" text="Publicar" press="onD2Aceptar"> </Button> -->
+            <Button id="d2Close" type="Reject" text="Cerrar" press="onD2Cancelar"> </Button>
+            <!-- <ToolbarSpacer id="Aidespacio2" /> -->
+        </OverflowToolbar>
+   </Dialog>
+</core:FragmentDefinition>

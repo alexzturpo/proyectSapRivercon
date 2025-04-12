@@ -1,0 +1,133 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:layout="sap.ui.layout"   
+    xmlns:core="sap.ui.core"  
+    xmlns:tab="sap.ui.table" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:uxap="sap.uxap"
+    xmlns:fb="sap.ui.comp.filterbar"
+   >
+   <Dialog
+      id="d2CompararID" contentWidth="63rem"
+      title="Nuevo Producto Intermedio" draggable="true" showHeader="true">   
+    
+    <VBox class="sapUiSmallMargin">
+            <f:Form id="FormChange480_12120Dual"
+                editable="true">
+                <f:title>
+                    <core:Title text="Nuevo Registro" />
+                </f:title>
+                <f:layout>
+                    <f:ResponsiveGridLayout
+                        labelSpanXL="6"
+                        labelSpanL="6"
+                        labelSpanM="12"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="0"
+                        emptySpanL="0"
+                        emptySpanM="0"
+                        emptySpanS="0"
+                        columnsXL="3"
+                        columnsL="3"
+                        columnsM="3"
+                        singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Fecha de Producción">
+                                <f:fields>
+                                    <DatePicker id="picker2" placeholder="Ingrese" change="handleChange" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy" />
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Producto Intermedio">
+                                <f:fields>
+                                    <ComboBox id="idMaterial" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
+                            <core:Item id="itemMaterial" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                        </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Lote Prod.">
+                                <f:fields>
+                                    <Input value="" id="idLote"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Autoclave">
+                                <f:fields>
+                                    <Input value="" id="idAutoclave"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Batch">
+                                <f:fields>
+                                    <Input value="" id="idBatch"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Turno">
+                                <f:fields>
+                                    <Input value="" id="idTurno"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Hora">
+                                <f:fields>
+                                    <Input value="" id="idHora"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Etiqueta">
+                                <f:fields>
+                                    <ComboBox id="idEtiqueta" items="{/listMaterial}" class="sapUiSmallMarginBottom" placeholder="- Seleccione -" required="true" width="100%">
+                            <core:Item id="itemMaterial2" key="{MATNR}" text="{MATNR} - {MAKTX}"/>
+                        </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Total de Cajas">
+                                <f:fields>
+                                    <Input value="" id="idTotal"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+            <Bar>
+        <contentRight>
+            <Button id="tab02Id0011" icon="sap-icon://save" text="Guardar" tooltip="Guardar" press="onD2GuardarProducto"/>  
+            <Button id="tab02Id0012" icon="sap-icon://cancel" text="Cancelar" tooltip="Cancelar" press="onD2Cancelar"/>
+        </contentRight>
+            </Bar>
+    </VBox>  
+   </Dialog>
+</core:FragmentDefinition>

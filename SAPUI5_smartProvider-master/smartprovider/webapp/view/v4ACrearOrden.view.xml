@@ -1,0 +1,248 @@
+<mvc:View controllerName="appsp.smartprovider.controller.v4CrearOrden"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:layout="sap.ui.layout"   
+    xmlns:core="sap.ui.core"  
+    xmlns:tab="sap.ui.table" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:commons="sap.suite.ui.commons"
+    >
+    <Page id="page" title="Criterios" showHeader="false" showNavButton="true"  navButtonPress=".onApp" > 
+        <content> 
+            <tnt:ToolHeader id="th1">  
+                <!-- <Button id="idNavMenu2" icon="sap-icon://nav-back" press="onApp"/>   -->
+                <Image id="img001" class="sapUiTinyMargin" src="test-resources/sap/tnt/images/SAP_Logo.png" />
+                <ToolbarSpacer id="space1"/>  
+                    <Title id="tituloid3" level="H3" text="SMART PROVIDER" /> 
+                <ToolbarSpacer id="space2"/>  
+                <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
+            </tnt:ToolHeader>
+            <Page id="pageCabecera001" titleLevel="H2"   class="altura"
+                title="Nueva orden de compra" navButtonPress=".onvAdministrarC" showNavButton="true" >
+                <headerContent>
+                    <Button id="btn" text="App relacionadas" press="onAppRealcionadas" enabled="false"/>  
+                    <Button id="btn2" icon="sap-icon://action" type="Transparent"/> 
+                </headerContent>
+                <IconTabBar id="idIconTabBarInlineMode"
+                        headerMode="Inline"
+                        expanded="{device>/isNoPhone}"
+                        class="sapUiResponsiveContentPadding">
+                        <items>
+                            <IconTabFilter id="iconTabId001"
+                                text="Información general"
+                                key="tab01" > 
+                                    <content>
+                                        <f:Form id="vRFQ_form01" editable="true">
+                                            <!-- <f:title> <core:Title id="pc011" text="Address" /> </f:title> -->
+                                            <f:layout>
+                                                <f:ColumnLayout  id="form01CL"
+                                                    columnsM="2"
+                                                    columnsL="3"
+                                                    columnsXL="4"
+                                                /> 
+                                            </f:layout>
+                                            <f:formContainers>
+                                                <f:FormContainer  id="form01Idc1" title="Datos Basicos">
+                                                    <f:formElements>
+                                                        <f:FormElement id="form01Idc1001" label="Tipo de orden de compra">
+                                                            <f:fields>
+                                                                <ComboBox id="form01Idc1001i"  selectedKey="001">
+                                                                    <items>
+                                                                        <core:Item id="form01Idc1001ik1"  key="001" text="NB"/>
+                                                                        <core:Item id="form01Idc1001ik2"  key="002" text="valor 1"/>
+                                                                        <core:Item id="form01Idc1001ik3"  key="003" text="valor 2"/>
+                                                                    </items>
+                                                                </ComboBox> 
+                                                            </f:fields>
+                                                        </f:FormElement>
+                                                        <f:FormElement  id="form01Idc1002" label="Contrato legal">
+                                                            <f:fields>
+                                                                <Input id="form01Idc1002i" value=""/>
+                                                            </f:fields>
+                                                        </f:FormElement>
+                                                        <f:FormElement  id="form01Idc1003" label="Cobertura ID">
+                                                            <f:fields>
+                                                                <Input id="form01Idc1003i" value=""/>
+                                                            </f:fields>
+                                                        </f:FormElement> 
+                                                        <f:FormElement  id="form01Idc1004" label="Divisa">
+                                                            <f:fields>
+                                                                <Input  id="form01Idc1004i" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                                            </f:fields>
+                                                        </f:FormElement>  
+                                                        <f:FormElement  id="form01Idc1005" label="Supervisor">
+                                                            <f:fields>
+                                                                <Input  id="form01Idc1005i" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                                            </f:fields>
+                                                        </f:FormElement>  
+                                                    </f:formElements>
+                                                </f:FormContainer> 
+                                                <f:FormContainer  id="form01Idc3" title="Organización">
+                                                    <f:formElements>
+                                                        <f:FormElement id="form01Idc3001" label="Grupo de compras">
+                                                            <f:fields>
+                                                                <Input  id="form01Idc3001i" value="001" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                                            </f:fields>
+                                                        </f:FormElement> 
+                                                        <f:FormElement id="form01Idc3002" label="Compras de organización ">
+                                                            <f:fields>
+                                                                <Input  id="form01Idc3002i" value="100 - Org. Compras Viru" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                                            </f:fields>
+                                                        </f:FormElement> 
+                                                        <f:FormElement id="form01Idc3003" label="Codigo de compañia">
+                                                            <f:fields>
+                                                                <Input  id="form01Idc3003i" value="100 - Viru" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                                            </f:fields>
+                                                        </f:FormElement> 
+                                                    </f:formElements>
+                                                </f:FormContainer> 
+                                            </f:formContainers>
+                                        </f:Form>
+                                        
+                                        <tab:Table id="table02"
+                                            showNoData="true"
+                                            selectionMode="MultiToggle" 
+                                            visibleRowCount="7"
+                                            enableSelectAll="false" 
+                                            rows="{  path: '/crearOrdenData' }" 
+                                            ariaLabelledBy="title" 
+                                            cellClick="rowSelectionChangeMovimiento">
+                                            <tab:extension>
+                                                <OverflowToolbar id="tab02Id006" style="Clear">
+                                                    <Title id="tab02title" text="Artículos de orden de compra"/>
+                                                    <!-- <Button id="idVisualizarTodo" text="Visualizar todo"  width="auto" icon="sap-icon://refresh" press="refrescarTabla" type="Emphasized"/> -->
+                                                    <ToolbarSpacer id="tab02Id007" /> 
+                                                    <SearchField id="tab02Id013" width="30%" />
+                                                    <Button id="tab02Id008" text="Añadir doc." press="FragmentPublicarRFQ" enabled="true"/> 
+                                                    <!-- <Button id="tab02Id009" text="Borrar" press="excelDownload" enabled="false"/>   
+                                                    <Button id="tab02Id010" text="Copiar" press="excelDownload" enabled="false"/>    -->
+                                                    <Button id="tab02Id012" text="Crear" press="excelDownload" enabled="true"/>   
+                                                    <Button id="tab02Id011" icon="sap-icon://action-settings" tooltip="Visualizar tablas" press="AddFilterPress"/>  
+                                                </OverflowToolbar>
+                                            </tab:extension>
+                                            <tab:columns>
+                                                <tab:Column id="tab02Id01" sortProperty="articulo" filterProperty="articulo" autoResizable="true" width="5rem">
+                                                    <Label id="tab02Id01l" textAlign="Center" wrapping ="true"  text="Articulo" />
+                                                    <tab:template>  <Text id="tab02Id001i" text="{articulo}" wrapping="false" /> </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="tab02Id02" sortProperty="categoriaA" filterProperty="categoriaA" autoResizable="true" width="6rem">
+                                                    <Label id="tab02Id02l" textAlign="Center" wrapping ="true"  text="Categoria de articulo" />
+                                                    <tab:template> 
+                                                        <ComboBox id="tab02Id002i"  selectedKey="001">
+                                                            <items>
+                                                                <core:Item id="tab02Id002ik1" key="001" text="{categoriaA}"/>
+                                                                <core:Item id="tab02Id002ik2" key="002" text="valor 1"/>
+                                                                <core:Item id="tab02Id002ik3" key="003" text="valor 2"/>
+                                                            </items>
+                                                        </ComboBox> 
+                                                    </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="tab02Id03" sortProperty="material" filterProperty="material" autoResizable="true" width="9rem">
+                                                    <Label id="tab02Id03l" textAlign="Center" wrapping ="true"  text="Material" />
+                                                    <tab:template>  
+                                                        <Input  id="tab02Id003i" value="{material}" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                                    </tab:template>
+                                                </tab:Column>
+                                                <tab:Column id="tab02Id04" sortProperty="textC" filterProperty="textC" autoResizable="true" width="9rem">
+                                                    <Label id="tab02Id04l" textAlign="Center" wrapping ="true"  text="Texto corto" />
+                                                    <tab:template>  <Input id="tab02Id04i" value="{textC}"/>  </tab:template>
+                                                </tab:Column> 
+                                                <tab:Column id="tab02Id05" sortProperty="grupoM" filterProperty="grupoM" autoResizable="true" width="6rem">
+                                                    <Label id="tab02Id05l" textAlign="Center" wrapping ="true"  text="Grupo de material" />
+                                                    <tab:template>  <Text id="tab02Id05i" text="{grupoM}" wrapping="false" /> </tab:template>
+                                                </tab:Column> 
+                                                <tab:Column id="tab02Id06" sortProperty="planta" filterProperty="planta" autoResizable="true" width="5rem">
+                                                    <Label id="tab02Id06l" textAlign="Center" wrapping ="true"  text="Planta" />
+                                                    <tab:template>
+                                                        <Input  id="tab02Id06i" value="{planta}" placeholder="Ingrese" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                                     </tab:template>
+                                                </tab:Column> 
+                                                <tab:Column id="tab02Id07" sortProperty="cantidadO" filterProperty="cantidadO" autoResizable="true" width="11rem">
+                                                    <Label id="tab02Id07l" textAlign="Center" wrapping ="true"  text="Cantidad de orden" />
+                                                    <tab:template>  
+                                                    <HBox id="tab02Id07hb" >
+                                                        <Input id="tab02Id07iA" value="{planta}"/>
+                                                        <Input  id="tab02Id07iB" value="Unit." placeholder="Ingrese" width="5rem" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                                    </HBox> 
+                                                    </tab:template>
+                                                </tab:Column> 
+                                                <tab:Column id="tab02Id08" sortProperty="pecioO" filterProperty="pecioO" autoResizable="true" width="13rem">
+                                                    <Label id="tab02Id08l" textAlign="Center" wrapping ="true"  text="Precio neto de orden" />
+                                                    <tab:template> 
+                                                    <HBox id="tab02Id08hb" >
+                                                        <Input id="tab02Id08iA" value="{pecioO}"/>
+                                                        <Input  id="tab02Id08iB" value="USD" placeholder="Ingrese" width="5rem" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                                    </HBox> 
+                                                    </tab:template>
+                                                </tab:Column> 
+                                                <tab:Column id="tab02Id09" sortProperty="precioU" filterProperty="precioU" autoResizable="true" width="12rem">
+                                                    <Label id="tab02Id09l" textAlign="Center" wrapping ="true"  text="Precio por unidad" />
+                                                    <tab:template>
+                                                    <HBox id="tab02Id09hb" >
+                                                        <Input id="tab02Id09iA" value="{precioU}"/>
+                                                        <Input  id="tab02Id09iB" value="USD" placeholder="Ingrese" width="5rem" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                                    </HBox> 
+                                                    </tab:template>
+                                                </tab:Column> 
+                                                <tab:Column id="tab02Id10" sortProperty="valorO" filterProperty="valorO" autoResizable="true" width="9rem">
+                                                    <Label id="tab02Id10l" textAlign="Center" wrapping ="true"  text="Valor neto de orden" />
+                                                    <tab:template>  <Text id="tab02Id10i" text="{valorO} USD" wrapping="false" /> </tab:template>
+                                                </tab:Column> 
+                                                <tab:Column id="tab02Id11" sortProperty="estado" filterProperty="estado" autoResizable="true" width="4rem">
+                                                    <Label id="tab02Id11l" textAlign="Center" wrapping ="true"  text="Estado" />
+                                                    <tab:template>  <Text id="tab02Id11i" text="{estado}" wrapping="false" /> </tab:template>
+                                                </tab:Column> 
+                                            </tab:columns>
+                                        </tab:Table>
+                                    </content> 
+                                    <OverflowToolbar id="pageTab01Id01"  class="sapUiTinyMargin">
+                                        <ToolbarSpacer id="pageTab01Id02" />
+                                        <Button id="pageTab01Id03" text="Crear" type="Accept" press="onCrear"/>
+                                        <Button id="pageTab01Id04" text="Cancelar" type="Reject" press="onCotizacionInfo"/> 
+                                    </OverflowToolbar> 
+
+                            </IconTabFilter>
+                            <IconTabFilter id="iconTabId002"
+                                text="Proceso de flujo"
+                                key="tab02" > 
+                                <VBox id="TabId002vb" justifyContent="Center" alignItems="Center">
+                                    <!-- <Image id="TabId002img" src="./img/graf.png"/> -->
+                                    <HBox  id="TabId003hb">  
+                                        <Button id="TabId004" icon="sap-icon://zoom-in" type="Transparent" press="onZoomIn" />  
+                                        <Button id="TabId005" icon="sap-icon://zoom-out" type="Transparent" press="onZoomOut" />  
+                                    </HBox>
+                                    <commons:ProcessFlow id="processflow2"
+                                        scrollable="false"
+                                        nodes="{/nodes}"
+                                        lanes="{/lanes}"
+                                        headerPress="onHeaderPress">
+                                        <commons:nodes>
+                                            <commons:ProcessFlowNode id="pfw2Id001"
+                                                laneId="{lane}"
+                                                nodeId="{id}"
+                                                title="{title}"
+                                                children="{children}"
+                                                state="{state}"
+                                                stateText="{stateText}"
+                                                texts="{texts}"
+                                                focused="{focused}" />
+                                        </commons:nodes>
+                                        <commons:lanes>
+                                            <commons:ProcessFlowLaneHeader id="pfw2Id002"
+                                                laneId="{id}"
+                                                iconSrc="{icon}"
+                                                text="{label}"
+                                                position="{position}"
+                                                state="{state}" />
+                                        </commons:lanes>
+                                    </commons:ProcessFlow>
+                                </VBox>
+                            </IconTabFilter>  
+                        </items>
+                    </IconTabBar>
+            </Page> 
+
+        </content>
+    </Page>
+</mvc:View>

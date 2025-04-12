@@ -1,0 +1,280 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" 
+    controllerName="sp.smartpacking.controller.vMain"
+	xmlns:tab="sap.ui.table" xmlns:layout="sap.ui.layout" xmlns:ux="sap.uxap" 
+    xmlns:m="sap.m" xmlns:t="sap.tnt" displayBlock="true" xmlns:f="sap.ui.layout.form"
+    xmlns:commons="sap.suite.ui.commons" xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:html="http://www.w3.org/1999/xhtml">  
+	<App>
+		<m:pages>
+			<m:SplitApp id="SplitAppDemo" initialDetail="detail0" initialMaster="master1" afterMasterOpen="showEvent" afterMasterNavigate="showEvent"
+				mode="ShowHideMode">
+				<m:masterPages>
+					<m:Page id="master1" title="Cuadro de busqueda" navButtonPress="onApp" class="sapUiStdPage sapUiNoContentPadding" showFooter="true" showNavButton="true">
+						<f:Form id="FormChange354" editable="true" class="oscuro p-2"> 
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="3"
+                                    labelSpanL="3"
+                                    labelSpanM="3"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers >
+                                <f:FormContainer >
+                                    <f:formElements >
+                                        <f:FormElement >
+                                            <Label text="Fecha:" class="lb-w "  />
+                                            <f:fields>
+                                                <DatePicker id="cmb_date_buscar_volcado" placeholder="Ingrese" valueFormat="yyyyMMdd" displayFormat="dd/MM/yyyy" class="opacidad_transparente"/> 
+                                            </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement >
+                                            <Label text="Material:" class="lb-w sapUiSmallMarginTop"  />
+                                            <f:fields>
+                                                <ComboBox id="cmb_material_buscar_volcado" items="{ path: 'myParam>/Model_cmb_material'}" placeholder="- Seleccione -" required="true" width="100%" class="opacidad_transparente">
+                                                    <core:Item key="{myParam>MATNR}" text="{myParam>MATNR} - {myParam>MAKTX}"/>
+                                                </ComboBox>
+                                            </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement >
+                                            <Label text="Almacén:" class="lb-w sapUiSmallMarginTop"  />
+                                            <f:fields>
+                                                <ComboBox id="cmb_almacen_buscar_volcado" items="{ path: 'myParam>/Model_cmb_almacen'}" placeholder="- Seleccione -" required="true" width="100%" class="opacidad_transparente">
+                                                    <core:Item key="{myParam>LGORT}" text="{myParam>LGORT} - {myParam>LGOBE}"/>
+                                                </ComboBox>
+                                            </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement >
+                                            <f:fields >
+                                                <Button text="Buscar" type="Emphasized" press="f_buscar_volcado" class="sapUiSmallMarginTopBottom" />
+                                            </f:fields>
+                                        </f:FormElement> 
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+
+                        <m:List id="List_table_Volcado" items="{Model_Table_List_Volcado>/value}" headerText="" mode="MultiSelect" includeItemInSelection="true">
+                            <m:items>
+                                <m:ObjectListItem id='Objet_List_Item_table_Volcado' title="{Model_Table_List_Volcado>MATNR}" type="Active" icon="sap-icon://e-care">
+                                    <m:firstStatus>
+                                        <m:ObjectStatus id="object_status_maktx" text="{Model_Table_List_Volcado>MAKTX}"/> 
+                                    </m:firstStatus>
+                                    <m:attributes>
+                                        <m:ObjectAttribute id="object_attribute_labst" text="{Model_Table_List_Volcado>LABST} KG"/>
+                                    </m:attributes>
+                                </m:ObjectListItem>
+                            </m:items>
+                        </m:List> 
+						<m:footer>
+							<m:Bar class="oscuro">
+								<m:contentRight>
+									<m:Button text="Crear Volcado" id="idAnadirGRDespacho" icon="sap-icon://accept" press="btnCrearVolcado" type="Emphasized"/>
+								</m:contentRight>
+							</m:Bar>
+						</m:footer>
+					</m:Page>
+				</m:masterPages>
+
+				<m:detailPages> 
+                    <!-- <m:Page id="detail0" title="Volcado 1" class=" sapUiStdPage opacidad_transparente"> 
+                        <ux:ObjectPageLayout alwaysShowContentHeader="true" > 
+                            <ux:sections>
+                                <ux:ObjectPageSection showTitle="false" titleUppercase="true" class="bg_imagen_blur">
+                                    <ux:subSections>
+                                        <ux:ObjectPageSubSection class="opacidad_transparente">
+                                            <VBox id="Aid00012" class="sapUiSmallMargin">
+                                                <tab:Table id="table03" showNoData="true" selectionMode="Single"
+                                                    selectionBehavior="RowOnly" visibleRowCount="15" enableSelectAll="false" 
+                                                    rows="{  path: '/FRQvolcados0' }" ariaLabelledBy="title" cellClick="rowSelectionChangeMovimiento">
+                                                    <tab:extension> 
+                                                        <OverflowToolbar id="vmainId0062" style="Clear">
+                                                            <ToolbarSpacer id="vmainId0072" />
+                                                            <Button id="btn_visualizar_tabla" icon="sap-icon://action-settings" tooltip="Visualizar tablas" /> 
+                                                            <Button id="btn_descargar_excel" icon="sap-icon://excel-attachment" tooltip="Descarga en excel" /> 
+                                                        </OverflowToolbar>
+                                                    </tab:extension>
+                                                    <tab:columns>
+                                                        <tab:Column id="vmainId013c22" sortProperty="RFQ" filterProperty="RFQ" autoResizable="true" width="auto" headerSpan="4,1">
+                                                            <tab:multiLabels>
+                                                                <Label text="Volcados Generados" textAlign="Center" width="100%"/>
+                                                                <Label text="Código" textAlign="Center" width="100%"/>
+                                                            </tab:multiLabels>
+                                                            <tab:template>  <Text id="vmainId0132i2" text="{RFQ}" wrapping="false" /> </tab:template>
+                                                        </tab:Column>
+                                                        <tab:Column id="vmainId014c22" sortProperty="oCompra" filterProperty="oCompra" autoResizable="true" width="auto">
+                                                            <tab:multiLabels>
+                                                                <Label text="Volcados Generados"/>
+                                                                <Label text="Descripción" textAlign="Center" width="100%"/>
+                                                            </tab:multiLabels>
+                                                            <tab:template> <Text id="vmainId014i22" text="{oCompra}" wrapping="false" /> </tab:template>
+                                                        </tab:Column>
+                                                        <tab:Column id="vmainId019c22" sortProperty="RFQdesc" filterProperty="RFQdesc" autoResizable="true" width="auto">
+                                                            <tab:multiLabels>
+                                                                <Label text="Volcados Generados"/>
+                                                                <Label text="Cantidad" textAlign="Center" width="100%"/>
+                                                            </tab:multiLabels>
+                                                            <tab:template> <Text id="vmainId019i22" text="{RFQdesc}" wrapping="false" /> </tab:template>
+                                                        </tab:Column>                    
+                                                    </tab:columns>
+                                                </tab:Table>
+                                            </VBox>
+                                        </ux:ObjectPageSubSection>
+                                    </ux:subSections>
+                                </ux:ObjectPageSection>
+                            </ux:sections>
+                        </ux:ObjectPageLayout> 
+                    </m:Page> -->
+
+
+
+					<m:Page id="page_vista_volcado" title="Volcado" class="sapUiStdPage "> 
+						<ux:ObjectPageLayout id="ObjectPageLayout3" alwaysShowContentHeader="true" height="100%" class="bg_imagen_blur">
+							 
+							<ux:sections>
+								<ux:ObjectPageSection showTitle="false" titleUppercase="true" class="bg_imagen_blur">
+									<ux:subSections>
+										<ux:ObjectPageSubSection class="opacidad_transparente">
+											<VBox class="sapUiSmallMargin">
+                                                <tab:Table id="table_volcados_generados"
+                                                    showNoData="true"
+                                                    selectionMode="None"
+                                                    selectionBehavior="RowOnly"
+                                                    visibleRowCount="15"
+                                                    enableSelectAll="false" 
+                                                    rows="{Model_Table_List_Volcado_Generados>/value}" 
+                                                    ariaLabelledBy="title" 
+                                                    cellClick="rowSelectionChangeVolcadosGenerados">
+                                                    <tab:extension> 
+                                                        <OverflowToolbar id="vmainId006" style="Clear">
+                                                            <ToolbarSpacer/>
+                                                            <Button id="btn_visualizar_tablas_volcados_generados" icon="sap-icon://action-settings" tooltip="Visualizar tablas" /> 
+                                                            <!-- <Button id="btn_descargar_excel_volcados_generados" icon="sap-icon://excel-attachment" tooltip="Descarga en excel" />  -->
+                                                            <Button icon="sap-icon://download" text="Descargar tabla" press="onDownloadTable"/>  
+                                                        </OverflowToolbar>
+                                                    </tab:extension>
+                                                    <tab:columns>
+                                                        <tab:Column autoResizable="true" width="auto" headerSpan="4,1">
+                                                            <tab:multiLabels>
+                                                                <Label text="Volcados Generados" textAlign="Center" width="100%"/>
+                                                                <Label text="Código" textAlign="Center" width="100%"/>
+                                                            </tab:multiLabels>
+                                                            <tab:template>  <Text text="{Model_Table_List_Volcado_Generados>ZCOD_VOL}" wrapping="false" /> </tab:template>
+                                                        </tab:Column>
+                                                        <tab:Column autoResizable="true" width="auto">
+                                                            <tab:multiLabels>
+                                                                <Label text="Volcados Generados"/>
+                                                                <Label text="Descripción" textAlign="Center" width="100%"/>
+                                                            </tab:multiLabels>
+                                                            <tab:template> <Text text="{Model_Table_List_Volcado_Generados>CHARG}" wrapping="false" /> </tab:template>
+                                                        </tab:Column>
+                                                        <tab:Column autoResizable="true" width="auto">
+                                                            <tab:multiLabels>
+                                                                <Label text="Volcados Generados"/>
+                                                                <Label text="Cantidad" textAlign="Center" width="100%"/>
+                                                            </tab:multiLabels>
+                                                            <tab:template> <Text text="{Model_Table_List_Volcado_Generados>MENGE}" wrapping="false" /> </tab:template>
+                                                        </tab:Column>                    
+                                                    </tab:columns>
+                                                </tab:Table>
+                                            </VBox>
+										</ux:ObjectPageSubSection>
+									</ux:subSections>
+								</ux:ObjectPageSection>
+							</ux:sections>
+						</ux:ObjectPageLayout> 
+					</m:Page>
+
+					
+                    <m:Page id="page_detalle_volcado" title="Volcado" class="sapUiStdPage "> 
+						<ux:ObjectPageLayout id="ObjectPageLayout32" alwaysShowContentHeader="true"> 
+							<ux:sections>
+								<ux:ObjectPageSection id="idItemLoteRecepcion2" showTitle="false" titleUppercase="true" class="bg_imagen_blur">
+									<ux:subSections>
+										<ux:ObjectPageSubSection class="opacidad_transparente">
+                                         <VBox>
+                                            <tab:Table id="table_detalle_volcado"
+                                                showNoData="true"
+                                                selectionMode="Single"
+                                                selectionBehavior="RowOnly"
+                                                visibleRowCount="15"
+                                                enableSelectAll="false" 
+                                                rows="{Model_Table_List_Detalle_Volcado_Generados>/value}" 
+                                                cellClick="rowSelectionChangeMovimiento">
+                                                <tab:extension> 
+                                                    <OverflowToolbar id="vmainId0061" style="Clear">
+                                                        <ToolbarSpacer id="vmainId0071" />
+                                                        <Button id="vmainId00111" icon="sap-icon://action-settings" tooltip="Visualizar tablas" press="AddFilterPress"/> 
+                                                        <!-- <Button id="vmainId00121" icon="sap-icon://excel-attachment" tooltip="Descarga en excel" press="excelDownload"/>  -->
+                                                        <Button icon="sap-icon://download" text="Descargar tabla" press="onDownloadTable"/>  
+                                                    </OverflowToolbar>
+                                                </tab:extension>
+                                                <tab:columns>
+                                                    <tab:Column id="vmain1" autoResizable="true" width="auto" headerSpan="5,1">
+                                                        <tab:multiLabels>
+                                                            <Label text="Detalle de Volcado" textAlign="Center" width="100%"/>
+                                                            <Label text="Código de Volcado" textAlign="Center" width="100%"/>
+                                                        </tab:multiLabels>
+                                                        <tab:template>  <Text id="vmain11" text="{Model_Table_List_Detalle_Volcado_Generados>ZCOD_VOL}" wrapping="false" /> </tab:template>
+                                                    </tab:Column>
+                                                    <tab:Column id="vmain2" autoResizable="true" width="auto">
+                                                        <tab:multiLabels>
+                                                            <Label text="Detalle de Volcado"/>
+                                                            <Label text="Cód. de Material" textAlign="Center" width="100%"/>
+                                                        </tab:multiLabels>
+                                                        <tab:template> <Text id="vmain22" text="{Model_Table_List_Detalle_Volcado_Generados>MATNR}" wrapping="false" /> </tab:template>
+                                                    </tab:Column>
+                                                    <tab:Column id="vmain3" autoResizable="true" width="auto">
+                                                        <tab:multiLabels>
+                                                            <Label text="Detalle de Volcado"/>
+                                                            <Label text="Descripción" textAlign="Center" width="100%"/>
+                                                        </tab:multiLabels>
+                                                        <tab:template> <Text id="vmain33" text="{Model_Table_List_Detalle_Volcado_Generados>CHARG}" wrapping="false" /> </tab:template>
+                                                    </tab:Column>   
+                                                    <tab:Column id="vmain4" autoResizable="true" width="auto">
+                                                        <tab:multiLabels>
+                                                            <Label text="Detalle de Volcado"/>
+                                                            <Label text="Cantidad" textAlign="Center" width="100%"/>
+                                                        </tab:multiLabels>
+                                                        <tab:template> <Text id="vmain44" text="{Model_Table_List_Detalle_Volcado_Generados>MENGE}" wrapping="false" /> </tab:template>
+                                                    </tab:Column> 
+                                                    <tab:Column id="vmain5" sortProperty="Lote" filterProperty="Lote" autoResizable="true" width="auto">
+                                                        <tab:multiLabels>
+                                                            <Label text="Detalle de Volcado"/>
+                                                            <Label text="Lote" textAlign="Center" width="100%"/>
+                                                        </tab:multiLabels>
+                                                        <tab:template> <Text id="vmain55" text="{Model_Table_List_Detalle_Volcado_Generados>WERKS}" wrapping="false" /> </tab:template>
+                                                    </tab:Column>                    
+                                                </tab:columns>
+                                            </tab:Table>
+                                        </VBox>
+										</ux:ObjectPageSubSection>
+									</ux:subSections>
+								</ux:ObjectPageSection>
+							</ux:sections>
+						</ux:ObjectPageLayout>
+						<m:footer>
+							<m:Bar>
+								<m:contentLeft>
+									
+								</m:contentLeft>
+								<m:contentRight>
+									<m:Button text="Volver" id="idVolverGuiaRecep" icon="sap-icon://nav-back" press="btnListGR" type="Emphasized"/>
+								</m:contentRight>
+							</m:Bar>
+						</m:footer>
+					</m:Page>
+					
+				</m:detailPages>
+			</m:SplitApp>
+		</m:pages>
+	</App>
+</mvc:View>

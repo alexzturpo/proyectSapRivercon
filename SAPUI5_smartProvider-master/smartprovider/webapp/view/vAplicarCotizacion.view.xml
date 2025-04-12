@@ -1,0 +1,276 @@
+<mvc:View controllerName="appsp.smartprovider.controller.vAplicarCotizacion"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:layout="sap.ui.layout"   
+    xmlns:core="sap.ui.core"  
+    xmlns:tab="sap.ui.table" 
+    xmlns:f="sap.ui.layout.form"
+    >
+    <Page id="page" title="Criterios" showHeader="false" showNavButton="true"  navButtonPress=".onApp">
+        <headerContent>
+            <Button id="btn001" icon="sap-icon://action" tooltip="Share" />
+        </headerContent>
+        <content> 
+            <tnt:ToolHeader id="th1">  
+                <!-- <Button id="idNavMenu2" icon="sap-icon://nav-back" press="onApp"/>   -->
+                <Image id="img001" class="sapUiTinyMargin" src="test-resources/sap/tnt/images/SAP_Logo.png" />
+                <ToolbarSpacer id="space1"/>  
+                    <Title id="tituloid3" level="H3" text="SMART PROVIDER" /> 
+                <ToolbarSpacer id="space2"/>  
+                <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
+            </tnt:ToolHeader>
+            <Page id="pageCabecera001" titleLevel="H2"  class="altura"
+                title="Vista Aplicar Cotización" navButtonPress=".onProveedorRFQ" showNavButton="true" >
+                <headerContent> 
+                    <Button id="btn1" text="Cancelar" type="Reject" press="onAppRealcionadas"/>   
+                    <Button id="btn4" text="aplicaciones relacionadas" press="onAppRealcionadas"/>  
+                    <Button id="btn5" icon="sap-icon://action-settings" type="Transparent"/> 
+                </headerContent>
+                <IconTabBar id="idIconTabBarInlineMode"
+                    headerMode="Inline"
+                    expanded="{device>/isNoPhone}"
+                    class="sapUiResponsiveContentPadding">
+                    <items>
+                        <IconTabFilter id="iconTabId001"
+                            text="Información general"
+                            key="tab01" >
+                            <f:Form id="vRFQ_form01" editable="true">
+                                <!-- <f:title> <core:Title id="pc011" text="Address" /> </f:title> -->
+                                <f:layout>
+                                    <f:ColumnLayout  id="form01CL"
+                                        columnsM="2"
+                                        columnsL="3"
+                                        columnsXL="4"
+                                    /> 
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer  id="form01Idc1" title="Datos Basicos">
+                                        <f:formElements>
+                                            <f:FormElement id="form01Idc1001" label="Tipo RFQ">
+                                                <f:fields>
+                                                    <Text id="form01Idc1001i" text="Cotización interna" />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement  id="form01Idc1002" label="Proveedor/Postor">
+                                                <f:fields>
+                                                    <Text id="form01Idc1002i" text="Denise Smith" />  
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement  id="form01Idc1003" label="Dirección">
+                                                <f:fields>
+                                                    <Text id="form01Idc1003i" text="Due Dec 31 Cascaded" />  
+                                                </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement  id="form01Idc1004" label="Pais">
+                                                <f:fields>
+                                                    <Text id="form01Idc1004i" text="Perú" />  
+                                                </f:fields>
+                                            </f:FormElement>  
+                                            <f:FormElement  id="form01Idc1005" label="Fecha de envío de cotización">
+                                                <f:fields>
+                                                    <DatePicker id="form01Idc2005i"  value="19/05/2022"  displayFormat="dd/MM/yyyy" placeholder="Ingresar fecha" required="false"/>  
+                                                </f:fields>
+                                            </f:FormElement>  
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                    <f:FormContainer  id="form01Idc2" title="Solicitud de presupuesto">
+                                        <f:formElements>
+                                            <f:FormElement id="form01Idc2001" label="RFQ">
+                                                <f:fields>
+                                                    <Text id="form01Idc2001i" text="Int. solicitud de abastecimiento (70001231)" />  
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement  id="form01Idc2002" label="RFQ descripción">
+                                                <f:fields>
+                                                    <Text id="form01Idc2002i" text="Demo RFQ" /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement  id="form01Idc2003" label="Fecha límite de cotización">
+                                                <f:fields>
+                                                    <Text id="form01Idc2003i" text="31/01/2022" /> 
+                                                </f:fields>
+                                            </f:FormElement>  
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer  id="form01Idc3" title="Documento de seguimiento">
+                                        <f:formElements>
+                                            <f:FormElement id="form01Idc3001" label="Tipo de documento de seguimiento">
+                                                <f:fields>
+                                                    <Text id="form01Idc3001i" text="Estándar PO(PER)" /> 
+                                                </f:fields>
+                                            </f:FormElement>  
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                </f:formContainers>
+                            </f:Form>
+                        </IconTabFilter>
+                        <!-- <IconTabFilter id="iconTabId002"
+                            text="Términos de entrega y pago"
+                            key="tab02" >
+                            <f:Form id="vRFQ_form02" editable="true"> 
+                                <f:layout>
+                                    <f:ColumnLayout  id="form02CL"
+                                        columnsM="2"
+                                        columnsL="3"
+                                        columnsXL="4"
+                                    /> 
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer  id="form02Idc1">
+                                        <f:formElements>
+                                            <f:FormElement id="form02Idc1001" label="Términos de pago">
+                                                <f:fields> 
+                                                    <Input  id="form02Idc1001i" placeholder="Enter product" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement  id="form02Idc1002" label="Día 1">
+                                                <f:fields>
+                                                    <Input id="form02Idc1002i" value=""/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement  id="form02Idc1003" label="Porcentaje de descuento 1">
+                                                <f:fields>
+                                                    <Input id="form02Idc1003i" value=""/>
+                                                </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement  id="form02Idc1004" label="Día 2">
+                                                <f:fields>
+                                                    <Input id="form02Idc1004i" value=""/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement  id="form02Idc1005" label="Porcentaje de descuento 2">
+                                                <f:fields>
+                                                    <Input id="form02Idc1005i" value=""/>
+                                                </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement  id="form02Idc1006" label="Días neto">
+                                                <f:fields>
+                                                    <Input id="form02Idc1006i" value=""/>
+                                                </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement  id="form02Idc1007" label="Valor objetivo">
+                                                <f:fields>
+                                                    <Input id="form02Idc1007i" value=""/>
+                                                    <Text id="form02Idc1007i2" text="USD" /> 
+                                                </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement  id="form02Idc1008a" label="Divisa">
+                                                <f:fields>
+                                                    <Input  id="form02Idc1008ia" placeholder="Enter product" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                                </f:fields>
+                                            </f:FormElement>  
+                                            <f:FormElement  id="form02Idc1009a" label="Versión de incoterms">
+                                                <f:fields>
+                                                    <Input  id="form02Idc1009ia" placeholder="Enter product" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                                </f:fields>
+                                            </f:FormElement>  
+                                            <f:FormElement  id="form02Idc1010a" label="Incoterms">
+                                                <f:fields>
+                                                    <Input  id="form02Idc1010ia" placeholder="Enter product" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                                </f:fields>
+                                            </f:FormElement>  
+                                            <f:FormElement  id="form02Idc1011" label="Localización incoterms 1">
+                                                <f:fields>
+                                                    <Input id="form02Idc1011i" value=""/>
+                                                </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement  id="form02Idc1012" label="Localización incoterms 2">
+                                                <f:fields>
+                                                    <Input id="form02Idc1012i" value=""/>
+                                                </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                </f:formContainers>
+                            </f:Form>
+                        </IconTabFilter> -->
+                        <IconTabFilter id="iconTabId003"
+                            text="Artículos"
+                            key="tab03" >
+                            <tab:Table id="table01"
+                                showNoData="true"
+                                selectionMode="Single"
+                                selectionBehavior="RowOnly"
+                                visibleRowCount="7"
+                                enableSelectAll="false" 
+                                rows="{  path: '/aplicarCotizacion' }" 
+                                ariaLabelledBy="title" 
+                                cellClick="rowSelectionChangeMovimiento">
+                                <tab:extension>
+                                    <OverflowToolbar id="tab01Id006" style="Clear">
+                                        <Title id="title" text="Artículos de cotización "/>
+                                        <ToolbarSpacer id="tab01Id007" /> 
+                                        <Button id="tab01Id0011" icon="sap-icon://action-settings" tooltip="Visualizar tablas" press="AddFilterPress"/>  
+                                    </OverflowToolbar>
+                                </tab:extension>
+                                <tab:columns>
+                                    <tab:Column id="table01Id001" sortProperty="articulo" filterProperty="articulo" autoResizable="true" width="auto">
+                                        <Label id="table01Id001l" textAlign="Center" wrapping ="true"  text="Artículo de cotización del proveedor" />
+                                        <tab:template>  <Text id="table01Id001li" text="{articulo}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="table01Id002" sortProperty="text" filterProperty="text" autoResizable="true" width="auto">
+                                        <Label id="table01Id002l" textAlign="Center" wrapping ="true"  text="Texto corto" />
+                                        <tab:template> <Text id="table01Id002i" text="{text}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="table01Id003" sortProperty="material" filterProperty="material" autoResizable="true" width="auto">
+                                        <Label id="table01Id003l" textAlign="Center" wrapping ="true"  text="Material" />
+                                        <tab:template>  <Text id="table01Id003i" text="{material}"  wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="table01Id004" sortProperty="articuloRFQ" filterProperty="articuloRFQ" autoResizable="true" width="auto">
+                                        <Label id="table01Id004l" textAlign="Center" wrapping ="true"  text="Artículo RFQ" />
+                                        <tab:template>  <Text id="table01Id004i" text="{articuloRFQ}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="table01Id009" sortProperty="cotsolicitado" filterProperty="cotsolicitado" autoResizable="true" width="auto">
+                                        <Label id="table01Id009l" textAlign="Center" wrapping ="true"  text="Cotización solicitada" />
+                                        <tab:template> <Text id="table01Id009i" text="{cotsolicitado} Unid."  /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="table01Id005" sortProperty="cantidadCot" filterProperty="cantidadCot" autoResizable="true" width="auto">
+                                        <Label id="table01Id005l" textAlign="Center" wrapping ="true"  text="Cantidad de cotización" />
+                                        <tab:template> <Input id="table01Id005i" value="{cantidadCot}"  /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="table01Id006" sortProperty="cantidadOto" filterProperty="cantidadOto" autoResizable="true" width="auto">
+                                        <Label id="table01Id006l" textAlign="Center" wrapping ="true"  text="Cantidad otorgada" />
+                                        <tab:template> <Text id="table01Id006i" text="{cantidadOto}" wrapping="false" /> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column id="table01Id007" sortProperty="precioPedido" filterProperty="precioPedido" autoResizable="true" width="11rem">
+                                        <Label id="table01Id007l" textAlign="Center" wrapping ="true"  text="Precio neto del pedido" />
+                                        <tab:template>
+                                        <HBox id="table01Id007ihb" >
+                                            <Input id="table01Id007iA" value="{precioPedido}"/>
+                                            <Input  id="table01Id007iB" value="USD" placeholder="Ingrese" width="5rem" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest" /> 
+                                        </HBox> 
+                                        </tab:template>
+                                    </tab:Column> 
+                                    <tab:Column id="table01Id008" sortProperty="valorCot" filterProperty="valorCot" autoResizable="true" width="auto">
+                                        <Label id="table01Id008l" textAlign="Center" wrapping ="true"  text="Valor neto de cotización" />
+                                        <tab:template> <Text id="table01Id008i" text="{valorCot}" wrapping="false" /> </tab:template>
+                                    </tab:Column> 
+                                </tab:columns>
+                            </tab:Table>
+                            <Panel id="tab03panel01" width="auto" accessibleRole="Region">
+                                <headerToolbar>
+                                    <OverflowToolbar  id="tab03Id001">
+                                        <Title id="tab03Id001t" text="Descripción detallada"/>
+                                    </OverflowToolbar>
+                                </headerToolbar>
+                                <content>
+                                    <MessageStrip id="tab03Id002" showIcon="true" text="Este textea aparece hasta 7 líneas, luego se presenta una barra de desplazamiento."/>
+                                    <TextArea id="tab03Id003" placeholder="Ingrese texto" height="150px" growing="true" growingMaxLines="7" width="100%"/>
+                                </content>
+                            </Panel>
+                        </IconTabFilter> 
+                    </items>
+                </IconTabBar>
+                <footer>
+                    <OverflowToolbar id="pId001">
+                        <ToolbarSpacer id="pId002"/>
+                        <Button id="pbtnId001" text="Aplicar" type="Accept" press="onAceptarAplicarCotizacion"/>
+                        <Button id="pbtnId002" text="Cancelar" type="Reject" press="onCancelarAplicarCotizacion" /> 
+                    </OverflowToolbar>
+                </footer>
+            </Page> 
+
+        </content>
+    </Page>
+</mvc:View>

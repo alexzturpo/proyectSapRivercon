@@ -1,0 +1,80 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core"
+   xmlns:mvc="sap.ui.core.mvc" 
+   xmlns:tnt="sap.tnt"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:u="sap.ui.unified">
+   <Dialog
+      id="CargarP"
+      title="Cargar plantilla" draggable="true"> 
+      	<VBox id="id1" class="sapUiSmallMargin">
+            <f:Form id="fomrmodal"
+                editable="true">
+                <!-- <f:title>
+                    <core:Title id="idtitulo" text="Cargar plantilla" />
+                </f:title> -->
+                <f:layout>
+                    <f:ResponsiveGridLayout id="iddat"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer id="id2">
+                        <f:formElements>
+                            <f:FormElement id="id3" label="Fecha">
+                                <f:fields>
+                                     <DatePicker id="fechamodal" value="01/01/2021" displayFormat="dd/MM/yyyy" placeholder="Ingresar fecha" required="true"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement id="id4" label="Ruta">
+                                <f:fields>
+                                    <u:FileUploader
+                                        id="fileUploader"
+                                        name="myFileUpload"
+                                        uploadUrl="upload/"
+                                        tooltip="Cargar Archivo"
+                                        uploadComplete="handleUploadComplete"
+                                        change="handleValueChange"
+                                        typeMissmatch="handleTypeMissmatch"
+                                        style="Emphasized"
+                                        fileType="xlsx"
+                                        placeholder="Cargar Archivo...">
+                                            <u:parameters>
+                                                <u:FileUploaderParameter id="idparent"
+                                                    name="Accept-CH"
+                                                    value="Viewport-Width"/>
+                                                <u:FileUploaderParameter id="idparent1"
+                                                    name="Accept-CH"
+                                                    value="Width"/>
+                                                <u:FileUploaderParameter id="idparent2"
+                                                    name="Accept-CH-Lifetime"
+                                                    value="86400"/>
+                                            </u:parameters>
+                                        </u:FileUploader> 
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        </VBox>
+      <OverflowToolbar id="otbFooter">
+            <ToolbarSpacer id="idespacio"/>
+            <Button id="idbtn1" type="Accept" text="Aceptar" press="onAcceptDialog"> </Button>
+            <Button id="idClose" type="Reject" text="Cancelar" press="onCloseDialog"> </Button>
+            <ToolbarSpacer id="idespacio2" />
+        </OverflowToolbar>
+   </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,150 @@
+<mvc:View controllerName="appsp.smartprovider.controller.v4CotizacionInfo"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    xmlns:layout="sap.ui.layout"   
+    xmlns:core="sap.ui.core"  
+    xmlns:tab="sap.ui.table" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:uxap="sap.uxap"
+    >
+    <Page id="page" title="Criterios" showHeader="false" showNavButton="true"  navButtonPress=".onAdministrarC" > 
+        <content> 
+            <tnt:ToolHeader id="th1">  
+                <!-- <Button id="idNavMenu2" icon="sap-icon://nav-back" press="onApp"/>   -->
+                <Image id="img001" class="sapUiTinyMargin" src="test-resources/sap/tnt/images/SAP_Logo.png" />
+                <ToolbarSpacer id="space1"/>  
+                    <Title id="tituloid3" level="H3" text="SMART PROVIDER" /> 
+                <ToolbarSpacer id="space2"/>  
+                <!-- <Avatar id="avatar001" class="sapUiTinyMargin"  initials="IS" displaySize="XS" backgroundColor="Accent5"/> -->
+            </tnt:ToolHeader>
+            <Page id="pageCabecera001" titleLevel="H2"  class="altura"
+                title="Información de la cotización" navButtonPress=".onAdministrarC" showNavButton="true" >
+                <headerContent> 
+                    <ToolbarSpacer id="v4CId007" />
+                    <MenuButton id="v4CId010" text="Seguimiento de documento">
+                        <menu>
+                            <Menu id="v4CId010m"> 
+                                <MenuItem id="v4CId010m1" text="Crear orden de compra" press="onCrearOrden" />
+                                <MenuItem id="v4CId010m2" text="Crear contrato de compra" press="onPress" /> 
+                            </Menu>
+                        </menu>
+                    </MenuButton>
+                    <Button id="v4CId008" text="Historial" press="excelDownload" enabled="true"/> 
+                    <Button id="v4CId009" text="App relacionadas" press="excelDownload" enabled="true"/>  
+                </headerContent> 
+                <uxap:ObjectPageLayout id="conOpl" upperCaseAnchorBar="false">
+                    <uxap:headerTitle>
+                        <uxap:ObjectPageHeader id="conOp" 
+                                        objectTitle="Cotización"
+                                        objectSubtitle="70012331"  >
+                            <!-- <uxap:actions>
+                                <uxap:ObjectPageHeaderActionButton icon="sap-icon://edit" text="Editar" importance="Medium" tooltip="Editar"/>
+                                <uxap:ObjectPageHeaderActionButton icon="sap-icon://save" text="Publicar" tooltip="save" press="onPublicar"/> 
+                                <uxap:ObjectPageHeaderActionButton icon="sap-icon://action" text="action" importance="Low" tooltip="action" press="on01"/> 
+                            </uxap:actions>  -->
+                        </uxap:ObjectPageHeader>
+                    </uxap:headerTitle>
+                    <uxap:headerContent>
+                        <layout:VerticalLayout id="conVl01" >
+                            <ObjectStatus id="conVl01Os01" title="Creado por" text="Mendoza"/>
+                            <ObjectStatus id="conVl01Os02" title="Creado en" text="12/07/2022"/>
+                            <ObjectStatus id="conVl01Os03" title="Aprobado" text="Aprobado automaticamente"/> 
+                        </layout:VerticalLayout>
+                        <layout:VerticalLayout id="conVl02" >
+                            <Title id="conVl02t1" level="H3" text="Estado" />
+                            <Label id="conVl02l1" text="Concedido"/>
+                        </layout:VerticalLayout>
+                        <layout:VerticalLayout id="conVl03" >
+                            <Title id="conVl03t1" level="H3" text="Valor neto" />
+                            <Label id="conVl03l1" text="600000 USD"/>
+                        </layout:VerticalLayout>
+                        <layout:VerticalLayout id="conVl04" >
+                            <Title id="conVl04t1" level="H3" text="Licitador" />
+                            <Label id="conVl04l1" text="Jose valdivia"/>
+                        </layout:VerticalLayout>  
+                    </uxap:headerContent> 
+                    <uxap:sections>
+                        <uxap:ObjectPageSection id="Op01" titleUppercase="false" title="2" showTitle="false">
+                            <uxap:subSections>
+                                <uxap:ObjectPageSubSection id="Op02" titleUppercase="false">
+                                    <uxap:blocks>  
+                                        <f:Form id="vRFQ_form01" editable="true">
+                                            <!-- <f:title> <core:Title id="pc011" text="Address" /> </f:title> -->
+                                            <f:layout>
+                                                <f:ColumnLayout  id="form01CL"
+                                                    columnsM="2"
+                                                    columnsL="3"
+                                                    columnsXL="4"
+                                                /> 
+                                            </f:layout>
+                                            <f:formContainers>
+                                                <f:FormContainer  id="form01Idc1" title="Datos Basicos">
+                                                    <f:formElements>
+                                                        <f:FormElement id="form01Idc1001" label="Tipo">
+                                                            <f:fields>
+                                                                <Text id="form01Idc1001i" text="Int. Abastecimiento requerido" />
+                                                            </f:fields>
+                                                        </f:FormElement>
+                                                        <f:FormElement  id="form01Idc1002" label="Proveedor / postor">
+                                                            <f:fields>
+                                                                <Text id="form01Idc1002i" text="Texto aqui" />
+                                                            </f:fields>
+                                                        </f:FormElement>
+                                                        <f:FormElement  id="form01Idc1003" label="Dirección">
+                                                            <f:fields>
+                                                                <Text id="form01Idc1003i" text="Texto aqui" />
+                                                            </f:fields>
+                                                        </f:FormElement> 
+                                                        <f:FormElement  id="form01Idc1004" label="País">
+                                                            <f:fields>
+                                                                <Text id="form01Idc1004i" text="Texto aqui" />
+                                                            </f:fields>
+                                                        </f:FormElement>  
+                                                        <f:FormElement  id="form01Idc1005" label="Fecha de envío de cotización">
+                                                            <f:fields>
+                                                                <Text id="form01Idc1005i" text="Texto aqui" />
+                                                            </f:fields>
+                                                        </f:FormElement>  
+                                                    </f:formElements>
+                                                </f:FormContainer>
+                                                <f:FormContainer  id="form01Idc3" title="Solicitud de presupuesto">
+                                                    <f:formElements>
+                                                        <f:FormElement id="form01Idc3001" label="RFQ">
+                                                            <f:fields>
+                                                                <Text id="form01Idc3001i" text="Texto aqui" />
+                                                            </f:fields>
+                                                        </f:FormElement> 
+                                                        <f:FormElement id="form01Idc3002" label="RFQ descripción ">
+                                                            <f:fields>
+                                                                <Text id="form01Idc3002i" text="Texto aqui" />
+                                                            </f:fields>
+                                                        </f:FormElement> 
+                                                        <f:FormElement id="form01Idc3003" label="Fecha limite de cotización">
+                                                            <f:fields>
+                                                                <Text id="form01Idc3003i" text="Texto aqui" />
+                                                            </f:fields>
+                                                        </f:FormElement> 
+                                                    </f:formElements>
+                                                </f:FormContainer>
+                                                <f:FormContainer  id="form01Idc4" title="Seguimiento de documento">
+                                                    <f:formElements>
+                                                        <f:FormElement id="form01Idc4001" label="Tipo de seguimiento a documento">
+                                                            <f:fields>
+                                                                <Text id="form01Idc4001i" text="Texto aqui" />
+                                                            </f:fields>
+                                                        </f:FormElement>  
+                                                    </f:formElements>
+                                                </f:FormContainer>
+                                            </f:formContainers>
+                                        </f:Form>
+                                    </uxap:blocks>
+                                </uxap:ObjectPageSubSection>
+                            </uxap:subSections>
+                        </uxap:ObjectPageSection>
+                    </uxap:sections> 
+                </uxap:ObjectPageLayout>
+            </Page>  
+        </content>
+    </Page>
+</mvc:View>

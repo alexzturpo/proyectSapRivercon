@@ -1,0 +1,228 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core"
+   xmlns:mvc="sap.ui.core.mvc"
+   xmlns:tab="sap.ui.table"  
+   xmlns:l="sap.ui.layout"
+   xmlns:fb="sap.ui.comp.filterbar"
+   
+   xmlns:f="sap.ui.layout.form" >
+   <Dialog
+      id="programacionSemanal"
+      title="Programacion Semanal" draggable="true">  
+            <VBox id="idvbox1" class="sapUiSmallMargin"  width="80%">   
+                        <fb:FilterBar  id="barfilter" reset="onReset" search="presBuscarPSemanal" showRestoreButton="true" showClearButton="true">
+                            <fb:filterGroupItems>  
+                                <fb:FilterGroupItem id="filter1" groupName="G1" name="A1" groupTitle="Group1"  label="Proyecto" visibleInFilterBar="true" >
+                                    <fb:control>
+                                         <Input value="p1" editable="false" id="Iproyecto"/>
+                                    </fb:control>
+                                </fb:FilterGroupItem> 
+                                <fb:FilterGroupItem id="filter2" groupName="G1" name="A2" groupTitle="Group1"  label="Administracion" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <Input value="ADMINISTRACION HUAYTO" editable="false" id="Iadministracion"/>
+                                    </fb:control>
+                                </fb:FilterGroupItem> 
+                                <fb:FilterGroupItem id="filter3" groupName="G1" name="A3" groupTitle="Group1"  label="Semana" visibleInFilterBar="true" >
+                                    <fb:control>
+                                        <Input value="1" editable="false" id="Isemana"/>
+                                    </fb:control>
+                                </fb:FilterGroupItem> 
+                            </fb:filterGroupItems>
+
+                            <fb:filterGroupItems>  
+                                <fb:FilterGroupItem id="filter4" groupName="G2" name="A1" groupTitle="Group2"  label="Fecha Inicio" visibleInFilterBar="true" >
+                                    <fb:control>
+                                        <DatePicker id="fi"  value="01/01/2021"  displayFormat="dd/MM/yyyy" placeholder="Ingresar fecha" required="true"/> 
+                                    </fb:control>
+                                </fb:FilterGroupItem> 
+                                <fb:FilterGroupItem id="filter5" groupName="G2" name="A2" groupTitle="Group2"  label="Fecha Final" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <DatePicker id="ff" value="31/01/2021"  displayFormat="dd/MM/yyyy" placeholder="Ingresar fecha" required="true"/>
+                                    </fb:control>
+                                </fb:FilterGroupItem>  
+                            </fb:filterGroupItems>
+
+                            <fb:filterGroupItems>   
+                                <fb:FilterGroupItem id="filter8" groupName="G3" name="A1" groupTitle="Group3"  label="Tipo labor" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <Input value="" id="Itipolabor" />
+                                    </fb:control>
+                                </fb:FilterGroupItem>  
+                                <fb:FilterGroupItem id="filter9" groupName="G3" name="A2" groupTitle="Group3"  label="Labor" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <Input value="" id="Ilabor" />
+                                    </fb:control>
+                                </fb:FilterGroupItem>  
+                                <fb:FilterGroupItem id="filter10" groupName="G3" name="A3" groupTitle="Group3"  label="Zona" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <Input value="" id="Izona" />
+                                    </fb:control>
+                                </fb:FilterGroupItem>  
+                                <fb:FilterGroupItem id="filter11" groupName="G3" name="A4" groupTitle="Group3"  label="Campo" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <Input value="" id="Icampo" />
+                                    </fb:control>
+                                </fb:FilterGroupItem>  
+                                <fb:FilterGroupItem id="filter12" groupName="G3" name="A5" groupTitle="Group3"  label="Quiebre" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <Input value="" editable="false" id="Iquiebre" />
+                                    </fb:control>
+                                </fb:FilterGroupItem>  
+                            </fb:filterGroupItems>
+
+                        </fb:FilterBar> 
+                <!-- <f:Form id="FormChangeColumn_twoGroups234"  editable="true"> 
+                    <f:layout>
+                        <f:ColumnLayout id="idcolum"
+                            columnsM="2"
+                            columnsL="3"
+                            columnsXL="4"
+                        />
+                    </f:layout>
+                    <f:formContainers>
+                        <f:FormContainer id="idformcontainer">
+                            <f:formElements>
+                                <f:FormElement id="idfomrelement1" label="Proyecto">
+                                    <f:fields>
+                                        <Input value="p1" editable="false" id="Iproyecto"/>
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement id="idfomrelement2" label="Fecha inicio">
+                                    <f:fields>
+                                        <DatePicker id="fi"  value="01/01/2021"  displayFormat="dd/MM/yyyy" placeholder="Ingresar fecha" required="true"/> 
+                                        
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement id="idfomrelement3" label="Tipo de labor">
+                                    <f:fields> 
+                                        <Input value="" id="Itipolabor" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement id="idfomrelement4" label="Labor">
+                                    <f:fields> 
+                                        <Input value="" id="Ilabor" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement id="idfomrelement5" label="Administracion">
+                                    <f:fields>
+                                        <Input value="ADMINISTRACION HUAYTO" editable="false" id="Iadministracion"/>
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement id="idfomrelement6" label="Semana">
+                                    <f:fields>
+                                        <Input value="1" editable="false" id="Isemana"/>
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement id="idfomrelement7" label="Fecha fin">
+                                    <f:fields>
+                                        <DatePicker id="ff" value="31/01/2021"  displayFormat="dd/MM/yyyy" placeholder="Ingresar fecha" required="true"/> 
+                                        
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement id="idfomrelement8" label="Zona">
+                                    <f:fields>
+                                        <Input value="" id="Izona" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement id="idfomrelement9" label="Campo">
+                                    <f:fields>
+                                        <Input value="" id="Icampo" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement id="idfomrelement10" label="Quiebre">
+                                    <f:fields>
+                                        <Input value="" editable="false" id="Iquiebre" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <f:FormElement id="idfomrelement11"  >
+                                    <f:fields>
+                                        <Button id="btn" icon="sap-icon://search" text="Buscar" press="presBuscarPSemanal"/> 
+                                    </f:fields>
+                                </f:FormElement>
+                            </f:formElements>
+                        </f:FormContainer> 
+                    </f:formContainers>
+                </f:Form> -->
+                <tab:Table
+                    id="tablefragmet" 
+                    selectionMode="MultiToggle" 
+                    visibleRowCount="0" 
+                    rows="{  path: 'myParam>/T_semanaLabor' }" 
+                    ariaLabelledBy="title">
+                    <!-- <tab:extension>
+                        <OverflowToolbar style="Clear">
+                            <Title id="title" text="Detalle de los Movimientos"/>
+                            <SearchField width="40%" class="sapUiSmallMargin" /> 
+                            <Button icon="sap-icon://save" text="Grabar programacion"  tooltip="Grabar programacion" press="presAgregar"/> 
+                            <Button icon="sap-icon://appointment" text="Crear Prog. Semanal"  tooltip="Crear Prog. Semanal" press="presProgSemanal"/> 
+                        </OverflowToolbar>
+                    </tab:extension> -->
+                    <tab:columns>
+                        <tab:Column id="idlabor" width="5rem">
+                            <Label id="flabel01" textAlign="Center" wrapping ="true"  text="Labor" />
+                            <tab:template> <Text id="tex1" text="{myParam>labor}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="idtipolabor2" width="9rem">
+                            <Label id="flabel2" textAlign="Center" wrapping ="true"  text="Tipo labor" />
+                            <tab:template> <Text id="tex2" text="{myParam>tipolabor}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="idfinicio2" width="7rem">
+                            <Label id="flabel3" textAlign="Center" wrapping ="true"  text="Fecha inicio" />
+                            <tab:template> <Text id="tex3" text="{myParam>finicio}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="idffin2" width="7rem">
+                            <Label id="flabel4" textAlign="Center" wrapping ="true"  text="Fecha fin" />
+                            <tab:template> <Text id="tex4" text="{myParam>ffin}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="idcampo2" width="5rem">
+                            <Label id="flabel5" textAlign="Center" wrapping ="true"  text="Campo" />
+                            <tab:template> <Text id="tex5" text="{myParam>campo}" wrapping="false" /> </tab:template>
+                        </tab:Column> 
+                        <tab:Column id="idtipocampo2" width="9rem">
+                            <Label id="flabel6" textAlign="Center" wrapping ="true"  text="Tipo de campo" />
+                            <tab:template> <Text id="tex6" text="{myParam>tipocampo}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="idQuibre2" width="5rem">
+                            <Label id="flabel6a" textAlign="Center" wrapping ="true"  text="Quibre" />
+                            <tab:template> <Text id="tex6a" text="{myParam>quibre}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="idcultivo2" width="5rem">
+                            <Label id="flabel7" textAlign="Center" wrapping ="true"  text="Cultivo" />
+                            <tab:template> <Text id="tex7" text="{myParam>cultivo}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="idetapa2" width="5rem">
+                            <Label id="flabel8" textAlign="Center" wrapping ="true"  text="Etapa" />
+                            <tab:template> <Text id="tex8" text="{myParam>etapa}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="idcampania2" width="5rem">
+                            <Label id="flabel9" textAlign="Center" wrapping ="true"  text="Campaña" />
+                            <tab:template> <Text id="tex9" text="{myParam>campania}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="idpep2" width="11rem">
+                            <Label id="flabel10" textAlign="Center" wrapping ="true"  text="PEP" />
+                            <tab:template> <Text id="tex10" text="{myParam>pep}" wrapping="false" /> </tab:template>
+                        </tab:Column> 
+                        <tab:Column id="idnrogen2" width="6rem">
+                            <Label id="flabel11" textAlign="Center" wrapping ="true"  text="Nro. Gen" />
+                            <tab:template> <Text id="tex11"  text="{myParam>nrogen}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="idnroop2" width="5rem">
+                            <Label id="flabel12" textAlign="Center" wrapping ="true"  text="Nro. Op." />
+                            <tab:template> <Text id="tex12"  text="{myParam>nroop}" wrapping="false" /> </tab:template>
+                        </tab:Column>
+                        <tab:Column id="idnroapl2" width="5rem">
+                            <Label id="flabel13" textAlign="Center" wrapping ="true"  text="Nro. Apl" />
+                            <tab:template> <Text id="tex13" text="{myParam>nroapl}" wrapping="false" /> </tab:template>
+                        </tab:Column>                   
+                    </tab:columns>
+                </tab:Table> 
+            </VBox> 
+      <OverflowToolbar id="otbFooter"> 
+            <ToolbarSpacer id="idespacio2"/>
+            <Button id="idbtn1" type="Accept" text="Aceptar" press="onAcceptDialog"> </Button>
+            <Button id="idClose" type="Reject" text="Cancelar" press="onCloseDialog"> </Button>
+            <ToolbarSpacer id="idespacio3"/>
+        </OverflowToolbar>
+   </Dialog>
+</core:FragmentDefinition>

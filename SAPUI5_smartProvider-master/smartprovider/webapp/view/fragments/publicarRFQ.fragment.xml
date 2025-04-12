@@ -1,0 +1,55 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core"
+   xmlns:mvc="sap.ui.core.mvc"  
+   xmlns:f="sap.ui.layout.form"
+   xmlns:layout="sap.ui.layout" 
+   xmlns:uxap="sap.uxap"
+   >
+   <Dialog
+      id="d1PublicarRFQ"
+      title="Resumen de RFQ" draggable="true" showHeader="false"> 
+        <uxap:ObjectPageLayout id="d1Opl" upperCaseAnchorBar="false">
+            <uxap:headerTitle>
+                <uxap:ObjectPageHeader id="d1Op" 
+                                objectTitle="Resumen RFQ"
+                                showTitleSelector="false" 
+                                objectImageShape="Circle"
+                                objectImageURI="sap-icon://activate"
+                                titleSelectorTooltip="Custom Tooltip">
+                    <!-- <uxap:actions>
+                        <uxap:ObjectPageHeaderActionButton icon="sap-icon://edit" text="Editar" importance="Medium" tooltip="Editar"/>
+                        <uxap:ObjectPageHeaderActionButton icon="sap-icon://save" text="Publicar" tooltip="save" press="onPublicar"/> 
+                        <uxap:ObjectPageHeaderActionButton icon="sap-icon://action" text="action" importance="Low" tooltip="action" press="on01"/> 
+                    </uxap:actions>  -->
+                </uxap:ObjectPageHeader>
+            </uxap:headerTitle>
+            <uxap:headerContent>
+                <layout:VerticalLayout id="d1Vl01" >
+                    <ObjectStatus id="d1Vl01Os01" title="Creado por" text="Mendoza"/>
+                    <ObjectStatus id="d1Vl01Os02" title="Creado en" text="19/05/2022"/>
+                    <ObjectStatus id="d1Vl01Os03" title="Fecha de publicación" text="hoy"/>
+                    <ObjectStatus id="d1Vl01Os04" title="Aprovador" text="No empezado"/>
+                </layout:VerticalLayout>
+                <layout:VerticalLayout id="d1Vl02" >
+                    <Title id="d1Vl02t1" level="H3" text="Estado" />
+                    <Label id="d1Vl02l1" text="En preparación"/>
+                </layout:VerticalLayout>
+                <layout:VerticalLayout id="d1Vl03" >
+                    <Title id="d1Vl03t1" level="H3" text="Valor objetivo" />
+                    <Label id="d1Vl03l1" text="10000 USD"/>
+                </layout:VerticalLayout>
+                <layout:VerticalLayout id="d1Vl04" >
+                    <Title id="d1Vl04t1" level="H3" text="Fecha límite de cotización" />
+                    <Label id="d1Vl04l1" text="31/01/2022"/>
+                </layout:VerticalLayout> 
+            </uxap:headerContent> 
+        </uxap:ObjectPageLayout>
+      <OverflowToolbar id="d1Footer">
+            <ToolbarSpacer id="Aidespacio"/>
+            <Button id="Aidbtn1" type="Accept" text="Publicar" press="onAceptarD1"> </Button>
+            <Button id="AidClose" type="Reject" text="Cancelar" press="onCancelarD1"> </Button>
+            <!-- <ToolbarSpacer id="Aidespacio2" /> -->
+        </OverflowToolbar>
+   </Dialog>
+</core:FragmentDefinition>
