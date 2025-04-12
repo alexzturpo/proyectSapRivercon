@@ -1,0 +1,417 @@
+<mvc:View controllerName="appc.campomarapp.controller.vMain" 
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:tnt="sap.tnt"
+    xmlns:card="sap.f.cards"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <!-- <tnt:ToolHeader> 
+		<Image src="./img/campomarLogo.png" height="100%" /> 
+        <SearchField width="12rem" />  
+		<ToolbarSpacer />
+        <MenuButton text="ATÚN" type="Transparent">
+			<menu>
+				<Menu> 
+					<MenuItem text="filete" press="onPress" />
+					<MenuItem text="Lomos" press="onPress" />
+					<MenuItem text="Trozos" press="onPress" />
+					<MenuItem text="Grated" press="onPress" />
+				</Menu>
+			</menu>
+		</MenuButton>
+        <MenuButton text="CABALLA" type="Transparent">
+			<menu>
+				<Menu> 
+					<MenuItem text="Sólido" press="onPress" /> 
+					<MenuItem text="Grated" press="onPress" />
+				</Menu>
+			</menu>
+		</MenuButton>
+        <MenuButton text="JUREL" type="Transparent">
+			<menu>
+				<Menu> 
+					<MenuItem text="Trozos" press="onPress" /> 
+					<MenuItem text="Grated" press="onPress" />
+				</Menu>
+			</menu>
+		</MenuButton>
+        <ToolbarSpacer />
+
+        
+        <Button id="BadgedButton" class="sapUiTinyMarginBeginEnd"
+            icon="sap-icon://cart" type="Transparent" text="Items">
+            <customData>
+                <BadgeCustomData key="badge" value="1" visible="true"/>
+            </customData>
+        </Button>
+		<Button icon="sap-icon://person-placeholder" text="Inicio de sesión" type="Default" />
+	</tnt:ToolHeader> -->
+    <tnt:ToolPage id="toolPage">
+		<tnt:header>
+			<tnt:ToolHeader> 
+                <Image src="./img/campomarLogo.png" height="100%" /> 
+                <SearchField width="12rem" />  
+                <ToolbarSpacer />
+                <!-- <MenuButton text="ATÚN" type="Transparent">
+                    <menu>
+                        <Menu> 
+                            <MenuItem text="filete" press="onPress" />
+                            <MenuItem text="Lomos" press="onPress" />
+                            <MenuItem text="Trozos" press="onPress" />
+                            <MenuItem text="Grated" press="onPress" />
+                        </Menu>
+                    </menu>
+                </MenuButton>
+                <MenuButton text="CABALLA" type="Transparent">
+                    <menu>
+                        <Menu> 
+                            <MenuItem text="Sólido" press="onPress" /> 
+                            <MenuItem text="Grated" press="onPress" />
+                        </Menu>
+                    </menu>
+                </MenuButton>
+                <MenuButton text="JUREL" type="Transparent">
+                    <menu>
+                        <Menu> 
+                            <MenuItem text="Trozos" press="onPress" /> 
+                            <MenuItem text="Grated" press="onPress" />
+                        </Menu>
+                    </menu>
+                </MenuButton>
+                <ToolbarSpacer /> -->
+
+                
+                <Button id="BadgedButton" class="sapUiTinyMarginBeginEnd"
+                    icon="sap-icon://cart" type="Transparent" text="Items">
+                    <customData>
+                        <BadgeCustomData key="badge" value="1" visible="true"/>
+                    </customData>
+                </Button>
+                <Button icon="sap-icon://person-placeholder" text="Inicio de sesión" type="Default" />
+			</tnt:ToolHeader>
+		</tnt:header>
+		<tnt:subHeader>
+			<tnt:ToolHeader visible="{=! ${device>/system/phone}}" class="barraNav">
+            <!-- <ToolbarSpacer />  -->
+				<IconTabHeader selectedKey="page0" select=".onItemSelect" mode="Inline" > 
+					<items> 
+						<IconTabFilter icon="sap-icon://home" text=" " key="page1">  </IconTabFilter>
+						<IconTabFilter text="ATÚN" key="page2">
+							<items>
+								<IconTabFilter text="Filete" key="page2a"> </IconTabFilter>
+								<IconTabFilter text="Lomos" key="page2b"> </IconTabFilter>
+								<IconTabFilter text="Trozos" key="page2c"> </IconTabFilter>
+								<IconTabFilter text="Grated" key="page2d"> </IconTabFilter>
+							</items>
+						</IconTabFilter>
+						<IconTabFilter text="CABALLA" key="page3">
+							<items>
+								<IconTabFilter text="Sólido" key="page3a"> </IconTabFilter> 
+								<IconTabFilter text="Grated" key="page3b"> </IconTabFilter>
+							</items>
+						</IconTabFilter>
+						<IconTabFilter text="JUREL" key="page4">
+							<items>
+								<IconTabFilter text="Trozos" key="page4a"> </IconTabFilter> 
+								<IconTabFilter text="Grated" key="page4b"> </IconTabFilter>
+							</items>
+						</IconTabFilter>
+					</items>
+				</IconTabHeader> 
+            <!-- <ToolbarSpacer /> -->
+			</tnt:ToolHeader>
+		</tnt:subHeader>
+		<!-- <tnt:sideContent>
+			<tnt:SideNavigation
+				visible="{= ${device>/system/phone}}"
+				expanded="true"
+				selectedKey="{/selectedKey}"
+				itemSelect=".onItemSelect">
+				<tnt:NavigationList items="{path: '/navigation'}">
+					<tnt:NavigationListItem
+						text="{title}"
+						icon="{icon}"
+						enabled="{enabled}"
+						expanded="{expanded}"
+						items="{items}"
+						key="{key}">
+						<tnt:NavigationListItem
+							text="{title}"
+							key="{key}"
+							enabled="{enabled}" />
+					</tnt:NavigationListItem>
+				</tnt:NavigationList>
+			</tnt:SideNavigation>
+		</tnt:sideContent> -->
+		<tnt:mainContents >
+			<NavContainer id="pageContainer" initialPage="page1" >
+				<pages > 
+
+					<!-- <ScrollContainer id="page1" horizontal="false" vertical="true" height="100%">
+						<Text text="Home" />
+					</ScrollContainer> -->
+                    <Page id="page1" enableScrolling="true" title="Title" showHeader="false" class="sapUiResponsivePadding--header sapUiResponsivePadding--footer" backgroundDesign="Solid">
+                        <content  > 
+                            <Carousel class="sapUiContentPadding" loop="true" height="auto" pageIndicatorPlacement="Auto" showPageIndicator="false">
+                                <Image src="./img/banner.jpg" alt="Example picture of speakers" />
+                                <Image src="./img/banner.jpg" alt="Example picture of USB flash drive" />
+                                <Image src="./img/banner.jpg" alt="Example picture of spotlight" /> 
+                            </Carousel>
+
+                            <HBox wrap="Wrap" justifyContent="SpaceAround" class="sapUiMediumMarginBottom container" backgroundDesign="Transparent">
+                                <Image src="./img/banner2a.jpg" width="100%" />
+                                <Image src="./img/banner2b.jpg" width="100%" />
+                            </HBox>
+
+                            <VBox class="container">
+                                <Title level="H1" text="PRODUCTOS DESTACADOS" class="sapUiMediumMarginBegin sapUiMediumMarginTop title" />
+                                <HBox wrap="Wrap" justifyContent="SpaceAround" class="sapUiSmallMarginTop" backgroundDesign="Transparent">
+                                    <VBox alignItems="Center">
+                                        <Image src="./img/fileteAtun.jpg" width="100%" press="onPress"/>
+                                        <!-- <Button text="ATÚN" icon="sap-icon://information" press="onPress" width="100%"/>  -->
+                                            <ObjectStatus class="sapUiSmallMarginBottom info" title="ATÚN"  press="onPress" icon="sap-icon://information" active="true" state="Information" />
+                                    </VBox>
+                                    <VBox alignItems="Center">
+                                        <Image src="./img/solidoCaballa.jpg" width="100%" press="onPress"/>
+                                        <!-- <Button text="CABALLA" icon="sap-icon://information" press="onPress" width="100%"/>  -->
+                                        <ObjectStatus class="sapUiSmallMarginBottom info" title="CABALLA"  press="onPress" icon="sap-icon://information" active="true" state="Information" />
+                                    </VBox>
+                                    <VBox alignItems="Center">
+                                        <Image src="./img/trozoJurel.jpg" height="auto" press="onPress"/>
+                                        <!-- <Button text="JUREL" icon="sap-icon://information" press="onPress" width="100%"/>  -->
+                                        <ObjectStatus class="sapUiSmallMarginBottom info" title="JUREL"  press="onPress" icon="sap-icon://information" active="true" state="Information" />
+                                    </VBox>
+                                </HBox> 
+                            </VBox>
+ 
+                            <VBox class="container">
+                                <Title level="H1" text="PRODUCTOS DESTACADOS" class="sapUiMediumMarginBegin sapUiMediumMarginTop title" />
+                                <HBox wrap="Wrap" justifyContent="SpaceAround" class="sapUiSmallMarginTop" backgroundDesign="Transparent">
+                                    <f:Card class="sapUiMediumMargin" width="300px">
+                                        <f:header>
+                                            <card:Header title="Filete De Atún Claro" subtitle="Caja x 24un." iconSrc="sap-icon://e-care" />
+                                            <!-- <card:NumericSideIndicator title="Filete De Atún Claro" number="888.8" unit="MM" class="sapUiSmallMargin" /> -->
+                                        </f:header>
+                                        <f:content>
+                                            <VBox  class="sapUiSmallMargin" justifyContent="Center" alignItems="Center">
+                                                <Image src="./img/atunClaro.jpg" width="100%" press="onPress"/>
+                                                <Text wrapping="true"  class="sapUiSmallMarginTop"
+                                                text="Elaborado en aceite vegetal con envase litografiado, y materia prima de nuestro mar." />
+                                                <NumericContent value="122,40" scale="PER" valueColor="Good" class="sapUiTinyMargin"  />
+                                                
+                                                <HBox renderType="Bare" justifyContent="SpaceBetween">
+                                                    <StepInput value="1" displayValuePrecision="{displayValuePrecision}"
+                                                    min="1" max="10" width="50%" step="1"  change="onChange"/>
+                                                    <Button  text="Añadir" press=".onBookPress" type="Emphasized" icon="sap-icon://cart-4" class="sapUiTinyMarginBegin" width="50%" />
+                                                </HBox>
+                                            </VBox>
+                                        </f:content>
+                                    </f:Card>
+                                    <f:Card class="sapUiMediumMargin" width="300px">
+                                        <f:header>
+                                            <card:Header title="Filete De Atún" subtitle="Caja x 24un." iconSrc="sap-icon://e-care" />
+                                            <!-- <card:NumericSideIndicator title="Filete De Atún Claro" number="888.8" unit="MM" class="sapUiSmallMargin" /> -->
+                                        </f:header>
+                                        <f:content>
+                                            <VBox  class="sapUiSmallMargin" justifyContent="Center" alignItems="Center">
+                                                <Image src="./img/fileteAtunP.jpg" width="100%" press="onPress"/>
+                                                <Text wrapping="true"  class="sapUiSmallMarginTop"
+                                                text="Elaborado en aceite vegetal con envase litografiado, y materia prima  de nuestro mar." />
+                                                <NumericContent value="117,60" scale="PER" valueColor="Good" class="sapUiTinyMargin"  />
+                                                
+                                                <HBox renderType="Bare" justifyContent="SpaceBetween">
+                                                    <StepInput value="1" displayValuePrecision="{displayValuePrecision}"
+                                                    min="1" max="10" width="50%" step="1"  change="onChange"/>
+                                                    <Button  text="Añadir" press=".onBookPress" type="Emphasized" icon="sap-icon://cart-4" class="sapUiTinyMarginBegin" width="50%" />
+                                                </HBox>
+                                            </VBox>
+                                        </f:content>
+                                    </f:Card>
+                                    <f:Card class="sapUiMediumMargin" width="300px">
+                                        <f:header>
+                                            <card:Header title="Filete De Atún Artesanal" subtitle="Caja x 12un." iconSrc="sap-icon://e-care"/>
+                                            <!-- <card:NumericSideIndicator title="Filete De Atún Claro" number="888.8" unit="MM" class="sapUiSmallMargin" /> -->
+                                        </f:header>
+                                        <f:content>
+                                            <VBox  class="sapUiSmallMargin" justifyContent="Center" alignItems="Center">
+                                                <Image src="./img/artesanal.jpg" width="100%" press="onPress"/>
+                                                <Text wrapping="true"  class="sapUiSmallMarginTop"
+                                                text="Elaborado en aceite vegetal con envase litografiado, y materia prima  de nuestro mar." />
+                                                <NumericContent value="66,00" scale="PER" valueColor="Good" class="sapUiTinyMargin"  />
+                                                
+                                                <HBox renderType="Bare" justifyContent="SpaceBetween">
+                                                    <StepInput value="1" displayValuePrecision="{displayValuePrecision}"
+                                                    min="1" max="10" width="50%" step="1"  change="onChange"/>
+                                                    <Button  text="Añadir" press=".onBookPress" type="Emphasized" icon="sap-icon://cart-4" class="sapUiTinyMarginBegin" width="50%" />
+                                                </HBox>
+                                            </VBox>
+                                        </f:content>
+                                    </f:Card>
+                                    <f:Card class="sapUiMediumMargin" width="300px">
+                                        <f:header>
+                                            <card:Header title="Trozos De Atún" subtitle="Caja x 24un." iconSrc="sap-icon://e-care"/>
+                                            <!-- <card:NumericSideIndicator title="Filete De Atún Claro" number="888.8" unit="MM" class="sapUiSmallMargin" /> -->
+                                        </f:header>
+                                        <f:content>
+                                            <VBox  class="sapUiSmallMargin" justifyContent="Center" alignItems="Center">
+                                                <Image src="./img/trozosAtun.jpg" width="100%" press="onPress"/>
+                                                <Text wrapping="true"  class="sapUiSmallMarginTop"
+                                                text="Elaborado en aceite vegetal con envase litografiado, y materia prima de nuestro mar." />
+                                                <NumericContent value="108,00" scale="PER" valueColor="Good" class="sapUiTinyMargin"  />
+                                                
+                                                <HBox renderType="Bare" justifyContent="SpaceBetween">
+                                                    <StepInput value="0" displayValuePrecision="{displayValuePrecision}"
+                                                    min="0" max="10" width="50%" step="1"  change="onChange"/>
+                                                    <Button  text="Añadir" press=".onBookPress" type="Emphasized" icon="sap-icon://cart-4" class="sapUiTinyMarginBegin" width="50%" />
+                                                </HBox>
+                                            </VBox>
+                                        </f:content>
+                                    </f:Card>
+                                    <f:Card class="sapUiMediumMargin" width="300px">
+                                        <f:header>
+                                            <card:Header title="Trocitos De Atún" subtitle="Caja x 24un." iconSrc="sap-icon://e-care" />
+                                            <!-- <card:NumericSideIndicator title="Filete De Atún Claro" number="888.8" unit="MM" class="sapUiSmallMargin" /> -->
+                                        </f:header>
+                                        <f:content>
+                                            <VBox  class="sapUiSmallMargin" justifyContent="Center" alignItems="Center">
+                                                <Image src="./img/trocitosAtun.jpg" width="100%" press="onPress"/>
+                                                <!-- <Title level="H1" text="NUEVO PRODUCTO" /> -->
+                                                <Text wrapping="true"  class="sapUiSmallMarginTop"
+                                                text="Elaborado en aceite de girasol con envase litografiado, y materia prima de nuestro mar." />
+                                                <NumericContent value="96,00" scale="PER" valueColor="Good" class="sapUiTinyMargin"  />
+                                                
+                                                <HBox renderType="Bare" justifyContent="SpaceBetween">
+                                                    <StepInput value="0" displayValuePrecision="{displayValuePrecision}"
+                                                    min="0" max="10" width="50%" step="1"  change="onChange"/>
+                                                    <Button  text="Añadir" press=".onBookPress" type="Emphasized" icon="sap-icon://cart-4" class="sapUiTinyMarginBegin" width="50%" />
+                                                </HBox>
+                                            </VBox>
+                                        </f:content>
+                                    </f:Card>
+                                </HBox> 
+                                <HBox wrap="Wrap" justifyContent="SpaceAround" class="sapUiSmallMarginTop " backgroundDesign="Transparent">
+                                    <HBox alignContent="Center" class="sapUiContentPadding tag" width="20rem" backgroundDesign="Solid"> 
+                                        <Avatar src="./img/icon/icon1.jpg" displaySize="M" displayShape="Square" showBorder="false" class="sapUiSmallMarginBeginEnd "/>
+                                        <!-- <core:Icon  src="./img/icon/icon1.jpg" class="size1 sapUiSmallMargin" color="#031E48" >  </core:Icon> -->
+                                        <VBox> 
+                                            <Title level="H3" text="ATENCIÓN AL CLIENTE" />
+                                            <Text wrapping="true"  class="sapUiTinyMarginTop"
+                                                text="Horario: 7:00 a.m. a 5:00 p.m." />
+                                        </VBox> 
+                                    </HBox> 
+                                    <HBox alignContent="Center" class="sapUiContentPadding tag" width="20rem" backgroundDesign="Solid"> 
+                                        <Avatar src="./img/icon/icon2.jpg" displaySize="M" displayShape="Square" showBorder="false" class="sapUiSmallMarginBeginEnd "/>
+                                        <!-- <core:Icon  src="./img/icon/icon2.jpg" class="size1 sapUiSmallMargin" color="#031E48" >  </core:Icon> -->
+                                        <VBox> 
+                                            <Title level="H3" text="DELIVERY" />
+                                            <Text wrapping="true"  class="sapUiTinyMarginTop" 
+                                                text="Solo en Lima Metropolitana y su periferia. Horario de Entrega:de 8:00am a 6:00pm" />
+                                        </VBox> 
+                                    </HBox> 
+                                    <HBox alignContent="Center" class="sapUiContentPadding tag" width="20rem" backgroundDesign="Solid"> 
+                                        <Avatar src="./img/icon/icon3.jpg" displaySize="M" displayShape="Square" showBorder="false" class="sapUiSmallMarginBeginEnd "/>
+                                        <!-- <core:Icon  src="./img/icon/icon3.jpg" class="size1 sapUiSmallMargin" color="#031E48" >  </core:Icon> -->
+                                        <VBox> 
+                                            <Title level="H3" text="MEDIDAS DE SEGURIDAD" />
+                                            <Text wrapping="true"  class="sapUiTinyMarginTop"
+                                                text="Las entregas se realizarán respetando las medidas de seguridad recomendadas por el Ministerio de Salud - MINSA" />
+                                        </VBox> 
+                                    </HBox>   
+                                </HBox> 
+                            </VBox>
+
+                            <VBox class="container">
+                                <Title level="H1" text="TESTIMONIOS" class="sapUiMediumMarginBegin sapUiMediumMarginTop sapUiSmallMarginBottom title"/>
+                            </VBox>
+                            <Carousel class="sapUiContentPadding" loop="true" height="auto" showPageIndicator="false">
+                                <Image src="./img/testimonioA.png"  />
+                                <Image src="./img/testimonioB.png"  />
+                                <Image src="./img/testimonioC.png"  /> 
+                            </Carousel> 
+
+                            <VBox class="backFotter  " >
+                                <HBox justifyContent="Center" class="container">  
+                                    <Avatar src="./img/icon/facebook.svg" displaySize="S" displayShape="Square" showBorder="false" press="onPress" class="sapUiSmallMarginBeginEnd btnRedes"/>
+                                    <Avatar src="./img/icon/instagram.svg" displaySize="S" displayShape="Square" showBorder="false" press="onPress" class="sapUiSmallMarginBeginEnd btnRedes"/>
+                                    <Avatar src="./img/icon/youtube.svg" displaySize="S" displayShape="Square" showBorder="false" press="onPress" class="sapUiSmallMarginBeginEnd btnRedes"/>
+                                    <!-- <Button icon="./img/icon/facebook.svg" class="sapUiSmallMarginBeginEnd btnRedes"  type="Transparent" />
+                                    <Button icon="./img/icon/instagram.svg" class="sapUiSmallMarginBeginEnd btnRedes" type="Transparent" />
+                                    <Button icon="./img/icon/youtube.svg" class="sapUiSmallMarginBeginEnd btnRedes" type="Transparent" /> -->
+                                </HBox>
+                                <HBox class="container" justifyContent="SpaceBetween">
+                                    <VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom fTag1"> 
+                                        <Title level="H1" text="Nuestra empresa" class="sapUiTinyMarginTopBottom fTitle"/>
+                                        <Link text="Contacte con nosotros" press="handleLinkPress" class="link"/>
+                                        <Link text="Mapa del sitio" press="handleLinkPress" class="link" />
+                                        <Link text="Sobre nosotros" press="handleLinkPress" class="link" />
+                                    </VBox>
+                                    <VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom fTag2"> 
+                                        <Title level="H1" text="Su cuenta" class="sapUiTinyMarginTopBottom fTitle "/>
+                                        <Link text="Información personal" press="handleLinkPress" class="link" />
+                                        <Link text="Pedidos" press="handleLinkPress" class="link" />
+                                        <Link text="Direcciones" press="handleLinkPress" class="link" />
+                                        <Link text="Cupones de descuento" press="handleLinkPress" class="link" />
+                                    </VBox>
+                                    <VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom fTag3"> 
+                                        <Title level="H1" text="Información" class="sapUiTinyMarginTopBottom fTitle "/>
+                                        <Link text="Términos y condiciones de uso" press="handleLinkPress" class="link" />
+                                        <Link text="Privacidad" press="handleLinkPress" class="link" />
+                                        <Link text="Envío y Pago" press="handleLinkPress" class="link" />
+                                    </VBox>
+                                    <VBox class="sapUiSmallMarginBeginEnd sapUiSmallMarginTopBottom fTag3"> 
+                                        <Title level="H1" text="Información" class="sapUiTinyMarginTopBottom fTitle "/>
+                                        <Text text="PESQUERA HAYDUK S.A." wrapping="true" class="link"/>
+                                        <Text text="RUC N° 20136165667" wrapping="true" class="link"/>
+                                        <Text text="Av. Manuel Olguín N° 501, Oficina 701" wrapping="true" class="link"/>
+                                        <Text text="Provincia y Departamento de Lima" wrapping="true" class="link"/>
+                                        <Text text="Santiago de Surco - Peru" wrapping="true" class="link"/>
+                                        <Text text="Envíenos un correo electrónico:" wrapping="true" class="link"/>
+                                        <Link text="saccampomar@hayduk.com.pe" press="handleLinkPress" class="link" /> 
+                                    </VBox>
+                                </HBox>
+                            </VBox>
+                        </content>
+                        <!-- <footer>
+                            <OverflowToolbar>
+                                <content>
+                                    <ToolbarSpacer />
+                                    <Button text="Grouped View" />
+                                    <Button text="Classical Table" />
+                                </content>
+                            </OverflowToolbar>
+                        </footer> -->
+                    </Page>
+
+					<ScrollContainer id="page2" horizontal="false" vertical="true" height="100%">
+						<Text text="ATÚN" />
+					</ScrollContainer>
+                        <ScrollContainer id="page2a" horizontal="false" vertical="true" height="100%">
+                            <Text text="Filete" />
+                        </ScrollContainer>
+                        <ScrollContainer id="page2b" horizontal="false" vertical="true" height="100%">
+                            <Text text="Lomos" />
+                        </ScrollContainer>
+                        <ScrollContainer id="page2c" horizontal="false" vertical="true" height="100%">
+                            <Text text="Trozos" />
+                        </ScrollContainer>
+                        <ScrollContainer id="page2d" horizontal="false" vertical="true" height="100%">
+                            <Text text="Grated" />
+                        </ScrollContainer>
+
+					<ScrollContainer id="page3" horizontal="false" vertical="true" height="100%">
+						<Text text="CABALLA" />
+					</ScrollContainer>
+
+					<ScrollContainer id="page4" horizontal="false" vertical="true" height="100%">
+						<Text text="JUREL" />
+					</ScrollContainer> 
+				</pages>
+			</NavContainer>
+		</tnt:mainContents>
+	</tnt:ToolPage>
+
+    
+
+    
+
+</mvc:View>

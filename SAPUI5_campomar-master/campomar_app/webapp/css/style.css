@@ -1,0 +1,53 @@
+/* Enter your custom styles here */
+/* .barraNav{  
+    margin: auto;
+} */
+.sapMIBar.sapTntToolHeader .sapMBarChild.sapMITH .sapMITBHead { 
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+}
+.title{
+    border-bottom: 5px solid #061e48;
+    color: #061e48;
+    font-size: x-large;
+}
+.info{
+    font-size: 1rem;
+}
+.size1 {
+	font-size : 2rem;
+}
+.tag {
+	border-radius: 1rem;
+}
+
+/* fotter  */
+.backFotter { 
+    background-color: #061e48 !important;
+    padding-top: 2rem;
+   
+    
+}
+.container { 
+    width: 100%;
+    max-width: 1111px;
+    margin: auto; 
+    
+}
+/* .btnRedes { 
+	margin-bottom: 1rem;   
+} */
+.btnRedes:hover {  
+    background-color: #ecf0f1; 
+    border-bottom: 5px solid #FFDD03 ; 
+}
+.fTitle { 
+    color: white !important;
+}
+.link{  
+    color: #FFDD03 !important; 
+}
+.sapMLnk:not(.sapMLnkDsbl) {
+    text-shadow: none !important;
+}

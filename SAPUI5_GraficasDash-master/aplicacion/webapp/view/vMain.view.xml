@@ -1,0 +1,182 @@
+<mvc:View controllerName="gd.aplicacion.controller.vMain"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:tnt="sap.tnt"
+    xmlns:core="sap.ui.core"
+    xmlns:tab="sap.ui.table" 
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:u="sap.ui.unified"
+    xmlns="sap.m">
+    
+    <tnt:ToolHeader> 
+		<Image src="test-resources/sap/tnt/images/SAP_Logo.png" />
+		<Text text="SAP" wrapping="false" />
+		<ToolbarSpacer />
+		<Button icon="sap-icon://search" type="Transparent" />
+        <Button icon="sap-icon://bell" type="Transparent" />
+        <MenuButton text="Alberto Jara" defaultAction="onDefaultAction" beforeMenuOpen="onBeforeMenuOpen" useDefaultActionOnly="true" menuPosition="BeginBottom">
+			<menu>
+				<Menu itemSelected="onMenuAction">
+					<MenuItem text="Edit" icon="sap-icon://edit" />
+					<MenuItem text="Salir" icon="sap-icon://log" /> 
+				</Menu>
+			</menu>
+		</MenuButton>
+	</tnt:ToolHeader>
+
+    <SplitContainer
+		id="SplitContDemo"
+		initialDetail="tablero"
+		initialMaster="master">
+		<detailPages>
+			<Page id="tablero" title="Detail 1" showHeader="false" navButtonPress=".onPressDetailBack" >
+                <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">  
+                    <HBox class="panelMain sapUiTinyMargin" height="100%" width="100%">
+
+                        <VBox class="panel1 sapUiTinyMargin" backgroundDesign="Solid">
+                            <Toolbar width="100%" class="toolbarPadding">
+                                <core:Icon src="sap-icon://cloud" class="sapUiSmallMargin size1"> </core:Icon>
+                                <Title text="Nombre de empresa"/>
+                                <ToolbarSpacer /> 
+                                <Button text="Diario" press="onPress" />  
+                                <Button text="Semanal" press="onPress" />  
+                                <Button text="Mensual" press="onPress" />
+                            </Toolbar>  
+                            <VBox>
+                                <viz:VizFrame id="idVizFrame1"   vizProperties="{   title: { text: 'Finance Report' },
+                                    interaction:{ selectability: { mode:'SINGLE'  } }}" selectData="myOnClickHandler" busy="false"
+                                    busyIndicatorDelay="1000" visible="true"
+                                    uiConfig="{ 'applicationSet': 'fiori' }" vizType="combination"
+                                    legendVisible="true" width="100%">
+                                        <viz:dataset>
+                                            <viz.data:FlattenedDataset id="id001" data="{/milk}">
+                                                <viz.data:dimensions>
+                                                    <viz.data:DimensionDefinition name="Week"
+                                                        value="{Week}" />
+                                                </viz.data:dimensions>
+                                                <viz.data:measures>
+                                                    <viz.data:MeasureDefinition name="Revenue"
+                                                        value="{Revenue}" />
+                                                    <viz.data:MeasureDefinition name="Cost"
+                                                        value="{Cost}" />
+                                                    <viz.data:MeasureDefinition name="Cost2"
+                                                        value="{Cost2}" />
+                                                    <viz.data:MeasureDefinition name="Cost1"
+                                                        value="{Cost1}" />
+                                                </viz.data:measures>
+                                            </viz.data:FlattenedDataset>
+                                        </viz:dataset>
+
+                                        <viz:feeds>
+                                            <viz.feeds:FeedItem uid="valueAxis" type="Measure"
+                                                values="Cost" />
+                                            <viz.feeds:FeedItem uid="valueAxis" type="Measure"
+                                                values="Revenue" />
+                                            <viz.feeds:FeedItem id="feedCategoryAxis" uid="categoryAxis" type="Dimension"
+                                                values="Week" />
+                                        </viz:feeds>
+                                </viz:VizFrame>
+                            </VBox>
+                        </VBox>
+                        <VBox class="panel2 sapUiTinyMargin" backgroundDesign="Solid">
+                            <Toolbar width="100%" class="toolbarPadding">
+                                <core:Icon src="sap-icon://action" class="sapUiSmallMargin size1"> </core:Icon>
+                                <Title text="Acciones comparativas"/>
+                                <ToolbarSpacer /> 
+                                <SearchField width="15rem" class="sapUiTinyMargin" />
+                            </Toolbar> 
+                            <u:CalendarDateInterval id="calendar" width="100%" select="handleCalendarSelect"/>
+                            	<ScrollContainer
+                                    height="20rem"
+                                    width="100%"
+                                    vertical="true"
+                                    focusable="true"> 
+                                    <List items="{/list}" headerText="Products">
+                                        <items>
+                                            <!-- <StandardListItem icon="sap-icon://sap-box" wrapping="true"
+                                                title="{name}"
+                                                info="{info}"
+                                                description="{fecha}" /> -->
+                                            <NotificationListItem
+                                            title="{name}"
+                                            description="Short description"
+                                            showCloseButton="true"
+                                            datetime="1 dia"
+                                            unread="true"
+                                            priority="Low"
+                                            close=".onItemClose"
+                                            press=".onListItemPress"
+                                            authorName="Autor"
+                                            authorPicture="sap-icon://marketing-campaign"/>
+                                        </items> 
+                                    </List>
+                                </ScrollContainer>
+                            
+                        </VBox>
+                        <VBox class="indicadores sapUiTinyMargin" backgroundDesign="Solid">
+                            <Toolbar width="100%" class="toolbarPadding">
+                                <core:Icon src="sap-icon://tags" class="sapUiSmallMargin size1"> </core:Icon>
+                                <Title text="Indicadores"/> 
+                            </Toolbar> 
+                            <Title level="H3" text="Tecnico" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
+                            <core:HTML preferDOM="true" content="&lt;canvas id='myChart' width='100%' height='auto' style='margin:1rem 0' /&gt;" />
+                            <!-- <core:HTML preferDOM="true" content="" /> -->
+                            
+                            <HBox width="100%" justifyContent="Center">
+                                <core:Icon src="sap-icon://circle-task-2" color="#00ae1f" class="sapUiTinyMarginEnd"> </core:Icon>
+                                <Title text="Compra fuerte" level="H5"/> 
+                            </HBox>
+                            
+                            <Title level="H3" text="Calificacion de los analistas" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
+                            <core:HTML preferDOM="true" content="&lt;canvas id='myChart2' width='100%' height='auto' style='margin:1rem 0'/&gt;" />
+                            <HBox width="100%" justifyContent="Center">
+                                <core:Icon src="sap-icon://circle-task-2" color="#00ae1f" class="sapUiTinyMarginEnd"> </core:Icon>
+                                <Title text="Compra fuerte" level="H5"/> 
+                            </HBox> 
+                        </VBox>
+                        <VBox class="noticias sapUiTinyMargin" backgroundDesign="Solid">
+                            <Toolbar width="100%" class="toolbarPadding">
+                                <core:Icon src="sap-icon://newspaper" class="sapUiSmallMargin size1"> </core:Icon>
+                                <Title text="Noticias"/>  
+                            </Toolbar>
+                            <!-- <Title level="H3" text="Menu principal noticias" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/> -->
+                            	<List items="{/list}" headerText="Products">
+                                    <items>
+                                        <StandardListItem icon="sap-icon://sap-box" wrapping="true"
+                                            title="{name}"
+                                            info="{info}"
+                                            description="{fecha}" />
+                                    </items> 
+                                </List>
+                        </VBox> 
+                    </HBox> 
+                </ScrollContainer>
+			</Page> 
+		</detailPages>
+		<masterPages>
+			<Page id="master" title="Master 1" backgroundDesign= "List" showHeader="false">
+                <Title level="H3" text="Menu principal" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
+				<List>
+					<StandardListItem title="Tableros" type="Navigation" icon="sap-icon://bbyd-dashboard" press=".onPressGoToMaster" />
+					<StandardListItem title="Chats" type="Navigation" icon="sap-icon://message-popup" press=".onPressGoToMaster" />
+				</List>
+                <Title level="H3" text="Espacio de Trabajo" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
+				<List>
+					<StandardListItem title="Eventos historicos" type="Navigation" icon="sap-icon://bbyd-dashboard" press=".onPressGoToMaster" />
+					<StandardListItem title="Analisis tecnicos" type="Navigation" icon="sap-icon://message-popup" press=".onPressGoToMaster" />
+					<StandardListItem title="Graficos  comparativos" type="Navigation" icon="sap-icon://message-popup" press=".onPressGoToMaster" />
+					<StandardListItem title="Analitica" type="Navigation" icon="sap-icon://message-popup" press=".onPressGoToMaster" />
+				</List>
+                <Title level="H3" text="General" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
+				<List>
+					<StandardListItem title="Archivos Carpetas" type="Navigation" icon="sap-icon://bbyd-dashboard" press=".onPressGoToMaster" />
+					<StandardListItem title="Configuracion" type="Navigation" icon="sap-icon://message-popup" press=".onPressGoToMaster" />
+				</List>
+			</Page> 
+		</masterPages>
+	</SplitContainer>
+    <!-- <Page id="page" title="{i18n>title} hoallla">
+        <content />
+    </Page> -->
+</mvc:View>
