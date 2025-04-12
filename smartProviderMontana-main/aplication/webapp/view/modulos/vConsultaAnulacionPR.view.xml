@@ -1,0 +1,331 @@
+<mvc:View controllerName="spm.aplication.controller.vConsultaAnulacionPR"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:fs="sap.f" 
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core" 
+    xmlns:tab="sap.ui.table"
+    xmlns="sap.m">  
+    <Page class="page_background_img" showHeader="false">
+
+    <FlexBox alignItems="Center" justifyContent="SpaceBetween" class="bg_fondo">
+        <Image src="../img/sap-logo.svg" height="2rem" class="sapUiTinyMarginTop sapUiTinyMarginBegin"/>
+        <Image src="../img/smart_provider_logo.png" />
+        <MenuButton icon="sap-icon://customer" id="menu_but_panel_title" text="Bienvenido" type="Default" class="sapUiTinyMarginEnd">
+            <layoutData>
+                <OverflowToolbarLayoutData priority="NeverOverflow" />
+            </layoutData>
+            <Menu>
+                <MenuItem text="Cerrar sesión" icon="sap-icon://log" press="onPress_logout" />  
+            </Menu>
+        </MenuButton>
+    </FlexBox>
+
+    <FlexBox alignItems="Center" justifyContent="SpaceBetween" class="bg_fondo_seleccion">
+        <Button class="sapUiTinyMargin" icon="sap-icon://navigation-left-arrow" press="onPageBack" type="Transparent" tooltip="Volver" /> 
+
+        <Label class="sapUiTinyMargin font_bolder" text="Consulta y Anulación de Pre-Registro"/>
+        
+        <Label text=""/>
+    </FlexBox>
+     <l:Splitter class="sidenav">
+        <Panel width="100%">  
+            <SearchField id="idSearchFacturas" liveChange="onSearchFac" width="100%" placeholder="Buscar factura"/>
+            <List id="idListFacturas" items="{ path : '/listFactura'}" noDataText="No se halló ninguna Factura">
+                <ObjectListItem title="Factura: {ID_FACTURA}" icon="sap-icon://sales-order-item" type="Active" press="clicItemFacturaVal"
+                    intro="{NOM_DEM_RAZ_ADQ} - {NOM_DEM_RAZ_COMERCIAL}" number="{TOTAL_IMP}" numberUnit="{MONEDA}">
+                    <attributes>
+                        <ObjectAttribute title="Fecha" text="{ path: 'FC_FEC_REGISTRO'}"/>
+                        <ObjectAttribute title="Hora" text="{FC_HORA_REGISTRO}"/>
+                        <ObjectAttribute title="Carga" text="{ path: 'TIPO_CARGA', formatter: '.formatTipoCarga' }"/>
+                    </attributes>
+                    <firstStatus>
+                        <ObjectStatus text="{EM_RUC}" state="Information"/>
+                    </firstStatus>
+                    <secondStatus>
+                        <ObjectStatus text="{US_RUC}" state="Information"/>
+                    </secondStatus>
+                </ObjectListItem>
+            </List>
+            <layoutData>
+                <l:SplitterLayoutData size="20rem" />
+            </layoutData>
+        </Panel>
+        <Panel width="100%">
+
+             <FlexBox alignItems="Center" justifyContent="SpaceBetween" class="bg_fondo_seleccion">
+                <Label class="sapUiTinyMargin font_bolder" text="Factura previa"/>
+                
+                <HBox alignItems="Center">
+                    <Button tooltip="Descargar PDF" id="idDescargarPDF" icon="sap-icon://pdf-attachment" type="Transparent" press="btnDescargarPDF"/>
+                    <!-- <Button id="idErrores" icon="sap-icon://message-popup" text="{/listErrores/length}" type="Emphasized" press="btnErrores"/> -->
+                    <Button tooltip="Eliminar pre-registro" id="idEliminar" icon="sap-icon://sys-cancel" type="Transparent" press="ressEliminarFacturaVerificar"/>
+                    <!-- <Button id="idLogOff" icon="sap-icon://log" press="LogOffPress"/> -->
+                </HBox>
+                
+            </FlexBox>
+
+            <ObjectHeader id="ohFac" binding="{path : '/listConsultaResumenFactura'}" responsive="true" fullScreenOptimized="false"
+                icon="sap-icon://sales-order-item" title="Factura: {ID_FACTURA}" backgroundDesign="Translucent"
+                intro="{NOM_DEM_RAZ_ADQ} - {NOM_DEM_RAZ_COMERCIAL}" number="{TOTAL_IMP}" numberUnit="{MONEDA}" titleActive="true"
+                titlePress="handleTitlePress">
+                <attributes>
+                    <ObjectAttribute title="Fecha registro" text="{ path: 'FC_FEC_REGISTRO'}"/>
+                    <ObjectAttribute title="Hora registro" text="{FC_HORA_REGISTRO}"/>
+                    <ObjectAttribute title="Versión UBL" text="{ path: 'UBL'}" visible="false"/>
+                    <ObjectAttribute title="F.estim.pago" text="{ path: 'FEC_TEN'}"/>
+                    <ObjectAttribute title="Correlativo" text="{ path: 'CO_FACTURA'}"/>
+                    <ObjectAttribute title="Fecha Pago" text="{ path: 'FEC_JOB'}"/>
+                    <ObjectAttribute title="Total IGV" text="{ path: 'TOTAL_IGV'}"/>
+                    <ObjectAttribute title="Total sin IGV" text="{ path: 'TOTAL_IMP'}"/>
+                    <ObjectAttribute id="idSumaTotalImporConIGV" title="Total con IGV"/>
+                    <ObjectAttribute title="Fecha emisión" text="{ path: 'FC_FEC_EMISION'}"/>
+                    <ObjectAttribute title="Tipo" text="{ path: 'TIPO_CARGA', formatter: '.formatTipoCarga' }"/> 
+                </attributes>
+                <statuses>
+                    <ObjectStatus title="Estado" text="{ path: 'ESTADO', formatter: '.formatEstadoFactura' }"
+                        state="{ path: 'ESTADO', formatter: '.formatEstadoFactura2' }"/>
+                    <ObjectStatus title="RUC empresa" text="{EM_RUC}" state="Information"/>
+                    <ObjectStatus title="RUC proveedor" text="{US_RUC}" state="Information"/>
+                </statuses>
+            </ObjectHeader>
+            <IconTabBar expanded="true" class="sapUiResponsiveContentPadding">
+                <items>
+                    <IconTabFilter id="idIconBarItem" key="Item" text="Items Seleccionados a Facturar" count="{/listItemFacturasLenght}">  
+                        <!-- <tab:Table id="idTableItemFacturas" rows="{ path: '/listItemFacturas'}" class="sapUiSmallMarginBottom" visibleRowCount="8" visible="true">
+                            <tab:extension>
+                                <OverflowToolbar height="auto" > 
+                                    <core:Icon src="sap-icon://paid-leave" alt="Cart" size="1.25rem"/>
+                                    <Title text="Detalle de la factura"/>
+                                    <ToolbarSpacer/>
+                                    <Text text="N° Registros ( {/listItemFacturasLenght} )" class="sapUiSmallMarginEnd"/>
+                                    <Button id="idButtonPos" text="Posiciones" icon="sap-icon://activity-2" press="btnBuscarItem2" type="Emphasized"/>
+                                </OverflowToolbar>
+                            </tab:extension>
+                            <tab:columns>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Text text="Detalle Item"/>
+                                    <tab:template> <Button text="Detalle" icon="sap-icon://popup-window" press="btnBuscarItem" type="Emphasized"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="5rem" hAlign="Center">
+                                    <Text text="Posición"/>
+                                    <tab:template> <Label text="{POS_FACTURA}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Text text="Precio Neto"/>
+                                    <tab:template> <Label text="{PRECIO_NETO}" design="Bold"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="6rem" hAlign="Center">
+                                    <Text text="Código"/>
+                                    <tab:template> <Label text="{CODIGO}" design="Bold"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="20rem" hAlign="Center">
+                                    <Text text="Descripción"/>
+                                    <tab:template>  <Text text="{DESCRIPCION}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="6rem" hAlign="Center">
+                                    <Text text="Unidad de Medida"/>
+                                    <tab:template> <Text text="{UND_MED}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="6rem" hAlign="Center">
+                                    <Text text="Cantidad"/>
+                                    <tab:template> <Text text="{CANTIDAD}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Text text="Precio Unitario por Item"/>
+                                    <tab:template> <Text text="{PRE_UNI}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="6rem" hAlign="Center">
+                                    <Text text="Precio Venta por Item"/>
+                                    <tab:template> <Text text="{PRE_VENTA}"/> </tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table> -->
+                        <Table id="idTableItemFacturas" items="{/listItemFacturas}"  mode="None" visible="true">
+                            <headerToolbar>
+                                <OverflowToolbar> 
+                                    <core:Icon src="sap-icon://paid-leave" alt="Cart" size="1.25rem"/>
+                                    <Title text="Detalle de la factura"/>
+                                    <ToolbarSpacer/>
+                                    <Text text="N° Registros ( {/listItemFacturas/Lenght} )" class="sapUiSmallMarginEnd"/>
+                                    <Button id="idButtonPos" text="Posiciones" icon="sap-icon://activity-2" press="fragmentPosiciones" type="Emphasized"/>
+                                </OverflowToolbar>
+                            </headerToolbar> 
+                            <columns>
+                                <Column width="auto"> <Text text="Detalle Item" /> </Column> 
+                                <Column width="auto"> <Text text="Posición" /> </Column> 
+                                <Column width="auto"> <Text text="Precio Neto" /> </Column> 
+                                <Column width="auto"> <Text text="Código" /> </Column> 
+                                <Column width="auto"> <Text text="Descripción" /> </Column> 
+                                <Column width="auto"> <Text text="Unidad de medida" /> </Column> 
+                                <Column width="auto"> <Text text="Cantidad" /> </Column> 
+                                <Column width="auto"> <Text text="Precio unitario por item" /> </Column> 
+                                <Column width="auto"> <Text text="Precio venta por item" /> </Column> 
+                            </columns>
+                            <items>
+                                <ColumnListItem vAlign="Middle">
+                                    <cells>
+                                        <Button text="Detalle" icon="sap-icon://popup-window" press="btnBuscarItem" type="Emphasized"/>
+                                        <Text text="{POS_FACTURA}" /> 
+                                        <Text text="{PRECIO_NETO}" /> 
+                                        <Text text="{CODIGO}" /> 
+                                        <Text text="{DESCRIPCION}" /> 
+                                        <Text text="{UND_MED}" /> 
+                                        <Text text="{CANTIDAD}" /> 
+                                        <Text text="{PRE_UNI}" /> 
+                                        <Text text="{PRE_VENTA}" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+
+                        <!-- <tab:Table id="idTableItemPosiciones" rows="{ path: '/listItemFacturaPosicion'}" class="sapUiSmallMarginBottom" visibleRowCount="8" visible="false">
+                            <tab:extension>
+                                <OverflowToolbar height="auto" > 
+                                    <core:Icon src="sap-icon://paid-leave" alt="Cart" size="1.25rem"/>
+                                    <Title text="Posiciones de la factura" />
+                                    <ToolbarSpacer/>
+                                    <Text text="N° Registros ( {/listItemFacturaPosicion/length} )"/>
+                                </OverflowToolbar>
+                            </tab:extension>  
+                            <tab:columns>
+                                <tab:Column width="5rem" hAlign="Center">
+                                    <Text text="Posición"/>
+                                    <tab:template>
+                                        <Label text="{POS_FACTURA}"/>
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column width="6rem" hAlign="Center">
+                                    <Text text="Precio Ingresado"/>
+                                    <tab:template>
+                                        <ObjectNumber number="{PRECIO_ING}" unit="{UND_MED}"/>
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column width="6rem" hAlign="Center">
+                                    <Text text="Cantidad"/>
+                                    <tab:template>
+                                        <ObjectNumber number="{CANTIDAD}"/>
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column width="7rem" hAlign="Center">
+                                    <Text text="Vale"/>
+                                    <tab:template>
+                                        <Label text="{VALE}"/>
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column width="7rem" hAlign="Center">
+                                    <Text text="Fecha"/>
+                                    <tab:template>
+                                        <Label text="{FEC_VALE}"/>
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column width="7rem" hAlign="Center" id="idColumnH">
+                                    <Text text="Hoja Entrada"/>
+                                    <tab:template>
+                                        <Label text="{DE_HOJA_ENTRADA}"/>
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column width="7rem" hAlign="Center" id="idColumnD">
+                                    <Text text="Doc. Material"/>
+                                    <tab:template>
+                                        <Label text="{DE_DOC_MATERIAL}"/>
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column width="20rem" hAlign="Center">
+                                    <Text text="Descripción"/>
+                                    <tab:template>
+                                        <Text text="{DESCRIPCION}"/>
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Text text="Guía de remisión"/>
+                                    <tab:template>
+                                        <Text text="{GUIA_REMISION}"/>
+                                    </tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table>  -->
+                        <Table id="idTableItemPosiciones" items="{/listItemFacturaPosicion}"  mode="None" visible="false">
+                            <headerToolbar>
+                                <OverflowToolbar> 
+                                    <core:Icon src="sap-icon://paid-leave" alt="Cart" size="1.25rem"/>
+                                    <Title text="Posiciones de la factura" />
+                                    <ToolbarSpacer/>
+                                    <Text text="N° Registros ( {/listItemFacturaPosicion/length} )"/>
+                                </OverflowToolbar>
+                            </headerToolbar> 
+                            <columns>
+                                <Column width="auto"> <Text text="Posición" /> </Column> 
+                                <Column width="auto"> <Text text="Precio Ingresado" /> </Column> 
+                                <Column width="auto"> <Text text="Cantidad" /> </Column> 
+                                <Column width="auto"> <Text text="Vale" /> </Column> 
+                                <Column width="auto"> <Text text="Fecha" /> </Column> 
+                                <Column width="auto"> <Text text="Hoja Entrada" /> </Column> 
+                                <Column width="auto"> <Text text="Doc. Material" /> </Column> 
+                                <Column width="auto"> <Text text="Descripción" /> </Column> 
+                                <Column width="auto"> <Text text="Guía de remisión" /> </Column> 
+                            </columns>
+                            <items>
+                                <ColumnListItem vAlign="Middle">
+                                    <cells>
+                                        <Text text="{POS_FACTURA}" /> 
+                                        <ObjectNumber number="{PRECIO_ING}" unit="{UND_MED}"/>
+                                        <ObjectNumber number="{CANTIDAD}"/>
+                                        <Text text="{VALE}" /> 
+                                        <Text text="{FEC_VALE}" /> 
+                                        <Text text="{DE_HOJA_ENTRADA}" /> 
+                                        <Text text="{DE_DOC_MATERIAL}" /> 
+                                        <Text text="{DESCRIPCION}" />
+                                        <Text text="{GUIA_REMISION}" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </IconTabFilter>
+                    <IconTabFilter id="idIconBarDocumento" key="Documento" text="Documentos de sustento" count="{/listDocAdjuntarFacLenght}">
+                        <Panel width="auto" class="sapUiTinyMargin">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <Title text="Lista de documentos adjuntos ({/listDocAdjuntarFac/length})"/>
+                                    <ToolbarSpacer/>
+                                    <SearchField liveChange="onSearchObjeto" width="30%" placeholder="Buscar documento"/>
+                                    <u:FileUploader id="filterId" buttonOnly="true"  uploadComplete="onUploadComplete" uploadStart="onUploadStart" change="onChangeFile"
+                                        iconOnly="true" style="Emphasized" tooltip="Adjuntar nuevo documento" icon="sap-icon://add-document"/>
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <content>
+                                <List id="idListDocumentos" items="{ path : '/listDocAdjuntarFac'}">
+                                    <items>
+                                        <ObjectListItem title="{ path: 'NOMBRE_DOC_TOT', formatter: '.documentoAsignado' }"
+                                            icon="{ path: 'FORMATO', formatter: '.documentoFormato' }" type="Active" press="pressDocumento"
+                                            number="{path: 'TAMANO', formatter: '.documentoValor'}" numberUnit="KB">
+                                            <attributes>
+                                                <ObjectAttribute title="Fecha" text="{ path: 'FECHA_ADJ', formatter: '.fechaValor'}{ path: 'FECHA_DJ', formatter: '.documentoDJ' }"/>
+                                                <ObjectAttribute title="Hora" text="{ path: 'HORA_ADJ', formatter: '.horaValor'}{ path: 'FECHA_VENCIMIENTO_DJ', formatter: '.documentoVENC' }"/>
+                                            </attributes>
+                                            <firstStatus>
+                                                <ObjectStatus text="{USUARIO}" title="Usuario"/>
+                                            </firstStatus>
+                                            <secondStatus>
+                                                <ObjectStatus text="{FORMATO}" title="Formato"/>
+                                            </secondStatus>
+                                        </ObjectListItem>
+                                    </items>
+                                </List>
+                            </content>
+                        </Panel>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+
+
+            <layoutData>
+                <l:SplitterLayoutData size="auto" />
+            </layoutData>
+        </Panel>
+    </l:Splitter>
+    
+    
+    </Page>
+</mvc:View>

@@ -1,0 +1,118 @@
+<core:FragmentDefinition
+xmlns="sap.m"
+xmlns:core="sap.ui.core"
+xmlns:mvc="sap.ui.core.mvc"   
+xmlns:l="sap.ui.layout"
+xmlns:tab="sap.ui.table"
+xmlns:f="sap.ui.layout.form"
+>
+<Dialog contentWidth="80%" title="Asignar posiciones" showHeader="false" icon="sap-icon://sales-order" titleAlignment="Center">
+    <f:Form editable="true" class="sapUiTinyMarginBottom" >
+        <f:toolbar>
+            <Toolbar> 
+                <ToolbarSpacer />
+                <Title text="Asignar posiciones" level="H4" />
+                <ToolbarSpacer />
+                <Button text="Filtrar" icon="sap-icon://filter" press="dgSearchAsigPosiciones" type="Emphasized" /> 
+                <Button text="Remover" icon="sap-icon://clear-filter" press="dgCleanSearchAsigPosiciones"/> 
+            </Toolbar>
+        </f:toolbar>
+        <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />  </f:layout>
+        <f:formContainers>
+            <f:FormContainer > 
+                <f:formElements>
+                    <f:FormElement label="Fecha ingreso">
+                        <f:fields> <DatePicker id="txt_fechaIngreso" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/></f:fields>
+                    </f:FormElement> 
+                    <f:FormElement label="N° documento/hoja">
+                        <f:fields> <Input id="txt_docHoja" value=""/> </f:fields>
+                    </f:FormElement> 
+                    <f:FormElement label="Guía de emisión">
+                        <f:fields> <Input id="txt_guiaEmision" value=""/> </f:fields>
+                    </f:FormElement> 
+                    <f:FormElement label="Orden de compra">
+                        <f:fields> <Input id="txt_ordenCompra" value=""/> </f:fields>
+                    </f:FormElement> 
+                </f:formElements>
+            </f:FormContainer> 
+        </f:formContainers>
+    </f:Form>
+    <!-- <tab:Table rows="{  path: 'myParam>/dataTest' }" selectionMode="None"  visibleRowCount="5" class="sapUiTinyMarginBottom" ariaLabelledBy="title">
+        <tab:columns>
+            <tab:Column width="auto">
+                <Label textAlign="Center" wrapping ="true"  text="Fecha ingreso"/>
+                <tab:template> <Text text="{myParam>fecha}" wrapping="true" /></tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Guía remisión" />
+                <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Documento mat/hoja entr." />
+                <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Posiciones" />
+                <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Orden de compra" />
+                <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Camtidad" />
+                <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Importe" />
+                <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+            </tab:Column>
+        </tab:columns>
+    </tab:Table>  -->
+    <Table id="table_idAsignarPosiciones" items="{/dataTableAsignarPosiciones}"  mode="MultiSelect" > 
+        <columns>
+            <Column width="auto"> <Text text="Fecha ingreso" /> </Column> 
+            <Column width="auto"> <Text text="Guía remisión" /> </Column> 
+            <Column width="auto"> <Text text="Documento mat/hoja entr." /> </Column> 
+            <Column width="auto"> <Text text="Posiciones" /> </Column> 
+            <Column width="auto"> <Text text="Orden de compra" /> </Column> 
+            <Column width="auto"> <Text text="Camtidad" /> </Column>   
+            <Column width="auto"> <Text text="Importe" /> </Column>
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{fechaIngreso}" /> 
+                    <Text text="{guiaRemision}" /> 
+                    <Text text="{docMat}" /> 
+                    <Text text="{posiciones}" /> 
+                    <Text text="{ordenCompra}" /> 
+                    <Text text="{cantidad}" /> 
+                    <Text text="{importe}" />  
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+    <OverflowToolbar height="auto">
+        <VBox width="100%">
+            <VBox justifyContent="End" width="100%">
+                <HBox alignItems="Center" justifyContent="End" wrap="Wrap" >
+                    <Label class="sapUiTinyMarginEnd" text="Total: " design="Bold" /> 
+                    <Input value="" editable="false"/>
+                </HBox>
+                <HBox alignItems="Center" wrap="Wrap" justifyContent="SpaceBetween"  >
+                    <Label class="sapUiTinyMarginEnd" text="Tabla de asignación por documento de ingreso: "/> 
+                    <HBox alignItems="Center" wrap="Wrap">
+                        <Label class="sapUiTinyMarginEnd" text="Importe total sin IGV: " design="Bold" /> 
+                        <Input value="" editable="false"/>
+                    </HBox>
+                </HBox>
+            </VBox>
+            <HBox justifyContent="End" wrap="Wrap" width="100%" class="sapUiTinyMargin">
+                <Button text="Aceptar" press="dgAsigPosicionesOk" type="Emphasized" />
+                <Button text="Cancelar" press="dgCancelAsigPosiciones"/> 
+            </HBox>
+        </VBox>
+    </OverflowToolbar>
+</Dialog>
+</core:FragmentDefinition>

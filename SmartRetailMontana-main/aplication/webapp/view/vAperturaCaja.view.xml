@@ -1,0 +1,77 @@
+<mvc:View controllerName="srm.aplication.controller.vAperturaCaja"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:core="sap.ui.core" 
+    xmlns="sap.m">
+    <Page id="page" title="Apertura de Caja" navButtonPress="onPageBack" showNavButton="true" titleAlignment="Center" >
+        <headerContent> 
+            <MenuButton icon="sap-icon://person-placeholder" text="User" type="Transparent"> 
+                <Menu>
+                    <MenuItem text="Cerrar sesion" icon="sap-icon://log" press="logOff"/>
+                </Menu>
+            </MenuButton>
+		</headerContent>  
+        <!-- <subHeader>
+			<OverflowToolbar>
+                <content>
+                    <HBox justifyContent="Center" wrap="Wrap" width="100%">
+                        <Button text="Nuevo"  icon="sap-icon://add" press="new" class="sapUiTinyMarginBeginEnd"/>
+                        <Button text="Anular"  icon="sap-icon://decline" press="anular" class="sapUiTinyMarginBeginEnd"/>
+                    </HBox>
+                </content>
+			</OverflowToolbar>
+		</subHeader> -->
+        <content> 
+            <Panel width="auto" class="sapUiResponsiveMargin">
+                <headerToolbar>
+                    <OverflowToolbar height="auto">
+                        <!-- <Avatar displaySize="S" backgroundColor="Placeholder" displayShape="Square" badgeIcon="sap-icon://my-sales-order" class="sapUiSmallMargin"/>
+                        <Title text="Nuevo"/> -->
+                        <ToolbarSpacer />
+                        <Button text="Nuevo"  icon="sap-icon://add" press="new" class="sapUiTinyMarginBeginEnd" type="Emphasized" />
+                        <Button text="Anular"  icon="sap-icon://decline" press="anular" class="sapUiTinyMarginBeginEnd"/>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <content>
+                    <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                        <f:toolbar>
+                            <Toolbar height="auto"> 
+                                <Avatar displaySize="S" backgroundColor="Placeholder" displayShape="Square" badgeIcon="sap-icon://my-sales-order" class="sapUiSmallMargin"/>
+                                <Title text="Nuevo registro"/>
+                                <ToolbarSpacer />
+                                <Button text="Guardar" icon="sap-icon://save" press="saveNew" type="Emphasized" />
+                                <Button text="Cancelar" icon="sap-icon://cancel" press="cancelNew" />
+                            </Toolbar>
+                        </f:toolbar>
+                        <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"/> 
+                        </f:layout>
+                        <f:formContainers>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="Oficina de Ventas">
+                                        <f:fields> 
+                                            <Select forceSelection="false" selectedKey="{myParam>ZSOCIEDAD}">
+                                                <core:Item key="OF1" text="Tienda 1" />
+                                                <core:Item key="OF2" text="Tienda 2" />
+                                                <core:Item key="OF3" text="Tienda 3" />
+                                            </Select>
+                                        </f:fields>
+                                    </f:FormElement> 
+                                    <f:FormElement label="Saldo inicial">
+                                        <f:fields> <Input value="" /> </f:fields>
+                                    </f:FormElement> 
+                                    <f:FormElement label="Fecha">
+                                        <f:fields> <DatePicker displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                                    </f:FormElement> 
+                                    <f:FormElement label="N° POS Default">
+                                        <f:fields> <Input value="" /> </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                        </f:formContainers>
+                    </f:Form> 
+                </content>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,314 @@
+<mvc:View controllerName="adp.aplication.controller.vAdministradores"
+     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core" 
+	xmlns:f="sap.ui.layout.form"
+    xmlns:tab="sap.ui.table" 
+    xmlns:u="sap.ui.unified"
+    xmlns:tnt="sap.tnt">
+    <Page title="Aplicativo para Deligencia de Proveedores" titleAlignment="Center" showNavButton="false" navButtonPress=".onPageBack" >
+		
+        <SplitContainer id="SplitContDemo" initialDetail="pageManTrabajador" initialMaster="master">
+            <masterPages>
+                <Page id="master" showHeader="true" title="Administrador" titleAlignment="Center">
+                    <HBox  height="5rem" width="100%" justifyContent="Center" alignItems="Center">
+                        <Image src="../../img/logo.png" height="1.7rem"/>
+                    </HBox>
+                    <List>
+                        <StandardListItem title="Mantenimiento trabajadores" press=".navManTrabajador"  icon="sap-icon://request" type="Navigation"/>
+                        <StandardListItem title="Mantenimiento formulario" press=".navManFormulario"  icon="sap-icon://request" type="Navigation"/>
+                        <StandardListItem title="Mantenimiento Proveedores" press=".navManProveedores"  icon="sap-icon://request" type="Navigation"/>
+                        <StandardListItem title="Consulta de trabajador" press=".navConTrabajador"  icon="sap-icon://request" type="Navigation"/>
+                        <StandardListItem title="Historial de modificaciones" press=".navHisModificaciones"  icon="sap-icon://request" type="Navigation"/>
+                        <StandardListItem title="Registros realizados" press=".navRegRealizados"  icon="sap-icon://request" type="Navigation"/>
+                        <StandardListItem title="Cerrar Sesión" press=".onPageBack"  icon="sap-icon://journey-depart" type="Active" />
+                    </List>
+                </Page>
+            </masterPages>
+            <detailPages>
+                <Page id="pageManTrabajador" title="Mantenimiento trabajadores" backgroundDesign= "Solid" navButtonPress=".onPressDetailBack" showNavButton="{= !${device>/system/desktop} }">
+                    <VBox class="sapUiSmallMargin">
+                        <tab:Table rows="{  path: 'myParam>/dataTest' }" selectionMode="Single"  visibleRowCount="5" ariaLabelledBy="title">
+                            <tab:extension>
+                                <OverflowToolbar >
+                                    <Title text="Lista de trabajadores"/>
+                                    <ToolbarSpacer />
+                                    <Button text="Agregar" press="addTrabajador" icon="sap-icon://add" /> 
+                                    <Button text="Guardar" press="editNot" icon="sap-icon://save" type="Emphasized"/>  
+                                </OverflowToolbar>
+                            </tab:extension>
+                            <tab:columns>
+                                <tab:Column width="6rem">
+                                    <Label textAlign="Center" wrapping ="true"  text="Estado"/>
+                                    <tab:template> <Switch type="AcceptReject" state="{myParam>booleano}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Nombre" />
+                                    <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="6rem" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Permisos impresión" />
+                                    <tab:template> <RadioButton  /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="6rem" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Permisos de descarga" />
+                                    <tab:template> <RadioButton  /> </tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table> 
+                    </VBox> 
+                </Page> 
+                <Page id="pageManFormulario" title="Mantenimiento formulario" backgroundDesign= "Solid" navButtonPress=".onPressDetailBack" showNavButton="true">
+                    <VBox class="sapUiSmallMargin">
+                        <tab:Table rows="{  path: 'myParam>/dataTestVerificacion' }" selectionMode="Single"  visibleRowCount="5" class="sapUiSmallMarginBottom" ariaLabelledBy="title">
+                            <tab:extension>
+                                <OverflowToolbar >
+                                    <Title text="Lista de formulario"/>
+                                    <ToolbarSpacer />
+                                    <Button text="Agregar" press="addformulario" icon="sap-icon://add" type="Emphasized" /> 
+                                    <Button press="addNot" text="Editar" icon="sap-icon://edit" /> 
+                                    <Button press="addNot" text="Eliminar" icon="sap-icon://delete"/> 
+                                </OverflowToolbar>
+                            </tab:extension>
+                            <tab:columns>
+                                <tab:Column width="auto">
+                                    <Label textAlign="Center" wrapping ="true"  text="Texto"/>
+                                    <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table> 
+                    </VBox> 
+                </Page> 
+                <Page id="pageManProveedores" title="Mantenimiento Proveedores" backgroundDesign= "Solid" navButtonPress=".onPressDetailBack" showNavButton="true">
+                    <VBox class="sapUiSmallMargin">
+                        <tab:Table rows="{  path: 'myParam>/dataTest' }" selectionMode="Single"  visibleRowCount="5" class="sapUiSmallMarginBottom" ariaLabelledBy="title">
+                            <tab:extension>
+                                <OverflowToolbar >
+                                    <Title text="Lista de proveedores"/>
+                                    <ToolbarSpacer />
+                                    <!-- <Button press="addNot" text="Visualizar" icon="sap-icon://pdf-attachment" type="Emphasized"/>  -->
+                                </OverflowToolbar>
+                            </tab:extension>
+                            <tab:columns>
+                                <tab:Column width="6rem">
+                                    <Label textAlign="Center" wrapping ="true"  text="Estado"/>
+                                    <tab:template>  <Switch type="AcceptReject" state="{myParam>booleano}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Nombre empresa" />
+                                    <tab:template> <Text text="{myParam>cadena}" wrapping="true" /></tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="RUC" />
+                                    <tab:template> <Text text="{myParam>cadena}" wrapping="true" /></tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Fecha de registro" />
+                                    <tab:template> <Text text="{myParam>fecha}" wrapping="true" /></tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Correo" />
+                                    <tab:template> <Text text="{myParam>cadena}" wrapping="true" /></tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table> 
+                    </VBox> 
+                </Page> 
+                <Page id="pageConTrabajador" title="Consulta de trabajador" backgroundDesign= "Solid" navButtonPress=".onPressDetailBack" showNavButton="true">
+                    <VBox class="sapUiSmallMargin">
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar> 
+                                    <Title text="Filtro"/>
+                                    <ToolbarSpacer />
+                                    <Button type="Emphasized" text="Buscar" press="searchVer"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Nombres">
+                                            <f:fields> <Input value=""/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Codigo">
+                                            <f:fields> <Input value=""/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="DNI">
+                                            <f:fields> <Input value=""/> </f:fields>
+                                        </f:FormElement> 
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+
+                        <tab:Table rows="{  path: 'myParam>/dataTest' }" selectionMode="None"  visibleRowCount="5" class="sapUiSmallMarginBottom" ariaLabelledBy="title">
+                            <tab:extension>
+                                <OverflowToolbar >
+                                    <Title text="Lista de trabajador"/>
+                                    <ToolbarSpacer />
+                                    <Button press="addNot" text="Visualizar" icon="sap-icon://pdf-attachment" type="Emphasized"/> 
+                                </OverflowToolbar>
+                            </tab:extension>
+                            <tab:columns>
+                                <tab:Column width="5rem">
+                                    <Label textAlign="Center" wrapping ="true"  text="Documento"/>
+                                    <tab:template> <Button press="addNot" icon="sap-icon://vds-file" type="Emphasized"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Proveedor" />
+                                    <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Fecha" />
+                                    <tab:template> <Text text="{myParam>fecha}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Nombres" />
+                                    <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Codigo" />
+                                    <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table> 
+                    </VBox> 
+                </Page> 
+                <Page id="pageHisModificaciones" title="Historial de modificaciones del proveedor" backgroundDesign= "Solid" navButtonPress=".onPressDetailBack" showNavButton="true">
+                    <VBox class="sapUiSmallMargin">
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar> 
+                                    <Title text="Filtro"/>
+                                    <ToolbarSpacer />
+                                    <Button type="Emphasized" text="Buscar" press="searchVer"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Proveedor">
+                                            <f:fields> <Input value=""/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Fecha desde">
+                                            <f:fields> <DatePicker displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/></f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Fecha hasta">
+                                            <f:fields> <DatePicker displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                                        </f:FormElement> 
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+
+                        <tab:Table rows="{  path: 'myParam>/dataTest' }" selectionMode="None"  visibleRowCount="5" class="sapUiSmallMarginBottom" ariaLabelledBy="title">
+                            <tab:extension>
+                                <OverflowToolbar >
+                                    <Title text="Lista de modificaciones del proveedor"/>
+                                    <ToolbarSpacer />
+                                    <Button press="addNot" icon="sap-icon://excel-attachment" /> 
+                                    <Button press="addNot" icon="sap-icon://pdf-attachment" /> 
+                                    <Button press="addNot" icon="sap-icon://print" /> 
+                                </OverflowToolbar>
+                            </tab:extension>
+                            <tab:columns>
+                                <tab:Column width="auto">
+                                    <Label textAlign="Center" wrapping ="true"  text="Fecha modificación"/>
+                                    <tab:template> <Text text="{myParam>fecha}" wrapping="true" /></tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Hora Modificación" />
+                                    <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Proveedor" />
+                                    <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Tipo" />
+                                    <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="RUC" />
+                                    <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Campo" />
+                                    <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Valor" />
+                                    <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table> 
+                    </VBox> 
+                </Page> 
+                <Page id="pageRegRealizados" title="Registros realizados" backgroundDesign= "Solid" navButtonPress=".onPressDetailBack" showNavButton="true">
+                    <VBox class="sapUiSmallMargin">
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar> 
+                                    <Title text="Filtro"/>
+                                    <ToolbarSpacer />
+                                    <Button type="Emphasized" text="Buscar" press="searchVer"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Proveedor">
+                                            <f:fields> <Input value=""/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Fecha desde">
+                                            <f:fields> <DatePicker displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/></f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Fecha hasta">
+                                            <f:fields> <DatePicker displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                                        </f:FormElement> 
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+
+                        <tab:Table rows="{  path: 'myParam>/dataTest' }" selectionMode="None"  visibleRowCount="5" class="sapUiSmallMarginBottom" ariaLabelledBy="title">
+                            <tab:extension>
+                                <OverflowToolbar >
+                                    <Title text="Lista de registros realizados"/>
+                                    <ToolbarSpacer /> 
+                                    <!-- <Button press="addNot" icon="sap-icon://print" />  -->
+                                </OverflowToolbar>
+                            </tab:extension>
+                            <tab:columns>
+                                <tab:Column width="5rem">
+                                    <Label textAlign="Center" wrapping ="true"  text="Documento"/>
+                                    <tab:template> <Button press="addNot" icon="sap-icon://vds-file" type="Emphasized"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Proveedor" />
+                                    <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Fecha" />
+                                    <tab:template> <Text text="{myParam>fecha}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Tipo" />
+                                    <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Ruc" />
+                                    <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table> 
+                    </VBox> 
+                </Page> 
+            </detailPages>
+            
+        </SplitContainer>
+    </Page>
+</mvc:View>

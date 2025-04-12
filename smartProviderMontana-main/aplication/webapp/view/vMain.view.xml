@@ -1,0 +1,153 @@
+<mvc:View controllerName="spm.aplication.controller.vMain"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:fs="sap.f" 
+    xmlns:core="sap.ui.core" 
+    xmlns:tnt="sap.tnt"
+    xmlns:card="sap.f.cards"
+    xmlns="sap.m">  
+    <Page title="Portal de Proveedores" titleAlignment="Center" class="page_background_img" showHeader="false">
+        <content> 
+            <FlexBox alignItems="Center" justifyContent="SpaceBetween" class="bg_fondo">
+                <Image src="../img/sap-logo.svg" height="2rem" class="sapUiTinyMarginTop sapUiTinyMarginBegin"/>
+                <Image src="../img/smart_provider_logo.png" />
+                <MenuButton icon="sap-icon://customer" id="menu_but_panel_title" text="Bienvenido" type="Default" class="sapUiTinyMarginEnd">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                    <Menu>
+                        <MenuItem text="Cerrar sesión" icon="sap-icon://log" press="onPress_logout" />  
+                    </Menu>
+                </MenuButton>
+            </FlexBox>
+
+            <FlexBox alignItems="Center" justifyContent="SpaceBetween" class="bg_fondo_seleccion">
+                <HBox alignItems="Center" wrap="Wrap">
+                    <Label class="sapUiTinyMargin" text="RUC de la empresa :"/> 
+                    <ComboBox id="cmb_ruc_empresa" items="{listaEmpresasUser>/}" placeholder="- Seleccione RUC de la empresa -" width="300px"
+                        change="f_change_ruc_empresa"> 
+                        <core:Item key="{listaEmpresasUser>RUC_EMP}" text="{listaEmpresasUser>RUC_EMP} - {listaEmpresasUser>DESCRIPCION}"/>
+                    </ComboBox>
+                </HBox>
+                
+                <HBox wrap="Wrap"> 
+                    <Label class="sapUiTinyMargin" text="RUC del proveedor :"/>
+                    <ComboBox id="cmb_ruc_proveedor" items="{listaProveedoresUser>/}" class="sapUiTinyMarginEnd" placeholder="- Seleccione RUC del proveedor -" width="300px"
+                        change="f_change_ruc_proveedor">
+                        <core:Item key="{listaProveedoresUser>RUC_PRO}" text="{listaProveedoresUser>RUC_PRO} - {listaProveedoresUser>DESCRIPCION}"/>
+                    </ComboBox> 
+                </HBox> 
+            </FlexBox>
+
+
+            <fs:Card class="sapUiTinyMargin" width="435px">
+                <fs:header>
+                    <card:Header title="Tutoriales" subtitle="" />
+                </fs:header>
+                <fs:content>
+                    <List>
+                        <CustomListItem>
+                            <HBox>
+                                <core:Icon size="1rem" src="sap-icon://attachment-photo" class="sapUiSmallMarginBegin sapUiTinyMarginTopBottom" />
+                                <VBox class="sapUiSmallMarginBegin sapUiTinyMarginTopBottom" >
+                                    <Link text="Factura electrónica" target="_blank" href="https://vimeo.com/386741778"/>
+                                </VBox>
+                            </HBox>
+                            <HBox>
+                                <core:Icon size="1rem" src="sap-icon://pdf-attachment" class="sapUiSmallMarginBegin sapUiTinyMarginBottom" />
+                                <VBox class="sapUiSmallMarginBegin sapUiTinyMarginBottom" >
+                                    <Link text="Impresión de recepción y conformidad" target="_blank" href="https://vimeo.com/386741778"/>
+                                </VBox>
+                            </HBox>
+                            <HBox>
+                                <core:Icon size="1rem" src="sap-icon://edit-outside" class="sapUiSmallMarginBegin sapUiTinyMarginBottom" />
+                                <VBox class="sapUiSmallMarginBegin sapUiTinyMarginBottom" >
+                                    <Link text="Factura manual" target="_blank" href="https://vimeo.com/386742781"/>
+                                </VBox>
+                            </HBox>
+                        </CustomListItem>
+
+                    </List>
+                </fs:content>
+            </fs:Card>
+            
+
+            <VBox class="sapUiResponsiveContentPadding sapUiResponsiveMargin">   
+                <HBox justifyContent="Center">
+                    <SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" width="450px">
+                        <tiles>                              
+                            <GenericTile backgroundImage="../img/logo1.jpg" frameType="TwoByOne" width="450px">
+                                <TileContent footer="" class="bg_fondo_carta_detalle">
+                                    <CustomListItem>
+                                        <HBox>
+                                            <Label class="sapUiTinyMarginTopBottom font_bolder" wrapping="true" text="Con el portal del proveedor tendrá la información de forma inmediata, online y centralizada"/>
+                                        </HBox>
+                                        <HBox>
+                                            <Label class="sapUiSmallMarginBottom" wrapping="true" text="Puede imprimir sus órdenes, recepciones y conformidades así como pre registrar y hacer seguimiento al estado de sus facturas"/>
+                                        </HBox>
+                                    </CustomListItem>
+                                </TileContent>
+                            </GenericTile>
+
+                            <GenericTile backgroundImage="../img/logo2.jpg" frameType="TwoByOne" width="450px">
+                                <TileContent footer="" class="bg_fondo_carta_detalle">
+                                    <CustomListItem>
+                                        <HBox>
+                                            <Label class="sapUiTinyMarginTopBottom font_bolder" wrapping="true" text="Consultas – Tesorería: 949142019 – 989113697"/>
+                                        </HBox>
+                                        <HBox>
+                                            <Label class="sapUiSmallMarginBottom" wrapping="true" text="Lunes y Jueves de 3-4pm"/>
+                                        </HBox>
+                                    </CustomListItem>
+                                </TileContent>
+                            </GenericTile>
+
+                            
+                        </tiles>
+                    </SlideTile>
+                </HBox> 
+                <VBox>  
+                    <HBox justifyContent="Center" wrap="Wrap" >
+                        <GenericTile class="sapUiSmallMarginBegin sapUiSmallMarginTop " header="Pre-Registro de Factura con sustento"
+                            subheader="Carga XML o Manual" press="fragmentRegisterFactura" visible="true">
+                            <TileContent>
+                                <ImageContent src="sap-icon://expense-report"/>
+                            </TileContent>
+                        </GenericTile>
+                        <GenericTile class="sapUiSmallMarginBegin sapUiSmallMarginTop " header="Pre-Registro de Factura sin sustento"
+                            subheader="Carga XML o Manual" press="fragmentRegisterFacturaSinAsunto" visible="true">
+                            <TileContent>
+                                <ImageContent src="sap-icon://batch-payments"/>
+                            </TileContent>
+                        </GenericTile>
+                        <GenericTile class="sapUiSmallMarginBegin sapUiSmallMarginTop " header="Consulta y Anulación de Pre-Registro"
+                            press="goPageConsultaAnulacionPR" visible="true">
+                            <TileContent>
+                                <ImageContent src="sap-icon://course-program"/>
+                            </TileContent>
+                        </GenericTile>
+                        <GenericTile class="sapUiSmallMarginBegin sapUiSmallMarginTop " header="Consulta de Programación y Pago"
+                            press="goPageConsProgramPago" visible="true">
+                            <TileContent>
+                                <ImageContent src="sap-icon://customer-financial-fact-sheet"/>
+                            </TileContent>
+                        </GenericTile>
+                        <GenericTile class="sapUiSmallMarginBegin sapUiSmallMarginTop " header="Administrador de usuarios"
+                            press="pageAdminUsers" visible="true">
+                            <TileContent>
+                                <ImageContent src="sap-icon://user-edit"/>
+                            </TileContent>
+                        </GenericTile>
+                        <GenericTile class="sapUiSmallMarginBegin sapUiSmallMarginTop " header="Impresión de recepción y conformidad"
+                            press="pageImpRecepcionConfirmidad" visible="true">
+                            <TileContent>
+                                <ImageContent src="sap-icon://sap-box"/>
+                            </TileContent>
+                        </GenericTile>
+                    </HBox> 
+                </VBox> 
+                
+            </VBox> 
+        </content>
+    </Page>
+</mvc:View>

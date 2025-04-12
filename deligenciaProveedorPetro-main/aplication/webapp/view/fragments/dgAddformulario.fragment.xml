@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+xmlns="sap.m"
+xmlns:core="sap.ui.core"
+xmlns:mvc="sap.ui.core.mvc"   
+xmlns:l="sap.ui.layout"
+xmlns:f="sap.ui.layout.form"
+>
+<Dialog contentWidth="30rem" title="Agregar Texto" titleAlignment="Center">
+        <f:Form editable="true">
+            <!-- <f:title>
+                <core:Title text="Por favor indique el motivo del consulta" />
+            </f:title> -->
+            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />  </f:layout>
+            <f:formContainers>
+                <f:FormContainer > 
+                    <f:formElements>
+                        <f:FormElement label="Texto">
+                            <f:fields><TextArea placeholder="Texto aqui..." showExceededText="true" rows="4" /></f:fields>
+                        </f:FormElement> 
+                    </f:formElements>
+                </f:FormContainer> 
+            </f:formContainers>
+        </f:Form>
+    <OverflowToolbar>
+        <ToolbarSpacer/>
+        <Button type="Emphasized" text="Continuar" press="dgOkAddFormulario"/>
+        <Button text="Cancelar" press="dgCancelAddFormulario"/>
+        <ToolbarSpacer/>
+    </OverflowToolbar>
+</Dialog>
+</core:FragmentDefinition>

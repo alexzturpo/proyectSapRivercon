@@ -1,0 +1,100 @@
+<mvc:View controllerName="srm.aplication.controller.vGestHojaCobranza"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:core="sap.ui.core"  
+    xmlns:tab="sap.ui.table"
+    xmlns="sap.m">
+    <Page id="page" title="Gestión de hoja de Cobranza" navButtonPress="onPageBack" showNavButton="true" titleAlignment="Center" >
+        <headerContent> 
+            <MenuButton icon="sap-icon://person-placeholder" text="User" type="Transparent"> 
+                <Menu>
+                    <MenuItem text="Cerrar sesion" icon="sap-icon://log" press="logOff"/>
+                </Menu>
+            </MenuButton>
+		</headerContent>   
+        <content>  
+            <f:Form editable="true" class="sapUiSmallMarginBottom" > 
+                <f:toolbar>
+                    <Toolbar> 
+                        <Title text="Filtrar"/>
+                        <ToolbarSpacer />
+                        <Button icon="sap-icon://filter" press="saveNew" type="Emphasized" /> 
+                    </Toolbar>
+                </f:toolbar>
+                <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"/> 
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>  
+                            <f:FormElement label="Hoja de cobranza">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Fecha de apertura">
+                                <f:fields> <DatePicker displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Fecha de cierre">
+                                <f:fields> <DatePicker displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                            </f:FormElement>  
+                            <f:FormElement label="Usuario">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Oficina de ventas">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>  
+            <tab:Table rows="{ path: 'myParam>/tbHojaCobranza'}" cellClick="cellClickHojaCobranza" selectionMode="Single" class="sapUiSmallMarginBottom" visibleRowCount="5">
+                <tab:extension>
+                    <OverflowToolbar height="auto">   
+                        <HBox justifyContent="SpaceAround" width="100%">
+                            <Button text="Generación de asientos POS tráfico" press="fragmentGaPostTrafico"  />
+                            <Button text="Generación de asientos POS a banco" press="fragmentGaPostBanco"  />
+                            <Button text="Generación de asientos Hermes" press="selectPay"  />
+                            <Button text="Generación de asientos a banco - Hermes" press="fragmentGaHermesBanco"  />
+                        </HBox>
+                    </OverflowToolbar>
+                </tab:extension>
+                <tab:columns>
+                    <tab:Column width="7rem" hAlign="Center">
+                        <Label text="Hoja de cobranza"/>
+                        <tab:template> <Text text="{myParam>nroHojaCobranza}"/> </tab:template>
+                    </tab:Column>
+                    <tab:Column width="7rem" hAlign="Center">
+                        <Label text="Fecha de apertura de caja"/>
+                        <tab:template> <Text text="{myParam>fechaAperturaCaja}"/> </tab:template>
+                    </tab:Column>
+                    <tab:Column width="7rem" hAlign="Center">
+                        <Label text="Fecha de cierre de caja"/>
+                        <tab:template> <Text text="{myParam>fechaCierreCaja}"/> </tab:template>
+                    </tab:Column>
+                    <tab:Column width="7rem" hAlign="Center">
+                        <Label text="Oficina de ventas"/>
+                        <tab:template> <Text text="{myParam>oficinaVentas}"/> </tab:template>
+                    </tab:Column>
+                    <tab:Column width="7rem" hAlign="Center">
+                        <Label text="Condición de pago"/>
+                        <tab:template> <Text text="{myParam>condicionPago}"/> </tab:template>
+                    </tab:Column>
+                    <tab:Column width="7rem" hAlign="Center">
+                        <Label text="Total S/"/>
+                        <tab:template> <Text text="{myParam>totalSoles}"/> </tab:template>
+                    </tab:Column>
+                    <tab:Column width="7rem" hAlign="Center">
+                        <Label text="Total US$"/>
+                        <tab:template> <Text text="{myParam>totalDolares}"/> </tab:template>
+                    </tab:Column>
+                    <tab:Column width="7rem" hAlign="Center">
+                        <Label text="Estado"/>
+                        <tab:template> <Text text="{myParam>status}"/> </tab:template>
+                    </tab:Column>
+                    <tab:Column width="7rem" hAlign="Center">
+                        <Label text="Usuario"/>
+                        <tab:template> <Text text="{myParam>usuarioCreador}"/> </tab:template>
+                    </tab:Column>
+                </tab:columns>
+            </tab:Table>
+        </content>
+    </Page>
+</mvc:View>

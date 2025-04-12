@@ -1,0 +1,42 @@
+<core:FragmentDefinition
+xmlns="sap.m"
+xmlns:core="sap.ui.core"
+xmlns:mvc="sap.ui.core.mvc"   
+xmlns:u="sap.ui.unified" 
+xmlns:tab="sap.ui.table"
+xmlns:f="sap.ui.layout.form"
+>
+<Dialog contentWidth="40%" title="Asignar empresa" showHeader="true" titleAlignment="Center"> 
+     <tab:Table rows="{  path: 'myParam>/listEmpresasAssign' }" selectionMode="None"  visibleRowCount="8" class="sapUiTinyMargin" ariaLabelledBy="title">
+        <tab:extension>
+            <OverflowToolbar >
+                <Select forceSelection="false" items="">
+					<core:Item key="emp1" text="Empresa 01" />
+					<core:Item key="emp2" text="Empresa 02" />
+					<core:Item key="emp3" text="Empresa 03" />
+				</Select>
+                <Button text="Asignar" press="asignarEmp" icon="sap-icon://add" type="Emphasized"/> 
+            </OverflowToolbar>
+        </tab:extension>
+        <tab:columns>
+            <tab:Column width="auto">
+                <Label textAlign="Center" wrapping ="true"  text="Ruc empresa"/>
+                <tab:template> <Text text="{myParam>ruc}" wrapping="true" /></tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Descripción" />
+                <tab:template> <Text text="{myParam>descripcion}" wrapping="true" /> </tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Acción" />
+                <tab:template> <Button text="Eliminar" press="deleteAssignEmp" icon="sap-icon://delete" type="Emphasized"/>  </tab:template>
+            </tab:Column>
+        </tab:columns>
+    </tab:Table> 
+    <OverflowToolbar height="auto">  
+        <ToolbarSpacer/>
+        <!-- <Button text="Guardar" press="dgAssignEmpresaOk" type="Emphasized" /> -->
+        <Button text="Cancelar" press="dgCancelAssignEmpresa"/>  
+    </OverflowToolbar>
+</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,38 @@
+<mvc:View controllerName="srm.aplication.controller.vHome"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}" titleAlignment="Center" >
+        <headerContent>
+            <MenuButton icon="sap-icon://person-placeholder" text="User" type="Transparent"> 
+                <Menu>
+                    <MenuItem text="Cerrar sesion" icon="sap-icon://log" press="logOff"/>
+                </Menu>
+            </MenuButton>
+		</headerContent> 
+        <VBox>  
+            <HBox alignItems="Center" justifyContent="Center" width="100%">
+                <Image src="../img/logo.webp" height="5rem" />
+                <Image src="../img/montana.png" height="15rem" />
+            </HBox>
+            <!-- <ScrollContainer height="50%" horizontal="true" vertical="false"> -->
+                <HBox justifyContent="Center" width="100%" wrap="Wrap">
+                    <GenericTile header="Apertura de Caja" press="pageAperturaCaja" visible="true" class="sapUiSmallMarginBegin sapUiSmallMarginTop ">
+                        <TileContent> <ImageContent src="sap-icon://expense-report"/> </TileContent>
+                    </GenericTile>
+                    <GenericTile header="Venta" press="pageVenta" visible="true" class="sapUiSmallMarginBegin sapUiSmallMarginTop ">
+                        <TileContent> <ImageContent src="sap-icon://expense-report"/> </TileContent>
+                    </GenericTile>
+                    <GenericTile header="Cierre de Caja" press="pageCierreCaja" visible="true" class="sapUiSmallMarginBegin sapUiSmallMarginTop ">
+                        <TileContent> <ImageContent src="sap-icon://expense-report"/> </TileContent>
+                    </GenericTile>
+                    <GenericTile header="Gestión de Hoja de Cobranza" press="pageGestHojaCobranza" visible="true" class="sapUiSmallMarginBegin sapUiSmallMarginTop ">
+                        <TileContent> <ImageContent src="sap-icon://expense-report"/> </TileContent>
+                    </GenericTile>
+                    <GenericTile header="Administrador de usuarios" press="pageAdminUsers" class="sapUiSmallMarginBegin sapUiSmallMarginTop " visible="true">
+                        <TileContent> <ImageContent src="sap-icon://course-program"/> </TileContent>
+                    </GenericTile>
+                </HBox>
+            <!-- </ScrollContainer> -->
+        </VBox> 
+    </Page>
+</mvc:View>

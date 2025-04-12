@@ -1,0 +1,676 @@
+<mvc:View controllerName="swd.aplication.controller.vDetailExp"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:core="sap.ui.core" 
+    xmlns:tab="sap.ui.table"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title} - Detalle del pedido" titleAlignment="Center" navButtonPress="onPageBack" showNavButton="true">
+        <content> 
+            <IconTabBar expanded="{device>/isNoPhone}" >
+                <items> 
+                    <IconTabFilter text="Pedidos"> 
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar height="auto"> 
+                                    <!-- <Title text="Factura Fisica"/> -->
+                                    <ToolbarSpacer /> 
+                                    <Button icon="sap-icon://filter" press="search" text="Filtrar" type="Emphasized" class="sapUiSmallMarginBeginEnd"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Operación">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Razón social">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Iconterms">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Operador logístico">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Envío doc original">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>  
+
+                        <tab:Table rows="{ path: 'myParam>/tbDataDetailPedido'}" class="sapUiSmallMarginBottom" visibleRowCount="8">
+                            <tab:columns>
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Pedido"/>
+                                    <tab:template> <Label text="{myParam>PEDIDO}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="5rem" hAlign="Center"> <Text text="Posición"/>
+                                    <tab:template> <Label text="{myParam>POSICION}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Cod. Material"/>
+                                    <tab:template> <Label text="{myParam>COD_MATERIAL}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Descripción"/>
+                                    <tab:template> <Label text="{myParam>DESCRIPCION}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Cantidad ordenada"/>
+                                    <tab:template> <Label text="{myParam>CANTIDAD_ORDENADA}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Presentación"/>
+                                    <tab:template> <Label text="{myParam>PRESENTACION}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Centro"/>
+                                    <tab:template> <Label text="{myParam>CENTRO}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Almacén"/>
+                                    <tab:template> <Label text="{myParam>ALMACEN}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Partida arancelaria"/>
+                                    <tab:template> <Label text="{myParam>PARTIDA_ARANCELARIA}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Declaración jurada"/>
+                                    <tab:template> <Label text="{myParam>FECHA_VENCIMIENTO_DECLARACION_JURADA}"/> </tab:template>
+                                </tab:Column>  
+                            </tab:columns>
+                        </tab:Table> 
+                    </IconTabFilter>
+                    <IconTabFilter text="Documentación"> 
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar height="auto"> 
+                                    <!-- <Title text="Factura Fisica"/> -->
+                                    <ToolbarSpacer /> 
+                                    <Button icon="sap-icon://filter" press="search" text="Filtrar" type="Emphasized" class="sapUiSmallMarginBeginEnd"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Operación">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Razón social">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Iconterms">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Operador logístico">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Envío doc original">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>  
+
+                        <tab:Table rows="{ path: 'myParam>/LIST_DOC_EXPORTACION'}" class="sapUiSmallMarginBottom" visibleRowCount="8">
+                            <tab:columns>
+                                <tab:Column width="auto" hAlign="Center"> <Text text="Listado de documentos para exportación"/>
+                                    <tab:template> <Label text="{myParam>DESCRIPCION}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="5rem" hAlign="Center"> <Text text="Cargado"/>
+                                    <tab:template> <CheckBox selected="{myParam>ESTADO}" /> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Carga"/>
+                                    <tab:template> <Button icon="sap-icon://back-to-top" press="onPress" /> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Eliminar"/>
+                                    <tab:template> <Label text="{myParam>text}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Observación"/>
+                                    <tab:template>  <Input value="{myParam>OBSERVACION}" /> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Finalizado"/>
+                                    <tab:template> <Switch type="AcceptReject" state="{myParam>INDICADOR_FINALIZADO}"/></tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Aprobación"/>
+                                    <tab:template> <Label text="{myParam>text}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Descarga total"/>
+                                    <tab:template><Button icon="sap-icon://download" press="onPress" /> </tab:template>
+                                </tab:Column>  
+                            </tab:columns>
+                        </tab:Table> 
+                    </IconTabFilter> 
+                    <IconTabFilter text="Tracking"> 
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar height="auto"> 
+                                    <!-- <Title text="Factura Fisica"/> -->
+                                    <ToolbarSpacer /> 
+                                    <Button icon="sap-icon://filter" press="search" text="Filtrar" type="Emphasized" class="sapUiSmallMarginBeginEnd"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Operación">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Razón social">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Iconterms">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Operador logístico">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Envío doc original">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>  
+
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >   
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Modalidad de embarque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Término de Flete Internacional">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Unidad de Negocio">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Puerto Destino">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Ciudad Destino">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Dirección Terminal">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha disponible Producto">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha Último Releasedad">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha de Despacho">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Aviso Cliente">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Nave Salida">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Nave Llegada">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Instrucciones de despacho">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Roleado">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="ETD">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="ETA">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="ATD">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="ATA">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Conocimiento de Embarque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="BL Correcto">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Lista de contenedores">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Peso Bruto">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Tipo de carga">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Peso Bruto manifestado">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Dirección de Recojo">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Incidencia">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Tipo de incidencia">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha de Incidencia">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Valor">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Observación">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>  
+                    </IconTabFilter> 
+                    <IconTabFilter text="Aduanas"> 
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar height="auto"> 
+                                    <!-- <Title text="Factura Fisica"/> -->
+                                    <ToolbarSpacer /> 
+                                    <Button icon="sap-icon://filter" press="search" text="Filtrar" type="Emphasized" class="sapUiSmallMarginBeginEnd"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Operación">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Razón social">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Iconterms">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Operador logístico">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Envío doc original">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" > 
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Inspecciones externas">
+                                            <f:fields> 
+                                                <!-- <VBox> -->
+                                                    <RadioButton text="Sanitaria" groupName="Ie" /> 
+                                                    <RadioButton text="BOE" groupName="Ie" /> 
+                                                    <RadioButton text="Aerolíneas" groupName="Ie" /> 
+                                                    <RadioButton text="Otras" groupName="Ie" /> 
+                                                <!-- </VBox> -->
+                                            </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Tipo de Régimen">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Agente de aduana">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="DUA">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha límite de DUA">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha Recepción DUA">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Canal">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Facturación Ag. Aduana">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha límite de factura">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Recepción de Factura en Portal de Proveedores">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Recepción de Factura Smart WorkDocs">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Agente de Carga">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Facturación Agente de Carga">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha límite de Factura">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Recepción Factura MSA">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Recepción de Factura Smart WorkDocs">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="DUA entregada a Contabilidad">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha Factura Co">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha Factura Courier">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement> 
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+                    </IconTabFilter> 
+                    <IconTabFilter text="Programación"> 
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar height="auto"> 
+                                    <!-- <Title text="Factura Fisica"/> -->
+                                    <ToolbarSpacer /> 
+                                    <Button icon="sap-icon://filter" press="search" text="Filtrar" type="Emphasized" class="sapUiSmallMarginBeginEnd"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Operación">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Razón social">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Iconterms">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Operador logístico">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Envío doc original">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" > 
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Semana de despacho">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha de despacho">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Hora de despacho">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Tipo de despacho">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Transportista Local">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Nombre Conductor">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Apellido Conductor">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="DNI">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Licencia de Conducir">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Placa 1">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Registro MTC del vehículo 1">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Placa 2">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Registro MTC del vehículo 2">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Primer destino">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement> 
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+                    </IconTabFilter> 
+                    <IconTabFilter text="Facturación"> 
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar height="auto"> 
+                                    <!-- <Title text="Factura Fisica"/> -->
+                                    <ToolbarSpacer /> 
+                                    <Button icon="sap-icon://filter" press="search" text="Filtrar" type="Emphasized" class="sapUiSmallMarginBeginEnd"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Operación">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Razón social">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Iconterms">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Operador logístico">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Envío doc original">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+                        
+                        <tab:Table rows="{ path: 'myParam>/FACTURACION'}" class="sapUiSmallMarginBottom" visibleRowCount="8">
+                            <tab:extension>
+                                <OverflowToolbar> 
+                                    <Title text="Factura" /> 
+                                </OverflowToolbar>
+                            </tab:extension>
+                            <tab:columns>
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Pedido"/>
+                                    <tab:template> <Label text="{myParam>PEDIDO}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="5rem" hAlign="Center"> <Text text="Factura"/>
+                                    <tab:template> <Label text="{myParam>FACTURA}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Fecha de emisión"/>
+                                    <tab:template> <Label text="{myParam>FECHA_EMISION}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Fecha de vencimiento"/>
+                                    <tab:template> <Label text="{myParam>FECHA_VENCIMIENTO}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Moneda"/>
+                                    <tab:template> <Label text="{myParam>MONEDA}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Precio total"/>
+                                    <tab:template> <Label text="{myParam>PRECIO_TOTAL}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Gastos de embarque"/>
+                                    <tab:template> <Label text="{myParam>GASTOS_EMBARQUE}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Flete"/>
+                                    <tab:template> <Label text="{myParam>FLETE}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Seguro"/>
+                                    <tab:template> <Label text="{myParam>SEGURO}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Total"/>
+                                    <tab:template> <Label text="{myParam>TOTAL}"/> </tab:template>
+                                </tab:Column>  
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="N° guía"/>
+                                    <tab:template> <Label text="{myParam>NRO_GUIAS}"/> </tab:template>
+                                </tab:Column>  
+                            </tab:columns>
+                        </tab:Table> 
+
+                        <tab:Table rows="{ path: 'myParam>/DETALLE'}" class="sapUiSmallMarginBottom" visibleRowCount="8">
+                            <tab:extension>
+                                <OverflowToolbar> 
+                                    <Title text="Detalle" /> 
+                                </OverflowToolbar>
+                            </tab:extension>
+                            <tab:columns>
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Pedido"/>
+                                    <tab:template> <Label text="{myParam>PEDIDO}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="5rem" hAlign="Center"> <Text text="Item"/>
+                                    <tab:template> <Label text="{myParam>ITEM}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="N° serie (DUA)"/>
+                                    <tab:template> <Label text="{myParam>NRO_SERIE_DUA}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Código material"/>
+                                    <tab:template> <Label text="{myParam>CODIGO_MATERIAL}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Descripción material"/>
+                                    <tab:template> <Label text="{myParam>DESCRIPCION_MATERIAL}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Cantidad ordenada"/>
+                                    <tab:template> <Label text="{myParam>CANTIDAD_ORDENADA}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Presentación"/>
+                                    <tab:template> <Label text="{myParam>PRESENTACION}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Precio unitario"/>
+                                    <tab:template> <Label text="{myParam>PRECIO_UNITARIO}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Total"/>
+                                    <tab:template> <Label text="{myParam>TOTAL}"/> </tab:template>
+                                </tab:Column>  
+                            </tab:columns>
+                        </tab:Table> 
+                    </IconTabFilter>  
+                    <IconTabFilter text="Aviso de despacho publicado"> 
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar height="auto"> 
+                                    <!-- <Title text="Factura Fisica"/> -->
+                                    <ToolbarSpacer /> 
+                                    <Button text="Grabar" press="search" type="Emphasized" class="sapUiSmallMarginBeginEnd"/> 
+                                    <Button text="Imprimir" press="search" class="sapUiSmallMarginBeginEnd"/> 
+                                    <Button text="Anular" press="search" class="sapUiSmallMarginBeginEnd"/> 
+                                    <Button text="Cancelar" press="search" class="sapUiSmallMarginBeginEnd"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Operación">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Agente de carga">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Agente de aduanas">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Exportador">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Cliente">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Consignee">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Dirección Cliente">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Notify">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Vía de transporte">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Destino final">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Marcas">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Empaque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Dimensiones">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Observación">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Instrucciones Especial Documento de Empaque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Flete">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Seguro">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Descripción de productos">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Factura comercial">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Fecha de recojo">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Fecha de embarque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Dirección de recojo">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Información adicional">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>  
+                    </IconTabFilter>  
+                </items>
+            </IconTabBar>
+        </content >
+    </Page>
+</mvc:View>

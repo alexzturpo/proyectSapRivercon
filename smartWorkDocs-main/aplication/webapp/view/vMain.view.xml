@@ -1,0 +1,33 @@
+<mvc:View controllerName="swd.aplication.controller.vMain"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:core="sap.ui.core" 
+    xmlns:tab="sap.ui.table"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}" titleAlignment="Center">
+        <headerContent>
+            <MenuButton icon="sap-icon://person-placeholder" text="User" type="Transparent"> 
+                <Menu>
+                    <MenuItem text="Cerrar sesion" icon="sap-icon://log" press="logOff"/>
+                </Menu>
+            </MenuButton>
+		</headerContent> 
+        <VBox>  
+            <!-- <HBox alignItems="Center" justifyContent="Center" width="100%">
+                <Image src="../img/logo.webp" height="5rem" />
+                <Image src="../img/montana.png" height="15rem" />
+            </HBox> -->
+                <HBox justifyContent="Center" width="100%" wrap="Wrap">
+                    <GenericTile header="Importación" press="pageImportaciones" visible="true" class="sapUiSmallMarginBegin sapUiSmallMarginTop ">
+                        <TileContent> <ImageContent src="sap-icon://expense-report"/> </TileContent>
+                    </GenericTile>
+                    <GenericTile header="Exportación" press="pageExportacion" visible="true" class="sapUiSmallMarginBegin sapUiSmallMarginTop ">
+                        <TileContent> <ImageContent src="sap-icon://expense-report"/> </TileContent>
+                    </GenericTile> 
+                    <GenericTile header="Administrador de usuarios" press="pageAdminUsers" class="sapUiSmallMarginBegin sapUiSmallMarginTop " visible="true">
+                        <TileContent> <ImageContent src="sap-icon://course-program"/> </TileContent>
+                    </GenericTile>
+                </HBox>
+        </VBox> 
+    </Page>
+</mvc:View>

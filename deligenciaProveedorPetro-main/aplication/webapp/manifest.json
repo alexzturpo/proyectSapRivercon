@@ -1,0 +1,155 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "adp.aplication",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.10.6",
+      "toolsId": "0ae6fb63-5f7e-4e06-9812-efab7fd762cf"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.117.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "adp.aplication.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "adp.aplication.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RoutevMain",
+          "pattern": ":?query:",
+          "target": ["TargetvMain"]
+        },
+        {
+            "name": "vRegister",
+            "pattern": "vRegister",
+            "titleTarget": "vRegister",
+            "target": "vRegister"
+        },
+        {
+            "name": "vAdministradores",
+            "pattern": "vAdministradores",
+            "titleTarget": "vAdministradores",
+            "target": "vAdministradores"
+        },
+        {
+            "name": "vProveedor",
+            "pattern": "vProveedor",
+            "titleTarget": "vProveedor",
+            "target": "vProveedor"
+        },
+        {
+            "name": "vTrabajadores",
+            "pattern": "vTrabajadores",
+            "titleTarget": "vTrabajadores",
+            "target": "vTrabajadores"
+        }
+      ],
+      "targets": {
+        "TargetvMain": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vMain",
+          "viewName": "vMain"
+        },
+        "vRegister": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vRegister",
+          "viewName": "register/vRegister"
+        },
+        "vAdministradores": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vAdministradores",
+          "viewName": "inicioPerfil/vAdministradores"
+        },
+        "vProveedor": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vProveedor",
+          "viewName": "inicioPerfil/vProveedor"
+        },
+        "vTrabajadores": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vTrabajadores",
+          "viewName": "inicioPerfil/vTrabajadores"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "adp.aplication.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

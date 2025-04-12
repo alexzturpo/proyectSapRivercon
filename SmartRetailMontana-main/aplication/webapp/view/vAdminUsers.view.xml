@@ -1,0 +1,235 @@
+<mvc:View controllerName="srm.aplication.controller.vAdminUsers"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:core="sap.ui.core" 
+    xmlns:tab="sap.ui.table" 
+    xmlns="sap.m">  
+    <Page title="Administrador de usuarios" navButtonPress="onPageBack" showNavButton="true"  titleAlignment="Center">
+        <headerContent> 
+            <MenuButton icon="sap-icon://person-placeholder" text="User" type="Transparent"> 
+                <Menu>
+                    <MenuItem text="Cerrar sesion" icon="sap-icon://log" press="logOff"/>
+                </Menu>
+            </MenuButton>
+		</headerContent>  
+        <content> 
+        <IconTabBar expanded="true" class="sapUiResponsiveContentPadding">
+            <items>
+                <IconTabFilter key="Usuarios" text="Usuarios" count="{myParam>/listUsuarios/length}" icon="sap-icon://customer">
+                    <tab:Table rows="{ path: 'myParam>/listUsuarios'}" visibleRowCount="12" >
+                        <tab:extension>
+                            <OverflowToolbar height="auto" > 
+                                <core:Icon src="sap-icon://activity-items" alt="Cart" size="1.25rem"/>
+                                <Title text="Tabla de usuarios ({myParam>/listUsuarios/length})" />
+                                <ToolbarSpacer/> 
+                                <CheckBox id="idChaeckAdministrador" text="Administrador" select="funcionAdministrador" valueState="Warning" selected="false" editable="true" class="sapUiTinyMarginEnd"/>
+                                <CheckBox id="idChaeckEstandar" text="Estándar" select="funcionEstandar" valueState="Warning" selected="false" editable="true" class="sapUiTinyMarginEnd"/>
+                                <HBox alignItems="Center" class="sapUiTinyMarginEnd" >
+                                    <Label text="Ruc del proveedor: " design="Bold" textAlign="Right"/>
+                                    <ComboBox id="idComboProveedor" items="{ path: 'myParam>/proveedorCombo'}" class="sapUiSmallMarginBottom" placeholder="- Seleccione proveedor-" required="true" selectionChange="rucComboChange">
+                                        <core:Item key="{myParam>RUC}" text="{myParam>RUC} - {myParam>DESCRIPCION}"/>
+                                    </ComboBox>
+                                </HBox>
+                                <Button text="Añadir usuario" type="Emphasized" icon="sap-icon://add-employee" press="fragmentAddUsuario"/>
+                            </OverflowToolbar>
+                        </tab:extension>  
+                        <tab:columns>
+                            <tab:Column width="9%" hAlign="Center">
+                                <Text text="Usuario"/>
+                                <tab:template>
+                                    <Label text="{myParam>RUC}"/>
+                                </tab:template>
+                            </tab:Column>
+                            <tab:Column width="16%" hAlign="Center">
+                                <Text text="Autorización"/>
+                                <tab:template> 
+                                    <VBox  alignItems="Start" >
+                                        <CheckBox text="Administrador" select="evtSeleccionarAut" valueState="Warning"
+                                            selected="{ path: 'myParam>TIPO', formatter: '.formatTipoCheck1' }" editable="false"/>
+                                        <CheckBox text="Estándar" select="evtSeleccionarAut" valueState="Warning"
+                                            selected="{ path: 'myParam>TIPO', formatter: '.formatTipoCheck2' }" editable="false"/> 
+                                    </VBox>
+                                </tab:template>
+                            </tab:Column>
+                            <tab:Column width="8%" hAlign="Center">
+                                <Text text="Registro de Factura"/>
+                                <tab:template>
+                                    <Avatar src="sap-icon://expense-report" displaySize="XS" visible="{path: 'myParam>SECCION1',formatter: '.txtVisibleForm'}"
+                                        displayShape="Square"/>
+                                </tab:template>
+                            </tab:Column>
+                            <tab:Column width="8%" hAlign="Center">
+                                <Text text="Registro sin Vale/HES"/>
+                                <tab:template>
+                                    <Avatar src="sap-icon://batch-payments" displaySize="XS" visible="{path: 'myParam>SECCION2',formatter: '.txtVisibleForm'}"
+                                        displayShape="Square"/>
+                                </tab:template>
+                            </tab:Column>
+                            <tab:Column width="8%" hAlign="Center">
+                                <Text text="Reporte de Factura"/>
+                                <tab:template>
+                                    <Avatar src="sap-icon://customer-financial-fact-sheet" displaySize="XS" visible="{path: 'myParam>SECCION3',formatter: '.txtVisibleForm'}"
+                                        displayShape="Square"/>
+                                </tab:template>
+                            </tab:Column>
+                            <tab:Column width="8%" hAlign="Center">
+                                <Text text="Reporte de Vales/HES"/>
+                                <tab:template>
+                                    <Avatar src="sap-icon://sap-box" displaySize="XS" visible="{path: 'myParam>SECCION4',formatter: '.txtVisibleForm'}" displayShape="Square"/>
+                                </tab:template>
+                            </tab:Column>
+                            
+                            <!-- JCL widths! -->
+                            <tab:Column width="8%" hAlign="Center">
+                                <Text text="Audit-Mantenimiento Documentos"/>
+                                <tab:template>
+                                    <Avatar src="sap-icon://ppt-attachment" displaySize="XS" visible="{path: 'myParam>SECCIONAUDIT_1',formatter: '.txtVisibleForm'}" displayShape="Square"/>
+                                </tab:template>
+                            </tab:Column>
+                            <tab:Column width="8%" hAlign="Center">
+                                <Text text="Audit-Mantenimiento y Gestión Proveedores"/>
+                                <tab:template>
+                                    <Avatar src="sap-icon://crm-sales" displaySize="XS" visible="{path: 'myParam>SECCIONAUDIT_2',formatter: '.txtVisibleForm'}" displayShape="Square"/>
+                                </tab:template>
+                            </tab:Column>
+                            <tab:Column width="8%" hAlign="Center">
+                                <Text text="Audit-Registro Documentos Proveedor"/>
+                                <tab:template>
+                                    <Avatar src="sap-icon://batch-payments" displaySize="XS" visible="{path: 'myParam>SECCIONAUDIT_3',formatter: '.txtVisibleForm'}" displayShape="Square"/>
+                                </tab:template>
+                            </tab:Column>
+                            
+                            <tab:Column width="9%" hAlign="Center">
+                                <Text text="Audit-Rol"/>
+                                <tab:template>
+                                    <ComboBox id="cmb_audit_rol" class="sapUiSmallMarginBottom" enabled="false" selectedKey="{path: 'myParam>ROL_AUDIT'}" placeholder="Rol">
+                                        <core:Item key="" text="" />
+                                        <core:Item key="LOGISTICA" text="LOGISTICA" />
+                                        <core:Item key="RH" text="RH" />
+                                        <core:Item key="SIGMA" text="SIGMA" />
+                                        <core:Item key="SIG" text="SIG" />
+                                        <core:Item key="PROVEEDOR" text="PROVEEDOR" />
+                                        <core:Item key="ALL" text="ALL" />
+                                    </ComboBox>
+                                </tab:template>
+                            </tab:Column>
+                            <!-- cierre -->
+                            
+                            <tab:Column width="10rem" hAlign="Center">
+                                <Text text="Acción"/>
+                                <tab:template>
+                                    <Toolbar height="auto">
+                                        <Button tooltip="Editar usuario" icon="sap-icon://edit" type="Default" press="fragmentEditUsuario"/>
+                                        <Button tooltip="Asignar empresa" icon="sap-icon://building" type="Default" press="fragmentAssignEmpresa"/>
+                                        <Button tooltip="Asignar proveedor" icon="sap-icon://factory" type="Default" press="fragmentAssignProveedor"/>
+                                    </Toolbar>
+                                </tab:template>
+                            </tab:Column>
+                        </tab:columns>
+                    </tab:Table>
+                </IconTabFilter>
+                <IconTabFilter key="Empresas" text="Empresas" count="{myParam>/listEmpresa/length}" icon="sap-icon://citizen-connect">
+                    <content>
+                        <tab:Table id="idTableEmpresa" sort="sortDeliveryDate" rows="{ path: 'myParam>/listEmpresa'}" visibleRowCount="8"> 
+                            <tab:extension>
+                                <OverflowToolbar > 
+                                    <core:Icon src="sap-icon://citizen-connect" alt="Cart" size="1.25rem"/>
+                                    <Title text="Tabla de empresas ({myParam>/listEmpresa/length})"/>
+                                    <ToolbarSpacer/>
+                                    <Button text="Añadir Empresa" type="Emphasized" icon="sap-icon://sys-add" press="fragmentAddEmpresa"/>
+                                </OverflowToolbar>
+                            </tab:extension>  
+                            <tab:columns>
+                                <tab:Column width="40%" hAlign="Center">
+                                    <Text text="Usuario"/>
+                                    <tab:template>
+                                        <Label text="{myParam>RUC}"/>
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column width="40%" hAlign="Center">
+                                    <Text text="Descripción"/>
+                                    <tab:template>
+                                        <Label text="{myParam>DESCRIPCION}"/>
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column width="20%" hAlign="Center">
+                                    <Text text="Acción"/>
+                                    <tab:template>
+                                        <Button text="Eliminar" icon="sap-icon://delete" type="Reject" press=".pressEliminar('T_EMPRESA_EMP','la empresa','listEmpresa',$event)"/>
+                                    </tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table>
+                    </content>
+                </IconTabFilter>
+                <IconTabFilter key="Proveedores" text="Proveedores" count="{myParam>/listProveedores/length}" icon="sap-icon://factory">
+                    <content>
+                        <tab:Table id="idTableProveedores" sort="sortDeliveryDate" rows="{ path: 'myParam>/listProveedores'}" visibleRowCount="16">
+                            <tab:extension>
+                                <OverflowToolbar > 
+                                    <core:Icon src="sap-icon://factory" alt="Cart" size="1.25rem"/>
+                                    <Title text="Tabla de proveedores ({myParam>/listProveedores/length})" />
+                                    <ToolbarSpacer/>
+                                    <Button text="Añadir Proveedores" type="Emphasized" icon="sap-icon://sys-add" press="fragmentAddProveedor"/>
+                                </OverflowToolbar>
+                            </tab:extension>  
+                            <tab:columns>
+                                <tab:Column width="40%" hAlign="Center">
+                                    <Text text="Usuario"/>
+                                    <tab:template>
+                                        <Label text="{myParam>RUC}"/>
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column width="40%" hAlign="Center">
+                                    <Text text="Descripción"/>
+                                    <tab:template>
+                                        <Label text="{myParam>DESCRIPCION}"/>
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column width="20%" hAlign="Center">
+                                    <Text text="Acción"/>
+                                    <tab:template>
+                                        <Button text="Eliminar" icon="sap-icon://delete" type="Reject" press=".pressEliminar('T_EMPRESA_PRO','el proveedor','listProveedores',$event)"/>
+                                    </tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table>
+                    </content>
+                </IconTabFilter>
+                <IconTabFilter key="Servicios" text="Servicios" count="{myParam>/listServicios/length}" icon="sap-icon://official-service">
+                    <content>
+                        <tab:Table id="idTableServicios" sort="sortDeliveryDate" rows="{ path: 'myParam>/listServicios'}" visibleRowCount="8" >
+                            <tab:extension>
+                                <OverflowToolbar > 
+                                    <core:Icon src="sap-icon://official-service" alt="Cart" size="1.25rem"/>
+                                    <Title text="Tabla de servicios ({myParam>/listServicios/length})"/>
+                                </OverflowToolbar>
+                            </tab:extension>  
+                            <tab:columns>
+                                <tab:Column width="50%" hAlign="Center">
+                                    <Text text="Servicio"/>
+                                    <tab:template>
+                                        <Label text="{myParam>SERVICIO}"/>
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column width="20%" hAlign="Center">
+                                    <Text text="Estado"/>
+                                    <tab:template>
+                                        <Label text="{ path: 'myParam>ESTADO', formatter: '.formatoEstadoSunat' }"/>
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column width="30%" hAlign="Center">
+                                    <Text text="Acción"/>
+                                    <tab:template>
+                                        <Button id="idInhabilitarSunat" text="Habilitar / Inhabilitar" icon="sap-icon://edit" type="Accept" press="pressActualizarServicio"/>
+                                    </tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table>
+                    </content>
+                </IconTabFilter>
+            </items>
+        </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>

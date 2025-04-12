@@ -1,0 +1,21 @@
+/* Enter your custom styles here */
+
+/* Estilo base de la cuadrícula 2x2 */
+.grid-container {  
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr)); 
+    grid-auto-rows: auto;
+    gap: 15px; 
+  }
+  
+  /* .grid-item { 
+    background-color: #e0e0e0; 
+    max-width: 25rem;
+  }
+   */
+  /* Media Query para cambiar a una columna en tablet */
+  /* @media screen and (max-width: 768px) {
+    .grid-container { 
+      grid-template-columns: repeat(1, 100%); 
+    }
+  } */

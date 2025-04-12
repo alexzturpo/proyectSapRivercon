@@ -1,0 +1,80 @@
+<mvc:View controllerName="srm.aplication.controller.vMain"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}" titleAlignment="Center" >
+        <content>   
+            <HBox width="100%" height="100%" justifyContent="Center" alignItems="Center" class="fondoLogin">
+                <HBox width="70%" height="70%" justifyContent="SpaceAround" alignItems="Center" class="loginContent sapUiContentPadding">
+                    <!-- <Image width="15rem" src="../img/fondo3.jpg" class="sapUiMediumMargin"/> -->
+                    <VBox justifyContent="Center" alignItems="Center"  width="100%">
+                        <f:Form editable="true" ariaLabelledBy="Title1" >
+                            <f:toolbar>
+                                <Toolbar class="sapUiMediumBottom">
+                                    <!-- <Image  height="2rem" src="test-resources/sap/tnt/images/SAP_Logo.png" />   -->
+                                    <ToolbarSpacer/> 
+                                        <Title  level="H3" text="Inicio de session" /> 
+                                    <ToolbarSpacer/>  
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout>
+                                <f:ResponsiveGridLayout
+                                    labelSpanXL="4"
+                                    labelSpanL="3"
+                                    labelSpanM="4"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="4"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+                            </f:layout>
+                            <f:formContainers >
+                                <f:FormContainer ariaLabelledBy="Inicio de session"   > 
+                                    <f:formElements >
+                                        <!-- <f:FormElement label="Perfil"  >
+                                            <f:fields >
+                                            <HBox justifyContent="SpaceBetween">
+                                                <RadioButton id="pTrab" text="Trabajador" groupName="perfil"  /> 
+                                                <RadioButton id="pAdmin" text="Administrador" groupName="perfil" selected="true"/>
+                                                <RadioButton id="pProv" text="Proveedor" groupName="perfil"  />
+                                            </HBox>
+                                            </f:fields>
+                                        </f:FormElement>  -->
+                                        <f:FormElement label="Usuario"  >
+                                            <f:fields >
+                                                <Input value="" placeholder="Ingrese RUC del proveedor (11)" maxLength="11" class="sapUiTinyMarginTopBottom"/>
+                                            </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Contraseña" >
+                                            <f:fields>
+                                                <Input value="" placeholder="Ingrese Contraseña" type="Password" maxLength="30" class="sapUiTinyMarginTopBottom" />
+                                            </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement class="sapUiSmalMarginTopBottom">
+                                            <f:fields>
+                                                <Button text="Iniciar sesión" press="btnLogin" type="Emphasized" class="sapUiSmallMarginTopBottom" /> 
+                                            </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement class="sapUiMediumMarginTopBottom">
+                                            <f:fields>
+                                            <HBox justifyContent="SpaceBetween">
+                                                <Text text="¿Olvidaste la contraseña?" /> 
+                                                <Link text="Registrarse" press="vRegisterGo" />
+                                            </HBox>
+                                            </f:fields>
+                                        </f:FormElement> 
+                                    </f:formElements>
+                                </f:FormContainer> 
+                            </f:formContainers>
+                        </f:Form> 
+                    </VBox> 
+                </HBox>
+            </HBox> 
+		</content> 
+    </Page>
+</mvc:View>

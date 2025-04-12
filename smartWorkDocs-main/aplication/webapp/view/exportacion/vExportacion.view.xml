@@ -1,0 +1,82 @@
+<mvc:View controllerName="swd.aplication.controller.vExportacion"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:core="sap.ui.core" 
+    xmlns:tab="sap.ui.table"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title} - Exportación" titleAlignment="Center" navButtonPress="onPageBack" showNavButton="true">
+        <content>
+            <!-- <Button text="Click detalle del pedido o embarque" press="pageDetailExp" />  -->
+            <IconTabBar expanded="{device>/isNoPhone}" >
+                <items>
+                    <IconTabFilter text="Pedidos"> 
+                        <tab:Table rows="{ path: 'myParam>/tbDataPedidos'}" selectionMode="Single" cellClick="selectTbExport"   class="sapUiSmallMarginBottom" visibleRowCount="8">
+                            <tab:columns>
+                                <tab:Column width="5rem" hAlign="Center"> <Text text="Operación"/>
+                                    <tab:template> <Label text="{myParam>OPERACION}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Pedido"/>
+                                    <tab:template> <Label text="{myParam>PEDIDO}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Observación"/>
+                                    <tab:template> <Label text="{myParam>OBSERVACION}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Fecha transmisión"/>
+                                    <tab:template> <Label text="{myParam>FECHA_TRANSMISION}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Fecha emisión"/>
+                                    <tab:template> <Label text="{myParam>FECHA_EMISION}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Fecha programación"/>
+                                    <tab:template> <Label text="{myParam>FECHA_PROGRAMACION}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Código de cliente"/>
+                                    <tab:template> <Label text="{myParam>CODIGO_CLIENTE}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Razón social del cliente"/>
+                                    <tab:template> <Label text="{myParam>RAZON_SOCIAL_CLIENTE}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Condición de pago"/>
+                                    <tab:template> <Label text="{myParam>CONDICION_PAGO}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Referencia del cliente"/>
+                                    <tab:template> <Label text="{myParam>REFERENCIA_CLIENTE}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Modalidad de embarque"/>
+                                    <tab:template> <Label text="{myParam>MODALIDAD_EMBARQUE}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Total del pedido"/>
+                                    <tab:template> <Label text="{myParam>TOTAL_PEDIDO_COBR}"/> </tab:template>
+                                </tab:Column> 
+                            </tab:columns>
+                        </tab:Table> 
+                    </IconTabFilter>
+                    <IconTabFilter text="Operación">
+                        <tab:Table rows="{ path: 'myParam>/tbDataOperacion'}" selectionMode="Single"  class="sapUiSmallMarginBottom" visibleRowCount="8">
+                            <tab:columns>
+                                <tab:Column width="5rem" hAlign="Center"> <Text text="Operación"/>
+                                    <tab:template> <Label text="{myParam>OPERACION}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Fecha programación"/>
+                                    <tab:template> <Label text="{myParam>FECHA_PROGRAMACION}"/> </tab:template>
+                                </tab:Column>  
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Código de cliente"/>
+                                    <tab:template> <Label text="{myParam>CODIGO_CLIENTE}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Razón social del cliente"/>
+                                    <tab:template> <Label text="{myParam>RAZON_SOCIAL_CLIENTE}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Modalidad de embarque"/>
+                                    <tab:template> <Label text="{myParam>MODALIDAD_EMBARQUE}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Estado"/>
+                                    <tab:template> <Label text="{myParam>ESTADO}"/> </tab:template>
+                                </tab:Column> 
+                            </tab:columns>
+                        </tab:Table> 
+                    </IconTabFilter> 
+                </items>
+            </IconTabBar>
+        </content >
+    </Page>
+</mvc:View>

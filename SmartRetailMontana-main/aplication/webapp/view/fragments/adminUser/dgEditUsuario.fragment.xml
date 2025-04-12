@@ -1,0 +1,83 @@
+<core:FragmentDefinition
+xmlns="sap.m"
+xmlns:core="sap.ui.core"
+xmlns:mvc="sap.ui.core.mvc"   
+xmlns:u="sap.ui.unified" 
+xmlns:tab="sap.ui.table"
+xmlns:f="sap.ui.layout.form"
+>
+<Dialog contentWidth="30%" title="Editar usuario" showHeader="true" titleAlignment="Center">
+     <f:Form editable="true" class="sapUiTinyMarginBottom" > 
+        <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />  </f:layout>
+        <f:formContainers>
+            <f:FormContainer > 
+                <f:formElements> 
+                    <f:FormElement label="Usuario">
+                        <f:fields> <Input value=""/> </f:fields>
+                    </f:FormElement> 
+                    <f:FormElement label="Autorización">
+                        <f:fields> 
+                            <RadioButton text="Administrador" groupName="autorizacion"  />
+                            <RadioButton text="Estándar" groupName="autorizacion" />
+                        </f:fields>
+                    </f:FormElement> 
+                    <f:FormElement label="Registro de factura">
+                        <f:fields> 
+                            <RadioButton text="Mostrar" groupName="regisFactura" />
+                            <RadioButton text="Ocultar" groupName="regisFactura" />
+                        </f:fields>
+                    </f:FormElement> 
+                    <f:FormElement label="Registro sin Vale/HES ">
+                        <f:fields> 
+                            <RadioButton text="Mostrar" groupName="regisFactura" />
+                            <RadioButton text="Ocultar" groupName="regisFactura" />
+                        </f:fields>
+                    </f:FormElement> 
+                    <f:FormElement label="Reporte de Factura">
+                        <f:fields> 
+                            <RadioButton text="Mostrar" groupName="regisFactura" />
+                            <RadioButton text="Ocultar" groupName="regisFactura" />
+                        </f:fields>
+                    </f:FormElement> 
+                    <f:FormElement label="Reporte de Vales/HES">
+                        <f:fields> 
+                            <RadioButton text="Mostrar" groupName="regisFactura" />
+                            <RadioButton text="Ocultar" groupName="regisFactura" />
+                        </f:fields>
+                    </f:FormElement> 
+                    <f:FormElement label="Audit Mant Doc">
+                        <f:fields> 
+                            <RadioButton text="Mostrar" groupName="regisFactura" />
+                            <RadioButton text="Ocultar" groupName="regisFactura" />
+                        </f:fields>
+                    </f:FormElement> 
+                    <f:FormElement label="Audit Mant Prov">
+                        <f:fields> 
+                            <RadioButton text="Mostrar" groupName="regisFactura" />
+                            <RadioButton text="Ocultar" groupName="regisFactura" />
+                        </f:fields>
+                    </f:FormElement> 
+                    <f:FormElement label="Audit Reg Doc Prov">
+                        <f:fields> 
+                            <RadioButton text="Mostrar" groupName="regisFactura" />
+                            <RadioButton text="Ocultar" groupName="regisFactura" />
+                        </f:fields>
+                    </f:FormElement> 
+                    <f:FormElement label="Audit-Rol">
+                        <f:fields> 
+                            <Select forceSelection="false" items="{ path: 'myParam>/listAuditRol'}">
+                                <core:Item key="{myParam>key}" text="{myParam>value}" />
+                            </Select>
+                        </f:fields>
+                    </f:FormElement> 
+                </f:formElements>
+            </f:FormContainer> 
+        </f:formContainers>
+    </f:Form>
+    <OverflowToolbar height="auto">  
+        <ToolbarSpacer/>
+        <Button text="Guardar" press="dgEditUsuarioOk" type="Emphasized" />
+        <Button text="Cancelar" press="dgCancelEditUsuario"/>  
+    </OverflowToolbar>
+</Dialog>
+</core:FragmentDefinition>

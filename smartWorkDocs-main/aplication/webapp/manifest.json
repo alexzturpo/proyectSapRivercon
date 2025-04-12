@@ -1,0 +1,168 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "swd.aplication",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.11.0",
+      "toolsId": "feb6a354-47c6-4d1d-a408-162de5a4be66"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.118.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "swd.aplication.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "swd.aplication.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RoutevMain",
+          "pattern": ":?query:",
+          "target": [  "TargetvMain" ]
+        },
+        {
+          "name": "vExportacion",
+          "pattern": "vExportacion",
+          "titleTarget": "vExportacion",
+          "target": "vExportacion"
+        },
+        {
+          "name": "vDetailExp",
+          "pattern": "vDetailExp",
+          "titleTarget": "vDetailExp",
+          "target": "vDetailExp"
+        }, 
+        {
+          "name": "vImportaciones",
+          "pattern": "vImportaciones",
+          "titleTarget": "vImportaciones",
+          "target": "vImportaciones"
+        }, 
+        {
+          "name": "vDetailImp",
+          "pattern": "vDetailImp",
+          "titleTarget": "vDetailImp",
+          "target": "vDetailImp"
+        },
+        {
+          "name": "vAdminUsers",
+          "pattern": "vAdminUsers",
+          "titleTarget": "vAdminUsers",
+          "target": "vAdminUsers"
+        }
+      ],
+      "targets": {
+        "TargetvMain": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vMain",
+          "viewName": "vMain"
+        },
+        "vExportacion": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vExportacion",
+          "viewName": "exportacion/vExportacion"
+        },
+        "vDetailExp": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vDetailExp",
+          "viewName": "exportacion/vDetailExp"
+        }, 
+        "vImportaciones": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vImportaciones",
+          "viewName": "importacion/vImportaciones"
+        }, 
+        "vDetailImp": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vDetailImp",
+          "viewName": "importacion/vDetailImp"
+        },
+        "vAdminUsers": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vAdminUsers",
+          "viewName": "vAdminUsers"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "swd.aplication.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

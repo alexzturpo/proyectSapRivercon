@@ -1,0 +1,51 @@
+/* Enter your custom styles here */
+
+.page_background_img {
+    background-image: url('../img/FondoPrincipal.jpg');
+    background-size: 100% 100%;
+  }
+
+  /*fondo panel*/
+.bg_fondo {
+    background-color: black !important;
+    opacity: 90%;
+}
+
+  /*fondo seleccion ruc*/
+  .bg_fondo_seleccion {
+    background-color: white !important;
+    opacity: 90%;
+}
+
+
+  /*fondo imagen carta_detalle*/
+  .bg_fondo_carta_detalle {
+    background-color: white !important;
+    opacity: 90%;
+}
+
+
+  /*fondo blanco*/
+  .bg_white {
+    background-color: white !important;
+}
+
+
+ /*color blanco*/
+ .color_white {
+  color: white !important;
+}
+
+
+/*bolder*/
+.font_bolder{
+    font-weight: bolder !important;
+    color:black !important;
+  }
+
+  .sidenav {
+    height: 100%;
+    position: fixed;
+    background-color: white;
+    opacity: 97%;
+  }

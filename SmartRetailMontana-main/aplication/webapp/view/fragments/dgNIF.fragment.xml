@@ -1,0 +1,49 @@
+<core:FragmentDefinition
+xmlns="sap.m"
+xmlns:core="sap.ui.core"
+xmlns:mvc="sap.ui.core.mvc"   
+xmlns:l="sap.ui.layout"
+xmlns:tab="sap.ui.table"
+xmlns:f="sap.ui.layout.form"
+>
+<Dialog contentWidth="40%" title="NIF" showHeader="true" icon="sap-icon://sales-order" titleAlignment="Center">
+    <f:Form editable="true" class="sapUiTinyMarginBottom" > 
+        <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />  </f:layout>
+        <f:formContainers>
+            <f:FormContainer >  
+                <f:formElements>
+                    <f:FormElement label="NIF">
+                        <f:fields> <Input value=""/> </f:fields>
+                    </f:FormElement> 
+                    <f:FormElement label="Código de cliente">
+                        <f:fields> <Input value=""/> </f:fields>
+                    </f:FormElement> 
+                    <f:FormElement label="Nombre">
+                        <f:fields> <Input value=""/> </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Dirección">
+                        <f:fields> <Input value=""/> </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="UBIGEO">
+                        <f:fields> <Input value=""/> </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Población">
+                        <f:fields> <Input value=""/> </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Departamento">
+                        <f:fields> <Input value=""/> </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="País">
+                        <f:fields> <Input value=""/> </f:fields>
+                    </f:FormElement>
+                    <f:FormElement> <f:fields> <CheckBox text="Crear en maestro" wrapping="true" /> </f:fields> </f:FormElement>
+                </f:formElements>
+            </f:FormContainer> 
+        </f:formContainers>
+    </f:Form> 
+    <OverflowToolbar>
+        <Button text="Aceptar" press="dgNIFOk" type="Emphasized" />
+        <Button text="Cancelar" press="dgCancelNIF"/> 
+    </OverflowToolbar>
+</Dialog>
+</core:FragmentDefinition>

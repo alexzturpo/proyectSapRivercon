@@ -1,0 +1,337 @@
+<mvc:View controllerName="spm.aplication.controller.vRegFacturaSinAsuntoElectronico"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form"  
+    xmlns:fs="sap.f" 
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified" 
+    xmlns:tab="sap.ui.table"
+    xmlns:core="sap.ui.core" 
+    xmlns="sap.m">  
+    <Page class="page_background_img" showHeader="false">
+        
+        <content>
+            <FlexBox alignItems="Center" justifyContent="SpaceBetween" class="bg_fondo">
+                <Image src="../img/sap-logo.svg" height="30px" class="sapUiTinyMarginTop sapUiTinyMarginBegin"/>
+                <Image src="../img/smart_provider_logo.png" />
+                <MenuButton icon="sap-icon://customer" id="menu_but_panel_title" text="Bienvenido" type="Default" class="sapUiTinyMarginEnd">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                    <Menu>
+                        <MenuItem text="Log out" icon="sap-icon://log" press="onPress_logout" />  
+                    </Menu>
+                </MenuButton>
+            </FlexBox>
+
+            <FlexBox alignItems="Center" justifyContent="SpaceBetween" class="bg_fondo_seleccion">
+                <Button class="sapUiTinyMargin" icon="sap-icon://navigation-left-arrow" press="onPageBack" type="Transparent" tooltip="Volver" /> 
+
+                <Label class="sapUiTinyMargin font_bolder" text="Registro sin Vale/HES (Carga XML)"/>
+                
+                <Button class="sapUiTinyMargin" icon="sap-icon://log" press="f_pre_registrar_factura" text="Pre-registrar" type="Emphasized" enabled="false"/> 
+            </FlexBox>
+
+
+
+
+
+            <l:Splitter class="sidenav">
+                <Panel width="100%">
+                    
+                    
+                    <VBox>
+                        <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                            <Label class="sapUiTinyMargin" text="RUC del proveedor :">
+                                <layoutData>
+                                    <FlexItemData growFactor="1" />
+                                </layoutData>
+                            </Label>
+                            <Input id="txt_ruc_proveedor" value="1022067248 - CABEZUDO LARA LUIS ARLES" editable="false">
+                                <layoutData>
+                                    <FlexItemData growFactor="2" />
+                                </layoutData>
+                            </Input>
+                        </FlexBox>
+
+                        <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                            <Label class="sapUiTinyMargin" text="RUC de la empresa :">
+                                <layoutData>
+                                    <FlexItemData growFactor="1" />
+                                </layoutData>
+                            </Label>
+                            <Input id="txt_ruc_empresa" value="20131565659 - TAL S.A" editable="false">
+                                <layoutData>
+                                    <FlexItemData growFactor="2" />
+                                </layoutData>
+                            </Input>
+                        </FlexBox>
+
+                        <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                            <u:FileUploader id="idXML" uploadUrl="upload/" tooltip="Subir Documento XML" placeholder="Archivo XML" change="change" fileType="XML" buttonText="Buscar" style="Emphasized" icon="sap-icon://laptop" class="sapUiTinyMarginBeginEnd">
+                            </u:FileUploader>
+                            <Button text="Cargar XML en Tabla" id="idAnadirCargarXMLTabla" icon="sap-icon://excel-attachment" press="btnAnadirCargarXMLTabla" type="Emphasized" class="sapUiTinyMarginBeginEnd">
+                            </Button>
+                        </FlexBox>
+                        
+                        <f:Form editable="true">  
+                            <f:toolbar>
+                                <Toolbar height="auto"> 
+                                    <Avatar displaySize="S" backgroundColor="Accent6" displayShape="Square" src="sap-icon://sales-document" class="sapUiTinyMarginTopBottom"/>
+                                    <Title text="Factura Electrónica"/>
+                                    <ToolbarSpacer />
+                                    <Label id="lbl_factura_electronica_asignada" text="-Sin asignar-"></Label> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Versión del UBL">
+                                            <f:fields> <Input id="txt_version_ubl" value="" editable="false"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Fecha de Emisión">
+                                            <f:fields> <Input id="txt_fecha_emision" value="" editable="false"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Nombres o Denominación o Razón Social">
+                                            <f:fields> <Input id="txt_razon_social" value="" editable="false"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Nombre Comercial">
+                                            <f:fields> <Input id="txt_nombre_comercial" value="" editable="false"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Número de RUC">
+                                            <f:fields> <Input id="txt_nro_ruc" value="" editable="false"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Tipo de documento">
+                                            <f:fields> <Input id="txt_tipo_documento" value="" editable="false"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Número de RUC del adquirente o usuario">
+                                            <f:fields> <Input id="txt_nro_ruc_adquiriente" value="" editable="false"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Nombres o Denominación o Razón Social del adquirente o usuario">
+                                            <f:fields> <Input id="txt_razon_social_adquiriente" value="" editable="false"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Moneda">
+                                            <f:fields> <Input id="txt_moneda" value="" editable="false"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Tasa de IGV">
+                                            <f:fields> <Input id="txt_tasa_igv" value="" editable="false"/> </f:fields>
+                                        </f:FormElement> 
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+                    </VBox>
+
+
+                    <layoutData>
+                        <l:SplitterLayoutData size="25rem" />
+                    </layoutData>
+                </Panel>
+                <Panel width="100%">
+
+
+                    <VBox class="sapUiResponsiveContentPadding sapUiResponsiveMargin">
+                        <Panel expanded="true" headerText="Mensajes de validación" expandable="true">
+                            <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                                <MessageStrip text="Ningún documento ha sido cargado" showIcon="true" class="sapUiTinyMarginTopBottom">
+                                    <layoutData> <FlexItemData growFactor="1" baseSize="0" backgroundDesign="Solid" styleClass="sapUiTinyMargin" /> </layoutData>
+                                </MessageStrip>
+
+                                <Label text="">
+                                    <layoutData> <FlexItemData growFactor="1" baseSize="0" backgroundDesign="Solid" styleClass="sapUiTinyMargin" /> </layoutData>
+                                </Label>
+
+                                <MessageStrip text="Sin items a asignar" showIcon="true" class="sapUiTinyMarginTopBottom">
+                                    <layoutData> <FlexItemData growFactor="1" baseSize="0" backgroundDesign="Solid" styleClass="sapUiTinyMargin" /> </layoutData>
+                                </MessageStrip>
+                            </FlexBox>
+
+                            <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                                <MessageStrip text="Estado del comprobante a la fecha de consulta: SIN ASIGNAR" showIcon="true" class="sapUiTinyMarginTopBottom">
+                                    <layoutData> <FlexItemData growFactor="1" baseSize="0" backgroundDesign="Solid" styleClass="sapUiTinyMargin" /> </layoutData>
+                                </MessageStrip>
+
+                                <MessageStrip text="Estado del contribuyente a la fecha de emisión: SIN ASIGNAR" showIcon="true" class="sapUiTinyMarginTopBottom">
+                                    <layoutData> <FlexItemData growFactor="1" baseSize="0" backgroundDesign="Solid" styleClass="sapUiTinyMargin" /> </layoutData>
+                                </MessageStrip>
+
+                                <MessageStrip text="Condición de domicilio a la fecha de emisión: SIN ASIGNAR" showIcon="true" class="sapUiTinyMarginTopBottom">
+                                    <layoutData> <FlexItemData growFactor="1" baseSize="0" backgroundDesign="Solid" styleClass="sapUiTinyMargin" /> </layoutData>
+                                </MessageStrip>
+                            </FlexBox>
+                        </Panel>
+                        
+                        <!-- <tab:Table rows="{  path: 'myParam>/listItemDetalleFactura' }" selectionMode="None"  visibleRowCount="5" class="sapUiSmallMarginBottom" ariaLabelledBy="title">
+                            <tab:extension>
+                                <OverflowToolbar height="auto" >
+                                    <core:Icon src="sap-icon://activity-items" size="1.25rem" class="sapUiTinyMargin"/>
+                                    <Title text="Detalle de la Factura" />
+                                    <Text text="N° Registros ( 0 )" class="sapUiTinyMargin"></Text>
+                                    <ToolbarSpacer />
+                                    <HBox alignItems="Center">
+                                        <Label class="sapUiTinyMargin" text="Tipo de carga:"/> 
+                                        <ComboBox  selectedKey="{myParam>ZSOCIEDAD}" items="{/listTipoCarga}">
+                                            <core:Item key="{key}" text="{key} | {value}" />
+                                        </ComboBox>   
+                                    </HBox>  
+                                    <Button press="f_asignar_posiciones" text="Asignar posiciones" icon="sap-icon://activity-2" type="Emphasized" class="sapUiTinyMargin"/> 
+                                </OverflowToolbar>
+                            </tab:extension>
+                            <tab:columns>
+                                <tab:Column width="5rem">
+                                    <Label textAlign="Center" wrapping ="true"  text="Precio neto"/>
+                                    <tab:template><Label text="{myParam>clistItemDetalleFacturaValortotalNetoXItem}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Precio sin IGV" />
+                                    <tab:template> <Text text="{myParam>clistItemDetalleFacturaValorVenxItem}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Posición" />
+                                    <tab:template> <Text text="{myParam>fecha}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Código" />
+                                    <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Descripción" />
+                                    <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Unidad de medida" />
+                                    <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Cantidad" />
+                                    <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Afectación al IGV por item" />
+                                    <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Precio unitario por item" />
+                                    <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Precio venta por item" />
+                                    <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table>  -->
+                        <Table id="tableFacturaElectro" items="{/tableFacturaElectro}"  mode="None" >
+                            <headerToolbar>
+                                <OverflowToolbar> 
+                                    <core:Icon src="sap-icon://activity-items" size="1.25rem" class="sapUiTinyMargin"/>
+                                    <Title text="Detalle de la Factura" />
+                                    <Text text="N° Registros ( 0 )" class="sapUiTinyMargin"></Text>
+                                    <ToolbarSpacer />
+                                    <HBox alignItems="Center">
+                                        <Label class="sapUiTinyMargin" text="Tipo de carga:"/> 
+                                        <ComboBox  selectedKey="{myParam>ZSOCIEDAD}" items="{/listTipoCarga}">
+                                            <core:Item key="{key}" text="{key} | {value}" />
+                                        </ComboBox>   
+                                    </HBox>  
+                                    <!-- <Button press="fragmentAsigPosiciones" text="Asignar posiciones" icon="sap-icon://activity-2" type="Emphasized" class="sapUiTinyMargin"/>  -->
+                                </OverflowToolbar>
+                            </headerToolbar> 
+                            <columns>
+                                <Column width="auto"> <Text text="Precio neto" /> </Column> 
+                                <Column width="auto"> <Text text="Precio sin IGV" /> </Column> 
+                                <Column width="auto"> <Text text="Posición" /> </Column> 
+                                <Column width="auto"> <Text text="Código" /> </Column> 
+                                <Column width="auto"> <Text text="Descripción" /> </Column> 
+                                <Column width="auto"> <Text text="Unidad de medida" /> </Column> 
+                                <Column width="auto"> <Text text="Cantidad" /> </Column> 
+                                <Column width="auto"> <Text text="Afectación al IGV por item" /> </Column> 
+                                <Column width="auto"> <Text text="Precio unitario por item" /> </Column> 
+                                <Column width="auto"> <Text text="Precio venta por item" /> </Column> 
+                            </columns>
+                            <items>
+                                <ColumnListItem vAlign="Middle">
+                                    <cells>
+                                        <Text text="{value}" /> 
+                                        <Text text="{value}" /> 
+                                        <Text text="{value}" /> 
+                                        <Text text="{value}" /> 
+                                        <Text text="{value}" /> 
+                                        <Text text="{value}" /> 
+                                        <Text text="{value}" /> 
+                                        <Text text="{value}" /> 
+                                        <Text text="{value}" /> 
+                                        <Text text="{value}" /> 
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+
+
+                        <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                            <HBox alignItems="Center">
+                                <Label text="Código de detracción: " />
+                                <Label class="color_white" text="." />
+                                <ComboBox id="cmb_codigo_detraccion" items="{/listCodigosDetraccion}"> 
+                                    <core:Item key="{key}" text="{value}" />
+                                </ComboBox> 
+                            </HBox>
+                            
+                            <HBox alignItems="Center">
+                                <Label text="Total descuento: " /> 
+                                <Label class="color_white" text="." />
+                                <Input id="txt_total_descuento" value="" editable="false"/> 
+                            </HBox>
+                        </FlexBox>
+
+                        <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                            <HBox alignItems="Center">
+                                <Label text="Documentación:" />
+                                <Label class="color_white" text=".........." />
+                                <Button icon="sap-icon://document-text" press="fragmentSinAsuntoDocumentos" text="Subir Documentación" type="Emphasized" />
+                            </HBox>
+                            
+                            <HBox alignItems="Center">
+                                <Label text="Importe Total sin IGV: " /> 
+                                <Label class="color_white" text="." />
+                                <Input id="txt_total_sin_igv" value="" editable="false"/> 
+                            </HBox>
+                        </FlexBox>
+
+                        <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                            <Label text=""/>
+                            
+                            <HBox alignItems="Center">
+                                <Label text="Total IGV: " /> 
+                                <Label class="color_white" text="." />
+                                <Input id="txt_total_igv" value="" editable="false"/> 
+                            </HBox>
+                        </FlexBox>
+
+                        <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                            <Label text=""/>
+                            
+                            <HBox alignItems="Center">
+                                <Label text="Importe Total: " /> 
+                                <Label class="color_white" text="." />
+                                <Input id="txt_importe_total" value="" editable="false"/> 
+                            </HBox>
+                        </FlexBox>
+
+                    </VBox>
+
+                    <layoutData>
+                        <l:SplitterLayoutData size="auto" />
+                    </layoutData>
+                </Panel>
+            </l:Splitter>
+
+
+
+
+
+            
+
+            
+        </content>
+    </Page>
+</mvc:View>

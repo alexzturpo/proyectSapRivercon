@@ -1,0 +1,19 @@
+<core:FragmentDefinition
+xmlns="sap.m"
+xmlns:core="sap.ui.core"
+xmlns:mvc="sap.ui.core.mvc"   
+xmlns:l="sap.ui.layout"
+xmlns:f="sap.ui.layout.form"
+>
+<Dialog contentWidth="30rem" title="Registro factura sin Vale/HES" icon="sap-icon://documents" titleAlignment="Center">
+    <VBox justifyContent="Center" alignItems="Center" class="sapUiSmallMargin">
+        <Text text="¿De qué forma quiere realizar dicho procedimiento?" class="sapUiTinyMargin"/>
+        <Button width="20rem" text="Carga de factura electrónica" press="dgRegisterFacturaSinAsuntos_electronica" icon="sap-icon://upload" type="Emphasized" />
+        <Button width="20rem" text="Carga de factura física" press="dgRegisterFacturaSinAsuntos_fisica" icon="sap-icon://keyboard-and-mouse" type="Emphasized"/>
+    </VBox>
+    <OverflowToolbar>
+        <ToolbarSpacer/>
+        <Button text="Cancelar" press="dgCancelRegisterFacturaSinAsuntos"/>
+    </OverflowToolbar>
+</Dialog>
+</core:FragmentDefinition>

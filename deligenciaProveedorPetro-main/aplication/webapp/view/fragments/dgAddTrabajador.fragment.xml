@@ -1,0 +1,46 @@
+<core:FragmentDefinition
+xmlns="sap.m"
+xmlns:core="sap.ui.core"
+xmlns:mvc="sap.ui.core.mvc"   
+xmlns:l="sap.ui.layout"
+xmlns:f="sap.ui.layout.form"
+>
+<Dialog contentWidth="30rem" title="Agregar usuario" titleAlignment="Center">
+        <f:Form editable="true">
+            <!-- <f:title>
+                <core:Title text="Por favor indique el motivo del consulta" />
+            </f:title> -->
+            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />  </f:layout>
+            <f:formContainers>
+                <f:FormContainer > 
+                    <f:formElements>
+                        <f:FormElement label="Usuario">
+                            <f:fields> 
+                                <Input value=""/> 
+                                <Button text="Buscar" press="addTrabBuscar" icon="sap-icon://search" type="Emphasized" /> 
+                            </f:fields>
+                        </f:FormElement> 
+                        <f:FormElement label="Ap. Paterno">
+                            <f:fields> <Input value=""/> </f:fields>
+                        </f:FormElement> 
+                        <f:FormElement label="Ap. Materno">
+                            <f:fields> <Input value=""/> </f:fields>
+                        </f:FormElement> 
+                        <f:FormElement label="Nombres">
+                            <f:fields> <Input value=""/> </f:fields>
+                        </f:FormElement> 
+                        <f:FormElement label="Correo">
+                            <f:fields> <Input value=""/> </f:fields>
+                        </f:FormElement> 
+                    </f:formElements>
+                </f:FormContainer> 
+            </f:formContainers>
+        </f:Form>
+    <OverflowToolbar>
+        <ToolbarSpacer/>
+        <Button type="Emphasized" text="Continuar" press="dgOkAddTrabajador"/>
+        <Button text="Cancelar" press="dgCancelAddTrabajador"/>
+        <ToolbarSpacer/>
+    </OverflowToolbar>
+</Dialog>
+</core:FragmentDefinition>

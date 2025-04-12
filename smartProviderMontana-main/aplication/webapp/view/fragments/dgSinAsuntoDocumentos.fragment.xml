@@ -1,0 +1,45 @@
+<core:FragmentDefinition
+xmlns="sap.m"
+xmlns:core="sap.ui.core"
+xmlns:mvc="sap.ui.core.mvc"   
+xmlns:u="sap.ui.unified" 
+xmlns:tab="sap.ui.table"
+xmlns:f="sap.ui.layout.form"
+>
+<Dialog contentWidth="80%" title="Carga de Documentos Sustentos" showHeader="true" icon="sap-icon://documents" titleAlignment="Center">
+    <Title text="Documento a adjuntar" class="sapUiTinyMargin" /> 
+    <Table id="tableDocs" items="{/tableDocs}"  mode="None" >
+        <headerToolbar>
+            <OverflowToolbar> 
+                 <Title text="Tabla de documentos adjuntos"/>
+                <ToolbarSpacer />
+                <u:FileUploader id="file_AddDocs" uploadUrl="upload/"/>
+                <Button text="Subir" press="btn_AddDocs" icon="sap-icon://back-to-top" type="Emphasized"/> 
+            </OverflowToolbar>
+        </headerToolbar> 
+        <columns>
+            <Column width="auto"> <Text text="Nombre" /> </Column> 
+            <Column width="auto"> <Text text="Fecha de modificación" /> </Column> 
+            <Column width="auto"> <Text text="Hora de modificación" /> </Column> 
+            <Column width="auto"> <Text text="Tamaño" /> </Column> 
+            <Column width="auto"> <Text text="Formato" /> </Column>
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{nombre}" /> 
+                    <Text text="{fechaMod}" /> 
+                    <Text text="{horaMod}" /> 
+                    <Text text="{size}" />
+                    <Text text="{format}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table> 
+    <OverflowToolbar height="auto">  
+        <ToolbarSpacer/>
+        <Button text="Aceptar" press="dgSinAsuntoDocumentosOk" type="Emphasized" />
+        <!-- <Button text="Cancelar" press="dgCancelSinAsuntoDocumentos"/>   -->
+    </OverflowToolbar>
+</Dialog>
+</core:FragmentDefinition>

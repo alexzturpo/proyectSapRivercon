@@ -1,0 +1,51 @@
+<core:FragmentDefinition
+xmlns="sap.m"
+xmlns:core="sap.ui.core"
+xmlns:mvc="sap.ui.core.mvc"   
+xmlns:u="sap.ui.unified" 
+xmlns:tab="sap.ui.table"
+xmlns:f="sap.ui.layout.form"
+>
+<Dialog contentWidth="80%" title="Detalle de posiciones" showHeader="true" icon="sap-icon://documents" titleAlignment="Center">
+    <Table id="ItemFacturaPosicion" items="{/listItemFacturaPosicion}"  mode="None" >
+        <headerToolbar>
+            <OverflowToolbar> 
+                 <Title text="Tabla de detalle de las posiciones" />
+                <ToolbarSpacer />
+                 <Title text="N° de registros ( {/listItemFacturaPosicion/length} )" /> 
+            </OverflowToolbar>
+        </headerToolbar> 
+        <columns>
+            <Column width="auto"> <Text text="Post." /> </Column> 
+            <Column width="auto"> <Text text="Fecha ingreso" /> </Column> 
+            <Column width="auto"> <Text text="Cantidad" /> </Column> 
+            <Column width="auto"> <Text text="Vale" /> </Column> 
+            <Column width="auto"> <Text text="Fecha" /> </Column>
+            <Column width="auto"> <Text text="Hoja entrada" /> </Column>
+            <Column width="auto"> <Text text="Doc. material" /> </Column>
+            <Column width="auto"> <Text text="Descripción" /> </Column>
+            <Column width="auto"> <Text text="Guía de remisión" /> </Column>
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{POSICION}" />
+                    <ObjectNumber number="{PRECIO_ING}" unit="{UND_MED}" /> 
+                    <Text text="{CANTIDAD}" /> 
+                    <Text text="{VALE}" /> 
+                    <Text text="{FEC_VALE}" />
+                    <Text text="{DE_HOJA_ENTRADA}" />
+                    <Text text="{DE_DOC_MATERIAL}" />
+                    <Text text="{DESCRIPCION}" />
+                    <Text text="{GUIA_REMISION}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table> 
+    <OverflowToolbar height="auto">  
+        <Text text="Total: {/subTotal}" />
+        <ToolbarSpacer/>
+        <Button text="Cancelar" press="dgCancelPosiciones" type="Emphasized" /> 
+    </OverflowToolbar>
+</Dialog>
+</core:FragmentDefinition>

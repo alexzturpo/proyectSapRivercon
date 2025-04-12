@@ -1,0 +1,84 @@
+<mvc:View controllerName="spm.aplication.controller.vImpRecepcionConfirmidad"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:fs="sap.f" 
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core" 
+    xmlns:tab="sap.ui.table"
+    xmlns="sap.m">  
+    <Page class="page_background_img" showHeader="false">
+
+    <FlexBox alignItems="Center" justifyContent="SpaceBetween" class="bg_fondo">
+        <Image src="../img/sap-logo.svg" height="2rem" class="sapUiTinyMarginTop sapUiTinyMarginBegin"/>
+        <Image src="../img/smart_provider_logo.png" />
+        <MenuButton icon="sap-icon://customer" id="menu_but_panel_title" text="Bienvenido" type="Default" class="sapUiTinyMarginEnd">
+            <layoutData>
+                <OverflowToolbarLayoutData priority="NeverOverflow" />
+            </layoutData>
+            <Menu>
+                <MenuItem text="Cerrar sesión" icon="sap-icon://log" press="onPress_logout" />  
+            </Menu>
+        </MenuButton>
+    </FlexBox>
+
+    <FlexBox alignItems="Center" justifyContent="SpaceBetween" class="bg_fondo_seleccion">
+        <Button class="sapUiTinyMargin" icon="sap-icon://navigation-left-arrow" press="onPageBack" type="Transparent" tooltip="Volver" /> 
+
+        <Label class="sapUiTinyMargin font_bolder" text="Consulta y Anulación de Pre-Registro"/>
+        
+        <Label text=""/>
+    </FlexBox>
+
+
+     <l:Splitter class="sidenav">
+        <Panel width="100%"> 
+            <headerToolbar>
+                <OverflowToolbar>
+                    <Title text="Lista de bienes"/>
+                    <ToolbarSpacer />
+                    <Button icon="sap-icon://filter"  press="btnSeleccionarFiltros"/> 
+                </OverflowToolbar>
+            </headerToolbar>
+            <SearchField liveChange="onSearchFac" width="100%" placeholder="Buscar factura"/>
+            <List id="idListMaster1" items="{ path : 'myParam>/listFactura'}" includeItemInSelection="true" mode="SingleSelectMaster" noDataText="No se halló ninguna Factura">
+                <items>
+                    <ObjectListItem title="Factura: {myParam>ID_FACTURA}" icon="sap-icon://sales-order-item" type="Active" press="clicItemFacturaVal"
+                        intro="{myParam>NOM_DEM_RAZ_ADQ} - {myParam>NOM_DEM_RAZ_COMERCIAL}" number="{myParam>TOTAL_IMP}" numberUnit="{myParam>MONEDA}">
+                        <attributes>
+                            <ObjectAttribute title="Fecha" text="{ path: 'myParam>FC_FEC_REGISTRO'}"/>
+                            <ObjectAttribute title="Hora" text="{myParam>FC_HORA_REGISTRO}"/>
+                            <ObjectAttribute title="Carga" text="{ path: 'myParam>TIPO_CARGA', formatter: '.formatTipoCarga' }"/>
+                        </attributes>
+                        <firstStatus>
+                            <ObjectStatus text="{myParam>EM_RUC}" state="Information"/>
+                        </firstStatus>
+                        <secondStatus>
+                            <ObjectStatus text="{myParam>US_RUC}" state="Information"/>
+                        </secondStatus>
+                    </ObjectListItem>
+                </items>
+            </List> 
+            <layoutData>
+                <l:SplitterLayoutData size="18rem" />
+            </layoutData>
+        </Panel>
+        <Panel headerText="Factura previa" width="100%">
+
+             <FlexBox alignItems="Center" justifyContent="SpaceBetween" class="bg_fondo_seleccion">
+                <Label class="sapUiTinyMargin font_bolder" text="Factura previa"/>
+                
+                <HBox alignItems="Center">
+                    <Button tooltip="Descargar PDF" id="idDescargarPDF" icon="sap-icon://pdf-attachment" type="Transparent" press="btnDescargarPDF"/>
+                    <!-- <Button id="idErrores" icon="sap-icon://message-popup" text="{myParam>/listErrores/length}" type="Emphasized" press="btnErrores"/> -->
+                    <Button tooltip="Eliminar pre-registro" id="idEliminar" icon="sap-icon://sys-cancel" type="Transparent" press="ressEliminarFacturaVerificar"/>
+                    <!-- <Button id="idLogOff" icon="sap-icon://log" press="LogOffPress"/> -->
+                </HBox>
+                
+            </FlexBox>  
+        </Panel>
+    </l:Splitter>
+    
+    
+    </Page>
+</mvc:View>

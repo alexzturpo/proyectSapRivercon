@@ -1,0 +1,191 @@
+<mvc:View controllerName="adp.aplication.controller.vTrabajadores"
+     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core" 
+	xmlns:f="sap.ui.layout.form"
+    xmlns:tab="sap.ui.table" 
+    xmlns:u="sap.ui.unified"
+    xmlns:tnt="sap.tnt">
+    <Page title="Aplicativo para Deligencia de Proveedores" titleAlignment="Center" showNavButton="false" navButtonPress=".onPageBack" >
+		
+        <SplitContainer id="SplitContDemo" initialDetail="pageNotificaciones" initialMaster="master">
+            <masterPages>
+                <Page id="master" showHeader="true" title="Trabajador" titleAlignment="Center">
+                    <HBox  height="5rem" width="100%" justifyContent="Center" alignItems="Center">
+                        <Image src="../../img/logo.png" height="1.7rem"/>
+                    </HBox>
+                    <List>
+                        <StandardListItem title="Notificaciones" press=".navNotificaciones"  icon="sap-icon://request" type="Navigation"/>
+                        <StandardListItem title="Consultas" press=".navConsultas"  icon="sap-icon://request" type="Navigation"/>
+                        <StandardListItem title="Verificacíon" press=".navVerificacion"  icon="sap-icon://request" type="Navigation"/>
+                        <StandardListItem title="Cerrar Sesión" press=".onPageBack"  icon="sap-icon://journey-depart" type="Active" />
+                    </List>
+                </Page>
+            </masterPages>
+            <detailPages>
+                <Page id="pageNotificaciones" title="Notificaciones" backgroundDesign= "Solid" navButtonPress=".onPressDetailBack" showNavButton="{= !${device>/system/desktop} }">
+                    <VBox class="sapUiSmallMargin">
+                        <tab:Table rows="{  path: 'myParam>/dataTest' }" selectionMode="Single"  visibleRowCount="5" ariaLabelledBy="title">
+                            <tab:extension>
+                                <OverflowToolbar >
+                                    <Title text="Lista de notificaciones"/>
+                                    <ToolbarSpacer />
+                                    <Button text="Agregar" press="addNot" icon="sap-icon://add" type="Emphasized"/> 
+                                    <Button text="Editar" press="editNot" icon="sap-icon://edit"/>  
+                                </OverflowToolbar>
+                            </tab:extension>
+                            <tab:columns>
+                                <tab:Column width="6rem">
+                                    <Label textAlign="Center" wrapping ="true"  text="Estado"/>
+                                    <tab:template> <Switch type="AcceptReject" state="{myParam>booleano}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Nombre" />
+                                    <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Correo" />
+                                    <tab:template> <Text  text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table> 
+                    </VBox> 
+                </Page> 
+                <Page id="pageConsultas" title="Consultas" backgroundDesign= "Solid" navButtonPress=".onPressDetailBack" showNavButton="true">
+                    
+                    <VBox class="sapUiSmallMargin">
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar> 
+                                    <Title text="Filtro"/>
+                                    <ToolbarSpacer />
+                                    <Button type="Emphasized" text="Buscar" press="searchConsultaMotivo"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout>
+                                <f:ColumnLayout
+                                    columnsM="2"
+                                    columnsL="3"
+                                    columnsXL="4"
+                                />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Ruc">
+                                            <f:fields> <Input value=""/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Nombre">
+                                            <f:fields> <Input value=""/> </f:fields>
+                                        </f:FormElement> 
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+
+                        <tab:Table rows="{  path: 'myParam>/dataTest' }" selectionMode="Single"  visibleRowCount="5" class="sapUiSmallMarginBottom" ariaLabelledBy="title">
+                            <tab:extension>
+                                <OverflowToolbar >
+                                    <Title text="Lista de consultas"/>
+                                    <ToolbarSpacer />
+                                    <Button press="addNot" icon="sap-icon://excel-attachment" type="Emphasized"/> 
+                                    <Button press="editNot" icon="sap-icon://print"/>  
+                                </OverflowToolbar>
+                            </tab:extension>
+                            <tab:columns>
+                                <tab:Column width="auto">
+                                    <Label textAlign="Center" wrapping ="true"  text="Ruc"/>
+                                    <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Nombre" />
+                                    <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Acchiles" />
+                                    <tab:template> <Text  text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="PIDE" />
+                                    <tab:template> <Text  text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Sistema de integridad" />
+                                    <tab:template> <Text  text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Busqueda de listas" />
+                                    <tab:template> <Text  text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="auto" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Descargas" />
+                                    <tab:template> <Button press="getDoc" icon="sap-icon://pdf-attachment"/> </tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table> 
+                    </VBox> 
+                </Page> 
+                <Page id="pageVerificacion" title="Verificacíon" backgroundDesign= "Solid" navButtonPress=".onPressDetailBack" showNavButton="true">
+                    <VBox class="sapUiSmallMargin">
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar> 
+                                    <Title text="Filtro"/>
+                                    <ToolbarSpacer />
+                                    <Button type="Emphasized" text="Buscar" press="searchVer"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Ruc">
+                                            <f:fields> <Input value=""/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Nombre">
+                                            <f:fields> <Input value=""/> </f:fields>
+                                        </f:FormElement> 
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+
+                        <tab:Table rows="{  path: 'myParam>/dataTestVerificacion' }" selectionMode="None"  visibleRowCount="5" class="sapUiSmallMarginBottom" ariaLabelledBy="title">
+                            <tab:extension>
+                                <OverflowToolbar >
+                                    <Title text="Lista de verificaciones"/>
+                                    <ToolbarSpacer />
+                                    <Button press="addNot" text="Visualizar" icon="sap-icon://pdf-attachment" type="Emphasized"/> 
+                                </OverflowToolbar>
+                            </tab:extension>
+                            <tab:columns>
+                                <tab:Column width="auto">
+                                    <Label textAlign="Center" wrapping ="true"  text="Texto"/>
+                                    <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" >
+                                    <Label textAlign="Center" wrapping ="true"  text="Acciones" />
+                                    <tab:template> 
+                                        <HBox justifyContent="Center">
+                                            <RadioButton text="SI" groupName="accVer"/>
+                                            <RadioButton text="NO" groupName="accVer"/>
+                                        </HBox>
+                                    </tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table> 
+                    </VBox> 
+                    <footer>
+                        <OverflowToolbar>
+                            <ToolbarSpacer/>
+                            <Button text="Guardar" type="Emphasized" icon="sap-icon://save" />
+                            <Button text="Descargar" icon="sap-icon://download"/>
+                            <Button text="Firma" icon="sap-icon://pdf-attachment" />
+                        </OverflowToolbar>
+                    </footer>
+                </Page> 
+            </detailPages>
+            
+        </SplitContainer>
+    </Page>
+</mvc:View>

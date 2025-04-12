@@ -1,0 +1,602 @@
+<mvc:View controllerName="srm.aplication.controller.vVenta"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:core="sap.ui.core"  
+    xmlns:tab="sap.ui.table"
+    xmlns="sap.m">
+    <Page id="page" title="Venta" navButtonPress="onPageBack" showNavButton="true" titleAlignment="Center" >
+        <headerContent> 
+            <MenuButton icon="sap-icon://person-placeholder" text="User" type="Transparent"> 
+                <Menu>
+                    <MenuItem text="Cerrar sesion" icon="sap-icon://log" press="logOff"/>
+                </Menu>
+            </MenuButton>
+		</headerContent>  
+        <!-- <subHeader>
+			<OverflowToolbar>
+                <content>
+                    <HBox justifyContent="Center" wrap="Wrap" width="100%">
+                        <Button text="Nuevo"  icon="sap-icon://add" press="new" class="sapUiTinyMarginBeginEnd"/>
+                        <Button text="Anular"  icon="sap-icon://decline" press="anular" class="sapUiTinyMarginBeginEnd"/>
+                    </HBox>
+                </content>
+			</OverflowToolbar>
+		</subHeader> -->
+        <content>  
+            <!-- DISEÑO DE GRID 2X2 -->
+            <VBox class="grid-container sapUiSmallMargin" width="auto">
+                <Panel width="auto">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <ToolbarSpacer />
+                            <Title text="Datos de Cliente"  />
+                            <ToolbarSpacer />
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <content>
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"/> 
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:toolbar>
+                                        <Toolbar> 
+                                            <ToolbarSpacer />
+                                            <Button text="Buscar pedido" press="fragmentSearchPedido"  icon="sap-icon://search" type="Emphasized" />
+                                        </Toolbar>
+                                    </f:toolbar>
+                                    <f:formElements>
+                                        <f:FormElement label="Ingreso con pedido">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Tipo de comprobante">
+                                            <f:fields>
+                                                <RadioButtonGroup columns="2" selectedIndex="2">
+                                                    <RadioButton text="Boleta" /> 
+                                                    <RadioButton text="Factura" />
+                                                </RadioButtonGroup>
+                                            </f:fields>
+                                        </f:FormElement>  
+                                    </f:formElements>
+                                </f:FormContainer>
+                                <f:FormContainer >
+                                    <f:toolbar>
+                                        <Toolbar> 
+                                            <Title text="Datos de identificación"/>
+                                            <ToolbarSpacer />
+                                            <Button text="Buscar NIF" press="fragmentNIF"  icon="sap-icon://search" type="Emphasized" />
+                                        </Toolbar>
+                                    </f:toolbar>
+                                    <f:formElements>
+                                        <f:FormElement label="Tipo de NIF">
+                                            <f:fields> <Input value="" />  </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Moneda">
+                                            <f:fields> <Input value="SOLES" /> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="NIF">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Denominación">
+                                            <f:fields> <DatePicker displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Dirección">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Correo electrónico">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Vendedor">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Veferencia Clte">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement >
+                                            <f:fields> <CheckBox text="Venta con despacho posterior" wrapping="true" /> </f:fields>
+                                        </f:FormElement>
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+                    </content>
+                </Panel>
+
+                <Panel width="auto" >
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <ToolbarSpacer /> 
+                            <Title text="Producto"/>
+                            <ToolbarSpacer /> 
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <content>
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >   
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"/>  </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:toolbar>
+                                        <Toolbar>  
+                                            <ToolbarSpacer />
+                                            <Button text="Buscar" press="searProducto"  icon="sap-icon://search" type="Emphasized" />
+                                        </Toolbar>
+                                    </f:toolbar>
+                                    <f:formElements> 
+                                        <f:FormElement label="Código de producto">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement> 
+                                        <f:FormElement label="Descripción del producto">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+                        <tab:Table rows="{ path: 'myParam>/tbVentaProductos'}" class="sapUiSmallMarginBottom" visibleRowCount="8">
+                            <tab:extension>
+                                <OverflowToolbar > 
+                                    <core:Icon src="sap-icon://product" size="1.25rem"/>
+                                    <Title text="Lista de productos"/>
+                                    <ToolbarSpacer/> 
+                                </OverflowToolbar>
+                            </tab:extension>
+                            <tab:columns>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Label text="Código de producto"/>
+                                    <tab:template> <Text text="{myParam>codigoProducto}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Label text="Descripción de producto"/>
+                                    <tab:template> <Text text="{myParam>descripcionProducto}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Label text="Lote"/>
+                                    <tab:template> <Text text="{myParam>lote}" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Label text="Fecha de vencimiento"/>
+                                    <tab:template> <Text text="{myParam>fechaVencimiento}" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Label text="Cantidad"/>
+                                    <tab:template>  <Text text="{myParam>cantidad}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Label text="Precio unitario"/>
+                                    <tab:template> <Text text="{myParam>precioUnitario}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Label text="Descuento %"/>
+                                    <tab:template> <Text text="{myParam>descuentoPorcentaje}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Label text="Valor unitario"/>
+                                    <tab:template> <Text text="{myParam>valorUnitario}"/> </tab:template>
+                                </tab:Column> 
+                            </tab:columns>
+                        </tab:Table>
+                    </content>
+                </Panel>
+
+                <Panel width="auto" >
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <ToolbarSpacer /> 
+                            <Title text="Detalle de productos"/>
+                            <ToolbarSpacer /> 
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <content>
+                        <tab:Table rows="{ path: 'myParam>/tbVentaProductos'}" class="sapUiSmallMarginBottom" visibleRowCount="8">
+                            <tab:extension>
+                                <OverflowToolbar>  
+                                    <Title text="Detalles"/>
+                                    <ToolbarSpacer/> 
+                                    <Button text="Eliminar"  icon="sap-icon://delete" press="deleteDetalle" type="Reject" />
+                                </OverflowToolbar>
+                            </tab:extension>
+                            <tab:columns>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Label text="Código de producto"/>
+                                    <tab:template> <Text text="{myParam>codigoProducto}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Label text="Descripción de producto"/>
+                                    <tab:template> <Text text="{myParam>descripcionProducto}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Label text="Lote"/>
+                                    <tab:template> <Text text="{myParam>lote}" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Label text="Fecha de vencimiento"/>
+                                    <tab:template> <Text text="{myParam>fechaVencimiento}" /> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Label text="Cantidad"/>
+                                    <tab:template>  <Text text="{myParam>cantidad}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Label text="Precio unitario"/>
+                                    <tab:template> <Text text="{myParam>precioUnitario}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Label text="Descuento %"/>
+                                    <tab:template> <Text text="{myParam>descuentoPorcentaje}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="8rem" hAlign="Center">
+                                    <Label text="Valor unitario"/>
+                                    <tab:template> <Text text="{myParam>valorUnitario}"/> </tab:template>
+                                </tab:Column> 
+                            </tab:columns>
+                        </tab:Table>
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" > 
+                            <f:layout> 
+                                <f:ResponsiveGridLayout
+                                labelSpanXL="7"
+                                labelSpanL="7"
+                                labelSpanM="7"
+                                labelSpanS="12"
+                                adjustLabelSpan="true"
+                                emptySpanXL="0"
+                                emptySpanL="0"
+                                emptySpanM="0"
+                                emptySpanS="0"
+                                columnsXL="4"
+                                columnsL="4"
+                                columnsM="3"
+                                singleContainerFullSize="true" />
+                            </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Ingrese vale de descuento"  >
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="TOTAL DESCUENTO" >
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                    </f:formElements>
+                                </f:FormContainer>
+
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Total IGV US$"  >
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Total IGV S/."  >
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Total Inc. IGV US$"  >
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                    </f:formElements>
+                                </f:FormContainer>
+
+                                <f:FormContainer>
+                                    <f:formElements>
+                                        <f:FormElement label="Total US$"  >
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Total S/."  >
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Total Inc. IGV S/."  >
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                    </f:formElements>
+                                </f:FormContainer>
+
+                            </f:formContainers>
+                        </f:Form> 
+                    </content>
+                </Panel>
+                <Panel width="auto" >
+                    <headerToolbar>
+                        <OverflowToolbar> 
+                            <ToolbarSpacer /> 
+                            <Title text="Cobro"/>
+                            <ToolbarSpacer /> 
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <content>
+                    <IconTabBar expanded="false">
+                        <items>
+                            <IconTabFilter text="Efectivo">
+                                <f:Form editable="true" class="sapUiSmallMarginBottom" > 
+                                    <f:toolbar>
+                                        <Toolbar>
+                                            <Title text="Importe"/>
+                                            <ToolbarSpacer />
+                                            <Button icon="sap-icon://money-bills"/> 
+                                        </Toolbar>
+                                    </f:toolbar>
+                                    <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"/>  </f:layout>
+                                    <f:formContainers>
+                                        <f:FormContainer title="Importe">
+                                            <f:formElements>
+                                                <f:FormElement label="Efectivo S/"  >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                                <f:FormElement label="Efectivo US$" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                            </f:formElements>
+                                        </f:FormContainer>  
+                                    </f:formContainers>
+                                </f:Form>  
+
+                                <f:Form editable="true" class="sapUiSmallMarginBottom" > 
+                                    <f:layout> 
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="7"
+                                        labelSpanL="7"
+                                        labelSpanM="7"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="true"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="2"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="false" />
+                                    </f:layout>
+                                    <f:formContainers>
+                                        <f:FormContainer>
+                                            <f:formElements>
+                                                <f:FormElement label="Efectivo S/"  >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                                <f:FormElement label="Efectivo US$" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>   
+                                            </f:formElements>
+                                        </f:FormContainer>  
+                                        <f:FormContainer>
+                                            <f:formElements> 
+                                                <f:FormElement label="Vuelto S/" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                                <f:FormElement label="Tarjeta S/" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                                <f:FormElement label="Depósito S/" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                            </f:formElements>
+                                        </f:FormContainer>  
+                                    </f:formContainers>
+                                </f:Form>  
+                            </IconTabFilter>
+                            <IconTabFilter text="Tarjeta de credito"> 
+                                <tab:Table rows="{ path: 'myParam>/tbTarjetaCredito'}" selectionMode="Single" class="sapUiSmallMarginBottom" visibleRowCount="5">
+                                    <tab:extension>
+                                        <OverflowToolbar>  
+                                            <Title text="Lista de pagos"/>
+                                            <ToolbarSpacer/> 
+                                            <Button text="Efectuar pago"  icon="sap-icon://currency" press="selectPay"  />
+                                        </OverflowToolbar>
+                                    </tab:extension>
+                                    <tab:columns>
+                                        <tab:Column width="8rem" hAlign="Center">
+                                            <Label text="Operador"/>
+                                            <tab:template> <Text text="{myParam>operador}"/> </tab:template>
+                                        </tab:Column>
+                                        <tab:Column width="8rem" hAlign="Center">
+                                            <Label text="N° POS"/>
+                                            <tab:template> <Input value="{myParam>numPost}" /> </tab:template>
+                                        </tab:Column>
+                                        <tab:Column width="8rem" hAlign="Center">
+                                            <Label text="Importe"/>
+                                            <tab:template> <Input value="{myParam>importe}" /> </tab:template>
+                                        </tab:Column>
+                                        <tab:Column width="8rem" hAlign="Center">
+                                            <Label text="N° de operación"/>
+                                            <tab:template> <Input value="{myParam>numOperador}" /> </tab:template>
+                                        </tab:Column>
+                                    </tab:columns>
+                                </tab:Table>
+
+                                <f:Form editable="true" class="sapUiSmallMarginBottom" > 
+                                    <f:layout> 
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="7"
+                                        labelSpanL="7"
+                                        labelSpanM="7"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="true"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="2"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="false" />
+                                    </f:layout>
+                                    <f:formContainers>
+                                        <f:FormContainer>
+                                            <f:formElements>
+                                                <f:FormElement label="Efectivo S/"  >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                                <f:FormElement label="Efectivo US$" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>   
+                                            </f:formElements>
+                                        </f:FormContainer>  
+                                        <f:FormContainer>
+                                            <f:formElements> 
+                                                <f:FormElement label="Vuelto S/" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                                <f:FormElement label="Tarjeta S/" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                                <f:FormElement label="Depósito S/" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                            </f:formElements>
+                                        </f:FormContainer>  
+                                    </f:formContainers>
+                                </f:Form>  
+                            </IconTabFilter>
+                            <IconTabFilter text="Depósito"> 
+                                <tab:Table rows="{ path: 'myParam>/tbDepositos'}" selectionMode="Single" class="sapUiSmallMarginBottom" visibleRowCount="5">
+                                    <tab:extension>
+                                        <OverflowToolbar>  
+                                            <Title text="Lista de depositos"/>
+                                            <ToolbarSpacer/> 
+                                            <Button text="Efectuar pago"  icon="sap-icon://currency" press="selectPay"  />
+                                        </OverflowToolbar>
+                                    </tab:extension>
+                                    <tab:columns>
+                                        <tab:Column width="13rem" hAlign="Center">
+                                            <Text text="Banco / Moneda"/>
+                                            <tab:template> <Label text="{myParam>banco}"/> </tab:template>
+                                        </tab:Column>
+                                        <tab:Column width="8rem" hAlign="Center">
+                                            <Text text="Importe"/>
+                                            <tab:template> <Input value="{myParam>importe}" /> </tab:template>
+                                        </tab:Column>
+                                        <tab:Column width="8rem" hAlign="Center">
+                                            <Text text="N° operación"/>
+                                            <tab:template> <Input value="{myParam>operacion}" /> </tab:template>
+                                        </tab:Column>
+                                        <tab:Column width="8rem" hAlign="Center">
+                                            <Text text="Fecha de operación"/>
+                                            <tab:template> <Input value="{myParam>fechaOperacion}" /> </tab:template>
+                                        </tab:Column>
+                                    </tab:columns>
+                                </tab:Table>
+
+                                <f:Form editable="true" class="sapUiSmallMarginBottom" > 
+                                    <f:layout> 
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="7"
+                                        labelSpanL="7"
+                                        labelSpanM="7"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="true"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="2"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="false" />
+                                    </f:layout>
+                                    <f:formContainers>
+                                        <f:FormContainer>
+                                            <f:formElements>
+                                                <f:FormElement label="Efectivo S/"  >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                                <f:FormElement label="Efectivo US$" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>   
+                                            </f:formElements>
+                                        </f:FormContainer>  
+                                        <f:FormContainer>
+                                            <f:formElements> 
+                                                <f:FormElement label="Vuelto S/" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                                <f:FormElement label="Tarjeta S/" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                                <f:FormElement label="Depósito S/" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                            </f:formElements>
+                                        </f:FormContainer>  
+                                    </f:formContainers>
+                                </f:Form>  
+                            </IconTabFilter>
+                            <IconTabFilter text="Nota de crédito"> 
+                                <tab:Table rows="{ path: 'myParam>/tbNotaCreditos'}" selectionMode="Single" class="sapUiSmallMarginBottom" visibleRowCount="5">
+                                    <tab:extension>
+                                        <OverflowToolbar>  
+                                            <Title text="Lista de notas de credito"/>
+                                            <ToolbarSpacer/> 
+                                            <Button text="Efectuar pago"  icon="sap-icon://currency" press="selectPay"  />
+                                        </OverflowToolbar>
+                                    </tab:extension>
+                                    <tab:columns>
+                                        <tab:Column width="13rem" hAlign="Center">
+                                            <Text text="Nota de credito"/>
+                                            <tab:template> <Label text="{myParam>noteCreadito}"/> </tab:template>
+                                        </tab:Column>
+                                        <tab:Column width="8rem" hAlign="Center">
+                                            <Text text="Importe"/>
+                                            <tab:template> <Input value="{myParam>importe}" /> </tab:template>
+                                        </tab:Column>
+                                        <tab:Column width="8rem" hAlign="Center">
+                                            <Text text="Moneda"/>
+                                            <tab:template> <Input value="{myParam>moneda}" /> </tab:template>
+                                        </tab:Column>
+                                    </tab:columns>
+                                </tab:Table>
+
+                                <f:Form editable="true" class="sapUiSmallMarginBottom" > 
+                                    <f:layout> 
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="7"
+                                        labelSpanL="7"
+                                        labelSpanM="7"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="true"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="2"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="false" />
+                                    </f:layout>
+                                    <f:formContainers>
+                                        <f:FormContainer>
+                                            <f:formElements>
+                                                <f:FormElement label="Efectivo S/"  >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                                <f:FormElement label="Efectivo US$" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>   
+                                                <f:FormElement label="NC S/" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>   
+                                                <f:FormElement label="NC US$" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>   
+                                            </f:formElements>
+                                        </f:FormContainer>  
+                                        <f:FormContainer>
+                                            <f:formElements> 
+                                                <f:FormElement label="Vuelto S/" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                                <f:FormElement label="Tarjeta S/" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                                <f:FormElement label="Depósito S/" >
+                                                    <f:fields> <Input value="" /> </f:fields>
+                                                </f:FormElement>  
+                                            </f:formElements>
+                                        </f:FormContainer>  
+                                    </f:formContainers>
+                                </f:Form>  
+                            </IconTabFilter>
+                        </items>
+                    </IconTabBar>   
+                        
+                    </content>
+                </Panel>
+            </VBox> 
+        </content>
+    </Page>
+</mvc:View>

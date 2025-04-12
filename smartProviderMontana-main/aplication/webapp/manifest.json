@@ -1,0 +1,233 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "spm.aplication",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.10.6",
+      "toolsId": "bde43d4c-3fe3-4e77-a6f0-bf868c5fc608"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.118.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "spm.aplication.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "spm.aplication.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RoutevMain",
+          "pattern": ":?query:",
+          "target": [ "TargetvMain" ]
+        },
+        {
+          "name": "vMain",
+          "pattern": "vMain",
+          "titleTarget": "vMain",
+          "target": "vMain"
+      },
+        {
+            "name": "vMenuPrincipal",
+            "pattern": "vMenuPrincipal",
+            "titleTarget": "vMenuPrincipal",
+            "target": "vMenuPrincipal"
+        },
+        {
+            "name": "vRegFacturaSinVale",
+            "pattern": "vRegFacturaSinVale",
+            "titleTarget": "vRegFacturaSinVale",
+            "target": "vRegFacturaSinVale"
+        },
+        {
+            "name": "vRegFacturaManualSinVale",
+            "pattern": "vRegFacturaManualSinVale",
+            "titleTarget": "vRegFacturaManualSinVale",
+            "target": "vRegFacturaManualSinVale"
+        },
+        {
+            "name": "vRegFacturaSinAsuntoElectronico",
+            "pattern": "vRegFacturaSinAsuntoElectronico",
+            "titleTarget": "vRegFacturaSinAsuntoElectronico",
+            "target": "vRegFacturaSinAsuntoElectronico"
+        },
+        {
+            "name": "vRegFacturaSinAsuntoFisico",
+            "pattern": "vRegFacturaSinAsuntoFisico",
+            "titleTarget": "vRegFacturaSinAsuntoFisico",
+            "target": "vRegFacturaSinAsuntoFisico"
+        },
+        {
+            "name": "vConsultaAnulacionPR",
+            "pattern": "vConsultaAnulacionPR",
+            "titleTarget": "vConsultaAnulacionPR",
+            "target": "vConsultaAnulacionPR"
+        },
+        {
+            "name": "vConsultaProgramacionPago",
+            "pattern": "vConsultaProgramacionPago",
+            "titleTarget": "vConsultaProgramacionPago",
+            "target": "vConsultaProgramacionPago"
+        },
+        {
+            "name": "vAdminUsers",
+            "pattern": "vAdminUsers",
+            "titleTarget": "vAdminUsers",
+            "target": "vAdminUsers"
+        },
+        {
+            "name": "vImpRecepcionConfirmidad",
+            "pattern": "vImpRecepcionConfirmidad",
+            "titleTarget": "vImpRecepcionConfirmidad",
+            "target": "vImpRecepcionConfirmidad"
+        }
+      ],
+      "targets": {
+        "TargetvMain": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vMain",
+          "viewName": "vMain"
+        }, 
+        "vMain": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vMain",
+          "viewName": "vMain"
+        },
+        "vMenuPrincipal": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vMenuPrincipal",
+          "viewName": "vMenuPrincipal"
+        },
+        "vRegFacturaSinVale": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vRegFacturaSinVale",
+          "viewName": "modulos/preRegFactura/vRegFacturaSinVale"
+        },
+        "vRegFacturaManualSinVale": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vRegFacturaManualSinVale",
+          "viewName": "modulos/preRegFactura/vRegFacturaManualSinVale"
+        },
+        "vRegFacturaSinAsuntoElectronico": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vRegFacturaSinAsuntoElectronico",
+          "viewName": "modulos/regFacturaSinAsunto/vRegFacturaSinAsuntoElectronico"
+        },
+        "vRegFacturaSinAsuntoFisico": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vRegFacturaSinAsuntoFisico",
+          "viewName": "modulos/regFacturaSinAsunto/vRegFacturaSinAsuntoFisico"
+        },
+        "vConsultaAnulacionPR": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vConsultaAnulacionPR",
+          "viewName": "modulos/vConsultaAnulacionPR"
+        },
+        "vConsultaProgramacionPago": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vConsultaProgramacionPago",
+          "viewName": "modulos/vConsultaProgramacionPago"
+        },
+        "vAdminUsers": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vAdminUsers",
+          "viewName": "modulos/vAdminUsers"
+        },
+        "vImpRecepcionConfirmidad": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vImpRecepcionConfirmidad",
+          "viewName": "modulos/vImpRecepcionConfirmidad"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "spm.aplication.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

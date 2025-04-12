@@ -1,0 +1,124 @@
+<mvc:View controllerName="srm.aplication.controller.vCierreCaja"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:core="sap.ui.core" 
+    xmlns="sap.m">
+    <Page id="page" title="Cierre de caja" navButtonPress="onPageBack" showNavButton="true" titleAlignment="Center" >
+        <headerContent> 
+            <MenuButton icon="sap-icon://person-placeholder" text="User" type="Transparent"> 
+                <Menu>
+                    <MenuItem text="Cerrar sesion" icon="sap-icon://log" press="logOff"/>
+                </Menu>
+            </MenuButton>
+		</headerContent>   
+        <content>  
+            <f:Form editable="true" class="sapUiSmallMarginBottom" >
+                <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"/> 
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer title="Proceso de cierre de caja"> 
+                        <f:formElements> 
+                            <f:FormElement label="Fecha de cierre">
+                                <f:fields> <DatePicker displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Total de ingresos S/">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Total de ingresos US$">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Total de ventas">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Total de egresos S/">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Total de egresos US$">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="T/C">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Total de efectivo S/">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Total de efectivo US$">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer title="Distribución de efectivo"> 
+                        <f:formElements> 
+                            <f:FormElement label="Billete S/ 200">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Billete S/ 100">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Billete S/ 50">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Billete S/ 20">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Billete S/ 10">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Moneda S/ 5">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            
+                            <f:FormElement label="Moneda S/ 2">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Moneda S/ 1">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Moneda S/ 0.5">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Moneda S/ 0.2">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Moneda S/ 0.1">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement>  
+
+                            <f:FormElement label="Billete US$ 200">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Billete US$ 100">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Billete US$ 50">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Billete US$ 20">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Billete US$ 10">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Billete US$ 5">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form> 
+        </content>
+        <footer>
+			<OverflowToolbar height="auto">
+				<ToolbarSpacer/>
+                <VBox alignItems="Center" wrap="Wrap" class="sapUiTinyMarginBeginEnd">
+                    <Label class="sapUiTinyMargin" text="TOTAL A ENTREGAR US$" design="Bold" />
+                    <Input value="" />
+                </VBox>
+                <VBox alignItems="Center" wrap="Wrap" class="sapUiTinyMarginBeginEnd">
+                    <Label class="sapUiTinyMargin" text="TOTAL A ENTREGAR S/" design="Bold"/>
+                    <Input value="" />
+                </VBox>
+			</OverflowToolbar>
+		</footer>
+    </Page>
+</mvc:View>

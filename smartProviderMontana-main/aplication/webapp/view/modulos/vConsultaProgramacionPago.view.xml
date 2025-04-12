@@ -1,0 +1,214 @@
+<mvc:View controllerName="spm.aplication.controller.vConsultaProgramacionPago"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:fs="sap.f" 
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core" 
+    xmlns:tab="sap.ui.table"
+    xmlns="sap.m">  
+    <Page class="page_background_img" showHeader="false">
+        <content> 
+            <FlexBox alignItems="Center" justifyContent="SpaceBetween" class="bg_fondo">
+                <Image src="../img/sap-logo.svg" height="2rem" class="sapUiTinyMarginTop sapUiTinyMarginBegin"/>
+                <Image src="../img/smart_provider_logo.png" />
+                <MenuButton icon="sap-icon://customer" id="menu_but_panel_title" text="Bienvenido" type="Default" class="sapUiTinyMarginEnd">
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                    </layoutData>
+                    <Menu>
+                        <MenuItem text="Cerrar sesión" icon="sap-icon://log" press="onPress_logout" />  
+                    </Menu>
+                </MenuButton>
+            </FlexBox>
+
+            <FlexBox alignItems="Center" justifyContent="SpaceBetween" class="bg_fondo_seleccion">
+                <Button class="sapUiTinyMargin" icon="sap-icon://navigation-left-arrow" press="onPageBack" type="Transparent" tooltip="Volver" /> 
+
+                <Label class="sapUiTinyMargin font_bolder" text="Consulta de Programación y Pago"/>
+                
+                <Label text=""/>
+            </FlexBox>
+
+            <Panel class="sidenav" height="100%" width="100%" headerText="Resumen de facturas registradas">
+                <FlexBox alignItems="Center" justifyContent="SpaceBetween" class="sapUiSmallMarginBeginEnd">
+                    <Avatar displaySize="S" backgroundColor="Accent6" displayShape="Square" src="sap-icon://sales-document" class="sapUiTinyMarginTopBottom sapUiSmallMarginEnd"/>
+                    <VBox>
+                        <layoutData>
+                            <FlexItemData growFactor="1" />
+                        </layoutData>
+                        <Title text="Factura"/>
+                        <FlexBox alignItems="Center" justifyContent="SpaceBetween">
+                            <layoutData>
+                                <FlexItemData growFactor="1" />
+                            </layoutData>
+                            <HBox alignItems="Center">
+                                <Label text="Ruc de la empresa: " />  
+                                <Input id="txt_ruc_empresa3" value="{/model_selectEmpresa/key}" editable="false"/> 
+                            </HBox>    
+                            <HBox alignItems="Center">
+                                <Label text="Ruc del proveedor: " />  
+                                <Input id="txt_ruc_proveedor3" value="{/model_selectProveedor/key}" editable="false"/> 
+                            </HBox>  
+                        </FlexBox>
+                    </VBox>
+                </FlexBox>
+                
+                <VBox > 
+                    <f:Form editable="true">  
+                        <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"/> 
+                        </f:layout>
+                        <f:formContainers>
+                            <f:FormContainer>
+                                <f:formElements>
+                                    <f:FormElement label="Tipo carga">
+                                        <f:fields> 
+                                            <Select id="select_tipoCarga" forceSelection="false" items="{/listTipoCargaFacRegistrada}">
+                                                <core:Item key="{key}" text="{value}" /> 
+                                            </Select>
+                                        </f:fields>
+                                    </f:FormElement> 
+                                    <f:FormElement label="Número factura">
+                                        <f:fields> <Input id="txt_numFActura" value="" /> </f:fields>
+                                    </f:FormElement> 
+                                    <f:FormElement label="Fecha de emisión">
+                                        <f:fields> <DatePicker id="txt_fechaEmision" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                                    </f:FormElement> 
+                                    <f:FormElement label="Fecha de pago">
+                                        <f:fields> <DatePicker id="txt_fechaPago" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                                    </f:FormElement>
+                                </f:formElements>
+                            </f:FormContainer>
+                        </f:formContainers>
+                    </f:Form> 
+
+                     <FlexBox justifyContent="End" class="sapUiSmallMarginBeginEnd">
+                        <Button press="searchFilter" text="Filtrar" icon="sap-icon://filter" type="Emphasized" class="sapUiTinyMargin"/> 
+                        <Button press="cleanSearchFilter" text="Limpiar" class="sapUiTinyMargin"/> 
+                    </FlexBox>    
+
+                    <!-- <tab:Table rows="{  path: 'myParam>/dataTest' }" selectionMode="None"  visibleRowCount="5" class="sapUiSmallMarginBottom" ariaLabelledBy="title">
+                        <tab:extension>
+                            <OverflowToolbar height="auto" > 
+                                <Title text="Tabla de Facturas" />
+                                <ToolbarSpacer />
+                                <Text text="N° Registros ( 0 )" class="sapUiTinyMargin"></Text> 
+                            </OverflowToolbar>
+                        </tab:extension>
+                        <tab:columns>
+                            <tab:Column width="auto">
+                                <Label textAlign="Center" wrapping ="true"  text="Estado"/>
+                                <tab:template> <Button press="addNot" icon="sap-icon://vds-file" type="Emphasized"/> </tab:template>
+                            </tab:Column> 
+                            <tab:Column width="auto" >
+                                <Label textAlign="Center" wrapping ="true"  text="Tipo de carga" />
+                                <tab:template> <Text text="{myParam>fecha}" wrapping="true" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column width="auto" >
+                                <Label textAlign="Center" wrapping ="true"  text="Número factura" />
+                                <tab:template> <Text text="{myParam>cadena}" wrapping="true" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column width="auto" >
+                                <Label textAlign="Center" wrapping ="true"  text="F. de emisión" />
+                                <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column width="auto" >
+                                <Label textAlign="Center" wrapping ="true"  text="F. pre-registro" />
+                                <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column width="auto" >
+                                <Label textAlign="Center" wrapping ="true"  text="F. registro" />
+                                <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column width="auto" >
+                                <Label textAlign="Center" wrapping ="true"  text="F. de recepción" />
+                                <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column width="auto" >
+                                <Label textAlign="Center" wrapping ="true"  text="Crédito" />
+                                <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column width="auto" >
+                                <Label textAlign="Center" wrapping ="true"  text="F. de vencimiento" />
+                                <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column width="auto" >
+                                <Label textAlign="Center" wrapping ="true"  text="F. estimada de pago" />
+                                <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column width="auto" >
+                                <Label textAlign="Center" wrapping ="true"  text="F. y num. constancia de pago detracción" />
+                                <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column width="auto" >
+                                <Label textAlign="Center" wrapping ="true"  text="F. de pago" />
+                                <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column width="auto" >
+                                <Label textAlign="Center" wrapping ="true"  text="Banco de pago" />
+                                <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column width="auto" >
+                                <Label textAlign="Center" wrapping ="true"  text="Importe" />
+                                <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                            </tab:Column>
+                            <tab:Column width="auto" >
+                                <Label textAlign="Center" wrapping ="true"  text="Moneda" />
+                                <tab:template> <Text text="{myParam>numero}" wrapping="true" /> </tab:template>
+                            </tab:Column>
+                        </tab:columns>
+                    </tab:Table>   -->
+                    <Table id="listResFacReg" items="{/listResFacReg}"  mode="None" visible="true"> 
+                            <columns>
+                                <Column width="auto"> <Text text="Estado" /> </Column> 
+                                <Column width="auto"> <Text text="Ruc empresa" /> </Column> 
+                                <Column width="auto"> <Text text="Empresa" /> </Column> 
+                                <Column width="auto"> <Text text="Ruc proveedor" /> </Column> 
+                                <Column width="auto"> <Text text="Razón Social" /> </Column> 
+                                <Column width="auto"> <Text text="Tipo de Carga" /> </Column> 
+                                <Column width="auto"> <Text text="Número factura" /> </Column> 
+                                <Column width="auto"> <Text text="F. de emisión" /> </Column> 
+                                <Column width="auto"> <Text text="F. pre-registro" /> </Column> 
+                                <Column width="auto"> <Text text="F. registro" /> </Column> 
+                                <Column width="auto"> <Text text="F. de recepción" /> </Column> 
+                                <Column width="auto"> <Text text="Crédito" /> </Column> 
+                                <Column width="auto"> <Text text="F. de vencimiento" /> </Column> 
+                                <Column width="auto"> <Text text="F. estimada de pago" /> </Column> 
+                                <Column width="auto"> <Text text="Fec. y num. constancia de pago detracción" /> </Column> 
+                                <Column width="auto"> <Text text="Fecha de pago" /> </Column> 
+                                <Column width="auto"> <Text text="Banco de pago" /> </Column> 
+                                <Column width="auto"> <Text text="Importe" /> </Column> 
+                                <Column width="auto"> <Text text="Moneda" /> </Column> 
+                            </columns>
+                            <items>
+                                <ColumnListItem vAlign="Middle">
+                                    <cells>
+                                        <!-- <ObjectStatus text="{path: 'myParam>ESTADO', formatter: '.formatoEstado'}" state="{ path: 'myParam>ESTADO', formatter: '.formatEstadoFactura2' }" inverted="true"/> -->
+                                        <ObjectStatus text="{path: 'myParam>ESTADO'}" state="{ path: 'myParam>ESTADO'}" inverted="true"/>
+                                        <Text text="{EM_RUC}"/>  
+                                        <Text text="{NOM_DEM_RAZ_ADQ}"/> 
+                                        <Text text="{US_RUC}"/> 
+                                        <Text text="{NOM_DEM_RAZ}"/> 
+                                        <Text text="{TIPO_CARGA}"/> 
+                                        <Text text="{REFERENCIA}"/>
+                                        <Text text="{FC_FEC_EMISION}"/>
+                                        <Text text="{FC_FEC_REGISTRO}"/>
+                                        <Text text="{FEC_CONTABILIZACION}"/>
+                                        <Text text="{FEC_BASE}"/>
+                                        <Text text="{CONDICION_PAGO}"/>
+                                        <Text text="{FEC_VENCIMIENTO}"/>
+                                        <Text text="{FEC_TEN}"/>
+                                        <Text text="{TEXTO_CAB_DOCUMENTO}"/>
+                                        <Text text="{FEC_JOB}"/>
+                                        <Text text="{BANCO}"/>
+                                        <Text text="{TOTAL_IMP}"/>
+                                        <Text text="{MONEDA}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                </VBox>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>

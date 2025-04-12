@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+xmlns="sap.m"
+xmlns:core="sap.ui.core"
+xmlns:mvc="sap.ui.core.mvc"   
+xmlns:u="sap.ui.unified" 
+xmlns:tab="sap.ui.table"
+xmlns:f="sap.ui.layout.form"
+>
+<Dialog contentWidth="30%" title="Crear proveedor" showHeader="true" titleAlignment="Center">
+     <f:Form editable="true" class="sapUiTinyMarginBottom" > 
+        <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />  </f:layout>
+        <f:formContainers>
+            <f:FormContainer > 
+                <f:formElements> 
+                    <f:FormElement label="RUC proveedor">
+                        <f:fields> <Input value=""/> </f:fields>
+                    </f:FormElement> 
+                    <f:FormElement label="Descripción">
+                        <f:fields> <Input value=""/> </f:fields>
+                    </f:FormElement> 
+                </f:formElements>
+            </f:FormContainer> 
+        </f:formContainers>
+    </f:Form>
+    <OverflowToolbar>  
+        <ToolbarSpacer/>
+        <Button text="Guardar" press="dgAddProveedorOk" type="Emphasized" />
+        <Button text="Cancelar" press="dgCancelAddProveedor"/>  
+    </OverflowToolbar>
+</Dialog>
+</core:FragmentDefinition>

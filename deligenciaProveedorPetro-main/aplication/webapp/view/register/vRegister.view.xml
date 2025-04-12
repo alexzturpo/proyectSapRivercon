@@ -1,0 +1,1385 @@
+<mvc:View controllerName="adp.aplication.controller.vRegister"
+     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core" 
+	xmlns:f="sap.ui.layout.form"
+    xmlns:tab="sap.ui.table" 
+    xmlns:u="sap.ui.unified"
+    xmlns:tnt="sap.tnt">
+    <Page title="Registrase" showNavButton="true" navButtonPress=".onPageBack" >
+		<headerContent>
+			<Button id="btnSaveRegister" icon="sap-icon://paper-plane" text="Enviar Registro" press="saveRegister" type="Emphasized" />
+			<Button icon="sap-icon://decline" text="Cancelar" press="onPageBack"/>
+		</headerContent> 
+        <VBox class="sapUiSmallMargin">
+            <f:Form editable="true">
+                <!-- <f:toolbar>
+                    <Toolbar> 
+                        <ToolbarSpacer />
+                        <Button text="Guardar" icon="sap-icon://save" type="Emphasized" /> 
+                    </Toolbar>
+                </f:toolbar> -->
+                <f:layout>
+                    <f:ResponsiveGridLayout
+                        labelSpanXL="4"
+                        labelSpanL="3"
+                        labelSpanM="4"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="0"
+                        emptySpanL="4"
+                        emptySpanM="0"
+                        emptySpanS="0"
+                        columnsXL="2"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer> 
+                        <!-- <f:toolbar>
+                            <Toolbar>
+                                <Title text="¿Quíen fue afectado?"/>
+                                <ToolbarSpacer />
+                                <Button text="Continuar" icon="sap-icon://open-command-field" press="nextFormHome"/>
+                            </Toolbar>
+                        </f:toolbar> -->
+                        <f:formElements>
+                            <f:FormElement label="Ruc">
+                                <f:fields>
+                                    <Input value="" />
+                                    <Button icon="sap-icon://search" text="Buscar" press="buscarRuc" type="Emphasized"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Nombre de la empresa">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Dirección">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Teléfono">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Correo electrónico">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Contraseña">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement label="Confirma contraseña">
+                                <f:fields> <Input value="" /> </f:fields>
+                            </f:FormElement> 
+                            <f:FormElement>
+                                <f:fields><CheckBox text="Autorizo el uso de mis datos según la Ley N°29733 y 'Politica coorporativa de protección de datos personales de PetroPerú'" wrapping="true" /></f:fields>
+                            </f:FormElement> 
+                        </f:formElements>
+                    </f:FormContainer> 
+                </f:formContainers>
+            </f:Form>
+        </VBox> 
+        <IconTabBar class="sapUiResponsiveContentPadding">
+            <items>
+                <IconTabFilter icon="sap-icon://hr-approval" text="Persona Natural" design="Horizontal">
+                    <Panel expandable="true" expanded="true" visible="true" class="sapUiSmallMarginBottom" width="auto" >
+                        <headerToolbar>
+                            <OverflowToolbar style="Clear">
+                                <Title text="I.Información básica de la persona natural"/>
+                                <ToolbarSpacer />
+                                <Button text="Continuar" icon="sap-icon://open-command-field" press="nextFormHome"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                            <f:Form editable="true">
+                                <!-- <f:toolbar>
+                                    <Toolbar> 
+                                        <ToolbarSpacer />
+                                        <Button text="Guardar" icon="sap-icon://save" type="Emphasized" /> 
+                                    </Toolbar>
+                                </f:toolbar> -->
+                                <f:layout>
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="5"
+                                        labelSpanL="5"
+                                        labelSpanM="5"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="3"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer> 
+                                        <!-- <f:toolbar>
+                                            <Toolbar>
+                                                <Title text="¿Quíen fue afectado?"/>
+                                                <ToolbarSpacer />
+                                                <Button text="Continuar" icon="sap-icon://open-command-field" press="nextFormHome"/>
+                                            </Toolbar>
+                                        </f:toolbar> -->
+                                        <f:formElements>
+                                            <f:FormElement label="Primer apellido">
+                                                <f:fields>
+                                                    <Input value="" />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Segundo apellido">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Tipo de documento">
+                                                <f:fields>
+                                                    <VBox >
+                                                        <RadioButton text="Carnet de extranjería" groupName="tipoDoc"  />
+                                                        <RadioButton text="DNI" groupName="tipoDoc" selected="true"  />
+                                                        <RadioButton text="Pasaporte" groupName="tipoDoc"  />
+                                                    </VBox>
+                                                </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="N° documento">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nacionalidad">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Es o esta relacionado con una persona clasificada como Persona Expuesta Politicamente (PEP)">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="pep" selected="true" />
+                                                    <RadioButton text="No" groupName="pep"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer title="De ser el caso, identifique los nombres y apellidos de PEP al cual Ud. esta relacionado y su vínculo con el PEP:"> 
+                                        <f:formElements>
+                                            <f:FormElement label="Primer apellido PEP 1">
+                                                <f:fields>
+                                                    <Input value="" />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Segundo apellido PEP 1">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Vínculo con la persona natural">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Primer apellido PEP 2">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Segundo apellido PEP 2">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Vínculo con la persona natural">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                </f:formContainers>
+                            </f:Form>
+                        </content>
+                    </Panel>
+
+                    <Panel expandable="true" expanded="true" visible="true" class="sapUiSmallMarginBottom" width="auto" >
+                        <headerToolbar>
+                            <OverflowToolbar style="Clear">
+                                <Title text="II.Declaración de información de la persona natural"/>
+                                <ToolbarSpacer />
+                                <Button text="Continuar" icon="sap-icon://open-command-field" press="nextFormHome"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                            <f:Form editable="true">
+                                <!-- <f:toolbar>
+                                    <Toolbar> 
+                                        <ToolbarSpacer />
+                                        <Button text="Guardar" icon="sap-icon://save" type="Emphasized" /> 
+                                    </Toolbar>
+                                </f:toolbar> -->
+                                <f:layout>
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="12"
+                                        labelSpanL="12"
+                                        labelSpanM="12"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="true"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="3"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer> 
+                                        <f:formElements>
+                                            <f:FormElement label="2.1 ¿La persona natural tiene empedimiento para contratar con el Estado, según lo previsto en la Ley N° 30225 (Ley de Contrataciones del Estado) y sus modificatorias? Los impedimentos están definidos en Capitulo II, Actículo N°11 de la precitada norma.">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form2_1" selected="true" />
+                                                    <RadioButton text="No" groupName="form2_1"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement >
+                                                <f:fields> <TextArea placeholder="Si la respuesta es “Si” por favor detallar el impedimiento:" showExceededText="true" rows="4" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="2.2 ¿La persona natural se encuentra comprendida en alguna de las siguientes listas: Lista OFAC (Oficina de Control de Activos Extranjeros del departamento de Tesoro de los Estados Unidos de América); Lista de Terroristas del Consejo de Seguridad de las Naciones Unidas; Lista relacionadas con el FInancionamiento de la Proliferación de Armas de Destrucción Masiva emitida por el Consejo de Seguridad de la ONU?">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form2_2" selected="true" />
+                                                    <RadioButton text="No" groupName="form2_2"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement >
+                                                <f:fields> <TextArea placeholder="Si la respuesta es “Si” por favor detallar la Lista en la que se encuentra considerada:" showExceededText="true" rows="4" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer> 
+                                        <f:formElements>
+                                            <f:FormElement label="2.3 ¿La persona natural ha sido condenada, mediante sentencia firme por alguno de los siguientes delitos Lavado de Activos; Financiamiento del Terrorismo; delitos precedentes como Narcotráfico, Delitos Tributarios o Aduaneros, MInería Ilegal, Corrupción, u otros que genere ganancias ilegales; Cohecho Activo Genérico, Específico, o Transnacional; Tráfico de influencias; COlusión Simple o Agravada; Sornono; en el ámbito nacional o internacional, o ha aceptado haber cometido tal(es) delito(s)?">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form2_3" selected="true" />
+                                                    <RadioButton text="No" groupName="form2_3"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement >
+                                                <f:fields> <TextArea placeholder="Si la respuesta es “Si” por favor detallar el delito y la condena impuesta" showExceededText="true" rows="4" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="2.4 ¿La persona natural ha sido o investigado, declarado culpable, sancionado o inhabilitado por soborno o conducta criminal o similar, sin sentencia firme?">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form2_4" selected="true" />
+                                                    <RadioButton text="No" groupName="form2_4"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement >
+                                                <f:fields> <TextArea placeholder="Si la respuesta es “Si” por favor detallar el delito y si la condena (de ser el caso) acarrea pena(s) o sancion(es) accesoria(s) o inhabilitación" showExceededText="true" rows="4" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                </f:formContainers>
+                            </f:Form>
+                        </content>
+                    </Panel>
+
+                    <Panel expandable="true" expanded="true" visible="true" class="sapUiSmallMarginBottom" width="auto" >
+                        <headerToolbar>
+                            <OverflowToolbar style="Clear">
+                                <Title text="III.Documentos a adjuntar"/>
+                                <ToolbarSpacer />
+                                <!-- <Button text="Continuar" icon="sap-icon://open-command-field" press="nextFormHome"/> -->
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                            <f:Form editable="true">
+                                <!-- <f:toolbar>
+                                    <Toolbar> 
+                                        <ToolbarSpacer />
+                                        <Button text="Guardar" icon="sap-icon://save" type="Emphasized" /> 
+                                    </Toolbar>
+                                </f:toolbar> -->
+                                <f:layout>
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="12"
+                                        labelSpanL="12"
+                                        labelSpanM="12"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="true"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="3"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer> 
+                                        <f:formElements>
+                                            <f:FormElement label="a) Copia de Reporte de Ficha RUC emitida a través de la CLAVE SOL (caso de persona natural domiciliada en el Perú)">
+                                                <f:fields>
+                                                    <u:FileUploader name="myFileA" uploadUrl="upload/" uploadComplete="handleUploadComplete"/> 
+                                                </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="b) Copia de documento de identidad de persona natural">
+                                                <f:fields>
+                                                    <u:FileUploader name="myFileB" uploadUrl="upload/" uploadComplete="handleUploadComplete"/> 
+                                                </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer title="IV. Justifique falta de información u otra observación"> 
+                                        <f:formElements>
+                                            <f:FormElement >
+                                                <f:fields> <TextArea placeholder="Justificación..." showExceededText="true" rows="4" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer title="V. Firma del proveedor(Persona Natural)">
+                                        <f:formElements>
+                                            <f:FormElement >
+                                                <f:fields>
+                                                    <u:FileUploader name="myFileP" uploadUrl="upload/" uploadComplete="handleUploadComplete"/> 
+                                                </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                </f:formContainers>
+                            </f:Form>
+                        </content>
+                    </Panel>
+                </IconTabFilter>
+
+                <IconTabFilter icon="sap-icon://family-protection" text="Persona juridica domiciliada en Perú" design="Horizontal">
+                    <Panel expandable="true" expanded="true" visible="true" class="sapUiSmallMarginBottom" width="auto" >
+                        <headerToolbar>
+                            <OverflowToolbar style="Clear">
+                                <Title text="I. Información básica de la persona jurídica"/>
+                                <ToolbarSpacer />
+                                <Button text="Continuar" icon="sap-icon://open-command-field" press="nextFormHome"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                            <f:Form editable="true">
+                                <f:layout>
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="5"
+                                        labelSpanL="5"
+                                        labelSpanM="5"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="1"
+                                        columnsL="1"
+                                        columnsM="1"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer> 
+                                        <f:formElements>
+                                            <f:FormElement label="Denominación o Razón Social">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="N° de RUC">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="N° de Partida Registral">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Teléfono">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Fecha de inscripción en Registros Públicos">
+                                                <f:fields> <DatePicker displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Domicilio Fiscal">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer> 
+                                        <f:toolbar>
+                                            <Toolbar height="auto">
+                                                <VBox >
+                                                    <Title text="II. Información del(los) Gerente(s)"/>
+                                                    <Text text="Gerente 1"/>
+                                                </VBox>
+                                            </Toolbar>
+                                        </f:toolbar>
+                                        <f:formElements>
+                                            <f:FormElement label="Primer apellido">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Segundo apellido">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Tipo de documento">
+                                                <f:fields>
+                                                    <VBox >
+                                                        <RadioButton text="Carnet de extranjería" groupName="tipoDoc"  />
+                                                        <RadioButton text="DNI" groupName="tipoDoc" selected="true"  />
+                                                        <RadioButton text="Pasaporte" groupName="tipoDoc"  />
+                                                    </VBox>
+                                                </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="N° documento">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nacionalidad">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Es o esta relacionado con una persona clasificada como Persona Expuesta Politicamente (PEP)">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="pep" selected="true" />
+                                                    <RadioButton text="No" groupName="pep"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer title="De ser el caso, identifique los nombres y apellidos de PEP al cual Ud. esta relacionado y su vínculo con el PEP:"> 
+                                        <f:formElements>
+                                            <f:FormElement label="Primer apellido PEP 1">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Segundo apellido PEP 1">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Vínculo con la persona natural">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Primer apellido PEP 2">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Segundo apellido PEP 2">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Vínculo con la persona natural">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                </f:formContainers>
+                            </f:Form>
+                        </content>
+                    </Panel>
+
+                    <Panel expandable="true" expanded="true" visible="true" class="sapUiSmallMarginBottom" width="auto" >
+                        <headerToolbar>
+                            <OverflowToolbar style="Clear">
+                                <Title text="III. Información de los accionistas"/>
+                                <ToolbarSpacer />
+                                <Button text="Continuar" icon="sap-icon://open-command-field" press="nextFormHome"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                            <f:Form editable="true">
+                                <f:layout>
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="5"
+                                        labelSpanL="5"
+                                        labelSpanM="5"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="3"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer> 
+                                        <f:toolbar>
+                                            <Toolbar height="auto">
+                                                <VBox >
+                                                    <Title text="a) En caso el socio, accionista o asociado sea persona natural :"/>
+                                                    <Text text="Accionista, socio, asociado 1:"  />
+                                                </VBox>
+                                            </Toolbar>
+                                        </f:toolbar>
+                                        <f:formElements>
+                                            <f:FormElement label="Primer apellido">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Segundo apellido">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Tipo de documento">
+                                                <f:fields>
+                                                    <VBox >
+                                                        <RadioButton text="Carnet de extranjería" groupName="tipoDoc"  />
+                                                        <RadioButton text="DNI" groupName="tipoDoc" selected="true"  />
+                                                        <RadioButton text="Pasaporte" groupName="tipoDoc"  />
+                                                    </VBox>
+                                                </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="N° documento">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nacionalidad">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Es o esta relacionado con una persona clasificada como Persona Expuesta Politicamente (PEP)">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="pep" selected="true" />
+                                                    <RadioButton text="No" groupName="pep"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer > 
+                                        <f:toolbar>
+                                            <Toolbar height="auto">
+                                                <Title text="De ser el caso, identifique los nombres y apellidos de PEP al cual Ud. esta relacionado y su vínculo con el PEP:" wrapping="true"/>
+                                            </Toolbar>
+                                        </f:toolbar>
+                                        <f:formElements>
+                                            <f:FormElement label="Primer apellido PEP 1">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Segundo apellido PEP 1">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Vínculo con la persona natural">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Primer apellido PEP 2">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Segundo apellido PEP 2">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Vínculo con la persona natural">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer> 
+                                        <f:toolbar>
+                                            <Toolbar height="auto">
+                                                <VBox >
+                                                    <Title text="b) En caso el socio, accionista o asociado sea persona jurídica:"/>
+                                                    <Text text="Accionista, socio, asociado 1:" />
+                                                </VBox>
+                                            </Toolbar>
+                                        </f:toolbar>
+                                        <f:formElements>
+                                            <f:FormElement label="Denominación o razón social">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="N° de RUC">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="N° de Partida Registral">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="% de participación">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>  
+                                            <f:FormElement label="Año y País de Constitución">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Domicilio FIscal">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                </f:formContainers>
+                            </f:Form>
+                        </content>
+                    </Panel>
+
+                    <Panel expandable="true" expanded="true" visible="true" class="sapUiSmallMarginBottom" width="auto" >
+                        <headerToolbar>
+                            <OverflowToolbar style="Clear">
+                                <Title text="IV. Información de los Directores (de ser el caso)"/>
+                                <ToolbarSpacer />
+                                <Button text="Continuar" icon="sap-icon://open-command-field" press="nextFormHome"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                            <f:Form editable="true">
+                                <f:layout>
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="5"
+                                        labelSpanL="5"
+                                        labelSpanM="5"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="3"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer> 
+                                        <f:toolbar>
+                                            <Toolbar height="auto">
+                                                <VBox >
+                                                    <!-- <Title text="a) En caso el socio, accionista o asociado sea persona natural :"/> -->
+                                                    <Text text="Director 1:"  />
+                                                </VBox>
+                                            </Toolbar>
+                                        </f:toolbar>
+                                        <f:formElements>
+                                            <f:FormElement label="Primer apellido">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Segundo apellido">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Tipo de documento">
+                                                <f:fields>
+                                                    <VBox >
+                                                        <RadioButton text="Carnet de extranjería" groupName="tipoDoc"  />
+                                                        <RadioButton text="DNI" groupName="tipoDoc" selected="true"  />
+                                                        <RadioButton text="Pasaporte" groupName="tipoDoc"  />
+                                                    </VBox>
+                                                </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="N° documento">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nacionalidad">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Es o esta relacionado con una persona clasificada como Persona Expuesta Politicamente (PEP)">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="pep" selected="true" />
+                                                    <RadioButton text="No" groupName="pep"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer> 
+                                        <f:toolbar>
+                                            <Toolbar height="auto">
+                                                <Title text="De ser el caso, identifique los nombres y apellidos de PEP al cual Ud. esta relacionado y su vínculo con el PEP:" wrapping="true"/>
+                                            </Toolbar>
+                                        </f:toolbar>
+                                        <f:formElements>
+                                            <f:FormElement label="Primer apellido PEP 1">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Segundo apellido PEP 1">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Vínculo con la persona natural">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Primer apellido PEP 2">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Segundo apellido PEP 2">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Vínculo con la persona natural">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                </f:formContainers>
+                            </f:Form>
+                        </content>
+                    </Panel>
+
+                    <Panel expandable="true" expanded="true" visible="true" class="sapUiSmallMarginBottom" width="auto" >
+                        <headerToolbar>
+                            <OverflowToolbar style="Clear">
+                                <Title text="V. Declaración de información de la Persona Jurídica"/>
+                                <ToolbarSpacer />
+                                <Button text="Continuar" icon="sap-icon://open-command-field" press="nextFormHome"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                            <f:Form editable="true">
+                                <f:layout>
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="12"
+                                        labelSpanL="12"
+                                        labelSpanM="12"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="true"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="3"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer> 
+                                        <f:formElements>
+                                            <f:FormElement label="5.1 Cuenta con el Sistema de Gestión Antisoborno bajo la Norma ISO 37001 certificado">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form5_1" selected="true" />
+                                                    <RadioButton text="No" groupName="form5_1"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="5.2 Cuenta con un Sistema de Prevención de Delitos de Corrupción y/o Lavado de Activos y Financiamiento del Terrorismo">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form5_2" selected="true" />
+                                                    <RadioButton text="No" groupName="form5_2"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="5.3 Cotiza en la Bolsa de Valores de Lima u otra Bolsa de Valores">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form5_3" selected="true" />
+                                                    <RadioButton text="No" groupName="form5_3"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="5.4 ¿La persona jurídica tiene impedimento para contratar con el Estado, según lo previsto en la Ley N° 30225 (Ley de Contrataciones del Estado) y sus modificatorias? Los impedimentos están definidos en Capítulo III, Artículo N°11 de la precitada norma. (Aplica solo para proceso de Contratación de Servicios y Obras y Adquisición de Bienes)">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form5_4" selected="true" />
+                                                    <RadioButton text="No" groupName="form5_4"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement >
+                                                <f:fields> <TextArea placeholder="Si la respuesta es “Si” por favor detallar el impedimento" showExceededText="true" rows="4" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="5.5 ¿La persona jurídica y/o alguno de sus socios (cuya participación en el capital social es igual o superior al 10% del capital social con derecho a voto; salvo que todos tengan una participación menor a dicho porcentaje, en cuyo caso se identificarán – de ser posible – a los 2 accionistas con mayor porcentaje), y/o Directores y/o Gerentes, se encuentra(n) comprendido(s) en alguna de las siguientes listas: Lista OFAC (Oficina de Control de Activos Extranjeros del departamento de Tesoro de los Estados Unidos de América); Lista de Terroristas del Consejo de Seguridad de las Naciones Unidas; Lista relacionadas con el Financiamiento de la Proliferación de Armas de Destrucción Masiva emitida por el Consejo de Seguridad de la ONU?">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form5_5" selected="true" />
+                                                    <RadioButton text="No" groupName="form5_5"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement >
+                                                <f:fields> <TextArea placeholder="Si la respuesta es 'SI' por favor detallar la Lista en la que se encuentra considerada:" showExceededText="true" rows="4" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer> 
+                                        <f:formElements>
+                                            <f:FormElement label="5.6 ¿Ha sido o es investigado, declarado culpable, sancionado o inhabilitado por soborno o conducta criminal o similar, sin sentencia firme?">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form5_6" selected="true" />
+                                                    <RadioButton text="No" groupName="form5_6"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement >
+                                                <f:fields> <TextArea placeholder="Si la respuesta es 'SI' por favor detallar el delito y si la condena (de ser el caso) acarrea pena(s) o sancion(es) accesoria(s) o inhabilitacion(es):" showExceededText="true" rows="4" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="5.7¿La persona jurídica y/o algunos de sus socios (cuya participación en el capital social es igual o superior al 10% del capital social con derecho a voto; salvo que todos tengan una participación menor a dicho porcentaje, en cuyo caso se identificarán – de ser posible – a los 2 accionistas con mayor porcentaje), y/o Directores, y/o Gerentes, ha(n) sido condenado(s), mediante sentencia firme, por alguno de los siguientes delitos: Lavado de Activos; Financiamiento del Terrorismo; delitos precedentes como Narcotráfico, Delitos Tributarios o Aduaneros, Minería Ilegal, Corrupción, u otros que genere ganancias ilegales; Cohecho Activo Genérico, Específico, o Transnacional; Tráfico de Influencias; Colusión Simple o Agravada; Soborno; en el ámbito nacional o internacional, o ha(n) aceptado haber cometido tal(es) delito(s)?">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form5_7" selected="true" />
+                                                    <RadioButton text="No" groupName="form5_7"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement >
+                                                <f:fields> <TextArea placeholder="Si la respuesta es 'SI' por favor detallar el delito y si la condena (de ser el caso) acarrea pena(s) o sancion(es) accesoria(s) o inhabilitacion(es):" showExceededText="true" rows="4" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                </f:formContainers>
+                            </f:Form>
+                        </content>
+                    </Panel>
+
+                    <Panel expandable="true" expanded="true" visible="true" class="sapUiSmallMarginBottom" width="auto" >
+                        <headerToolbar>
+                            <OverflowToolbar style="Clear">
+                                <Title text="VI. Documentación a adjuntar"/>
+                                <ToolbarSpacer />
+                                <!-- <Button text="Continuar" icon="sap-icon://open-command-field" press="nextFormHome"/> -->
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                            <f:Form editable="true"> 
+                                <f:layout>
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="12"
+                                        labelSpanL="12"
+                                        labelSpanM="12"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="true"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="3"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer> 
+                                        <f:formElements>
+                                            <f:FormElement label="a) Copia de Ficha RUC emitida a través de la CLAVE SOL de la persona jurídica domiciliada en el Perú">
+                                                <f:fields>
+                                                    <u:FileUploader name="myFileA" uploadUrl="upload/" uploadComplete="handleUploadComplete"/> 
+                                                </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="b) Copia de documento de identidad y vigencia de poder del Representante Legal que firma este formulario">
+                                                <f:fields>
+                                                    <u:FileUploader name="myFileB" uploadUrl="upload/" uploadComplete="handleUploadComplete"/> 
+                                                </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer title="VII. Justifique falta de información u otra observación"> 
+                                        <f:formElements>
+                                            <f:FormElement >
+                                                <f:fields> <TextArea placeholder="Justificación..." showExceededText="true" rows="4" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer title="VIII. Firma">
+                                        <f:formElements>
+                                            <f:FormElement >
+                                                <f:fields>
+                                                    <u:FileUploader name="myFileP" uploadUrl="upload/" uploadComplete="handleUploadComplete"/> 
+                                                </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                </f:formContainers>
+                            </f:Form>
+                        </content>
+                    </Panel>
+                </IconTabFilter>
+                <IconTabFilter icon="sap-icon://family-care" text="Persona juridica no domiciliada en Perú" design="Horizontal">
+                    <Panel expandable="true" expanded="true" visible="true" class="sapUiSmallMarginBottom" width="auto" >
+                        <headerToolbar>
+                            <OverflowToolbar style="Clear">
+                                <Title text="I. Información básica de la persona jurídica"/>
+                                <ToolbarSpacer />
+                                <Button text="Continuar" icon="sap-icon://open-command-field" press="nextFormHome"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                            <f:Form editable="true">
+                                <f:layout>
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="5"
+                                        labelSpanL="5"
+                                        labelSpanM="5"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="1"
+                                        columnsL="1"
+                                        columnsM="1"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer> 
+                                        <f:formElements>
+                                            <f:FormElement label="Denominación o Razón Social">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="N° de RUC">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="N° de Partida Registral">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Teléfono">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Persona(s) de contacto y correo(s) electrónico(s)">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Fecha de inscripción en Registros Públicos">
+                                                <f:fields> <DatePicker displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Domicilio Fiscal">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer> 
+                                        <f:toolbar>
+                                            <Toolbar height="auto">
+                                                <VBox >
+                                                    <Title text="II. Información del(los) Gerente(s)"/>
+                                                    <Text text="Gerente 1"/>
+                                                </VBox>
+                                            </Toolbar>
+                                        </f:toolbar>
+                                        <f:formElements>
+                                            <f:FormElement label="Primer apellido">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Segundo apellido">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Tipo de documento">
+                                                <f:fields>
+                                                    <VBox >
+                                                        <RadioButton text="Carnet de extranjería" groupName="tipoDoc"  />
+                                                        <RadioButton text="DNI" groupName="tipoDoc" selected="true"  />
+                                                        <RadioButton text="Pasaporte" groupName="tipoDoc"  />
+                                                    </VBox>
+                                                </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="N° documento">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nacionalidad">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Es o esta relacionado con una persona clasificada como Persona Expuesta Politicamente (PEP)">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="pep" selected="true" />
+                                                    <RadioButton text="No" groupName="pep"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer title="De ser el caso, identifique los nombres y apellidos de PEP al cual Ud. esta relacionado y su vínculo con el PEP:"> 
+                                        <f:formElements>
+                                            <f:FormElement label="Primer apellido PEP 1">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Segundo apellido PEP 1">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Vínculo con la persona natural">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Primer apellido PEP 2">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Segundo apellido PEP 2">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Vínculo con la persona natural">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                </f:formContainers>
+                            </f:Form>
+                        </content>
+                    </Panel>
+
+                    <Panel expandable="true" expanded="true" visible="true" class="sapUiSmallMarginBottom" width="auto" >
+                        <headerToolbar>
+                            <OverflowToolbar style="Clear">
+                                <Title text="III. Información de los accionistas, Socios o Asociados"/>
+                                <ToolbarSpacer />
+                                <Button text="Continuar" icon="sap-icon://open-command-field" press="nextFormHome"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                            <f:Form editable="true">
+                                <f:layout>
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="5"
+                                        labelSpanL="5"
+                                        labelSpanM="5"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="3"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer> 
+                                        <f:toolbar>
+                                            <Toolbar height="auto">
+                                                <VBox >
+                                                    <Title text="a) En caso el socio, accionista o asociado sea persona natural :"/>
+                                                    <Text text="Accionista, socio, asociado 1:"  />
+                                                </VBox>
+                                            </Toolbar>
+                                        </f:toolbar>
+                                        <f:formElements>
+                                            <f:FormElement label="Primer apellido">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Segundo apellido">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Tipo de documento">
+                                                <f:fields>
+                                                    <VBox >
+                                                        <RadioButton text="Carnet de extranjería" groupName="tipoDoc"  />
+                                                        <RadioButton text="DNI" groupName="tipoDoc" selected="true"  />
+                                                        <RadioButton text="Pasaporte" groupName="tipoDoc"  />
+                                                    </VBox>
+                                                </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="N° documento">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nacionalidad">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Es o esta relacionado con una persona clasificada como Persona Expuesta Politicamente (PEP)">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="pep" selected="true" />
+                                                    <RadioButton text="No" groupName="pep"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer > 
+                                        <f:toolbar>
+                                            <Toolbar height="auto">
+                                                <Title text="De ser el caso, identifique los nombres y apellidos de PEP al cual Ud. esta relacionado y su vínculo con el PEP:" wrapping="true"/>
+                                            </Toolbar>
+                                        </f:toolbar>
+                                        <f:formElements>
+                                            <f:FormElement label="Primer apellido PEP 1">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Segundo apellido PEP 1">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Vínculo con la persona natural">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer> 
+                                        <f:toolbar>
+                                            <Toolbar height="auto">
+                                                <VBox >
+                                                    <Title text="b) En caso el socio, accionista o asociado sea persona jurídica:"/>
+                                                    <Text text="Accionista, socio, asociado 1:" />
+                                                </VBox>
+                                            </Toolbar>
+                                        </f:toolbar>
+                                        <f:formElements>
+                                            <f:FormElement label="Denominación o razón social">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="N° de RUC">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="N° de Partida Registral">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="% de participación">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>  
+                                            <f:FormElement label="Año y País de Constitución">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Domicilio FIscal">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                </f:formContainers>
+                            </f:Form>
+                        </content>
+                    </Panel>
+
+                    <Panel expandable="true" expanded="true" visible="true" class="sapUiSmallMarginBottom" width="auto" >
+                        <headerToolbar>
+                            <OverflowToolbar style="Clear">
+                                <Title text="IV. Información de los Directores (de ser el caso)"/>
+                                <ToolbarSpacer />
+                                <Button text="Continuar" icon="sap-icon://open-command-field" press="nextFormHome"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                            <f:Form editable="true">
+                                <f:layout>
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="5"
+                                        labelSpanL="5"
+                                        labelSpanM="5"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="false"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="3"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer> 
+                                        <f:toolbar>
+                                            <Toolbar height="auto">
+                                                <VBox >
+                                                    <!-- <Title text="a) En caso el socio, accionista o asociado sea persona natural :"/> -->
+                                                    <Text text="Director 1:"  />
+                                                </VBox>
+                                            </Toolbar>
+                                        </f:toolbar>
+                                        <f:formElements>
+                                            <f:FormElement label="Primer apellido">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Segundo apellido">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Tipo de documento">
+                                                <f:fields>
+                                                    <VBox >
+                                                        <RadioButton text="Carnet de extranjería" groupName="tipoDoc"  />
+                                                        <RadioButton text="DNI" groupName="tipoDoc" selected="true"  />
+                                                        <RadioButton text="Pasaporte" groupName="tipoDoc"  />
+                                                    </VBox>
+                                                </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="N° documento">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nacionalidad">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Es o esta relacionado con una persona clasificada como Persona Expuesta Politicamente (PEP)">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="pep" selected="true" />
+                                                    <RadioButton text="No" groupName="pep"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer> 
+                                        <f:toolbar>
+                                            <Toolbar height="auto">
+                                                <Title text="De ser el caso, identifique los nombres y apellidos de PEP al cual Ud. esta relacionado y su vínculo con el PEP:" wrapping="true"/>
+                                            </Toolbar>
+                                        </f:toolbar>
+                                        <f:formElements>
+                                            <f:FormElement label="Primer apellido PEP 1">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Segundo apellido PEP 1">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Vínculo con la persona natural">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Primer apellido PEP 2">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Segundo apellido PEP 2">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Nombres">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="Vínculo con la persona natural">
+                                                <f:fields> <Input value="" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                </f:formContainers>
+                            </f:Form>
+                        </content>
+                    </Panel>
+
+                    <Panel expandable="true" expanded="true" visible="true" class="sapUiSmallMarginBottom" width="auto" >
+                        <headerToolbar>
+                            <OverflowToolbar style="Clear">
+                                <Title text="V. Declaración de información de la Persona Jurídica"/>
+                                <ToolbarSpacer />
+                                <Button text="Continuar" icon="sap-icon://open-command-field" press="nextFormHome"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                            <f:Form editable="true">
+                                <f:layout>
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="12"
+                                        labelSpanL="12"
+                                        labelSpanM="12"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="true"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="3"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer> 
+                                        <f:formElements>
+                                            <f:FormElement label="5.1 Cuenta con el Sistema de Gestión Antisoborno bajo la Norma ISO 37001 certificado">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form5_1" selected="true" />
+                                                    <RadioButton text="No" groupName="form5_1"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="5.2 Cuenta con un Sistema de Prevención de Delitos de Corrupción y/o Lavado de Activos y Financiamiento del Terrorismo">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form5_2" selected="true" />
+                                                    <RadioButton text="No" groupName="form5_2"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="5.3 Cotiza en la Bolsa de Valores de Lima u otra Bolsa de Valores">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form5_3" selected="true" />
+                                                    <RadioButton text="No" groupName="form5_3"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="5.4 ¿La persona jurídica tiene impedimento para contratar con el Estado, según lo previsto en la Ley N° 30225 (Ley de Contrataciones del Estado) y sus modificatorias? Los impedimentos están definidos en Capítulo III, Artículo N°11 de la precitada norma. (Aplica solo para proceso de Contratación de Servicios y Obras y Adquisición de Bienes)">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form5_4" selected="true" />
+                                                    <RadioButton text="No" groupName="form5_4"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement >
+                                                <f:fields> <TextArea placeholder="Si la respuesta es “Si” por favor detallar el impedimento" showExceededText="true" rows="4" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="5.5 ¿La persona jurídica y/o alguno de sus socios (cuya participación en el capital social es igual o superior al 10% del capital social con derecho a voto; salvo que todos tengan una participación menor a dicho porcentaje, en cuyo caso se identificarán – de ser posible – a los 2 accionistas con mayor porcentaje), y/o Directores y/o Gerentes, se encuentra(n) comprendido(s) en alguna de las siguientes listas: Lista OFAC (Oficina de Control de Activos Extranjeros del departamento de Tesoro de los Estados Unidos de América); Lista de Terroristas del Consejo de Seguridad de las Naciones Unidas; Lista relacionadas con el Financiamiento de la Proliferación de Armas de Destrucción Masiva emitida por el Consejo de Seguridad de la ONU?">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form5_5" selected="true" />
+                                                    <RadioButton text="No" groupName="form5_5"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement >
+                                                <f:fields> <TextArea placeholder="Si la respuesta es 'SI' por favor detallar la Lista en la que se encuentra considerada:" showExceededText="true" rows="4" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer> 
+                                        <f:formElements>
+                                            <f:FormElement label="5.6 ¿Ha sido o es investigado, declarado culpable, sancionado o inhabilitado por soborno o conducta criminal o similar, sin sentencia firme?">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form5_6" selected="true" />
+                                                    <RadioButton text="No" groupName="form5_6"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement >
+                                                <f:fields> <TextArea placeholder="Si la respuesta es 'SI' por favor detallar el delito y si la condena (de ser el caso) acarrea pena(s) o sancion(es) accesoria(s) o inhabilitacion(es):" showExceededText="true" rows="4" /> </f:fields>
+                                            </f:FormElement> 
+                                            <f:FormElement label="5.7¿La persona jurídica y/o algunos de sus socios (cuya participación en el capital social es igual o superior al 10% del capital social con derecho a voto; salvo que todos tengan una participación menor a dicho porcentaje, en cuyo caso se identificarán – de ser posible – a los 2 accionistas con mayor porcentaje), y/o Directores, y/o Gerentes, ha(n) sido condenado(s), mediante sentencia firme, por alguno de los siguientes delitos: Lavado de Activos; Financiamiento del Terrorismo; delitos precedentes como Narcotráfico, Delitos Tributarios o Aduaneros, Minería Ilegal, Corrupción, u otros que genere ganancias ilegales; Cohecho Activo Genérico, Específico, o Transnacional; Tráfico de Influencias; Colusión Simple o Agravada; Soborno; en el ámbito nacional o internacional, o ha(n) aceptado haber cometido tal(es) delito(s)?">
+                                                <f:fields>
+                                                    <RadioButton text="Si" groupName="form5_7" selected="true" />
+                                                    <RadioButton text="No" groupName="form5_7"  /> 
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement >
+                                                <f:fields> <TextArea placeholder="Si la respuesta es 'SI' por favor detallar el delito y si la condena (de ser el caso) acarrea pena(s) o sancion(es) accesoria(s) o inhabilitacion(es):" showExceededText="true" rows="4" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                </f:formContainers>
+                            </f:Form>
+                        </content>
+                    </Panel>
+
+                    <Panel expandable="true" expanded="true" visible="true" class="sapUiSmallMarginBottom" width="auto" >
+                        <headerToolbar>
+                            <OverflowToolbar style="Clear">
+                                <Title text="VI. Documentación a adjuntar"/>
+                                <ToolbarSpacer />
+                                <!-- <Button text="Continuar" icon="sap-icon://open-command-field" press="nextFormHome"/> -->
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <content>
+                            <f:Form editable="true"> 
+                                <f:layout>
+                                    <f:ResponsiveGridLayout
+                                        labelSpanXL="12"
+                                        labelSpanL="12"
+                                        labelSpanM="12"
+                                        labelSpanS="12"
+                                        adjustLabelSpan="true"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="3"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer> 
+                                        <f:formElements>
+                                            <f:FormElement label="a) Copia de documento de identidad y carta de presentación del representante comercial">
+                                                <f:fields>
+                                                    <u:FileUploader name="myFileA" uploadUrl="upload/" uploadComplete="handleUploadComplete"/> 
+                                                </f:fields>
+                                            </f:FormElement>  
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer title="VII. Justifique falta de información u otra observación"> 
+                                        <f:formElements>
+                                            <f:FormElement >
+                                                <f:fields> <TextArea placeholder="Justificación..." showExceededText="true" rows="4" /> </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                    <f:FormContainer title="VIII. Firma">
+                                        <f:formElements>
+                                            <f:FormElement >
+                                                <f:fields>
+                                                    <u:FileUploader name="myFileP" uploadUrl="upload/" uploadComplete="handleUploadComplete"/> 
+                                                </f:fields>
+                                            </f:FormElement> 
+                                        </f:formElements>
+                                    </f:FormContainer> 
+                                </f:formContainers>
+                            </f:Form>
+                        </content>
+                    </Panel>
+                </IconTabFilter>
+            </items>
+        </IconTabBar>
+    </Page>
+
+</mvc:View>

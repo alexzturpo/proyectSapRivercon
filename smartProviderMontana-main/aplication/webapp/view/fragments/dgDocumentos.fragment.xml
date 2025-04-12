@@ -1,0 +1,201 @@
+<core:FragmentDefinition
+xmlns="sap.m"
+xmlns:core="sap.ui.core"
+xmlns:mvc="sap.ui.core.mvc"   
+xmlns:u="sap.ui.unified" 
+xmlns:tab="sap.ui.table"
+xmlns:f="sap.ui.layout.form"
+>
+<Dialog contentWidth="80%" title="Carga de Documentos Sustentos" showHeader="true" icon="sap-icon://documents" titleAlignment="Center">
+    
+    <Title text="Documento a adjuntar" class="sapUiTinyMargin" />
+    
+    <!-- <tab:Table rows="{  path: 'myParam>/dataTest' }" selectionMode="None"  visibleRowCount="3" class="sapUiTinyMargin" ariaLabelledBy="title">
+        <tab:extension>
+            <OverflowToolbar >
+                <Title text="Tabla de factura"/>
+                <ToolbarSpacer />
+                <u:FileUploader name="myFileUpload" uploadUrl="upload/" uploadComplete="handleUploadComplete"/>
+                <Button text="Subir" press="addNot" icon="sap-icon://back-to-top" type="Emphasized"/> 
+            </OverflowToolbar>
+        </tab:extension>
+        <tab:columns>
+            <tab:Column width="auto">
+                <Label textAlign="Center" wrapping ="true"  text="Nombre"/>
+                <tab:template> <Text text="{myParam>nombre}" wrapping="true" /></tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Fecha de modificación" />
+                <tab:template> <Text text="{myParam>fechaMod}" wrapping="true" /> </tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Hora de modificación" />
+                <tab:template> <Text text="{myParam>horaMod}" wrapping="true" /> </tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Tamaño" />
+                <tab:template> <Text text="{myParam>size}" wrapping="true" /> </tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Formato" />
+                <tab:template> <Text text="{myParam>format}" wrapping="true" /> </tab:template>
+            </tab:Column>
+        </tab:columns>
+    </tab:Table>  -->
+    <Table id="tableDocsFacturas" items="{/tableDocsFacturas}"  mode="None" >
+        <headerToolbar>
+            <OverflowToolbar> 
+                 <Title text="Tabla de factura"/>
+                <ToolbarSpacer />
+                <u:FileUploader id="file_AddDocsFacturas" uploadUrl="upload/"/>
+                <Button text="Subir" press="btn_AddDocsFacturas" icon="sap-icon://back-to-top" type="Emphasized"/> 
+            </OverflowToolbar>
+        </headerToolbar> 
+        <columns>
+            <Column width="auto"> <Text text="Nombre" /> </Column> 
+            <Column width="auto"> <Text text="Fecha de modificación" /> </Column> 
+            <Column width="auto"> <Text text="Hora de modificación" /> </Column> 
+            <Column width="auto"> <Text text="Tamaño" /> </Column> 
+            <Column width="auto"> <Text text="Formato" /> </Column>
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{nombre}" /> 
+                    <Text text="{fechaMod}" /> 
+                    <Text text="{horaMod}" /> 
+                    <Text text="{size}" />
+                    <Text text="{format}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+
+    <!-- <tab:Table rows="{  path: 'myParam>/dataTest' }" selectionMode="None"  visibleRowCount="3" class="sapUiTinyMargin" ariaLabelledBy="title">
+        <tab:extension>
+            <OverflowToolbar >
+                <Title text="Tabla de Guia de remisión"/>
+                <ToolbarSpacer />
+                <u:FileUploader name="myFileUpload" uploadUrl="upload/" uploadComplete="handleUploadComplete"/>
+                <Button text="Subir" press="addNot" icon="sap-icon://back-to-top" type="Emphasized"/> 
+            </OverflowToolbar>
+        </tab:extension>
+        <tab:columns>
+            <tab:Column width="auto">
+                <Label textAlign="Center" wrapping ="true"  text="Nombre"/>
+                <tab:template> <Text text="{myParam>data}" wrapping="true" /></tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Fecha de modificación" />
+                <tab:template> <Text text="{myParam>data}" wrapping="true" /> </tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Hora de modificación" />
+                <tab:template> <Text text="{myParam>data}" wrapping="true" /> </tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Tamaño" />
+                <tab:template> <Text text="{myParam>caddataena}" wrapping="true" /> </tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Formato" />
+                <tab:template> <Text text="{myParam>data}" wrapping="true" /> </tab:template>
+            </tab:Column>
+        </tab:columns>
+    </tab:Table>  -->
+    <Table id="tableDocsGuiaRemision" items="{/tableDocsGuiaRemision}"  mode="None" >
+        <headerToolbar>
+            <OverflowToolbar> 
+                <Title text="Tabla de Guia de remisión"/>
+                <ToolbarSpacer />
+                <u:FileUploader id="file_AddDocsGuiaRemision" uploadUrl="upload/"/>
+                <Button text="Subir" press="btn_AddDocsGuiaRemision" icon="sap-icon://back-to-top" type="Emphasized"/> 
+            </OverflowToolbar>
+        </headerToolbar> 
+        <columns>
+            <Column width="auto"> <Text text="Nombre" /> </Column> 
+            <Column width="auto"> <Text text="Fecha de modificación" /> </Column> 
+            <Column width="auto"> <Text text="Hora de modificación" /> </Column> 
+            <Column width="auto"> <Text text="Tamaño" /> </Column> 
+            <Column width="auto"> <Text text="Formato" /> </Column>
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{nombre}" /> 
+                    <Text text="{fechaMod}" /> 
+                    <Text text="{horaMod}" /> 
+                    <Text text="{size}" />
+                    <Text text="{format}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+
+    <!-- <tab:Table rows="{  path: 'myParam>/dataTest' }" selectionMode="None"  visibleRowCount="3" class="sapUiTinyMargin" ariaLabelledBy="title">
+        <tab:extension>
+            <OverflowToolbar >
+                <Title text="Tabla de otros"/>
+                <ToolbarSpacer />
+                <u:FileUploader name="myFileUpload" uploadUrl="upload/" uploadComplete="handleUploadComplete"/>
+                <Button text="Subir" press="addNot" icon="sap-icon://back-to-top" type="Emphasized"/> 
+            </OverflowToolbar>
+        </tab:extension>
+        <tab:columns>
+            <tab:Column width="auto">
+                <Label textAlign="Center" wrapping ="true"  text="Nombre"/>
+                <tab:template> <Text text="{myParam>data}" wrapping="true" /></tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Fecha de modificación" />
+                <tab:template> <Text text="{myParam>data}" wrapping="true" /> </tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Hora de modificación" />
+                <tab:template> <Text text="{myParam>data}" wrapping="true" /> </tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Tamaño" />
+                <tab:template> <Text text="{myParam>caddataena}" wrapping="true" /> </tab:template>
+            </tab:Column>
+            <tab:Column width="auto" >
+                <Label textAlign="Center" wrapping ="true"  text="Formato" />
+                <tab:template> <Text text="{myParam>data}" wrapping="true" /> </tab:template>
+            </tab:Column>
+        </tab:columns>
+    </tab:Table>  -->
+    <Table id="tableDocsOtros" items="{/tableDocsOtros}"  mode="None" >
+        <headerToolbar>
+            <OverflowToolbar> 
+                <Title text="Tabla de otros"/>
+                <ToolbarSpacer />
+                <u:FileUploader id="file_AddDocsOtros" uploadUrl="upload/" />
+                <Button text="Subir" press="btnAddDocsOtros" icon="sap-icon://back-to-top" type="Emphasized"/> 
+            </OverflowToolbar>
+        </headerToolbar> 
+        <columns>
+            <Column width="auto"> <Text text="Nombre" /> </Column> 
+            <Column width="auto"> <Text text="Fecha de modificación" /> </Column> 
+            <Column width="auto"> <Text text="Hora de modificación" /> </Column> 
+            <Column width="auto"> <Text text="Tamaño" /> </Column> 
+            <Column width="auto"> <Text text="Formato" /> </Column>
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{nombre}" /> 
+                    <Text text="{fechaMod}" /> 
+                    <Text text="{horaMod}" /> 
+                    <Text text="{size}" />
+                    <Text text="{format}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+    <OverflowToolbar height="auto">  
+        <ToolbarSpacer/>
+        <Button text="Aceptar" press="dgDocumentosOk" type="Emphasized" />
+        <!-- <Button text="Cancelar" press="dgCancelDocumentos"/>   -->
+    </OverflowToolbar>
+</Dialog>
+</core:FragmentDefinition>

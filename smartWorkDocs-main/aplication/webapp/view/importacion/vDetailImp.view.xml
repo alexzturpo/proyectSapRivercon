@@ -1,0 +1,498 @@
+<mvc:View controllerName="swd.aplication.controller.vDetailImp"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:core="sap.ui.core" 
+    xmlns:tab="sap.ui.table"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title} - Detalles de importacion" titleAlignment="Center" navButtonPress="onPageBack" showNavButton="true">
+        <content>
+            <IconTabBar expanded="{device>/isNoPhone}" >
+                <items>
+                    <IconTabFilter text="Pedidos">
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar>  
+                                    <ToolbarSpacer /> 
+                                    <Button icon="sap-icon://filter" press="search" text="Filtrar" type="Emphasized" class="sapUiSmallMarginBeginEnd"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Embarque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Razón social">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Iconterms">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Operador logístico">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Envío doc original">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>  
+
+                        <tab:Table rows="{ path: 'myParam>/DETAIL_IMPORT_PEDIDO'}" class="sapUiSmallMarginBottom" visibleRowCount="8">
+                            <tab:columns>
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Entrega entrante"/>
+                                    <tab:template> <Label text="{myParam>EMBARQUE}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="5rem" hAlign="Center"> <Text text="Orden de compra"/>
+                                    <tab:template> <Label text="{myParam>ENTREGA_ENTRANTE}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Posición"/>
+                                    <tab:template> <Label text="{myParam>POSICION}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Cod. material"/>
+                                    <tab:template> <Label text="{myParam>CODIGO_ARTICULO}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Descripción"/>
+                                    <tab:template> <Label text="{myParam>DESCRIPCION_ARTICULO}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Cantidad ordenada"/>
+                                    <tab:template> <Label text="{myParam>CANTIDAD_ORDENADA}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Presentación"/>
+                                    <tab:template> <Label text="{myParam>PRESENTACION}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Centro"/>
+                                    <tab:template> <Label text="{myParam>CENTRO}"/> </tab:template>
+                                </tab:Column>  
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Almacén"/>
+                                    <tab:template> <Label text="{myParam>ALMACEN}"/> </tab:template>
+                                </tab:Column>  
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Precio unitario"/>
+                                    <tab:template> <Label text="{myParam>PRECIO_UNITARIO}"/> </tab:template>
+                                </tab:Column>  
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Fecha de embarque"/>
+                                    <tab:template> <Label text="{myParam>FECHA_EMBARQUE_REQUERIDA}"/> </tab:template>
+                                </tab:Column>  
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Fecha de ingreso"/>
+                                    <tab:template> <Label text="{myParam>FECHA_INGRESO_REQUERIDA}"/> </tab:template>
+                                </tab:Column>  
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Partida arancelaria"/>
+                                    <tab:template> <Label text="{myParam>PARTIDA_ARANCELARIA}"/> </tab:template>
+                                </tab:Column>  
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Cantidad embarcada"/>
+                                    <tab:template> <Label text="{myParam>CANTIDAD_EMBARCADA}"/> </tab:template>
+                                </tab:Column>  
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Cantidad recibida"/>
+                                    <tab:template> <Label text="{myParam>CANTIDAD_RECIBIDA}"/> </tab:template>
+                                </tab:Column>  
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Fecha CRM"/>
+                                    <tab:template> <Label text="{myParam>FECHA_CRM}"/> </tab:template>
+                                </tab:Column>  
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Fecha entrega"/>
+                                    <tab:template> <Label text="{myParam>FECHA_ENTREGA_ENTRANTE}"/> </tab:template>
+                                </tab:Column>  
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="IMO"/>
+                                    <tab:template> <Label text="{myParam>IMOP}"/> </tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table> 
+                    </IconTabFilter>
+                    <IconTabFilter text="Documentación">
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar>  
+                                    <ToolbarSpacer /> 
+                                    <Button icon="sap-icon://filter" press="search" text="Filtrar" type="Emphasized" class="sapUiSmallMarginBeginEnd"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Embarque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Razón social">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Iconterms">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Operador logístico">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Envío doc original">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>  
+
+                        <tab:Table rows="{ path: 'myParam>/LIST_DOCUMENTACION_IMPORTACION'}" class="sapUiSmallMarginBottom" visibleRowCount="8">
+                            <tab:columns>
+                                <tab:Column width="auto" hAlign="Center"> <Text text="Lista de documentos"/>
+                                    <tab:template> <Label text="{myParam>DESCRIPCION}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="5rem" hAlign="Center"> <Text text="Cargo"/>
+                                    <tab:template><CheckBox /></tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center"> <Text text="Cargar"/>
+                                    <tab:template> <Button icon="sap-icon://back-to-top" press="onPress" /></tab:template>
+                                </tab:Column>  
+                            </tab:columns>
+                        </tab:Table> 
+                    </IconTabFilter>
+                    <IconTabFilter text="Tracking">
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar>  
+                                    <ToolbarSpacer /> 
+                                    <Button icon="sap-icon://filter" press="search" text="Filtrar" type="Emphasized" class="sapUiSmallMarginBeginEnd"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Embarque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Razón social">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" > 
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Observación">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Unidad de negocio">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Modalidad de embarque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Término de Flete Internacional">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Monto de Flete USD">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Puerto de embarque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Ciudad de embarque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Puerto Llegada">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Ciudad Llegada">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Nave de Salida">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Nave de Llegada">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha de Embarque requerida">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha de Solicitud Detallada de embarque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha de Solicitud Documentada de embarque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Urgencia">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha de embarque Modificada">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="ETD">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="ETA">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="ATD">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="ATA">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Tipo de Carga">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Peso Bruto KG">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Tipo de despacho">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Incidencia">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Tipo de incidencia">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha de incidencia">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Valor Observado">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Control">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Respuesta Detallada de embarque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Detalle de embarque roleados">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha de Alerta de Demora de Embarque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Dirección de entrega de carga">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Dirección de Entrega Final">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha termino Desc">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha Volante">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha Numeración">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha Inspección">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha Levante">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha Clasificación">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Vencimiento almacenaje">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Vencimiento sobre estadía">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Terminal de almacenamiento">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+                    </IconTabFilter>
+                    <IconTabFilter text="Aduanas">
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar>  
+                                    <ToolbarSpacer /> 
+                                    <Button icon="sap-icon://filter" press="search" text="Filtrar" type="Emphasized" class="sapUiSmallMarginBeginEnd"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Embarque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Razón social">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >   
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Agente de aduanas">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="DUA">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+                    </IconTabFilter>
+                    <IconTabFilter text="Programación">
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar>  
+                                    <ToolbarSpacer /> 
+                                    <Button icon="sap-icon://filter" press="search" text="Filtrar" type="Emphasized" class="sapUiSmallMarginBeginEnd"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Embarque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Razón social">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >   
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer title="Pago de derecho aduaneros">
+                                    <f:formElements> 
+                                        <f:FormElement label="Semana Proyectada">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha programada">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Último Día de pago">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Cancelado">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement> 
+                                    </f:formElements>
+                                </f:FormContainer>
+                                <f:FormContainer title="Ingresos">
+                                    <f:formElements> 
+                                        <f:FormElement label="Semana Proyectada">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha programada">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Hora programada">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Recibido">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement> 
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form> 
+                    </IconTabFilter> 
+                    <IconTabFilter text="Hoja de despacho de importación">
+                        <f:Form editable="true" class="sapUiSmallMarginBottom" >  
+                            <f:toolbar>
+                                <Toolbar height="auto"> 
+                                    <!-- <Title text="Factura Fisica"/> -->
+                                    <ToolbarSpacer /> 
+                                    <Button text="Grabar" press="search" type="Emphasized" class="sapUiSmallMarginBeginEnd"/> 
+                                    <Button text="Imprimir" press="search" class="sapUiSmallMarginBeginEnd"/> 
+                                    <Button text="Anular" press="search" class="sapUiSmallMarginBeginEnd"/> 
+                                    <Button text="Cancelar" press="search" class="sapUiSmallMarginBeginEnd"/> 
+                                </Toolbar>
+                            </f:toolbar>
+                            <f:layout> <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4"  /> </f:layout>
+                            <f:formContainers>
+                                <f:FormContainer>
+                                    <f:formElements> 
+                                        <f:FormElement label="Embarque">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Entregas entrantes">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Ordenes de compra">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Proveedor">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Agente de aduanas">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>  
+                                        <f:FormElement label="Fecha llegada">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Dirección de entrega">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Información adicional">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Seguro por cuenta de">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Tipo documentación entregada">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Documentons entregados">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Nivel comercial del importador">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Condición del proveedor">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Naturaleza de la transacción">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Fecha de envío">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Tipo de valor">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Pais origen">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Intermediario entre comprador y vendedor">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Marca comercial">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Marca comercial">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Introducciones especiales">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>   
+                                        <f:FormElement label="Registro contabilidad">
+                                            <f:fields> <Input value="" /> </f:fields>
+                                        </f:FormElement>
+                                    </f:formElements>
+                                </f:FormContainer>
+                            </f:formContainers>
+                        </f:Form>  
+                    </IconTabFilter> 
+                </items>
+            </IconTabBar>
+        </content >
+    </Page>
+</mvc:View>

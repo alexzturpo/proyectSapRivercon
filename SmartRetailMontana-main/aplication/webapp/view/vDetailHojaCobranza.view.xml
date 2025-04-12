@@ -1,0 +1,168 @@
+<mvc:View controllerName="srm.aplication.controller.vGestHojaCobranza"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:core="sap.ui.core"  
+    xmlns:tab="sap.ui.table"
+    xmlns="sap.m">
+    <Page id="page" title="Gestión de hoja de Cobranza" navButtonPress="onPageBack" showNavButton="true" titleAlignment="Center" >
+        <headerContent> 
+            <MenuButton icon="sap-icon://person-placeholder" text="User" type="Transparent"> 
+                <Menu>
+                    <MenuItem text="Cerrar sesion" icon="sap-icon://log" press="logOff"/>
+                </Menu>
+            </MenuButton>
+		</headerContent>   
+         <HBox width="100%" backgroundDesign="Solid" class="sapUiResponsiveContentPadding " >
+            <HBox justifyContent="SpaceBetween" width="100%" wrap="Wrap" class="sapUiSmallMargin " >
+                <Label class="sapUiTinyMarginBeginEnd" text="N° hoja de combranza:"/> 
+                <Label class="sapUiTinyMarginBeginEnd" text="Usuario:"/>
+            </HBox>
+        </HBox>
+        <content>   
+            <IconTabBar expanded="false">
+                <items>
+                    <IconTabFilter text="Detalle de hoja de cobranza"> 
+                        <tab:Table rows="{ path: 'myParam>/tbDetailHC'}" selectionMode="None" class="sapUiSmallMarginBottom" visibleRowCount="10">
+                            <tab:columns>
+                                <tab:Column width="7rem" hAlign="Center">
+                                    <Text text="Documento"/>
+                                    <tab:template> <Label text="{myParam>documento}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="7rem" hAlign="Center">
+                                    <Text text="cliente"/>
+                                    <tab:template> <Label text="{myParam>cliente}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="7rem" hAlign="Center">
+                                    <Text text="Tipo de cambio"/>
+                                    <tab:template> <Label text="{myParam>tipoCambio}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="7rem" hAlign="Center">
+                                    <Text text="Monto S/"/>
+                                    <tab:template> <Label text="{myParam>montoSoles}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="7rem" hAlign="Center">
+                                    <Text text="Monto US$"/>
+                                    <tab:template> <Label text="{myParam>montoUSD}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="7rem" hAlign="Center">
+                                    <Text text="Tipo"/>
+                                    <tab:template> <Label text="{myParam>tipo}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="7rem" hAlign="Center">
+                                    <Text text="Pago S/"/>
+                                    <tab:template> <Label text="{myParam>pagoSoles}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="7rem" hAlign="Center">
+                                    <Text text="Pago US$"/>
+                                    <tab:template> <Label text="{myParam>pagoUSD}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center">
+                                    <Text text="Vuelto S/"/>
+                                    <tab:template> <Label text="{myParam>vueltoSoles}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="7rem" hAlign="Center">
+                                    <Text text="Depósito"/>
+                                    <tab:template> <Label text="{myParam>deposito}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center">
+                                    <Text text="Banco"/>
+                                    <tab:template> <Label text="{myParam>banco}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center">
+                                    <Text text="Fecha de dispósito"/>
+                                    <tab:template> <Label text="{myParam>fechaDeposito}"/> </tab:template>
+                                </tab:Column> 
+                                <tab:Column width="7rem" hAlign="Center">
+                                    <Text text="N° operación"/>
+                                    <tab:template> <Label text="{myParam>nroOperacion}"/> </tab:template>
+                                </tab:Column> 
+                            </tab:columns>
+                        </tab:Table>
+                        <VBox >
+                            <tab:Table rows="{ path: 'myParam>/tbDetailHCTotal'}" selectionMode="None" class="sapUiSmallMarginBottom" visibleRowCount="1">
+                                <tab:extension>
+                                    <OverflowToolbar>
+                                        <ToolbarSpacer />
+                                        <Title text="TOTAL"/> 
+                                        <ToolbarSpacer />
+                                    </OverflowToolbar>
+                                </tab:extension>
+                                <tab:columns>
+                                    <tab:Column  width="7rem" hAlign="Center">
+                                            <Label text="Documento"/>
+                                        <tab:template> <Text text="{myParam>documento}"/> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column width="7rem" hAlign="Center">
+                                            <Label text="Cliente"/>
+                                        <tab:template> <Text text="{myParam>cliente}"/> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column width="7rem" hAlign="Center">
+                                            <Label text="Tipo de cambio"/>
+                                        <tab:template> <Text text="{myParam>tipoCambio}"/> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column width="7rem" hAlign="Center">
+                                            <Label text="Monto S/"/>
+                                        <tab:template> <Text text="{myParam>montoSoles}"/> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column width="7rem" hAlign="Center">
+                                            <Label text="Monto US$"/>
+                                        <tab:template> <Text text="{myParam>montoUSD}"/> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column width="7rem" hAlign="Center">
+                                            <Label text="Tipo"/>
+                                        <tab:template> <Text text="{myParam>tipo}"/> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column width="7rem" hAlign="Center">
+                                            <Label text="Pago S/"/>
+                                        <tab:template> <Text text="{myParam>pagoSoles}"/> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column width="7rem" hAlign="Center">
+                                            <Label text="Pago US$"/>
+                                        <tab:template> <Text text="{myParam>pagoUSD}"/> </tab:template>
+                                    </tab:Column> 
+                                    <tab:Column width="7rem" hAlign="Center">
+                                            <Label text="Vuelto S/"/>
+                                        <tab:template> <Text text="{myParam>vueltoSoles}"/> </tab:template>
+                                    </tab:Column>
+                                    <tab:Column width="7rem" hAlign="Center">
+                                            <Label text="Depósito"/>
+                                        <tab:template> <Text text="{myParam>deposito}"/> </tab:template>
+                                    </tab:Column> 
+                                    <tab:Column width="7rem" hAlign="Center">
+                                            <Label text="Banco"/>
+                                        <tab:template> <Text text="{myParam>banco}"/> </tab:template>
+                                    </tab:Column> 
+                                    <tab:Column width="7rem" hAlign="Center">
+                                            <Label text="Fecha de dispósito"/>
+                                        <tab:template> <Text text="{myParam>fechaDeposito}"/> </tab:template>
+                                    </tab:Column> 
+                                    <tab:Column width="7rem" hAlign="Center">
+                                            <Label text="N° operación"/>
+                                        <tab:template> <Text text="{myParam>nroOperacion}"/> </tab:template>
+                                    </tab:Column> 
+                                </tab:columns>
+                            </tab:Table>
+                        </VBox>
+                    </IconTabFilter>
+                    <IconTabFilter text="Resumen caja">
+                        <tab:Table rows="{ path: 'myParam>/tbDetailHojaCobranza'}" selectionMode="None" class="sapUiSmallMarginBottom" visibleRowCount="17">
+                            <tab:columns>
+                                <tab:Column width="auto" > 
+                                    <tab:template> <Label text="{myParam>descripcion}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="5rem" hAlign="Center">
+                                    <Text text="Soles"/>
+                                    <tab:template> <Label text="{myParam>soles}"/> </tab:template>
+                                </tab:Column>
+                                <tab:Column width="5rem" hAlign="Center">
+                                    <Text text="Dólares"/>
+                                    <tab:template> <Label text="{myParam>dolares}"/> </tab:template>
+                                </tab:Column>
+                            </tab:columns>
+                        </tab:Table>
+                    </IconTabFilter> 
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>

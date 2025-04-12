@@ -1,0 +1,31 @@
+<mvc:View controllerName="adp.aplication.controller.vProveedor"
+     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core" 
+	xmlns:f="sap.ui.layout.form"
+    xmlns:tab="sap.ui.table" 
+    xmlns:u="sap.ui.unified"
+    xmlns:tnt="sap.tnt">
+    <Page title="Aplicativo para Deligencia de Proveedores" titleAlignment="Center" showNavButton="false" navButtonPress=".onPageBack" >
+		
+        <SplitContainer id="SplitContDemo" initialMaster="master">
+            <masterPages>
+                <Page id="master" showHeader="true" title="Proveedor" titleAlignment="Center">
+                    <HBox  height="5rem" width="100%" justifyContent="Center" alignItems="Center">
+                        <Image src="../../img/logo.png" height="1.7rem"/>
+                    </HBox>
+                    <List>
+                        <StandardListItem title="Actualización datos" press=".navUpdateData"  icon="sap-icon://request" type="Navigation"/>
+                        <StandardListItem title="Cerrar Sesión" press=".onPageBack"  icon="sap-icon://journey-depart" type="Active" />
+                    </List>
+                </Page>
+            </masterPages>
+            <detailPages>
+                <Page id="detail" title="Actualización datos" backgroundDesign= "Solid" navButtonPress=".onPressDetailBack" showNavButton="{= !${device>/system/desktop} }">
+                    <Label text="Actualización datos" class="sapUiTinyMarginEnd" />
+                </Page> 
+            </detailPages>
+            
+        </SplitContainer>
+    </Page>
+</mvc:View>

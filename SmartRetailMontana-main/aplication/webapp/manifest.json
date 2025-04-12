@@ -1,0 +1,194 @@
+{
+  "_version": "1.49.0",
+  "sap.app": {
+    "id": "srm.aplication",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.10.6",
+      "toolsId": "c4ef810c-23ef-4a9f-95cc-d6ec80695179"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.118.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "srm.aplication.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "srm.aplication.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RoutevMain",
+          "pattern": ":?query:",
+          "target": [ "TargetvMain" ]
+        },
+        {
+          "name": "vHome",
+          "pattern": "vHome",
+          "titleTarget": "vHome",
+          "target": "vHome"
+        },
+        {
+          "name": "vAperturaCaja",
+          "pattern": "vAperturaCaja",
+          "titleTarget": "vAperturaCaja",
+          "target": "vAperturaCaja"
+        },
+        {
+          "name": "vVenta",
+          "pattern": "vVenta",
+          "titleTarget": "vVenta",
+          "target": "vVenta"
+        },
+        {
+          "name": "vCierreCaja",
+          "pattern": "vCierreCaja",
+          "titleTarget": "vCierreCaja",
+          "target": "vCierreCaja"
+        },
+        {
+          "name": "vGestHojaCobranza",
+          "pattern": "vGestHojaCobranza",
+          "titleTarget": "vGestHojaCobranza",
+          "target": "vGestHojaCobranza"
+        },
+        {
+          "name": "vDetailHojaCobranza",
+          "pattern": "vDetailHojaCobranza",
+          "titleTarget": "vDetailHojaCobranza",
+          "target": "vDetailHojaCobranza"
+        },
+        {
+          "name": "vAdminUsers",
+          "pattern": "vAdminUsers",
+          "titleTarget": "vAdminUsers",
+          "target": "vAdminUsers"
+        }
+      ],
+      "targets": {
+        "TargetvMain": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vMain",
+          "viewName": "vMain"
+        },
+        "vHome": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vHome",
+          "viewName": "vHome"
+        },
+        "vAperturaCaja": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vAperturaCaja",
+          "viewName": "vAperturaCaja"
+        },
+        "vVenta": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vVenta",
+          "viewName": "vVenta"
+        },
+        "vCierreCaja": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vCierreCaja",
+          "viewName": "vCierreCaja"
+        },
+        "vGestHojaCobranza": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vGestHojaCobranza",
+          "viewName": "vGestHojaCobranza"
+        },
+        "vDetailHojaCobranza": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vDetailHojaCobranza",
+          "viewName": "vDetailHojaCobranza"
+        },
+        "vAdminUsers": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "vAdminUsers",
+          "viewName": "vAdminUsers"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "srm.aplication.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}
